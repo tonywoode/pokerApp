@@ -9,6 +9,7 @@ import pokerapp.HandFactory;
 import pokerapp.scorer.categories.HandCategory;
 import pokerapp.scorer.resolvers.HandCategoryResolver;
 import pokerapp.scorer.resolvers.RankedHandCategoryResolver;
+import pokerapp.scorer.resolvers.TwoPairHandCategoryResolver;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,41 +19,10 @@ import pokerapp.scorer.resolvers.RankedHandCategoryResolver;
  * To change this template use File | Settings | File Templates.
  */
 
-public class PairHandCategoryResolverTestFixture {
+public class PairHandCategoryResolverTestFixture extends HandCategoryResolverTestFixtureBase {
 
-  private RankedHandCategoryResolver pairResolver;
-  private HandCategoryResolver nullResolver;
-  private HandFactory handFactory = new HandFactory();
-
-  private class NullResolver extends HandCategoryResolver {
-
-    @Override
-    public HandCategory resolve(Hand hand) { return null; }
-  }
-
-  @Before
-  public void Setup() {
-    pairResolver = new RankedHandCategoryResolver("pair", 2);
-	
-	  //nullResolver = mock(HandCategoryResolver.class);
-	
-	  //when(nullResolver.resolve(anyObject()).returnThis(null);
-	
-	  //pairResolver.setNextScorer(nullResolver);
-
-    pairResolver.setNextScorer(new NullResolver());
-  }
-
-  Hand createHand(String... cards) {
-    try {
-    return handFactory.create(cards);
-    } catch (Exception e) {
-      return null;
-    }
-  }
-  
-  HandCategory resolveHand(String... cards) {
-    return pairResolver.resolve(createHand(cards));
+  public PairHandCategoryResolverTestFixture() {
+    super(new RankedHandCategoryResolver("pair", 2));
   }
 
   @Test // TODO: these should use data providers...
@@ -87,34 +57,9 @@ public class PairHandCategoryResolverTestFixture {
   public void HandIsNotPair() {
     HandCategory category = resolveHand("D4", "S3");
 	
-	  assertSame("Is pair", category, null);
+	  assertSame("Is pair", null, category);
   }
   
-  Hand pickWinner(Hand lhs, Hand rhs) {
-    HandCategory lhsCat = pairResolver.resolve(lhs),
-	             rhsCat = pairResolver.resolve(rhs);
-
-    int result = 0;
-    try {
-      result = lhsCat.compareTo(rhsCat);
-    } catch (Exception e) {
-      e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-    }
-
-    // TODO: clients should not have to do this
-    if (result == 0)
-	    return null;
-	  else if (result < 0)
-	    return rhs;
-	  else
-	    return lhs;
-  }
-  
-  void verifyWinner(Hand lhs, Hand rhs, Hand expectedWinner) {
-    Hand winner = pickWinner(lhs, rhs);
-	
-	  assertSame("Winner", expectedWinner, winner);
-  }
 
   @Test
   public void RhsWins() {
