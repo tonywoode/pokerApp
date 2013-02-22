@@ -34,7 +34,7 @@ public class FourHandCategoryResolverTestFixture extends HandCategoryResolverTes
   }
 
   @Test
-  public void CompareHands_LhsWins() {
+  public void CompareHands_RhsWins() {
     Hand lhs = createHand("D4", "S4", "C4", "H4", "C8"),
          rhs = createHand("D5", "S5", "C5", "H5", "C9");
 
@@ -42,7 +42,7 @@ public class FourHandCategoryResolverTestFixture extends HandCategoryResolverTes
   }
 
   @Test
-  public void CompareHands_RhsWins() {
+  public void CompareHands_LhsWins() {
     Hand lhs = createHand("D6", "S6", "C6", "H6", "C8"),
          rhs = createHand("D5", "S5", "C5", "H5", "C9");
 
