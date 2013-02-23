@@ -49,7 +49,12 @@ public class Hand implements Iterable<Card> {
     return sortedCards;
   }
 
-  public String toUserString() {
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+
+    public String toUserString() {
     String msg = "";
 
     for (Card card : cards)
