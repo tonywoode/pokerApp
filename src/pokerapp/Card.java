@@ -30,4 +30,10 @@ public class Card {
   public int getRank() { return rank; }
 
   public int getOrdinal() { return suit.getNumber() * getRank(); }
+
+  @Override
+  public String toString() {
+    return suit.toString() + getRank();
+  }
+
 }

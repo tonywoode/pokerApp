@@ -48,4 +48,17 @@ public class Hand implements Iterable<Card> {
 
     return sortedCards;
   }
+
+  public String toUserString() {
+    String msg = "";
+
+    for (Card card : cards)
+      msg += card.toString() + " "; // TODO: additional space at end...
+
+    return msg;
+  }
+
+  public Card exchange(int pos, Card card) {
+    return cards.set(pos, card);
+  }
 }

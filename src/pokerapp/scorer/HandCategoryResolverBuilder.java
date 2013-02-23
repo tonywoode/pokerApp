@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class HandCategoryResolverBuilder {
 
-  public HandCategoryResolver Create() {
+  public HandCategoryResolver create() {
     ArrayList<HandCategoryResolver> resolvers = new ArrayList<HandCategoryResolver>();
 
     resolvers.add(new RankedHandCategoryResolver("four", 4));

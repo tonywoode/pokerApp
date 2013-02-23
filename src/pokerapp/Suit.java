@@ -35,4 +35,14 @@ public class Suit {
     throw new InvalidArgumentException(new String[] { "Unknwon suit type: " + c });
   }
 
+  public String toString() {
+    switch(number) {
+      case 1: return "C";
+      case 2: return "S";
+      case 3: return "D";
+      case 4: return "H";
+    }
+    return "";
+  }
+
 }
