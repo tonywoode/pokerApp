@@ -7,7 +7,6 @@ import com.sun.javaws.exceptions.InvalidArgumentException;
  * User: steve
  * Date: 22/02/13
  * Time: 00:51
- * To change this template use File | Settings | File Templates.
  */
 public class Card {
   private Suit suit;
