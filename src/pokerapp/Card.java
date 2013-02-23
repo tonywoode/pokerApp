@@ -2,11 +2,9 @@ package pokerapp;
 
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 00:51
- * added line
+ * creates cards for the poker app
+ * @author Steve
+ * @version 1.0
  */
 public class Card {
   private Suit suit;
@@ -24,12 +22,29 @@ public class Card {
     this.rank = rank;
   }
 
+  /**
+   * gets the suit of the card
+   * @return the card's suit
+   */
   public Suit getSuit() { return suit; }
 
+  /**
+   * gets the rank of the card
+   * @return the card's rank
+   */
   public int getRank() { return rank; }
-
+  
+  /**
+   * gets the ordinal of the card
+   * @return the card's ordinal
+   */
+  //TODO: what is that exactly?
   public int getOrdinal() { return suit.getNumber() * getRank(); }
 
+  /**
+   * returns the suit and rank of card
+   * @return suit and rank of card
+   */
   @Override
   public String toString() {
     return suit.toString() + getRank();
