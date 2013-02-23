@@ -20,7 +20,7 @@ public class HandCategoryResolverBuilder {
     resolvers.add(new FlushHandCategoryResolver());
     resolvers.add(new StraightHandCategoryResolver());
     resolvers.add(new RankedHandCategoryResolver("three", 3));
-    resolvers.add(new TwoPairHandCategoryResolver());
+    resolvers.add(new RankedHandCategoryResolver("2pair", 2, 2));
     resolvers.add(new RankedHandCategoryResolver("pair", 2));
     resolvers.add(new HighCardCategoryResolver());
     resolvers.add(null);
