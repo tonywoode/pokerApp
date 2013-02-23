@@ -7,6 +7,7 @@ import com.sun.javaws.exceptions.InvalidArgumentException;
  * User: steve
  * Date: 22/02/13
  * Time: 00:51
+ * added line
  */
 public class Card {
   private Suit suit;
