@@ -34,7 +34,8 @@ public class Hand implements Iterable<Card> {
   }
 
   /**
-   * TODO: THIS FREAKS ME OUT: HOW CAN THE PARENT CLASS IMPLEMENT ONE OF ITS OWN METHODS - YOURE SUPPOSED TO IMPLEMENT AN INTERFACE? Pls explain TW
+   * presents the cards from the hand
+   * @return individual cards from the hand
    */
   public Iterator<Card> iterator() {
     return cards.iterator();
