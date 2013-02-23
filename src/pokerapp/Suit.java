@@ -1,8 +1,6 @@
 package pokerapp;
 
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
-
 /**
  * Created with IntelliJ IDEA.
  * User: steve
@@ -32,12 +30,12 @@ public class Suit {
     Clubs, Spades, Diamonds, Hearts
   };
 
-  public static Suit from(char c) throws InvalidArgumentException {
+  public static Suit from(char c) throws IllegalArgumentException {
     c = Character.toUpperCase(c);
     for (Suit suit : AllSuits)
       if (suit.getCode() == c)
         return suit;
-    throw new InvalidArgumentException(new String[] { "Unknwon suit type: " + c });
+    throw new IllegalArgumentException("Unknwon suit type: " + c );
   }
 
   public String toString() {

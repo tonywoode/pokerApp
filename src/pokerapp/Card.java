@@ -1,6 +1,5 @@
 package pokerapp;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,13 +12,13 @@ public class Card {
   private Suit suit;
   private int rank;
 
-  public Card(Suit suit, int rank) throws InvalidArgumentException {
+  public Card(Suit suit, int rank) throws IllegalArgumentException {
     if (suit == null)
-      throw new InvalidArgumentException(new String[] { "Suit must not be null" });
+      throw new IllegalArgumentException("Suit must not be null");
 
     // supports aces high & low; TODO: is this sensible?
     if (rank < 1 && rank > 14) // TODO: remove magic numbers
-      throw new InvalidArgumentException(new String[] { "Illegal Rank: " + rank });
+      throw new IllegalArgumentException("Illegal Rank: " + rank);
 
     this.suit = suit;
     this.rank = rank;
