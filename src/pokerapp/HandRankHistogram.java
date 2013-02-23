@@ -21,6 +21,9 @@ public class HandRankHistogram {
   int[] ranks = new int[MAX_RANKS];
   private int rank;
 
+
+    private boolean acesLow;
+
   public HandRankHistogram(Hand hand) {
     this.hand = hand;
 
@@ -68,4 +71,29 @@ public class HandRankHistogram {
 
     throw new Exception("No such count");
   }
+    //TODO: make code nicer
+    public boolean isAcesLow() {
+        return acesLow;
+    }
+
+    public void setAcesLow(boolean acesLow) {
+        this.acesLow = acesLow;
+    }
+
+  public void lowAcesOn(){
+      if(ranks[MAX_RANKS] != 0){
+           ranks[1] = ranks[MAX_RANKS];
+           ranks[MAX_RANKS] = 0;
+           setAcesLow(true);
+
+      }
+  }
+  public void  lowAcesOff(){
+      if(ranks[1] != 0){
+          ranks[MAX_RANKS] = ranks[1];
+          ranks[1] = 0;
+          setAcesLow(false);
+      }
+  }
+
 }
