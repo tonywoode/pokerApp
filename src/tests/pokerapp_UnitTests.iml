@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="v0.0.0.1" />
+    <orderEntry type="module" module-name="Poker" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -17,6 +17,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module" module-name="Poker" />
   </component>
 </module>
 

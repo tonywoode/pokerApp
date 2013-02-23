@@ -1,6 +1,5 @@
 package pokerapp;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,9 +19,9 @@ public class HandFactory {
     return hand;
   }
 
-  private Card createCard(String card) throws InvalidArgumentException {
+  private Card createCard(String card) throws IllegalArgumentException {
     if (card.length() < 2 || card.length() > 3)
-      throw new InvalidArgumentException(new String[] { "Illegal card name: " + card });
+      throw new IllegalArgumentException("Illegal card name: " + card);
 
     Suit suit = Suit.from(card.charAt(0));
 
