@@ -13,36 +13,34 @@ import com.sun.javaws.exceptions.InvalidArgumentException;
 public class Suit {
 
   private final int number;
+  private final char code;
 
-  private Suit(int num) {
-    number = num;
+  private Suit(int num, char code) {
+    this.number = num;
+    this.code = Character.toUpperCase(code);
   }
 
   public int getNumber() { return number; }
+  public char getCode() { return code; }
 
-  public final static Suit Clubs    = new Suit(1);
-  public final static Suit Spades   = new Suit(2);
-  public final static Suit Diamonds = new Suit(3);
-  public final static Suit Hearts   = new Suit(4);
+  public final static Suit Clubs    = new Suit(1, 'C');
+  public final static Suit Spades   = new Suit(2, 'S');
+  public final static Suit Diamonds = new Suit(3, 'D');
+  public final static Suit Hearts   = new Suit(4, 'H');
+
+  public final static Suit[] AllSuits = new Suit[] {
+    Clubs, Spades, Diamonds, Hearts
+  };
 
   public static Suit from(char c) throws InvalidArgumentException {
-    switch(Character.toLowerCase(c)) {
-      case 'c': return Clubs;
-      case 'd': return Diamonds;
-      case 'h': return Hearts;
-      case 's': return Spades;
-    }
+    c = Character.toUpperCase(c);
+    for (Suit suit : AllSuits)
+      if (suit.getCode() == c)
+        return suit;
     throw new InvalidArgumentException(new String[] { "Unknwon suit type: " + c });
   }
 
   public String toString() {
-    switch(number) {
-      case 1: return "C";
-      case 2: return "S";
-      case 3: return "D";
-      case 4: return "H";
-    }
-    return "";
+      return "" + code;
   }
-
 }
