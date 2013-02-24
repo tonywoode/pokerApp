@@ -56,6 +56,14 @@ public class Hand implements Iterable<Card> {
    */
   //TODO: WHY IS THIS NOT JUST A TOSTRING?
   public String toUserString() {
+=======
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+
+    public String toUserString() {
+>>>>>>> .merge_file_cyLvSn
     String msg = "";
 
     for (Card card : cards)
