@@ -2,9 +2,8 @@ package utils.Test;
 
 import org.junit.Test;
 import pokerapp.Hand;
-import pokerapp.Card;
 import pokerapp.HandFactory;
-import utils.HandPermutationGenerator;
+import pokerapp.utils.HandPermutationGenerator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
