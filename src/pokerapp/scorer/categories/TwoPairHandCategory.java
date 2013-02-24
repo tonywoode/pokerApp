@@ -24,6 +24,8 @@ public class TwoPairHandCategory extends HandCategory {
   @Override
   public int compareEqualCategories(HandCategory rhs) throws Exception {
     // harder implementation; two separate ranks
+    // should be be given the hist info by its resolver
+
 
     TwoPairHandCategory rhsTwoPair = (TwoPairHandCategory)rhs;
 
