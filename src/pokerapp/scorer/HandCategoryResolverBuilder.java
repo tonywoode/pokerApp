@@ -1,5 +1,6 @@
 package pokerapp.scorer;
 
+import pokerapp.scorer.categories.RankedHandCategory;
 import pokerapp.scorer.resolvers.*;
 
 import java.util.ArrayList;

@@ -1,15 +1,11 @@
 package tests;
 
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import pokerapp.Hand;
-import pokerapp.HandFactory;
 import pokerapp.scorer.categories.HandCategory;
-import pokerapp.scorer.resolvers.HandCategoryResolver;
 import pokerapp.scorer.resolvers.RankedHandCategoryResolver;
-import pokerapp.scorer.resolvers.TwoPairHandCategoryResolver;
 
 /**
  * Created with IntelliJ IDEA.

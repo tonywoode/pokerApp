@@ -1,7 +1,5 @@
 package pokerapp.scorer.resolvers;
 
-import pokerapp.Hand;
-import pokerapp.HandRankHistogram;
 import pokerapp.scorer.categories.HandCategory;
 import pokerapp.scorer.categories.RankedHandCategory;
 
@@ -13,33 +11,27 @@ import pokerapp.scorer.categories.RankedHandCategory;
  * To change this template use File | Settings | File Templates.
  */
 public class RankedHandCategoryResolver extends HandCategoryResolver {
-  String name;
-  int rankValue;
-    private final int rankCount;
+  private final String name;
+  private final int rankValue;
+  private final int rankCount;
 
-
-    public RankedHandCategoryResolver(String name, int rankValue, int rankCount) {
-        this.name = name;
-        this.rankValue = rankValue;
-        this.rankCount = rankCount;
+  public RankedHandCategoryResolver(String name, int rankValue, int rankCount) {
+    super(new RankedHandCategory(name));
+    this.name = name;
+    this.rankValue = rankValue;
+    this.rankCount = rankCount;
   }
-    public RankedHandCategoryResolver(String name, int rankValue) {
-        this(name, rankValue, 1);
-    }
 
+  public RankedHandCategoryResolver(String name, int rankValue) {
+    this(name, rankValue, 1);
+  }
 
   @Override
-  public HandCategory resolve(HandCategoryResolverRequest request) throws Exception {
-    HandRankHistogram rankHistogram = request.getRankHistogram();
-
-    int count = rankHistogram.getCount(rankValue);
-    if (count == rankCount) {
-      return createHandCategory(request.getHand(), rankHistogram.getRankFromCount(rankValue), rankHistogram);
-    } else
-      return this.nextResolver.resolve(request);
+  protected boolean matches(HandCategoryResolverRequest request) throws Exception {
+    return request.getRankHistogram().getCount(rankValue) == rankCount;
   }
 
-    protected HandCategory createHandCategory(Hand hand, int rank, HandRankHistogram rankHistogram) {
-        return new RankedHandCategory(this.name, this.number, hand, rank, rankHistogram);
-    }
+  protected int determineRank(HandCategoryResolverRequest request) throws Exception {
+    return request.getRankHistogram().getRankFromCount(rankValue);
+  }
 }

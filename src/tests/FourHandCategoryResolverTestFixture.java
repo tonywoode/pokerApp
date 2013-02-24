@@ -3,6 +3,7 @@ package tests;
 import org.junit.Test;
 import pokerapp.Hand;
 import pokerapp.scorer.categories.HandCategory;
+import pokerapp.scorer.categories.RankedHandCategory;
 import pokerapp.scorer.resolvers.RankedHandCategoryResolver;
 
 import static org.junit.Assert.assertEquals;

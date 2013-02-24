@@ -13,10 +13,15 @@ import java.util.ArrayList;
  * Time: 14:12
  * To change this template use File | Settings | File Templates.
  */
-public class RankedHandCategory extends RankBasedHandCategory {
+public class RankedHandCategory extends HandCategory {
 
-  public RankedHandCategory(String name, int cn, Hand hand, int rank, HandRankHistogram rankHistogram) {
-    super(name, cn, hand, rank, rankHistogram);
+  public RankedHandCategory(String name) {
+    super(name);
+  }
+
+  @Override
+  public RankedHandCategory clone() {
+    return new RankedHandCategory(this.getName());
   }
 
   @Override
@@ -26,7 +31,7 @@ public class RankedHandCategory extends RankBasedHandCategory {
     RankedHandCategory rhsCat = (RankedHandCategory)rhs;
 
     if (getRank() != rhsCat.getRank())
-      return compareTo(getRank(), rhsCat.getRank());
+      return Integer.compare(getRank(), rhsCat.getRank());
     else
       return compareSpares(rhsCat);
   }
@@ -38,7 +43,7 @@ public class RankedHandCategory extends RankBasedHandCategory {
 
     // TODO: we assume both spares have the same number of cards. Reasonable?
     for (int iter = lhsSpares.size() - 1; iter >= 0; --iter) {
-      int c = compareTo(lhsSpares.get(iter).getRank(), rhsSpares.get(iter).getRank());
+      int c = Integer.compare(lhsSpares.get(iter).getRank(), rhsSpares.get(iter).getRank());
       if (c != 0)
         return c;
     }
@@ -56,5 +61,4 @@ public class RankedHandCategory extends RankBasedHandCategory {
 
     return spares;
   }
-
 }

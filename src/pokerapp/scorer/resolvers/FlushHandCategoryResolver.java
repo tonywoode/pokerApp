@@ -2,7 +2,6 @@ package pokerapp.scorer.resolvers;
 
 import pokerapp.Card;
 import pokerapp.Hand;
-import pokerapp.scorer.categories.HandCategory;
 import pokerapp.scorer.categories.FlushHandCategory;
 
 /**
@@ -15,12 +14,13 @@ import pokerapp.scorer.categories.FlushHandCategory;
 public class FlushHandCategoryResolver extends HandCategoryResolver {
   private static final int MAX_SUITS = 4;
 
+  public FlushHandCategoryResolver() {
+    super(new FlushHandCategory("flush"));
+  }
+
   @Override
-  public HandCategory resolve(HandCategoryResolverRequest request) throws Exception {
-    if (isFlush(request.getHand()))
-      return new FlushHandCategory("flush", this.number, request.getHand(), -1, request.getRankHistogram());
-    else
-      return this.nextResolver.resolve(request);
+  protected boolean matches(HandCategoryResolverRequest request) throws Exception {
+    return isFlush(request.getHand());
   }
 
   private boolean isFlush(Hand hand) {
@@ -29,7 +29,7 @@ public class FlushHandCategoryResolver extends HandCategoryResolver {
       suits[iter] = 0;
 
     for (Card card : hand)
-      ++suits[card.getSuit().getNumber()];
+      ++suits[card.getSuit().getNumber() - 1];
 
     for (int iter = 0; iter < MAX_SUITS; ++iter)
       if (suits[iter] == 5) // TODO: remove magic number

@@ -11,9 +11,14 @@ import pokerapp.utils.ReverseArrayIterator;
  * Time: 01:54
  * To change this template use File | Settings | File Templates.
  */
-public class TwoPairHandCategory extends RankBasedHandCategory {
-  public TwoPairHandCategory(String name, int cn, Hand hand, int rank, HandRankHistogram rankHistogram) {
-    super(name, cn, hand, rank, rankHistogram);
+public class TwoPairHandCategory extends HandCategory {
+  public TwoPairHandCategory(String name) {
+    super(name);
+  }
+
+  @Override
+  public TwoPairHandCategory clone() {
+    return new TwoPairHandCategory(this.getName());
   }
 
   @Override

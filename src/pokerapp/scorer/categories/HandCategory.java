@@ -13,36 +13,43 @@ import pokerapp.HandRankHistogram;
  */
 public abstract class HandCategory {
   private String name;
-  private int categoryNumber;
+  private int categoryNumber = -1;
   protected Hand hand;
 
-  private int rank;
+  private int rank = -1;
+  private HandRankHistogram rankHistogram;
 
-  protected int getRank() { return rank; }
-
-  protected HandCategory(String name, int categoryNumber, Hand hand, int rank) {
+  protected HandCategory(String name) {
     this.name = name;
-    this.categoryNumber = categoryNumber;
-    this.hand = hand;
-    this.rank = rank;
   }
 
+  // Implements the Prototype pattern by supporting instance cloning. Customises the cloned instance before returning.
+  // @return a copy of this instance of (the subclass of) HandCategory
+  public HandCategory clone(int cn, Hand hand, int rank, HandRankHistogram rankHistogram) {
+    HandCategory cat = clone();
+    cat.categoryNumber = cn;
+    cat.hand = hand;
+    cat.rank = rank;
+    cat.rankHistogram = rankHistogram;
+    return cat;
+  }
+
+  // Implements the Prototype pattern by supporting instance cloning
+  // @return a copy of this instance of (the subclass of) HandCategory
+  protected abstract HandCategory clone();
+
+  public int getRank() { return rank; }
+
   public String getName() { return name; }
+
+  protected HandRankHistogram getRankHistogram() { return rankHistogram; }
 
   public int compareTo(HandCategory rhs) throws Exception {
     if (categoryNumber == rhs.categoryNumber)
       return compareEqualCategories(rhs);
     else
-      return compareTo(categoryNumber, rhs.categoryNumber);
+      return Integer.compare(categoryNumber, rhs.categoryNumber);
   }
 
   protected abstract int compareEqualCategories(HandCategory rhs) throws Exception;
-
-  protected int compareTo(int lhs, int rhs) {
-    if (lhs == rhs)
-      return 0;
-    else
-      return lhs < rhs ? -1 : 1;
-  }
-
 }

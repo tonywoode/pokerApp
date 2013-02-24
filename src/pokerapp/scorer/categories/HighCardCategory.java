@@ -12,8 +12,13 @@ import pokerapp.HandRankHistogram;
  */
 public class HighCardCategory extends RankedHandCategory {
 
-  public HighCardCategory(String name, int cn, Hand hand, int rank, HandRankHistogram rankHistogram) {
-    super(name, cn, hand, rank, rankHistogram);
+  public HighCardCategory(String name) {
+    super(name);
+  }
+
+  @Override
+  public HighCardCategory clone() {
+    return new HighCardCategory(this.getName());
   }
 
   @Override

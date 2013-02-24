@@ -1,6 +1,7 @@
 package pokerapp.scorer.resolvers;
 
 import pokerapp.Hand;
+import pokerapp.scorer.categories.FlushHandCategory;
 import pokerapp.scorer.categories.HandCategory;
 import pokerapp.Card;
 import pokerapp.scorer.categories.StraightHandCategory;
@@ -15,12 +16,13 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 public class StraightHandCategoryResolver extends HandCategoryResolver {
+  public StraightHandCategoryResolver() {
+    super(new StraightHandCategory("straight"));
+  }
+
   @Override
-  public HandCategory resolve(HandCategoryResolverRequest request) throws Exception {
-    if (isStraight(request.getHand()))
-      return new StraightHandCategory("straight", this.number, request.getHand(), -1);
-    else
-      return this.nextResolver.resolve(request);
+  protected boolean matches(HandCategoryResolverRequest request) throws Exception {
+    return isStraight(request.getHand());
   }
 
   private boolean isStraight(Hand hand) {

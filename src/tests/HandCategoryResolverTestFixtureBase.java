@@ -1,14 +1,14 @@
 package tests;
 
 import org.junit.Before;
-import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 import pokerapp.Hand;
 import pokerapp.HandFactory;
 import pokerapp.scorer.categories.HandCategory;
 import pokerapp.scorer.resolvers.HandCategoryResolver;
-import pokerapp.scorer.resolvers.RankedHandCategoryResolver;
+import pokerapp.scorer.resolvers.HandCategoryResolverRequest;
 
 
 /**
@@ -33,7 +33,13 @@ public class HandCategoryResolverTestFixtureBase {
   }
 
   private class NullResolver extends HandCategoryResolver {
-    @Override public HandCategory resolve(Hand hand) { return null; }
+    private NullResolver() { super(null); }
+
+    @Override
+    public HandCategory resolve(HandCategoryResolverRequest request) throws Exception { return null; }
+
+    @Override
+    protected boolean matches(HandCategoryResolverRequest request) throws Exception { return false; }
   }
 
   @Before

@@ -2,8 +2,7 @@ package tests;
 
 import org.junit.Test;
 import pokerapp.scorer.categories.HandCategory;
-import pokerapp.scorer.resolvers.HandCategoryResolver;
-import pokerapp.scorer.resolvers.TwoPairHandCategoryResolver;
+import pokerapp.scorer.resolvers.RankedHandCategoryResolver;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class TwoPairHandCategoryResolverTest extends HandCategoryResolverTestFixtureBase{
 
     public TwoPairHandCategoryResolverTest() {
-        super(new TwoPairHandCategoryResolver());
+        super(new RankedHandCategoryResolver("2pair", 2, 2));
     }
 
     @Test // TODO: these should use data providers...

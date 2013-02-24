@@ -19,6 +19,10 @@ public class HandFactory {
     return hand;
   }
 
+  public Hand createFromLine(String line) throws Exception {
+    return create(line.split(" "));
+  }
+
   private Card createCard(String card) throws IllegalArgumentException {
     if (card.length() < 2 || card.length() > 3)
       throw new IllegalArgumentException("Illegal card name: " + card);

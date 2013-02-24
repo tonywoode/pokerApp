@@ -13,9 +13,14 @@ import java.util.ArrayList;
  * Time: 02:07
  * To change this template use File | Settings | File Templates.
  */
-public class FlushHandCategory extends RankBasedHandCategory {
-  public FlushHandCategory(String name, int cn, Hand hand, int rank, HandRankHistogram rankHistogram) {
-    super(name, cn, hand, rank, rankHistogram);
+public class FlushHandCategory extends HandCategory {
+  public FlushHandCategory(String name) {
+    super(name);
+  }
+
+  @Override
+  public FlushHandCategory clone() {
+    return new FlushHandCategory(this.getName());
   }
 
   @Override
@@ -29,7 +34,7 @@ public class FlushHandCategory extends RankBasedHandCategory {
 
     // TODO: move this logic into a helper method; basically the same as comparing spares (in PairCategory)
     for (int iter = 0; iter < lhsSortedCards.size(); ++iter) {
-      int c = compareTo(lhsSortedCards.get(iter).getRank(), rhsSortedCards.get(iter).getRank());
+      int c = Integer.compare(lhsSortedCards.get(iter).getRank(), rhsSortedCards.get(iter).getRank());
       if (c != 0)
         return c;
     }
