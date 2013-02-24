@@ -1,4 +1,4 @@
-package tests;
+package tests.scorer.resolvers;
 
 import org.junit.Test;
 import pokerapp.scorer.categories.HandCategory;
