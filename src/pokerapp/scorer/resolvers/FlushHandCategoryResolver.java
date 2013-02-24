@@ -16,11 +16,11 @@ public class FlushHandCategoryResolver extends HandCategoryResolver {
   private static final int MAX_SUITS = 4;
 
   @Override
-  public HandCategory resolve(Hand hand) {
-    if (isFlush(hand))
-      return new FlushHandCategory("flush", this.number, hand);
+  public HandCategory resolve(HandCategoryResolverRequest request) throws Exception {
+    if (isFlush(request.getHand()))
+      return new FlushHandCategory("flush", this.number, request.getHand(), -1, request.getRankHistogram());
     else
-      return this.nextResolver.resolve(hand);
+      return this.nextResolver.resolve(request);
   }
 
   private boolean isFlush(Hand hand) {

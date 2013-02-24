@@ -1,6 +1,5 @@
 package pokerapp.scorer.resolvers;
 
-import pokerapp.Hand;
 import pokerapp.scorer.categories.HandCategory;
 import pokerapp.scorer.categories.HighCardCategory;
 
@@ -13,7 +12,7 @@ import pokerapp.scorer.categories.HighCardCategory;
  */
 public class HighCardCategoryResolver extends HandCategoryResolver {
   @Override
-  public HandCategory resolve(Hand hand) {
-    return new HighCardCategory("highCard", number, hand);
+  public HandCategory resolve(HandCategoryResolverRequest request) {
+    return new HighCardCategory("highCard", number, request.getHand(), -1, request.getRankHistogram());
   }
 }

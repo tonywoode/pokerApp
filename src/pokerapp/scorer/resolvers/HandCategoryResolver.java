@@ -28,5 +28,17 @@ public abstract class HandCategoryResolver {
     number = cn;
   }
 
-  public abstract HandCategory resolve(Hand hand);
+  //
+  //
+  // @descrption: keeps existing clients from breaking from the
+  //              introduction of the HandCategoryResolverRequest
+  public HandCategory resolve(Hand hand) {
+    try {
+      return resolve(new HandCategoryResolverRequest(hand));
+    } catch(Exception e) {
+      return null;
+    }
+  }
+
+  public abstract HandCategory resolve(HandCategoryResolverRequest request) throws Exception;
 }

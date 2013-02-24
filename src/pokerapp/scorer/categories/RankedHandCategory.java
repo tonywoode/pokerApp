@@ -2,6 +2,7 @@ package pokerapp.scorer.categories;
 
 import pokerapp.Card;
 import pokerapp.Hand;
+import pokerapp.HandRankHistogram;
 
 import java.util.ArrayList;
 
@@ -12,10 +13,10 @@ import java.util.ArrayList;
  * Time: 14:12
  * To change this template use File | Settings | File Templates.
  */
-public class RankedHandCategory extends HandCategory {
+public class RankedHandCategory extends RankBasedHandCategory {
 
-  public RankedHandCategory(String name, int cn, Hand hand) {
-    super(name, cn, hand);
+  public RankedHandCategory(String name, int cn, Hand hand, int rank, HandRankHistogram rankHistogram) {
+    super(name, cn, hand, rank, rankHistogram);
   }
 
   @Override
@@ -24,9 +25,8 @@ public class RankedHandCategory extends HandCategory {
 
     RankedHandCategory rhsCat = (RankedHandCategory)rhs;
 
-    // TODO: violates the Law of Demeter; should probably correct this
-    if (hand.getRankHistogram().getRank() != rhsCat.hand.getRankHistogram().getRank())
-      return compareTo(hand.getRankHistogram().getRank(), rhsCat.hand.getRankHistogram().getRank());
+    if (getRank() != rhsCat.getRank())
+      return compareTo(getRank(), rhsCat.getRank());
     else
       return compareSpares(rhsCat);
   }
@@ -51,7 +51,7 @@ public class RankedHandCategory extends HandCategory {
     ArrayList<Card> spares = new ArrayList<Card>();
 
     for (Card card : hand)
-      if (card.getRank() != hand.getRankHistogram().getRank())
+      if (card.getRank() != getRank())
         spares.add(card);
 
     return spares;

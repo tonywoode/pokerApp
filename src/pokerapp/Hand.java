@@ -15,10 +15,6 @@ import java.util.Iterator;
 public class Hand implements Iterable<Card> {
   ArrayList<Card> cards = new ArrayList<Card>();
 
-  // TODO: decide whether this belongs here.
-  //       Used by many HandCategoryScorers, so held here for convenience...
-  HandRankHistogram rankHistogram = null;
-
   static final int MAX_CARDS = 5; //We are implementing a 5-card poker variant
 
   /**
@@ -39,17 +35,6 @@ public class Hand implements Iterable<Card> {
    */
   public Iterator<Card> iterator() {
     return cards.iterator();
-  }
-
-  /**
-   * hands are ranked according to a histogram lookup - a hand can return its own "worth"
-   * @return the historgram representing the strength of this hand
-   * @see TODO: where is the histogram code - need to link to it here?
-   */
-  public HandRankHistogram getRankHistogram() {
-    if (rankHistogram == null)
-      rankHistogram = new HandRankHistogram(this);
-    return rankHistogram;
   }
 
   /**

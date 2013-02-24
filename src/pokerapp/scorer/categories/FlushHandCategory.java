@@ -2,6 +2,7 @@ package pokerapp.scorer.categories;
 
 import pokerapp.Card;
 import pokerapp.Hand;
+import pokerapp.HandRankHistogram;
 
 import java.util.ArrayList;
 
@@ -12,9 +13,9 @@ import java.util.ArrayList;
  * Time: 02:07
  * To change this template use File | Settings | File Templates.
  */
-public class FlushHandCategory extends HandCategory {
-  public FlushHandCategory(String name, int cn, Hand hand) {
-    super(name, cn, hand);
+public class FlushHandCategory extends RankBasedHandCategory {
+  public FlushHandCategory(String name, int cn, Hand hand, int rank, HandRankHistogram rankHistogram) {
+    super(name, cn, hand, rank, rankHistogram);
   }
 
   @Override

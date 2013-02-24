@@ -2,6 +2,7 @@ package pokerapp.scorer.categories;
 
 
 import pokerapp.Hand;
+import pokerapp.HandRankHistogram;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,10 +16,15 @@ public abstract class HandCategory {
   private int categoryNumber;
   protected Hand hand;
 
-  protected HandCategory(String name, int categoryNumber, Hand hand) {
+  private int rank;
+
+  protected int getRank() { return rank; }
+
+  protected HandCategory(String name, int categoryNumber, Hand hand, int rank) {
     this.name = name;
     this.categoryNumber = categoryNumber;
     this.hand = hand;
+    this.rank = rank;
   }
 
   public String getName() { return name; }

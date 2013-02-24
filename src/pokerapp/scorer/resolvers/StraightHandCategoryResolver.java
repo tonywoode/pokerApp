@@ -16,11 +16,11 @@ import java.util.ArrayList;
  */
 public class StraightHandCategoryResolver extends HandCategoryResolver {
   @Override
-  public HandCategory resolve(Hand hand) {
-    if (isStraight(hand))
-      return new StraightHandCategory("straight", this.number, hand);
+  public HandCategory resolve(HandCategoryResolverRequest request) throws Exception {
+    if (isStraight(request.getHand()))
+      return new StraightHandCategory("straight", this.number, request.getHand(), -1);
     else
-      return this.nextResolver.resolve(hand);
+      return this.nextResolver.resolve(request);
   }
 
   private boolean isStraight(Hand hand) {

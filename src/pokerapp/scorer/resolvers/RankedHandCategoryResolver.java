@@ -1,6 +1,7 @@
 package pokerapp.scorer.resolvers;
 
 import pokerapp.Hand;
+import pokerapp.HandRankHistogram;
 import pokerapp.scorer.categories.HandCategory;
 import pokerapp.scorer.categories.RankedHandCategory;
 
@@ -28,16 +29,17 @@ public class RankedHandCategoryResolver extends HandCategoryResolver {
 
 
   @Override
-  public HandCategory resolve(Hand hand) {
-    int count = hand.getRankHistogram().getCount(rankValue);
+  public HandCategory resolve(HandCategoryResolverRequest request) throws Exception {
+    HandRankHistogram rankHistogram = request.getRankHistogram();
+
+    int count = rankHistogram.getCount(rankValue);
     if (count == rankCount) {
-      hand.getRankHistogram().setRankFromCount(rankValue);
-     return createHandCategory(hand);
+      return createHandCategory(request.getHand(), rankHistogram.getRankFromCount(rankValue), rankHistogram);
     } else
-      return this.nextResolver.resolve(hand);
+      return this.nextResolver.resolve(request);
   }
 
-    protected HandCategory createHandCategory(Hand hand){
-        return new RankedHandCategory(this.name, this.number, hand);
+    protected HandCategory createHandCategory(Hand hand, int rank, HandRankHistogram rankHistogram) {
+        return new RankedHandCategory(this.name, this.number, hand, rank, rankHistogram);
     }
 }

@@ -1,6 +1,7 @@
 package pokerapp.scorer.categories;
 
 import pokerapp.Hand;
+import pokerapp.HandRankHistogram;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,8 +12,8 @@ import pokerapp.Hand;
  */
 public class HighCardCategory extends RankedHandCategory {
 
-  public HighCardCategory(String name, int cn, Hand hand) {
-    super(name, cn, hand);
+  public HighCardCategory(String name, int cn, Hand hand, int rank, HandRankHistogram rankHistogram) {
+    super(name, cn, hand, rank, rankHistogram);
   }
 
   @Override

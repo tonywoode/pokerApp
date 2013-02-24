@@ -1,7 +1,9 @@
 package pokerapp.scorer.resolvers;
 
 import pokerapp.Hand;
+import pokerapp.HandRankHistogram;
 import pokerapp.scorer.categories.HandCategory;
+import pokerapp.scorer.categories.RankedHandCategory;
 import pokerapp.scorer.categories.TwoPairHandCategory;
 
 /**
@@ -12,12 +14,12 @@ import pokerapp.scorer.categories.TwoPairHandCategory;
  * To change this template use File | Settings | File Templates.
  */
 public class TwoPairHandCategoryResolver extends RankedHandCategoryResolver {
-    public TwoPairHandCategoryResolver() {
-        super("2pair", 2, 2);
-    }
+  public TwoPairHandCategoryResolver() {
+    super("2pair", 2, 2);
+  }
 
-    @Override
-    protected HandCategory createHandCategory(Hand hand){
-       return new TwoPairHandCategory("2pair", this.number, hand);
-    }
+  @Override
+  protected HandCategory createHandCategory(Hand hand, int rank, HandRankHistogram rankHistogram) {
+    return new TwoPairHandCategory(this.name, this.number, hand, rank, rankHistogram);
+  }
 }

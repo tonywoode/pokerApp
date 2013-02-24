@@ -1,6 +1,7 @@
 package pokerapp.scorer.categories;
 
 import pokerapp.Hand;
+import pokerapp.HandRankHistogram;
 import pokerapp.utils.ReverseArrayIterator;
 
 /**
@@ -10,9 +11,9 @@ import pokerapp.utils.ReverseArrayIterator;
  * Time: 01:54
  * To change this template use File | Settings | File Templates.
  */
-public class TwoPairHandCategory extends HandCategory {
-  public TwoPairHandCategory(String name, int cn, Hand hand) {
-    super(name, cn, hand);
+public class TwoPairHandCategory extends RankBasedHandCategory {
+  public TwoPairHandCategory(String name, int cn, Hand hand, int rank, HandRankHistogram rankHistogram) {
+    super(name, cn, hand, rank, rankHistogram);
   }
 
   @Override
@@ -21,8 +22,8 @@ public class TwoPairHandCategory extends HandCategory {
 
     TwoPairHandCategory rhsTwoPair = (TwoPairHandCategory)rhs;
 
-    ReverseArrayIterator lhsIter = hand.getRankHistogram().iterator(),
-                         rhsIter = rhsTwoPair.hand.getRankHistogram().iterator();
+    ReverseArrayIterator lhsIter = getRankHistogram().iterator(),
+                         rhsIter = rhsTwoPair.getRankHistogram().iterator();
 
     int c = Integer.compare(getRank(lhsIter), getRank(rhsIter));
 
@@ -35,8 +36,8 @@ public class TwoPairHandCategory extends HandCategory {
       return c;
 
     // check the spare card in each hand
-    return Integer.compare(hand.getRankHistogram().findRankWithCount(1),
-                           rhsTwoPair.hand.getRankHistogram().findRankWithCount(1));
+    return Integer.compare(getRankHistogram().getRankFromCount(1),
+                           rhsTwoPair.getRankHistogram().getRankFromCount(1));
   }
 
   private int getRank(ReverseArrayIterator iter) throws Exception {

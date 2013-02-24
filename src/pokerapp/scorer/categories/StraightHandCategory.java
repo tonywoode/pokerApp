@@ -10,8 +10,8 @@ import pokerapp.Hand;
  * To change this template use File | Settings | File Templates.
  */
 public class StraightHandCategory extends HandCategory {
-  public StraightHandCategory(String name, int cn, Hand hand) {
-    super(name, cn, hand);
+  public StraightHandCategory(String name, int cn, Hand hand, int rank) {
+    super(name, cn, hand, rank);
   }
 
   @Override
