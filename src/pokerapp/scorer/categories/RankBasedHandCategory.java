@@ -11,11 +11,10 @@ import pokerapp.HandRankHistogram;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class RankBasedHandCategory extends HandCategory {
-  private final HandRankHistogram rankHistogram;
+  private HandRankHistogram rankHistogram;
 
-  public RankBasedHandCategory(String name, int cn, Hand hand, int rank, HandRankHistogram rankHistogram) {
-    super(name, cn, hand, rank);
-    this.rankHistogram = rankHistogram;
+  public RankBasedHandCategory(String name) {
+    super(name);
   }
 
   protected HandRankHistogram getRankHistogram() { return rankHistogram; }

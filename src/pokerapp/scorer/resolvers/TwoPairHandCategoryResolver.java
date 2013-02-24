@@ -17,9 +17,4 @@ public class TwoPairHandCategoryResolver extends RankedHandCategoryResolver {
   public TwoPairHandCategoryResolver() {
     super("2pair", 2, 2);
   }
-
-  @Override
-  protected HandCategory createHandCategory(Hand hand, int rank, HandRankHistogram rankHistogram) {
-    return new TwoPairHandCategory(this.name, this.number, hand, rank, rankHistogram);
-  }
 }
