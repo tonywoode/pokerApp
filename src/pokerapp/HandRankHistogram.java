@@ -30,28 +30,22 @@ public class HandRankHistogram {
   public HandRankHistogram(Hand hand) {
     this.hand = hand;
 
-    // initialise
-    for (int iter = 0; iter < MAX_RANKS; ++iter)
+    // initialise TODO: do we need to initialise?
+    for (int iter = 0; iter <= MAX_RANKS; ++iter)
       ranks[iter] = 0;
 
     // Determine how many cards of each rank are in the hand
     for (Card card : hand)
-      ++ranks[card.getRank() - 1];
+      ++ranks[card.getRank()];
   }
 
   /**
-   * Determines how many ranks have the specified targetRank
-   * @param targetRank
-   * @return the number of ranks with the specified targetRank
+   * Determines how many cards in the hand have a specified rank
+   * @param targetRank  the rank under evaluation
+   * @return the number of cards in the hand of rank = targetRank
    */
-  // TODO: the fn description & returns appear to repeat. This is presumably not what to do.
   public int getCount(int targetRank) {
-    int count = 0;
-    for (int rank : ranks)
-      if (rank == targetRank)
-        ++count;
-
-    return count;
+    return ranks[targetRank];
   }
 
   /**
@@ -64,19 +58,26 @@ public class HandRankHistogram {
     return new ReverseArrayIterator(ranks);
   }
 
- /** Finds the highest rank with the given rankValue (i.e, the count - the # cards with that rank in the hand)
-  * @param rankValue the rank count to look for
-  * @return the highest card's rank, even when there are multiple cards of the same rank
-  * @throws Exception if there is no rankValue in the histogram
+ /** Finds the highest rank of a given multiple numCards (i.e the number of cards with that rank in the hand)
+  * if numCards = 3 it will return the rank of the triple in the hand
+  * if there isn't a triple it throws an exception
+  * @param numCards the multiple we are looking for in the hand
+  * @return the highest rank of the multiple, even when there is more than one - only applies for pairs or singles.
+  * @throws Exception if there is no multiple of numCards in the histogram
   */
-  
-  public int getRankFromCount(int rankValue) throws Exception {
+  //TODO: straights need to be checked before this is called with numCounts = 1 which simply returns the high card
+  public int getRankOfMultiple(int numCards) throws Exception {
     for (int iter = MAX_RANKS - 1; iter >= 0; --iter)
-      if (ranks[iter] == rankValue)
-        return iter + 1;
+      if (ranks[iter] == numCards)
+        return iter;
 
-    throw new Exception("rankValue does not exist");
+    throw new Exception(new StringBuilder().append(numCards).append(" of a kind does not exist in hand").toString());
   }
+
+
+
+
+
 
   /**
    * @return boolean indicating whether the histogram is treating aces as being low
