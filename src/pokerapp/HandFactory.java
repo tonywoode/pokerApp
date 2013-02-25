@@ -2,7 +2,7 @@ package pokerapp;
 
 
 /**
- * Instantiates valid passsed cards and creates hand instances from them. Can also create
+ * Instantiates valid passed cards and creates hand instances from them. Can also create
  * hands from text descriptions of cards 
  * @author steve
  * @version 1.0
@@ -10,7 +10,7 @@ package pokerapp;
 public class HandFactory {
 
 /**
- * Takes a varaible number of cards and returns them in a hand	
+ * Takes a variable number of cards and returns them in a hand
  * @param cards
  * @return hand of cards
  * @throws Exception 
@@ -26,9 +26,9 @@ public class HandFactory {
   }
 
 /**
- * When  passed a string representging a hand, will return a hand comprising the represented cards 
- * @param line a string representing a hand //TODO: is this clear
- * @return a hand of cards
+ * When  passed a string representing a hand, will return a hand comprising the represented cards
+ * @param line a string representing a hand e.g. "S4 D5 H6 C7 S8" - a straight
+ * @return a hand of cards recognisable by the application "S4", "D5", "H6", "C7", "S8"
  * @throws Exception TODO: what kind of exception, where does it go
  */
   public Hand createFromLine(String line) throws Exception {
@@ -36,10 +36,10 @@ public class HandFactory {
   }
 
 /**
- * When  passed a pokerapp card name, will return a hand comprising the cards they represent
- * , after checking whether size of string is valid  
+ * When  passed an abbreviated (in accordance with pokerapp's conventions)
+ * card name, returns a corresponding Card instance
  * @param card string representation of card used by pokerapp eg: "H4" for 4 or Hearts
- * @return a Card
+ * @return a Card instantiated with the values in the abbreviation
  * @throws IllegalArgumentException
  */
   private Card createCard(String card) throws IllegalArgumentException {
