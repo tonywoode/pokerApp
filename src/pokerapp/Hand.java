@@ -67,7 +67,7 @@ public class Hand implements Iterable<Card> {
     String msg = "";
 
     for (Card card : cards)
-      msg += card.toString() + " "; // TODO: additional space at end...//TODO: why? TW
+      msg += card.toString() + " "; // TODO: additional space at end...
 
     return msg;
   }
