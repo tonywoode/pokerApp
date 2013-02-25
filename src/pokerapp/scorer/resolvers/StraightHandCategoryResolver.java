@@ -16,6 +16,10 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 public class StraightHandCategoryResolver extends HandCategoryResolver {
+
+    int RANK_ACE_HI = 14;
+    int RANK_ACE_LO = 1;
+
   public StraightHandCategoryResolver() {
     super(new StraightHandCategory("straight"));
   }
@@ -32,10 +36,10 @@ public class StraightHandCategoryResolver extends HandCategoryResolver {
 
     // handle the special case of Ace being low, iff we have an ace
     Card maybeAce = sortedCards.get(0);
-    if (maybeAce.getRank() == 14) { // TODO: fix magic number (ace high)
+    if (maybeAce.getRank() == RANK_ACE_HI) {
       sortedCards.remove(0);
       try {
-        sortedCards.add(new Card(maybeAce.getSuit(), 1)); // TODO: fix magic number (ace low)
+        sortedCards.add(new Card(maybeAce.getSuit(),RANK_ACE_LO));
       } catch (Exception e) {
         // TODO: fix this; checked exceptions are horrific :)
       }
