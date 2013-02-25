@@ -26,7 +26,7 @@ public class HandSuitHistogram {
     public HandSuitHistogram(Hand hand){
         this.hand = hand;
 
-        //initialise
+        //initialise  TODO: do we really need to initialise
         for(int iter = 0; iter <= MAX_SUITS; ++iter) {
             suits[iter] = 0;
         }
