@@ -27,8 +27,9 @@ public class HandSuitHistogram {
         this.hand = hand;
 
         //initialise
-        for(int iter = 0; iter <= MAX_SUITS; ++iter)
+        for(int iter = 0; iter <= MAX_SUITS; ++iter) {
             suits[iter] = 0;
+        }
 
         // Determine how many cards of each suit are in the hand
         for(Card card: hand)
@@ -38,7 +39,7 @@ public class HandSuitHistogram {
     //TODO: move somewhere more appropriate e.g. the flush resolver
     private boolean isFlush(){
         int FLUSH_COUNT = 5;
-        for(int iter = 1; iter < MAX_SUITS; ++iter)
+        for(int iter = 1; iter <= MAX_SUITS; ++iter)
             if(suits[iter] == FLUSH_COUNT) return true;
         return false;
     }
