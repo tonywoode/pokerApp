@@ -3,11 +3,9 @@ package pokerapp;
 import java.util.Comparator;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 02:57
- * To change this template use File | Settings | File Templates.
+ * Compares two cards to see which has a higher rank
+ * @author Steve
+ * @version 1.0
  */
 public class HighLowCardComparator implements Comparator<Card> {
   @Override

@@ -39,8 +39,11 @@ public class HandRankHistogram {
       ++ranks[card.getRank() - 1];
   }
 
-  // Determines how many ranks have the specified targetRank
-  // @returns the number of ranks with the specified targetRank
+  /**
+   * Determines how many ranks have the specified targetRank
+   * @param targetRank
+   * @return the number of ranks with the specified targetRank
+   */
   // TODO: the fn description & returns appear to repeat. This is presumably not what to do.
   public int getCount(int targetRank) {
     int count = 0;
@@ -51,17 +54,22 @@ public class HandRankHistogram {
     return count;
   }
 
-  // Factory method to create an iterator which moves backwards through
-  // the array that makes up the histogram
-  // @returns a ReverseArrayIterator
+  /**
+   *  Factory method to create an iterator which moves backwards through
+   *  the array that makes up the histogram
+   * @return a ReverseArrayIterator
+   */
+  
   public ReverseArrayIterator iterator() {
     return new ReverseArrayIterator(ranks);
   }
 
-  // Finds the highest rank with the given rankValue (i.e, the count - the # cards with that rank in the hand)
-  // @param rankValue the rank count to look for
-  // @returns the highest card's rank, even when there are multiple cards of the same rank
-  // @throws Exception if there is no rankValue in the histogram
+ /** Finds the highest rank with the given rankValue (i.e, the count - the # cards with that rank in the hand)
+  * @param rankValue the rank count to look for
+  * @return the highest card's rank, even when there are multiple cards of the same rank
+  * @throws Exception if there is no rankValue in the histogram
+  */
+  
   public int getRankFromCount(int rankValue) throws Exception {
     for (int iter = MAX_RANKS - 1; iter >= 0; --iter)
       if (ranks[iter] == rankValue)
@@ -70,19 +78,27 @@ public class HandRankHistogram {
     throw new Exception("rankValue does not exist");
   }
 
-  // @returns boolean indicating whether the histogram is treating aces as being low
+  /**
+   * @return boolean indicating whether the histogram is treating aces as being low
+   * 
+   */
   //TODO: make code nicer
   public boolean isAcesLow() {
     return acesLow;
   }
 
-  // Change the Aces Low flag
+  /**
+   * Change the Aces Low flag
+   * @param acesLow
+   */
   // TODO: should this not be private? Are clients supposed to use this directly?
   public void setAcesLow(boolean acesLow) {
     this.acesLow = acesLow;
   }
 
-  // Changes the histogram to treat Aces as being Low. Aces continue to be treated as High as well.
+  /**
+   * Changes the histogram to treat Aces as being Low. Aces continue to be treated as High as well.
+   */
   // TODO: can we not have a single function that does this, depending on a boolean flag?
   public void lowAcesOn(){
       if(ranks[MAX_RANKS] != 0){
@@ -92,7 +108,9 @@ public class HandRankHistogram {
       }
   }
 
-  // Changes the histogram to treat Aces as being High. Aces will no longer be treated as Low.
+  /**
+   *  Changes the histogram to treat Aces as being High. Aces will no longer be treated as Low.
+   */
   public void lowAcesOff(){
       if(ranks[1] != 0){
           ranks[MAX_RANKS] = ranks[1];

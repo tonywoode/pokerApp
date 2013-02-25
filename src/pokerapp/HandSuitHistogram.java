@@ -18,6 +18,11 @@ public class HandSuitHistogram {
     //1 = Clubs, 2 = Diamonds, 3 = Hearts, 4 = Spades
     //http://wiki.answers.com/Q/What_is_the_suit_order_in_a_deck_of_cards_for_poker
 
+/**
+ * determines how many cards of each suit are in a hand
+ * @param hand a hand of cards
+ */
+    
     public HandSuitHistogram(Hand hand){
         this.hand = hand;
 

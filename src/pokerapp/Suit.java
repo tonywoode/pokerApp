@@ -2,11 +2,9 @@ package pokerapp;
 
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 00:52
- * To change this template use File | Settings | File Templates.
+ * Suits for the poker app
+ * @author Steve
+ * @version 1.0
  */
 public class Suit {
 
