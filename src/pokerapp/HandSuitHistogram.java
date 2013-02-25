@@ -37,8 +37,9 @@ public class HandSuitHistogram {
     }
     //TODO: move somewhere more appropriate e.g. the flush resolver
     private boolean isFlush(){
+        int FLUSH_COUNT = 5;
         for(int iter = 1; iter < MAX_SUITS; ++iter)
-            if(suits[iter] == 4) return true;
+            if(suits[iter] == FLUSH_COUNT) return true;
         return false;
     }
 
