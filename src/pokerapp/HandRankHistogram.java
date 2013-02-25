@@ -67,7 +67,7 @@ public class HandRankHistogram {
   */
   //TODO: straights need to be checked before this is called with numCounts = 1 which simply returns the high card
   public int getRankOfMultiple(int numCards) throws Exception {
-    for (int iter = MAX_RANKS - 1; iter >= 0; --iter)
+    for (int iter = MAX_RANKS; iter > 0; --iter)
       if (ranks[iter] == numCards)
         return iter;
 
