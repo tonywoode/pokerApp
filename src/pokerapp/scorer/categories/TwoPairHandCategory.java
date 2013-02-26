@@ -1,7 +1,5 @@
 package pokerapp.scorer.categories;
 
-import pokerapp.Hand;
-import pokerapp.HandRankHistogram;
 import pokerapp.utils.ReverseArrayIterator;
 
 /**
@@ -43,8 +41,8 @@ public class TwoPairHandCategory extends HandCategory {
       return c;
 
     // check the spare card in each hand
-    return Integer.compare(getRankHistogram().getRankFromCount(1),
-                           rhsTwoPair.getRankHistogram().getRankFromCount(1));
+    return Integer.compare(getRankHistogram().getRankOfMultiple(1),
+                           rhsTwoPair.getRankHistogram().getRankOfMultiple(1));
   }
 
   private int getRank(ReverseArrayIterator iter) throws Exception {
