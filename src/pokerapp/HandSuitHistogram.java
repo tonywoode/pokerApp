@@ -1,5 +1,8 @@
 package pokerapp;
 
+
+import pokerapp.utils.Constants;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Ari
@@ -10,10 +13,9 @@ package pokerapp;
  * Includes a method to check if flush (temporarily)
  */
 public class HandSuitHistogram {
-    private static final int MAX_SUITS = 4;
 
     private final Hand hand;
-    int[] suits = new int[MAX_SUITS];
+    int[] suits = new int[Constants.MAX_SUITS];
 
     //1 = Clubs, 2 = Diamonds, 3 = Hearts, 4 = Spades
     //http://wiki.answers.com/Q/What_is_the_suit_order_in_a_deck_of_cards_for_poker
@@ -27,7 +29,7 @@ public class HandSuitHistogram {
         this.hand = hand;
 
         //initialise  TODO: do we really need to initialise
-        for(int iter = 0; iter <= MAX_SUITS; ++iter) {
+        for(int iter = 0; iter <= Constants.MAX_SUITS; ++iter) {
             suits[iter] = 0;
         }
 
@@ -38,9 +40,9 @@ public class HandSuitHistogram {
     }
     //TODO: move somewhere more appropriate e.g. the flush resolver
     private boolean isFlush(){
-        int FLUSH_COUNT = 5;
-        for(int iter = 1; iter <= MAX_SUITS; ++iter)
-            if(suits[iter] == FLUSH_COUNT) return true;
+
+        for(int iter = 1; iter <= Constants.MAX_SUITS; ++iter)
+            if(suits[iter] == Constants.FULL_DECK) return true;
         return false;
     }
 

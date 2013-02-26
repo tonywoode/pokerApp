@@ -1,9 +1,7 @@
 package pokerapp;
 
+import pokerapp.utils.Constants;
 import pokerapp.utils.ReverseArrayIterator;
-
-import java.util.Iterator;
-import java.util.ListIterator;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,11 +16,8 @@ import java.util.ListIterator;
  */
 public class HandRankHistogram {
 
-  // TODO: This, along with lots of other constants, are repeated throughout a range of different classes. We need to consolidate them in a single location.
-  private static final int MAX_RANKS = 14;
-
-  private final Hand hand;
-  int[] ranks = new int[MAX_RANKS];
+    private final Hand hand;
+  int[] ranks = new int[Constants.MAX_RANKS];
   private int rank;
 
   private boolean acesLow;
@@ -31,7 +26,7 @@ public class HandRankHistogram {
     this.hand = hand;
 
     // initialise TODO: do we need to initialise?
-    for (int iter = 0; iter < MAX_RANKS; ++iter)
+    for (int iter = 0; iter < Constants.MAX_RANKS; ++iter)
       ranks[iter] = 0;
 
     // Determine how many cards of each rank are in the hand
@@ -70,7 +65,7 @@ public class HandRankHistogram {
   */
   //TODO: straights need to be checked before this is called with numCounts = 1 which simply returns the high card
   public int getRankOfMultiple(int numCards) throws Exception {
-    for (int iter = MAX_RANKS-1; iter >= 0; --iter)
+    for (int iter = Constants.MAX_RANKS-1; iter >= 0; --iter)
       if (ranks[iter] == numCards)
         return iter+1;
 
@@ -105,9 +100,9 @@ public class HandRankHistogram {
    */
   // TODO: can we not have a single function that does this, depending on a boolean flag?
   public void lowAcesOn(){
-      if(ranks[MAX_RANKS] != 0){
-           ranks[1] = ranks[MAX_RANKS];
-           ranks[MAX_RANKS] = 0;
+      if(ranks[Constants.MAX_RANKS] != 0){
+           ranks[1] = ranks[Constants.MAX_RANKS];
+           ranks[Constants.MAX_RANKS] = 0;
            setAcesLow(true);
       }
   }
@@ -117,7 +112,7 @@ public class HandRankHistogram {
    */
   public void lowAcesOff(){
       if(ranks[1] != 0){
-          ranks[MAX_RANKS] = ranks[1];
+          ranks[Constants.MAX_RANKS] = ranks[1];
           ranks[1] = 0;
           setAcesLow(false);
       }

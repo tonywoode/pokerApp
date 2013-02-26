@@ -3,6 +3,7 @@ package pokerapp.scorer.resolvers;
 import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.scorer.categories.FlushHandCategory;
+import pokerapp.utils.Constants;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +13,6 @@ import pokerapp.scorer.categories.FlushHandCategory;
  * To change this template use File | Settings | File Templates.
  */
 public class FlushHandCategoryResolver extends HandCategoryResolver {
-  private static final int MAX_SUITS = 4;
 
   public FlushHandCategoryResolver() {
     super(new FlushHandCategory("flush"));
@@ -24,15 +24,15 @@ public class FlushHandCategoryResolver extends HandCategoryResolver {
   }
 
   private boolean isFlush(Hand hand) {
-    int[] suits = new int[MAX_SUITS];
-    for (int iter = 0; iter < MAX_SUITS; ++iter)
+    int[] suits = new int[Constants.MAX_SUITS];
+    for (int iter = 0; iter < Constants.MAX_SUITS; ++iter)
       suits[iter] = 0;
 
     for (Card card : hand)
       ++suits[card.getSuit().getNumber() - 1];
 
-    for (int iter = 0; iter < MAX_SUITS; ++iter)
-      if (suits[iter] == 5) // TODO: remove magic number
+    for (int iter = 0; iter < Constants.MAX_SUITS; ++iter)
+      if (suits[iter] == Constants.FULL_DECK)
         return true;
 
     return false;
