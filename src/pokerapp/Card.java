@@ -1,5 +1,7 @@
 package pokerapp;
 
+import pokerapp.utils.Constants;
+
 
 /**
  * creates cards for the poker app
@@ -15,7 +17,7 @@ public class Card {
       throw new IllegalArgumentException("Suit must not be null");
 
     // supports aces high & low; TODO: is this sensible?
-    if (rank < 1 && rank > 14) // TODO: remove magic numbers
+    if (rank < Constants.RANK_ACE_LO && rank > Constants.MAX_RANKS)
       throw new IllegalArgumentException("Illegal Rank: " + rank);
 
     this.suit = suit;

@@ -1,10 +1,9 @@
 package pokerapp.scorer.resolvers;
 
 import pokerapp.Hand;
-import pokerapp.scorer.categories.FlushHandCategory;
-import pokerapp.scorer.categories.HandCategory;
 import pokerapp.Card;
 import pokerapp.scorer.categories.StraightHandCategory;
+import pokerapp.utils.Constants;
 
 import java.util.ArrayList;
 
@@ -17,8 +16,8 @@ import java.util.ArrayList;
  */
 public class StraightHandCategoryResolver extends HandCategoryResolver {
 
-    int RANK_ACE_HI = 14;
-    int RANK_ACE_LO = 1;
+
+
 
   public StraightHandCategoryResolver() {
     super(new StraightHandCategory("straight"));
@@ -36,10 +35,10 @@ public class StraightHandCategoryResolver extends HandCategoryResolver {
 
     // handle the special case of Ace being low, iff we have an ace
     Card maybeAce = sortedCards.get(0);
-    if (maybeAce.getRank() == RANK_ACE_HI) {
+    if (maybeAce.getRank() == Constants.MAX_RANKS) {
       sortedCards.remove(0);
       try {
-        sortedCards.add(new Card(maybeAce.getSuit(),RANK_ACE_LO));
+        sortedCards.add(new Card(maybeAce.getSuit(), Constants.RANK_ACE_LO));
       } catch (Exception e) {
         // TODO: fix this; checked exceptions are horrific :)
       }
@@ -57,7 +56,7 @@ public class StraightHandCategoryResolver extends HandCategoryResolver {
       Card currentCard = sortedCards.get(iter);
 
       if (currentCard.getRank() == prevCard.getRank() + 1)
-        if (++sequenceLength == 5)
+        if (++sequenceLength == Constants.FULL_DECK)
           return true;
 
       prevCard = currentCard;
