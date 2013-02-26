@@ -31,12 +31,12 @@ public class HandRankHistogram {
     this.hand = hand;
 
     // initialise TODO: do we need to initialise?
-    for (int iter = 0; iter <= MAX_RANKS; ++iter)
+    for (int iter = 0; iter < MAX_RANKS; ++iter)
       ranks[iter] = 0;
 
     // Determine how many cards of each rank are in the hand
     for (Card card : hand)
-      ++ranks[card.getRank()];
+      ++ranks[card.getRank()-1];
   }
 
   /**
@@ -45,7 +45,10 @@ public class HandRankHistogram {
    * @return the number of cards in the hand of rank = targetRank
    */
   public int getCount(int targetRank) {
-    return ranks[targetRank];
+    int count = 0;
+     for(int rank : ranks)
+       if(rank == targetRank) ++count;
+    return count;
   }
 
   /**
@@ -67,9 +70,9 @@ public class HandRankHistogram {
   */
   //TODO: straights need to be checked before this is called with numCounts = 1 which simply returns the high card
   public int getRankOfMultiple(int numCards) throws Exception {
-    for (int iter = MAX_RANKS; iter > 0; --iter)
+    for (int iter = MAX_RANKS-1; iter >= 0; --iter)
       if (ranks[iter] == numCards)
-        return iter;
+        return iter+1;
 
     throw new Exception(new StringBuilder().append(numCards).append(" of a kind does not exist in hand").toString());
   }
