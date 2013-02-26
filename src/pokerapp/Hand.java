@@ -54,9 +54,6 @@ public class Hand implements Iterable<Card> {
    * @return text representation of the hand
    *
    */
-//  //TODO: WHY IS THIS NOT JUST A TOSTRING?
-
-
    public ArrayList<Card> getCards() {
         return cards;
     }
@@ -64,17 +61,19 @@ public class Hand implements Iterable<Card> {
 
     public String toUserString() {
 
-    String msg = "";
+    StringBuffer msg = new StringBuffer();
 
-    for (Card card : cards)
-      msg += card.toString() + " "; // TODO: additional space at end...
+    for (Card card : cards){
+      msg.append(card.toString());
+      msg.append(" ");
+    }
 
-    return msg;
+    return msg.toString();
   }
 
   /**
    * exchanges an individual card in a position in the hand with another
-   * @param pos postion of card to be removed
+   * @param pos position of card to be removed
    * @param card the card to replace with
    * @return the hand after cards have been exchanged
    */
