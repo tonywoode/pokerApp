@@ -47,12 +47,40 @@ public class CardTest {
 
         try{
             new Card(null,3);
-            fail("didn't throw exception");
+
+            fail("didn't throw exception for null suit");
         } catch (IllegalArgumentException e){
             assertEquals(e.getMessage(), "Suit must not be null");
         }
         throw new IllegalArgumentException();
+    }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testBadSuit() throws Exception {
+
+        try{
+            new Card(Suit.from('Q'),3);
+
+            fail("didn't throw exception for bad suit");
+        } catch (IllegalArgumentException e){
+            assertEquals(e.getMessage(), "Unknown suit type: Q");
+        }
+        throw new IllegalArgumentException();
+    }
+
+    //TODO: catching AssertionError?
+    @Test(expected = IllegalArgumentException.class)
+    public void testBadNumber() throws Exception{
+
+        try{
+            new Card(Suit.Diamonds,0);
+
+            fail("didn't throw exception for bad number");
+
+        } catch(IllegalArgumentException e){
+            assertEquals(e.getMessage(), "Illegal Rank: 0");
+        }
+        throw new IllegalArgumentException();
     }
 
 
