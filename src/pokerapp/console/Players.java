@@ -8,12 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 19:54
- * To change this template use File | Settings | File Templates.
+ * Holds players for the poker app, is able to compare to pick a winning player
+ * @author Steve
+ * @version 1.0
  */
+
 public class Players {
   ArrayList<Player> players = new ArrayList<Player>();
   HandCategoryResolver resolver = new HandCategoryResolverBuilder().create();
@@ -23,6 +22,10 @@ public class Players {
      this.players.add(player);
   }
 
+  /**
+   * Uses the current players to pick a winner
+   * @return the player that has the highest ranking
+   */
   public Player pickWinner() {
     Player winner = players.get(0);
 
@@ -35,6 +38,13 @@ public class Players {
     return winner;
   }
 
+  /**
+   * When passed two players, will compare the hand category grade of the two players 
+   * for a hand of poker, and return which of them compares higher
+   * @param lhs player one
+   * @param rhs player two
+   * @return the player with the higher hand grade TODO: and their score?
+   */
   protected Player pickWinner(Player lhs, Player rhs) {
     HandCategory lhsCat = resolver.resolve(lhs.getHand()),
                  rhsCat = resolver.resolve(rhs.getHand());

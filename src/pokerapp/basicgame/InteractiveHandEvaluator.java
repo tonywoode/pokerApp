@@ -9,12 +9,11 @@ import pokerapp.scorer.resolvers.HandCategoryResolver;
 import java.util.Scanner;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 24/02/13
- * Time: 02:15
- * To change this template use File | Settings | File Templates.
+ * User can specify a hand of cards and evaluator will return rank
+ * @author Steve
+ * @version 1.0
  */
+
 public class InteractiveHandEvaluator {
 
   public void run() {
@@ -49,15 +48,26 @@ public class InteractiveHandEvaluator {
     }
   }
 
+  /**
+   * User input is converted to a hand
+   * @return hand comprising the user input
+   * @throws Exception
+   */
   private Hand createHandFromUserInput() throws Exception {
     String line = new Scanner(System.in).nextLine();
     return line != "" ? new HandFactory().createFromLine(line) : null;
   }
 
+  /**
+   * when passed a hand, the hand is categorised. Category grade is returned
+   * @param hand a hand of cards
+   * @return categorisation grade
+   */
   private HandCategory determineHandCategory(Hand hand) {
     HandCategoryResolver resolver = new HandCategoryResolverBuilder().create();
 
-    return resolver.resolve(hand);
+    HandCategory grade = resolver.resolve(hand);
+    return grade;
   }
 
 
