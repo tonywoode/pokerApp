@@ -1,6 +1,5 @@
 package pokerapp.scorer.resolvers;
 
-import pokerapp.scorer.categories.HandCategory;
 import pokerapp.scorer.categories.RankedHandCategory;
 
 /**
@@ -32,6 +31,6 @@ public class RankedHandCategoryResolver extends HandCategoryResolver {
   }
 
   protected int determineRank(HandCategoryResolverRequest request) throws Exception {
-    return request.getRankHistogram().getRankFromCount(rankValue);
+    return request.getRankHistogram().getRankOfMultiple(rankValue);
   }
 }
