@@ -20,7 +20,7 @@ public class HandPermutationGenerator {
     static final int MAX_INDEX = 4;
 
     public static ArrayList<Hand> permute(Hand hand) {
-        HandFactory newHandFactory = new HandFactory();
+
         return permutator(hand, START_INDEX, new HandFactory());
     }
 
