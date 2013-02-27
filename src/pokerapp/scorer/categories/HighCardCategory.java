@@ -4,12 +4,11 @@ import pokerapp.Hand;
 import pokerapp.HandRankHistogram;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 02:35
- * To change this template use File | Settings | File Templates.
+ * Describes the lowest poker hand (AKA no-pair) where the only scoring potential is the highest card of the hand 
+ * @author steve
+ * @version 1.0
  */
+
 public class HighCardCategory extends RankedHandCategory {
 
   public HighCardCategory(String name) {

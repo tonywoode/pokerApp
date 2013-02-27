@@ -27,7 +27,7 @@ public abstract class HandCategory {
  * Clones a hand category when passed info about a hand. 
  * Implements the Prototype pattern by supporting instance cloning. Customises the cloned instance before returning.
  * 
- * @param cn a number representing //TODO: what exactly?
+ * @param cn a number representing a hand category
  * @param hand category for holding a hand of cards
  * @param rank category for holding the rank of the hand
  * @param rankHistogram category for holding the histogram representing the position of each card in a hand
