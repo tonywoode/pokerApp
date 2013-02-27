@@ -7,11 +7,9 @@ import pokerapp.HandRankHistogram;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 02:07
- * To change this template use File | Settings | File Templates.
+ * Describes a flush hand
+ * @author Steve
+ * @version 1.0
  */
 public class FlushHandCategory extends HandCategory {
   public FlushHandCategory(String name) {
@@ -23,6 +21,10 @@ public class FlushHandCategory extends HandCategory {
     return new FlushHandCategory(this.getName());
   }
 
+/**
+ * Compares two equal flush hands for which is the greater
+ * @return TODO:
+ */
   @Override
   protected int compareEqualCategories(HandCategory rhs) {
     // highest top ranking card wins; on tie, try next highest card & so on
