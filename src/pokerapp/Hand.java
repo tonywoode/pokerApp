@@ -48,15 +48,21 @@ public class Hand implements Iterable<Card> {
     return sortedCards;
   }
 
-  /**
-   * returns each card as text separated by whitespace
-   * @return text representation of the hand
-   *
-   */
-   public ArrayList<Card> getCards() {
+    /**
+     * returns each card as an unsorted array
+     * @return array of cards in the hand
+     *
+     */
+
+    public ArrayList<Card> getCards() {
         return cards;
     }
 
+    /**
+     * returns each card as text separated by whitespace
+     * @return text representation of the hand
+     *
+     */
 
     public String toUserString() {
 

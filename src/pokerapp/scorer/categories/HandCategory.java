@@ -3,6 +3,8 @@ package pokerapp.scorer.categories;
 
 import pokerapp.Hand;
 import pokerapp.HandRankHistogram;
+import lombok.Getter;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,11 +14,11 @@ import pokerapp.HandRankHistogram;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class HandCategory {
-  private String name;
+  @Getter  private String name;
   private int categoryNumber = -1;
   protected Hand hand;
 
-  private int rank = -1;
+  @Getter private int rank = -1;
   private HandRankHistogram rankHistogram;
 
   protected HandCategory(String name) {
@@ -37,10 +39,6 @@ public abstract class HandCategory {
   // Implements the Prototype pattern by supporting instance cloning
   // @return a copy of this instance of (the subclass of) HandCategory
   protected abstract HandCategory clone();
-
-  public int getRank() { return rank; }
-
-  public String getName() { return name; }
 
   protected HandRankHistogram getRankHistogram() { return rankHistogram; }
 

@@ -54,7 +54,7 @@ public class HandPermutationGenerator {
                 java.util.Collections.swap(cards, index, i);
             }
         } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println("To many cards!");
+            System.out.println("Too many cards!");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,5 +1,6 @@
 package pokerapp;
 
+import lombok.Getter;
 import pokerapp.utils.Constants;
 
 
@@ -9,8 +10,8 @@ import pokerapp.utils.Constants;
  * @version 1.0
  */
 public class Card {
-  private Suit suit;
-  private int rank;
+  @Getter private Suit suit;
+  @Getter private int rank;
 
   public Card(Suit suit, int rank) throws IllegalArgumentException {
     if (suit == null)
@@ -24,18 +25,6 @@ public class Card {
     this.rank = rank;
   }
 
-  /**
-   * gets the suit of the card
-   * @return the card's suit
-   */
-  public Suit getSuit() { return suit; }
-
-  /**
-   * gets the rank of the card
-   * @return the card's rank
-   */
-  public int getRank() { return rank; }
-  
   /**
    * gets the ordinal of the card
    * @return the card's ordinal

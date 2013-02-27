@@ -1,5 +1,6 @@
 package pokerapp;
 
+import lombok.Getter;
 import pokerapp.utils.Constants;
 
 /**
@@ -9,16 +10,13 @@ import pokerapp.utils.Constants;
  */
 public class Suit {
 
-  private final int number;
-  private final char code;
+  @Getter private final int number;
+  @Getter private final char code;
 
   private Suit(int num, char code) {
     this.number = num;
     this.code = Character.toUpperCase(code);
   }
-
-  public int getNumber() { return number; }
-  public char getCode() { return code; }
 
   public final static Suit Clubs    = new Suit(Constants.POS_CLUB, Constants.CHAR_CLUB);
   public final static Suit Diamonds = new Suit(Constants.POS_DIAMOND, Constants.CHAR_DIAMOND);
