@@ -25,10 +25,6 @@ public class HandRankHistogram {
   public HandRankHistogram(Hand hand) {
     this.hand = hand;
 
-    // initialise TODO: do we need to initialise?
-    for (int iter = 0; iter < Constants.MAX_RANKS; ++iter)
-      ranks[iter] = 0;
-
     // Determine how many cards of each rank are in the hand
     for (Card card : hand)
       ++ranks[card.getRank()-1];
@@ -72,11 +68,6 @@ public class HandRankHistogram {
     throw new Exception(new StringBuilder().append(numCards).append(" of a kind does not exist in hand").toString());
   }
 
-
-
-
-
-
   /**
    * @return boolean indicating whether the histogram is treating aces as being low
    * 
@@ -106,7 +97,6 @@ public class HandRankHistogram {
            setAcesLow(true);
       }
   }
-
   /**
    *  Changes the histogram to treat Aces as being High. Aces will no longer be treated as Low.
    */
