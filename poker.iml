@@ -39,6 +39,7 @@
     </orderEntry>
     <orderEntry type="library" name="libs" level="project" />
     <orderEntry type="library" name="spring-3.2.1" level="project" />
+    <orderEntry type="library" name="guava-14.0" level="project" />
   </component>
   <component name="SonarConfiguration">
     <option name="host" value="" />
