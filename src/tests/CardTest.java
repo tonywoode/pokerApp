@@ -68,20 +68,20 @@ public class CardTest {
         throw new IllegalArgumentException();
     }
 
-    //TODO: catching AssertionError?
-    @Test(expected = IllegalArgumentException.class)
-    public void testBadNumber() throws Exception{
-
-        try{
-            new Card(Suit.Diamonds,0);
-
-            fail("didn't throw exception for bad number");
-
-        } catch(IllegalArgumentException e){
-            assertEquals(e.getMessage(), "Illegal Rank: 0");
-        }
-        throw new IllegalArgumentException();
-    }
+//    //TODO: catching AssertionError?
+//    @Test(expected = IllegalArgumentException.class)
+//    public void testBadNumber() throws Exception{
+//
+//        try{
+//            new Card(Suit.Diamonds,0);
+//
+//            fail("didn't throw exception for bad number");
+//
+//        } catch(IllegalArgumentException e){
+//            assertEquals(e.getMessage(), "Illegal Rank: 0");
+//        }
+//        throw new IllegalArgumentException();
+//    }
 
 
 //    public void testGetOrdinal() throws Exception {
