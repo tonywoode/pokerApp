@@ -17,9 +17,6 @@ public class HandSuitHistogram {
     private final Hand hand;
     int[] suits = new int[Constants.MAX_SUITS];
 
-    //1 = Clubs, 2 = Diamonds, 3 = Hearts, 4 = Spades
-    //http://wiki.answers.com/Q/What_is_the_suit_order_in_a_deck_of_cards_for_poker
-
 /**
  * determines how many cards of each suit are in a hand
  * @param hand a hand of cards
@@ -27,11 +24,6 @@ public class HandSuitHistogram {
     
     public HandSuitHistogram(Hand hand){
         this.hand = hand;
-
-        //initialise  TODO: do we really need to initialise
-        for(int iter = 0; iter <= Constants.MAX_SUITS; ++iter) {
-            suits[iter] = 0;
-        }
 
         // Determine how many cards of each suit are in the hand
         for(Card card: hand)
@@ -45,8 +37,5 @@ public class HandSuitHistogram {
             if(suits[iter] == Constants.FULL_DECK) return true;
         return false;
     }
-
-
-
 
 }
