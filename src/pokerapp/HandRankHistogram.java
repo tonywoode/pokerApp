@@ -16,10 +16,8 @@ import pokerapp.utils.ReverseArrayIterator;
  */
 public class HandRankHistogram {
 
-    private final Hand hand;
+  private final Hand hand;
   int[] ranks = new int[Constants.MAX_RANKS];
-  private int rank;
-
   private boolean acesLow;
 
   public HandRankHistogram(Hand hand) {
