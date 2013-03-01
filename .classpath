@@ -2,11 +2,27 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lombok"/>
-	<classpathentry kind="var" path="APPLICATION_HOME_DIR/lib/junit-4.10.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/libs"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring-3.2.1"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/guava-14.0"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mockito-all-1.9.5"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="libs/lombok.jar"/>
+	<classpathentry kind="lib" path="libs/Google Guava/guava-14.0.jar"/>
+	<classpathentry kind="lib" path="libs/Mockito/mockito-all-1.9.5.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-aop-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-aspects-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-beans-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-context-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-context-support-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-core-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-expression-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-instrument-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-instrument-tomcat-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-jdbc-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-jms-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-orm-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-oxm-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-test-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/Spring/spring-tx-3.2.1.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -6,7 +6,7 @@ import pokerapp.scorer.resolvers.*;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
+ * Builds the categories of scoring hands and returns the ordered list of them
  * User: steve
  * Date: 22/02/13
  * Time: 01:55
