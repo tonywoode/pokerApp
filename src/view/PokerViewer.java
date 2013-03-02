@@ -22,11 +22,21 @@ import javax.swing.JLabel;
 import java.awt.GridLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.border.LineBorder;
+import javax.swing.Box;
+
+/**
+ * Viewer for GUI
+ * @author Tony
+ *
+ */
 
 public class PokerViewer {
 
 	private JFrame frame;
 	private JLabel txtPictureOfA;
+	private JTextField txtSelectOpponent;
+	private JTextField txtDeck;
 
 	/**
 	 * Launch the application.
@@ -67,6 +77,7 @@ public class PokerViewer {
 		UpperThirdPanel.setLayout(gbl_UpperThirdPanel);
 		
 		JPanel PlayersPanel = new JPanel();
+		PlayersPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		GridBagConstraints gbc_PlayersPanel = new GridBagConstraints();
 		gbc_PlayersPanel.insets = new Insets(0, 0, 0, 5);
 		gbc_PlayersPanel.fill = GridBagConstraints.BOTH;
@@ -74,11 +85,19 @@ public class PokerViewer {
 		gbc_PlayersPanel.gridy = 0;
 		UpperThirdPanel.add(PlayersPanel, gbc_PlayersPanel);
 		
-		JButton btnNewButton_2 = new JButton("Lucky Luke");
-		PlayersPanel.add(btnNewButton_2);
+		txtSelectOpponent = new JTextField();
+		txtSelectOpponent.setBackground(new Color(220, 220, 220));
+		txtSelectOpponent.setHorizontalAlignment(SwingConstants.CENTER);
+		txtSelectOpponent.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		txtSelectOpponent.setText("Select Opponent");
+		PlayersPanel.add(txtSelectOpponent);
+		txtSelectOpponent.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Jimmy");
-		PlayersPanel.add(btnNewButton);
+		JButton btnNewButton1 = new JButton("Lucky Luke");
+		PlayersPanel.add(btnNewButton1);
+		
+		JButton btnNewButton3 = new JButton("Jimmy");
+		PlayersPanel.add(btnNewButton3);
 		
 		JButton btnNewButton_1 = new JButton("Pistorius");
 		PlayersPanel.add(btnNewButton_1);
@@ -111,13 +130,6 @@ public class PokerViewer {
 		gbc_ExitPanel.gridy = 0;
 		UpperThirdPanel.add(ExitPanel, gbc_ExitPanel);
 		
-		JButton btnExit = new JButton("EXIT");
-		btnExit.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		GridBagConstraints gbc_btnExit = new GridBagConstraints();
-		gbc_btnExit.gridx = 8;
-		gbc_btnExit.gridy = 0;
-		UpperThirdPanel.add(btnExit, gbc_btnExit);
-		
 		JPanel LowerThirdPanel = new JPanel();
 		GridBagLayout gbl_LowerThirdPanel = new GridBagLayout();
 		gbl_LowerThirdPanel.columnWidths = new int[]{0, 0};
@@ -141,9 +153,10 @@ public class PokerViewer {
 		
 		JPanel HandPanel = new JPanel();
 		GridBagConstraints gbc_HandPanel = new GridBagConstraints();
+		gbc_HandPanel.gridwidth = 2;
 		gbc_HandPanel.insets = new Insets(0, 0, 0, 5);
 		gbc_HandPanel.anchor = GridBagConstraints.NORTHWEST;
-		gbc_HandPanel.gridx = 1;
+		gbc_HandPanel.gridx = 0;
 		gbc_HandPanel.gridy = 0;
 		panel_5.add(HandPanel, gbc_HandPanel);
 		
@@ -153,20 +166,26 @@ public class PokerViewer {
 		JButton btnSomeAction = new JButton("Sort Hand");
 		HandPanel.add(btnSomeAction);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(0, 0, 139));
-		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
-		gbc_panel_1.insets = new Insets(0, 0, 0, 5);
-		gbc_panel_1.fill = GridBagConstraints.BOTH;
-		gbc_panel_1.gridx = 2;
-		gbc_panel_1.gridy = 0;
-		panel_5.add(panel_1, gbc_panel_1);
-		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{0};
-		gbl_panel_1.rowHeights = new int[]{0};
-		gbl_panel_1.columnWeights = new double[]{Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{Double.MIN_VALUE};
-		panel_1.setLayout(gbl_panel_1);
+		JPanel CardsPanel = new JPanel();
+		CardsPanel.setBackground(new Color(0, 0, 139));
+		GridBagConstraints gbc_CardsPanel = new GridBagConstraints();
+		gbc_CardsPanel.insets = new Insets(0, 0, 0, 5);
+		gbc_CardsPanel.fill = GridBagConstraints.BOTH;
+		gbc_CardsPanel.gridx = 2;
+		gbc_CardsPanel.gridy = 0;
+		panel_5.add(CardsPanel, gbc_CardsPanel);
+		GridBagLayout gbl_CardsPanel = new GridBagLayout();
+		gbl_CardsPanel.columnWidths = new int[]{0, 0};
+		gbl_CardsPanel.rowHeights = new int[]{0, 0};
+		gbl_CardsPanel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_CardsPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		CardsPanel.setLayout(gbl_CardsPanel);
+		
+		Box verticalBox = Box.createVerticalBox();
+		GridBagConstraints gbc_verticalBox = new GridBagConstraints();
+		gbc_verticalBox.gridx = 0;
+		gbc_verticalBox.gridy = 0;
+		CardsPanel.add(verticalBox, gbc_verticalBox);
 		
 		JPanel TurnCompletePanel = new JPanel();
 		GridBagConstraints gbc_TurnCompletePanel = new GridBagConstraints();
@@ -183,11 +202,14 @@ public class PokerViewer {
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(UpperThirdPanel, GroupLayout.PREFERRED_SIZE, 888, GroupLayout.PREFERRED_SIZE)
-				.addComponent(LowerThirdPanel, GroupLayout.PREFERRED_SIZE, 888, GroupLayout.PREFERRED_SIZE)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(21)
-					.addComponent(DeckPanel, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(21)
+							.addComponent(DeckPanel, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
+						.addComponent(LowerThirdPanel, GroupLayout.PREFERRED_SIZE, 784, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(104, Short.MAX_VALUE))
+				.addComponent(UpperThirdPanel, GroupLayout.PREFERRED_SIZE, 792, Short.MAX_VALUE)
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -196,8 +218,24 @@ public class PokerViewer {
 					.addGap(87)
 					.addComponent(DeckPanel, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
 					.addGap(239)
-					.addComponent(LowerThirdPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addComponent(LowerThirdPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
+		
+		JButton btnExit = new JButton("EXIT");
+		btnExit.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		GridBagConstraints gbc_btnExit = new GridBagConstraints();
+		gbc_btnExit.insets = new Insets(0, 0, 0, 5);
+		gbc_btnExit.gridx = 7;
+		gbc_btnExit.gridy = 0;
+		UpperThirdPanel.add(btnExit, gbc_btnExit);
+		
+		txtDeck = new JTextField();
+		txtDeck.setHorizontalAlignment(SwingConstants.CENTER);
+		txtDeck.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtDeck.setText("Deck");
+		DeckPanel.add(txtDeck);
+		txtDeck.setColumns(10);
 		frame.getContentPane().setLayout(groupLayout);
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
