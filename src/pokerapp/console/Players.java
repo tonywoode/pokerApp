@@ -1,5 +1,6 @@
 package pokerapp.console;
 
+import lombok.Getter;
 import pokerapp.scorer.HandCategoryResolverBuilder;
 import pokerapp.scorer.categories.HandCategory;
 import pokerapp.scorer.resolvers.HandCategoryResolver;
@@ -14,6 +15,10 @@ import java.util.List;
  */
 
 public class Players {
+
+
+
+  @Getter
   ArrayList<Player> players = new ArrayList<Player>();
   HandCategoryResolver resolver = new HandCategoryResolverBuilder().create();
 

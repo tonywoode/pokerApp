@@ -18,7 +18,7 @@ public class Driver {
     // TODO: change to use a factory
     ComputerPlayer computerPlayer = new StandardComputerPlayer();
 
-    Dealer dealer = new Dealer();
+    Dealer dealer = new Dealer(deck);
 
     Players players = new Players(interactivePlayer, computerPlayer);
 
