@@ -27,6 +27,9 @@ public class Constants {
 
     public static final int LEN_CARD = 2;
 
+    public static final String[] RANK_NAME =
+    {"", "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
+
 
     //1 = Clubs, 2 = Diamonds, 3 = Hearts, 4 = Spades
     //http://wiki.answers.com/Q/What_is_the_suit_order_in_a_deck_of_cards_for_poker
