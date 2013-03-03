@@ -3,7 +3,7 @@ package tests;
 import org.junit.Test;
 import pokerapp.Hand;
 import pokerapp.HandFactory;
-import pokerapp.HandMatrix;
+import pokerapp.scorer.HandMatrix;
 
 /**
  * Created with IntelliJ IDEA.
