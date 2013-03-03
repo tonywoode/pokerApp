@@ -7,7 +7,7 @@ import pokerapp.scorer.HandMatrix;
 
 /**
  * Created with IntelliJ IDEA.
- * User: DEV
+ * User: Ari
  * Date: 28/02/13
  * Time: 15:05
  * To change this template use File | Settings | File Templates.
