@@ -1,7 +1,6 @@
 package pokerapp.scorer.categories;
 
-import pokerapp.Hand;
-import pokerapp.HandRankHistogram;
+import pokerapp.scorer.HandRankHistogram;
 
 /**
  * Created with IntelliJ IDEA.

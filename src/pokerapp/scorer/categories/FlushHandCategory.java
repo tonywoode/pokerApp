@@ -1,8 +1,6 @@
 package pokerapp.scorer.categories;
 
 import pokerapp.Card;
-import pokerapp.Hand;
-import pokerapp.HandRankHistogram;
 
 import java.util.ArrayList;
 

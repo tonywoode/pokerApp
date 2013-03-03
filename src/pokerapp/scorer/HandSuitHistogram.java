@@ -1,6 +1,8 @@
-package pokerapp;
+package pokerapp.scorer;
 
 
+import pokerapp.Card;
+import pokerapp.Hand;
 import pokerapp.utils.Constants;
 
 /**

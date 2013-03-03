@@ -1,4 +1,4 @@
-package tests;
+package tests.scorer;
 
 import org.junit.Test;
 import pokerapp.Hand;

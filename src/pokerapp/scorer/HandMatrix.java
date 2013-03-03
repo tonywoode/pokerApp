@@ -1,5 +1,7 @@
-package pokerapp;
+package pokerapp.scorer;
 
+import pokerapp.Card;
+import pokerapp.Hand;
 import pokerapp.utils.Constants;
 
 /**
@@ -20,6 +22,6 @@ public class HandMatrix {
             matrix[c.getRank()][c.getSuit().getNumber()]++;
     }
 
-    //TODO: create Rank & Flush Histograms here?
+    //TODO: create Rank & Flush Histograms here?  maybe use facade?
 
 }

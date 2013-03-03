@@ -1,8 +1,5 @@
 package pokerapp.scorer.categories;
 
-import pokerapp.Hand;
-import pokerapp.HandRankHistogram;
-
 /**
  * Describes the lowest poker hand (AKA no-pair) where the only scoring potential is the highest card of the hand 
  * @author steve

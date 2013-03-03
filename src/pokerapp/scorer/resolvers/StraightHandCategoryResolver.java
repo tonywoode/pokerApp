@@ -1,13 +1,8 @@
 package pokerapp.scorer.resolvers;
 
 import pokerapp.Hand;
-import pokerapp.Card;
-import pokerapp.HandMatrix;
-import pokerapp.HandRankHistogram;
+import pokerapp.scorer.HandRankHistogram;
 import pokerapp.scorer.categories.StraightHandCategory;
-import pokerapp.utils.Constants;
-
-import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.

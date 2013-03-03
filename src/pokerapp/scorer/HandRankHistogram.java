@@ -1,5 +1,7 @@
-package pokerapp;
+package pokerapp.scorer;
 
+import pokerapp.Card;
+import pokerapp.Hand;
 import pokerapp.utils.Constants;
 import pokerapp.utils.ReverseArrayIterator;
 
@@ -11,7 +13,7 @@ import pokerapp.utils.ReverseArrayIterator;
  *
  * Represents the statistical summary of the ranks of the cards in a hand. It determines how many cards of each rank are in the hand
  *
- * See [wiki page] for details. TODO: Ari was (maybe) going to write this key data structure up.
+ * See [wiki page] for details. TODO: Ari was (maybe) going to write this key data structure up. & write a test
  *
  */
 public class HandRankHistogram {
@@ -29,14 +31,14 @@ public class HandRankHistogram {
   }
 
   /**
-   * Determines how many cards in the hand have a specified rank
-   * @param targetRank  the rank under evaluation
-   * @return the number of cards in the hand of rank = targetRank
+   * Determines how many times a specified multiple appears in a hand
+   * @param targetMultiple  the multiple e.g. 3 for three of a kind
+   * @return the number of multiples in the hand e.g. 2 for two pairs
    */
-  public int getCount(int targetRank) {
+  public int countMultiple(int targetMultiple) {
     int count = 0;
      for(int rank : ranks)
-       if(rank == targetRank) ++count;
+       if(rank == targetMultiple) ++count;
     return count;
   }
 
@@ -57,7 +59,7 @@ public class HandRankHistogram {
   * @return the highest rank of the multiple, even when there is more than one - only applies for pairs or singles.
   * @throws Exception if there is no multiple of numCards in the histogram
   */
-  //TODO: straights need to be checked before this is called with numCounts = 1 which simply returns the high card
+
   public int getRankOfMultiple(int numCards) throws Exception {
     for (int iter = Constants.MAX_RANKS-1; iter >= 0; --iter)
       if (ranks[iter] == numCards)

@@ -1,4 +1,4 @@
-package tests;
+package tests.scorer;
 
 /**
  * Created with IntelliJ IDEA.

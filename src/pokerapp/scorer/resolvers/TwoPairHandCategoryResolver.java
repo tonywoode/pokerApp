@@ -1,11 +1,5 @@
 package pokerapp.scorer.resolvers;
 
-import pokerapp.Hand;
-import pokerapp.HandRankHistogram;
-import pokerapp.scorer.categories.HandCategory;
-import pokerapp.scorer.categories.RankedHandCategory;
-import pokerapp.scorer.categories.TwoPairHandCategory;
-
 /**
  * Created with IntelliJ IDEA.
  * User: steve

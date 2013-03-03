@@ -1,14 +1,11 @@
 package pokerapp.console;
 
-import lombok.Getter;
-import lombok.Setter;
 import pokerapp.Card;
 import pokerapp.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,6 +15,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class Deck implements Iterable<Card> {
+    //TODO: here because it was scratch impl for console app
 
 	private ArrayList<Card> arrayDeck; //TODO: singleton ?
 

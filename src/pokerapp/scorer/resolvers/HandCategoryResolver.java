@@ -2,11 +2,7 @@ package pokerapp.scorer.resolvers;
 
 
 import pokerapp.Hand;
-import pokerapp.HandRankHistogram;
-import pokerapp.scorer.categories.FlushHandCategory;
 import pokerapp.scorer.categories.HandCategory;
-
-import java.lang.reflect.Constructor;
 
 /**
  * Created with IntelliJ IDEA.

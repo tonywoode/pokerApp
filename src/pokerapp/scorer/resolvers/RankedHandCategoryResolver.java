@@ -27,7 +27,7 @@ public class RankedHandCategoryResolver extends HandCategoryResolver {
 
   @Override
   protected boolean matches(HandCategoryResolverRequest request) throws Exception {
-    return request.getRankHistogram().getCount(rankValue) == rankCount;
+    return request.getRankHistogram().countMultiple(rankValue) == rankCount;
   }
 
   protected int determineRank(HandCategoryResolverRequest request) throws Exception {
