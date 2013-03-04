@@ -32,7 +32,7 @@ public class FlushHandCategoryResolver extends HandCategoryResolver {
       ++suits[card.getSuit().getNumber() - 1];
 
     for (int iter = 0; iter < Constants.MAX_SUITS; ++iter)
-      if (suits[iter] == Constants.FULL_DECK)
+      if (suits[iter] == Constants.HAND_SIZE)
         return true;
 
     return false;
