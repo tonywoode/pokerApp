@@ -27,7 +27,7 @@ public class Deck implements Iterable<Card> {
 	  
 	public ArrayList<Card> create(Card card) throws IndexOutOfBoundsException { 
     // create all 52 deck...
-		    if (arrayDeck.size() >= Constants.FULL_DECK)
+		    if (arrayDeck.size() >= Constants.DECK_SIZE)
 	        throw new IndexOutOfBoundsException("Deck is full");
 		    
 		    arrayDeck.add(card);
