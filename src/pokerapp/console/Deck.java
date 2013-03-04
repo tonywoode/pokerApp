@@ -21,9 +21,10 @@ public class Deck implements Iterable<Card> {
 	
 	private ArrayList<Card> deck = new ArrayList<>(); //singleton
 
+
   public Deck() {
-	  Card.getcard()
-	  deck.create(Card card)
+	  card = Card.getcard();
+	  deck.create(Card card);
   }
 	  
 	  

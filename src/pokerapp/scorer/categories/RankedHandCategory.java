@@ -7,11 +7,10 @@ import pokerapp.HandRankHistogram;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 14:12
- * To change this template use File | Settings | File Templates.
+ * Sets up ranking for hand ratings, in case we get the same hand rating in more than one hand,
+ * we need to know which hand has higher rating TODO//is that right?
+ * @author Steve
+ * @version 1.0
  */
 public class RankedHandCategory extends HandCategory {
 
@@ -36,12 +35,16 @@ public class RankedHandCategory extends HandCategory {
       return compareSpares(rhsCat);
   }
 
-  // compare the 'spare' cards; highest rank wins; on tie, second highest, etc; tie is possible
+  /**
+   * compare the 'spare' cards; highest rank wins; on tie, second highest, etc; tie is possible
+   * @param rhs a ranked scoring card category
+   * @return c an int representing which card is higher TODO//?
+   */
   protected int compareSpares(RankedHandCategory rhs) {
     ArrayList<Card> lhsSpares = getSpares(),
         rhsSpares = rhs.getSpares();
 
-    // TODO: we assume both spares have the same number of cards. Reasonable?
+    // TODO: we assume both spares have the same number of cards. Reasonable? TW: I say yes
     for (int iter = lhsSpares.size() - 1; iter >= 0; --iter) {
       int c = Integer.compare(lhsSpares.get(iter).getRank(), rhsSpares.get(iter).getRank());
       if (c != 0)
