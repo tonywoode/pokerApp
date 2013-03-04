@@ -1,23 +1,15 @@
 package tests.scorer.resolvers;
 
+import org.junit.Test;
 import pokerapp.Hand;
-import pokerapp.HandFactory;
 import pokerapp.scorer.categories.HandCategory;
 import pokerapp.scorer.resolvers.FlushHandCategoryResolver;
-import pokerapp.scorer.resolvers.RankedHandCategoryResolver;
-import org.junit.*;
-import pokerapp.utils.HandPermutationGenerator;
 
-import java.util.ArrayList;
-
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertFalse;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Samuel Keays
+ * User: Samuel Keays + Ari
  * Date: 26/02/13
  * Time: 21:48
  * To change this template use File | Settings | File Templates.
@@ -31,7 +23,7 @@ public class FlushHandCategoryResolverTestFixture extends HandCategoryResolverTe
     public void Simple_Flush() {
         HandCategory category = resolveHand("D4", "D5", "D6", "D7", "D9");
 
-        assertEquals("Is flush", "flush", category.getName());
+        assert("flush".equals(category.getName()));
     }
 
     // permutation will need a way of passing hand resolver a hand rather than a string
@@ -62,7 +54,7 @@ public class FlushHandCategoryResolverTestFixture extends HandCategoryResolverTe
     public void HandIsNotFlush() {
         HandCategory category = resolveHand("D4", "D3", "D1", "D5", "C6");
 
-        Assert.assertFalse(category.getName().equals("flush"));
+        assertFalse("flush".equals(category.getName()));
     }
 
     @Test
