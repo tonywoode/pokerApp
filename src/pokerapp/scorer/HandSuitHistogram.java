@@ -36,7 +36,7 @@ public class HandSuitHistogram {
     private boolean isFlush(){
 
         for(int iter = 1; iter <= Constants.MAX_SUITS; ++iter)
-            if(suits[iter] == Constants.FULL_DECK) return true;
+            if(suits[iter] == Constants.HAND_SIZE) return true;
         return false;
     }
 
