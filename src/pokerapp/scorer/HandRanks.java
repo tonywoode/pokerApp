@@ -7,37 +7,45 @@ import pokerapp.utils.ReverseArrayIterator;
 
 /**
  * Created with IntelliJ IDEA.
- * User: steve
+ * User: steve  + Ari
  * Date: 22/02/13
  * Time: 00:57
  *
- * Represents the statistical summary of the ranks of the cards in a hand. It determines how many cards of each rank are in the hand
+ * Represents the statistical summary of the rank_histogram of the cards in a hand. It determines how many cards of each rank are in the hand
  *
  * See [wiki page] for details. TODO: Ari was (maybe) going to write this key data structure up. & write a test
  *
  */
-public class HandRankHistogram {
+public class HandRanks {
 
-  private final Hand hand;
-  int[] ranks = new int[Constants.MAX_RANKS];
+
+  int[] rank_histogram = new int[Constants.NUM_RANKS];
   private boolean acesLow;
 
-  public HandRankHistogram(Hand hand) {
-    this.hand = hand;
-
+  public HandRanks(Hand hand) {
     // Determine how many cards of each rank are in the hand
     for (Card card : hand)
-      ++ranks[card.getRank()-1];
+      ++rank_histogram[card.getRank()];
   }
 
-  /**
+  public HandRanks(HandGrid handGrid){
+
+    for(int j = 1; j < Constants.NUM_RANKS + 1; j++) {
+        for(int i = 1; i < Constants.NUM_SUITS + 1; i++) {
+            rank_histogram[j] = rank_histogram[j] + handGrid.matrix[i][j];
+        }
+    }
+  }
+
+
+    /**
    * Determines how many times a specified multiple appears in a hand
    * @param targetMultiple  the multiple e.g. 3 for three of a kind
    * @return the number of multiples in the hand e.g. 2 for two pairs
    */
   public int countMultiple(int targetMultiple) {
     int count = 0;
-     for(int rank : ranks)
+     for(int rank : rank_histogram)
        if(rank == targetMultiple) ++count;
     return count;
   }
@@ -49,7 +57,7 @@ public class HandRankHistogram {
    */
   
   public ReverseArrayIterator iterator() {
-    return new ReverseArrayIterator(ranks);
+    return new ReverseArrayIterator(rank_histogram);
   }
 
  /** Finds the highest rank of a given multiple numCards (i.e the number of cards with that rank in the hand)
@@ -61,9 +69,9 @@ public class HandRankHistogram {
   */
 
   public int getRankOfMultiple(int numCards) throws Exception {
-    for (int iter = Constants.MAX_RANKS-1; iter >= 0; --iter)
-      if (ranks[iter] == numCards)
-        return iter+1;
+    for (int iter = Constants.NUM_RANKS -1; iter >= 0; --iter)
+      if (rank_histogram[iter] == numCards)
+        return iter;
 
     throw new Exception(new StringBuilder().append(numCards).append(" of a kind does not exist in hand").toString());
   }
@@ -91,9 +99,9 @@ public class HandRankHistogram {
    */
   // TODO: can we not have a single function that does this, depending on a boolean flag?
   public void lowAcesOn(){
-      if(ranks[Constants.MAX_RANKS] != 0){
-           ranks[1] = ranks[Constants.MAX_RANKS];
-           ranks[Constants.MAX_RANKS] = 0;
+      if(rank_histogram[Constants.NUM_RANKS] != 0){
+           rank_histogram[1] = rank_histogram[Constants.NUM_RANKS];
+           rank_histogram[Constants.NUM_RANKS] = 0;
            setAcesLow(true);
       }
   }
@@ -101,9 +109,9 @@ public class HandRankHistogram {
    *  Changes the histogram to treat Aces as being High. Aces will no longer be treated as Low.
    */
   public void lowAcesOff(){
-      if(ranks[1] != 0){
-          ranks[Constants.MAX_RANKS] = ranks[1];
-          ranks[1] = 0;
+      if(rank_histogram[1] != 0){
+          rank_histogram[Constants.NUM_RANKS] = rank_histogram[1];
+          rank_histogram[1] = 0;
           setAcesLow(false);
       }
   }

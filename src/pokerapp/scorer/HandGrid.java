@@ -11,15 +11,18 @@ import pokerapp.utils.Constants;
  * Time: 12:32
  * To change this template use File | Settings | File Templates.
  */
-public class HandMatrix {
+public class HandGrid {
 
     private Hand hand;
-    public int [][] matrix = new int[Constants.MAX_RANKS][Constants.MAX_SUITS+1];
 
-    public HandMatrix(Hand other_hand){
+    public int [][] matrix = new int[Constants.NUM_SUITS + 1][Constants.NUM_RANKS + 1];
+
+    public HandGrid(Hand other_hand){
         this.hand = other_hand;
-        for(Card c: hand)
-            matrix[c.getRank()][c.getSuit().getNumber()]++;
+
+        for(Card c: hand){
+            ++matrix[c.getSuit().getNumber()][c.getRank()];
+        }
     }
 
     //TODO: create Rank & Flush Histograms here?  maybe use facade?
