@@ -1,6 +1,6 @@
 package pokerapp.scorer.categories;
 
-import pokerapp.scorer.HandRankHistogram;
+import pokerapp.scorer.HandRanks;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,11 +10,11 @@ import pokerapp.scorer.HandRankHistogram;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class RankBasedHandCategory extends HandCategory {
-  private HandRankHistogram rankHistogram;
+  private HandRanks rankHistogram;
 
   public RankBasedHandCategory(String name) {
     super(name);
   }
 
-  protected HandRankHistogram getRankHistogram() { return rankHistogram; }
+  protected HandRanks getRankHistogram() { return rankHistogram; }
 }

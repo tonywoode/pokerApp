@@ -2,7 +2,7 @@ package pokerapp.scorer.categories;
 
 
 import pokerapp.Hand;
-import pokerapp.scorer.HandRankHistogram;
+import pokerapp.scorer.HandRanks;
 import lombok.Getter;
 
 
@@ -17,7 +17,7 @@ public abstract class HandCategory {
   protected Hand hand;
 
   @Getter private int rank = -1;
-  private HandRankHistogram rankHistogram;
+  private HandRanks rankHistogram;
 
   protected HandCategory(String name) {
     this.name = name;
@@ -34,7 +34,7 @@ public abstract class HandCategory {
  * @return a copy of this instance of (the subclass of) HandCategory
  */
   
-  public HandCategory clone(int cn, Hand hand, int rank, HandRankHistogram rankHistogram) {
+  public HandCategory clone(int cn, Hand hand, int rank, HandRanks rankHistogram) {
     HandCategory cat = clone();
     cat.categoryNumber = cn;
     cat.hand = hand;
@@ -49,7 +49,7 @@ public abstract class HandCategory {
  */
   protected abstract HandCategory clone();
 
-  protected HandRankHistogram getRankHistogram() { return rankHistogram; }
+  protected HandRanks getRankHistogram() { return rankHistogram; }
 
 /**
  * Compares two hand categories, returns numerical result of the comparison  

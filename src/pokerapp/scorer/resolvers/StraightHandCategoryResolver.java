@@ -1,7 +1,7 @@
 package pokerapp.scorer.resolvers;
 
 import pokerapp.Hand;
-import pokerapp.scorer.HandRankHistogram;
+import pokerapp.scorer.HandRanks;
 import pokerapp.scorer.categories.StraightHandCategory;
 
 /**
@@ -23,18 +23,18 @@ public class StraightHandCategoryResolver extends HandCategoryResolver {
   }
 
   private boolean isStraight(Hand hand) {
-      HandRankHistogram handRankHistogram = new HandRankHistogram(hand);
-    if (isStraight(handRankHistogram))
+      HandRanks handRanks = new HandRanks(hand);
+    if (isStraight(handRanks))
           return true;
     else {
-          handRankHistogram.lowAcesOn();
-          boolean retval = (isStraight(handRankHistogram));
-          handRankHistogram.lowAcesOff();
+          handRanks.lowAcesOn();
+          boolean retval = (isStraight(handRanks));
+          handRanks.lowAcesOff();
           return  retval;
        }
   }
 
-  private boolean isStraight(HandRankHistogram handRankHistogram) {
-      return(handRankHistogram.toString().contains("11111"));
+  private boolean isStraight(HandRanks handRanks) {
+      return(handRanks.toString().contains("11111"));
   }
 }

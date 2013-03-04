@@ -1,7 +1,7 @@
 package pokerapp.scorer.resolvers;
 
 import pokerapp.Hand;
-import pokerapp.scorer.HandRankHistogram;
+import pokerapp.scorer.HandRanks;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,13 +14,13 @@ import pokerapp.scorer.HandRankHistogram;
  */
 public class HandCategoryResolverRequest {
   private final Hand hand;
-  private final HandRankHistogram rankHistogram;
+  private final HandRanks rankHistogram;
 
   public HandCategoryResolverRequest(Hand hand) {
     this.hand = hand;
-    this.rankHistogram = new HandRankHistogram(hand);
+    this.rankHistogram = new HandRanks(hand);
   }
 
   public Hand getHand() { return hand;}
-  public HandRankHistogram getRankHistogram() { return rankHistogram; }
+  public HandRanks getRankHistogram() { return rankHistogram; }
 }

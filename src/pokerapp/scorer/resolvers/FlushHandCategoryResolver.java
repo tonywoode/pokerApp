@@ -24,14 +24,14 @@ public class FlushHandCategoryResolver extends HandCategoryResolver {
   }
 
   private boolean isFlush(Hand hand) {
-    int[] suits = new int[Constants.MAX_SUITS];
-    for (int iter = 0; iter < Constants.MAX_SUITS; ++iter)
+    int[] suits = new int[Constants.NUM_SUITS];
+    for (int iter = 0; iter < Constants.NUM_SUITS; ++iter)
       suits[iter] = 0;
 
     for (Card card : hand)
       ++suits[card.getSuit().getNumber() - 1];
 
-    for (int iter = 0; iter < Constants.MAX_SUITS; ++iter)
+    for (int iter = 0; iter < Constants.NUM_SUITS; ++iter)
       if (suits[iter] == Constants.HAND_SIZE)
         return true;
 
