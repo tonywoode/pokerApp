@@ -11,7 +11,8 @@ import pokerapp.utils.ReverseArrayIterator;
  * Date: 22/02/13
  * Time: 00:57
  *
- * Represents the statistical summary of the rank_histogram of the cards in a hand. It determines how many cards of each rank are in the hand
+ * Represents the statistical summary of the rank_histogram of the cards in a hand.
+ * It determines how many cards of each rank are in the hand
  *
  * See [wiki page] for details. TODO: Ari was (maybe) going to write this key data structure up. & write a test
  *
@@ -22,12 +23,14 @@ public class HandRanks {
   int[] rank_histogram = new int[Constants.NUM_RANKS];
   private boolean acesLow;
 
+  //first ctor takes a hand
   public HandRanks(Hand hand) {
     // Determine how many cards of each rank are in the hand
     for (Card card : hand)
       ++rank_histogram[card.getRank()];
   }
 
+  //second ctor takes a hand summary
   public HandRanks(HandGrid handGrid){
 
     for(int j = 1; j < Constants.NUM_RANKS + 1; j++) {
