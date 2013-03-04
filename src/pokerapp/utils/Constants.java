@@ -20,8 +20,8 @@ public class Constants {
 
     private Constants() {}    //singleton
 
-    public static final int MAX_SUITS = 4;
-    public static final int MAX_RANKS = 15;
+    public static final int NUM_SUITS = 4;
+    public static final int NUM_RANKS = 14;
     public static final int HAND_SIZE = 5;         //We are implementing a 5-card poker variant
     public static final int DECK_SIZE = 52;
     public static final int RANK_ACE_LO = 1;
