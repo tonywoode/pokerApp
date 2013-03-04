@@ -1,10 +1,11 @@
 package pokerapp;
 
 
+import pokerapp.utils.Constants;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import pokerapp.utils.Constants;
 
 /**
  * Creates hands from cards and allows ranking, sorting, exchanging and printing of those hands
@@ -22,7 +23,7 @@ public class Hand implements Iterable<Card> {
    * @throws IndexOutOfBoundsException
    */
   public void add(Card card) throws IndexOutOfBoundsException {
-    if (cards.size() >= Constants.FULL_DECK)
+    if (cards.size() >= Constants.HAND_SIZE)
       throw new IndexOutOfBoundsException("Hand is full");
 
     cards.add(card);
