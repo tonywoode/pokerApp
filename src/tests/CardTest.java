@@ -15,10 +15,10 @@ import static org.junit.Assert.fail;
  * To change this template use File | Settings | File Templates.
  */
 public class CardTest {
-    Suit clubs = Suit.Clubs;
-    Suit diamonds = Suit.Diamonds;
-    Suit hearts = Suit.Hearts;
-    Suit spades = Suit.Spades;
+    private final Suit clubs = Suit.Clubs;
+    private final Suit diamonds = Suit.Diamonds;
+    private final Suit hearts = Suit.Hearts;
+    private final Suit spades = Suit.Spades;
 
     @Test
     public void testGetRank() throws Exception {
