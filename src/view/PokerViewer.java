@@ -24,6 +24,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.LineBorder;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 
 /**
  * Viewer for GUI
@@ -86,6 +87,7 @@ public class PokerViewer {
 		UpperThirdPanel.add(PlayersPanel, gbc_PlayersPanel);
 		
 		txtSelectOpponent = new JTextField();
+		txtSelectOpponent.setEditable(false);
 		txtSelectOpponent.setBackground(new Color(220, 220, 220));
 		txtSelectOpponent.setHorizontalAlignment(SwingConstants.CENTER);
 		txtSelectOpponent.setFont(new Font("Tahoma", Font.PLAIN, 22));
@@ -113,8 +115,8 @@ public class PokerViewer {
 		UpperThirdPanel.add(PicturePanel, gbc_PicturePanel);
 		
 		txtPictureOfA = new JLabel();
-		txtPictureOfA.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		txtPictureOfA.setHorizontalAlignment(SwingConstants.CENTER);
+		txtPictureOfA.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		txtPictureOfA.setText("Picture Of A Opponent");
 		PicturePanel.add(txtPictureOfA);
 		
@@ -145,52 +147,82 @@ public class PokerViewer {
 		gbc_panel_5.gridy = 0;
 		LowerThirdPanel.add(panel_5, gbc_panel_5);
 		GridBagLayout gbl_panel_5 = new GridBagLayout();
-		gbl_panel_5.columnWidths = new int[]{304, 175, 0, 0, 0};
+		gbl_panel_5.columnWidths = new int[]{304, 0, 175, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_panel_5.rowHeights = new int[]{33, 0};
-		gbl_panel_5.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_5.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gbl_panel_5.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		panel_5.setLayout(gbl_panel_5);
 		
 		JPanel HandPanel = new JPanel();
 		GridBagConstraints gbc_HandPanel = new GridBagConstraints();
-		gbc_HandPanel.gridwidth = 2;
 		gbc_HandPanel.insets = new Insets(0, 0, 0, 5);
-		gbc_HandPanel.anchor = GridBagConstraints.NORTHWEST;
+		gbc_HandPanel.anchor = GridBagConstraints.WEST;
 		gbc_HandPanel.gridx = 0;
 		gbc_HandPanel.gridy = 0;
 		panel_5.add(HandPanel, gbc_HandPanel);
 		
-		JButton btnNewButton_3 = new JButton("Exchange");
-		HandPanel.add(btnNewButton_3);
+		JButton btnExchange = new JButton("Exchange");
 		
-		JButton btnSomeAction = new JButton("Sort Hand");
-		HandPanel.add(btnSomeAction);
+		JButton btnSortHand = new JButton("Sort Hand");
+		GroupLayout gl_HandPanel = new GroupLayout(HandPanel);
+		gl_HandPanel.setHorizontalGroup(
+			gl_HandPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_HandPanel.createSequentialGroup()
+					.addComponent(btnExchange)
+					.addComponent(btnSortHand))
+		);
+		gl_HandPanel.setVerticalGroup(
+			gl_HandPanel.createParallelGroup(Alignment.LEADING)
+				.addComponent(btnExchange)
+				.addComponent(btnSortHand)
+		);
+		HandPanel.setLayout(gl_HandPanel);
 		
-		JPanel CardsPanel = new JPanel();
-		CardsPanel.setBackground(new Color(0, 0, 139));
-		GridBagConstraints gbc_CardsPanel = new GridBagConstraints();
-		gbc_CardsPanel.insets = new Insets(0, 0, 0, 5);
-		gbc_CardsPanel.fill = GridBagConstraints.BOTH;
-		gbc_CardsPanel.gridx = 2;
-		gbc_CardsPanel.gridy = 0;
-		panel_5.add(CardsPanel, gbc_CardsPanel);
-		GridBagLayout gbl_CardsPanel = new GridBagLayout();
-		gbl_CardsPanel.columnWidths = new int[]{0, 0};
-		gbl_CardsPanel.rowHeights = new int[]{0, 0};
-		gbl_CardsPanel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gbl_CardsPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		CardsPanel.setLayout(gbl_CardsPanel);
+		JPanel Cardspanel = new JPanel();
+		GridBagConstraints gbc_Cardspanel = new GridBagConstraints();
+		gbc_Cardspanel.gridwidth = 6;
+		gbc_Cardspanel.insets = new Insets(0, 0, 0, 5);
+		gbc_Cardspanel.fill = GridBagConstraints.BOTH;
+		gbc_Cardspanel.gridx = 1;
+		gbc_Cardspanel.gridy = 0;
+		panel_5.add(Cardspanel, gbc_Cardspanel);
+		Cardspanel.setLayout(new BoxLayout(Cardspanel, BoxLayout.X_AXIS));
 		
-		Box verticalBox = Box.createVerticalBox();
-		GridBagConstraints gbc_verticalBox = new GridBagConstraints();
-		gbc_verticalBox.gridx = 0;
-		gbc_verticalBox.gridy = 0;
-		CardsPanel.add(verticalBox, gbc_verticalBox);
+		//yes I know this should be a factory and not in the main class
+		JPanel Card1panel = new JPanel();
+		Card1panel.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		Card1panel.setBackground(Color.BLUE);
+		Cardspanel.add(Card1panel);
+		
+		JPanel Card2panel = new JPanel();
+		Card2panel.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		Card2panel.setBackground(Color.BLUE);
+		Cardspanel.add(Card2panel);
+		
+		JPanel Card3panel = new JPanel();
+		Card3panel.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		Card3panel.setBackground(Color.BLUE);
+		Cardspanel.add(Card3panel);
+		
+		JPanel Card4panel = new JPanel();
+		Card4panel.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		Card4panel.setBackground(Color.BLUE);
+		Cardspanel.add(Card4panel);
+		
+		JPanel Card5panel = new JPanel();
+		Card5panel.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		Card5panel.setBackground(Color.BLUE);
+		Cardspanel.add(Card5panel);
+		
+		JPanel Card6panel = new JPanel();
+		Card6panel.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		Card6panel.setBackground(Color.BLUE);
+		Cardspanel.add(Card6panel);
 		
 		JPanel TurnCompletePanel = new JPanel();
 		GridBagConstraints gbc_TurnCompletePanel = new GridBagConstraints();
 		gbc_TurnCompletePanel.fill = GridBagConstraints.BOTH;
-		gbc_TurnCompletePanel.gridx = 3;
+		gbc_TurnCompletePanel.gridx = 9;
 		gbc_TurnCompletePanel.gridy = 0;
 		panel_5.add(TurnCompletePanel, gbc_TurnCompletePanel);
 		
@@ -231,6 +263,7 @@ public class PokerViewer {
 		UpperThirdPanel.add(btnExit, gbc_btnExit);
 		
 		txtDeck = new JTextField();
+		txtDeck.setEditable(false);
 		txtDeck.setHorizontalAlignment(SwingConstants.CENTER);
 		txtDeck.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtDeck.setText("Deck");
