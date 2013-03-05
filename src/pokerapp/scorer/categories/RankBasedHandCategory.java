@@ -3,11 +3,9 @@ package pokerapp.scorer.categories;
 import pokerapp.scorer.HandRanks;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 23/02/13
- * Time: 23:08
- * To change this template use File | Settings | File Templates.
+ * Adds the rank histogram to the hand categories
+ * @author Steve
+ * @version 1.0
  */
 public abstract class RankBasedHandCategory extends HandCategory {
   private HandRanks rankHistogram;
