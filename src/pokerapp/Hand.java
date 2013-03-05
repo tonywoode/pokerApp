@@ -1,6 +1,7 @@
 package pokerapp;
 
 
+import pokerapp.scorer.HighLowCardComparator;
 import pokerapp.utils.Constants;
 
 import java.util.ArrayList;
