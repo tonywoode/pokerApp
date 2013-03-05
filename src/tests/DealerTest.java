@@ -1,17 +1,16 @@
 package tests;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+import pokerapp.Card;
+import pokerapp.Suit;
+import pokerapp.console.*;
+import pokerapp.utils.Constants;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.junit.Test;
-
-import pokerapp.Card;
-import pokerapp.Suit;
-import pokerapp.console.*;
-import pokerapp.utils.Constants;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Tony, Sam, Ari
@@ -30,7 +29,7 @@ public class DealerTest {
 		//test that every player has a set of independent cards
 
         for(Suit suit : Suit.AllSuits ){
-            for(int rank = 0; rank < Constants.MAX_RANKS; rank++) {
+            for(int rank = 0; rank < Constants.NUM_RANKS; rank++) {
                 Card c = new Card(suit, rank);
                 cardMap.put(c.toString(),c);
             }
