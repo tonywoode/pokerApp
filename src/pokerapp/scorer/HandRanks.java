@@ -11,17 +11,23 @@ import pokerapp.utils.ReverseArrayIterator;
  * Date: 22/02/13
  * Time: 00:57
  *
+ * @author Steve Faulmann
+ * @author Ari Ghosh
+ *
  * Represents the statistical summary of the rank_histogram of the cards in a hand.
  * It determines how many cards of each rank are in the hand
  *
  * See [wiki page] for details. TODO: Ari was (maybe) going to write this key data structure up. & write a test
  *
+ *
+ * 2013-03-06 (sdf):
+ *   Simplified interface.
+ *   Moved string representation to the toString method.
+ *   Removed aces low/high code
+ *
  */
 public class HandRanks {
-
-
   int[] rank_histogram = new int[Constants.NUM_RANKS];
-  private boolean acesLow;
 
   //first ctor takes a hand
   public HandRanks(Hand hand) {
@@ -58,7 +64,7 @@ public class HandRanks {
    *  the array that makes up the histogram
    * @return a ReverseArrayIterator
    */
-  
+
   public ReverseArrayIterator iterator() {
     return new ReverseArrayIterator(rank_histogram);
   }
@@ -79,43 +85,15 @@ public class HandRanks {
     throw new Exception(new StringBuilder().append(numCards).append(" of a kind does not exist in hand").toString());
   }
 
-  /**
-   * @return boolean indicating whether the histogram is treating aces as being low
-   * 
-   */
-  //TODO: make code nicer
-  public boolean isAcesLow() {
-    return acesLow;
-  }
-
-  /**
-   * Change the Aces Low flag
-   * @param acesLow
-   */
-  // TODO: should this not be private? Are clients supposed to use this directly?
-  public void setAcesLow(boolean acesLow) {
-    this.acesLow = acesLow;
-  }
-
-  /**
-   * Changes the histogram to treat Aces as being Low. Aces continue to be treated as High as well.
-   */
-  // TODO: can we not have a single function that does this, depending on a boolean flag?
-  public void lowAcesOn(){
-      if(rank_histogram[Constants.NUM_RANKS] != 0){
-           rank_histogram[1] = rank_histogram[Constants.NUM_RANKS];
-           rank_histogram[Constants.NUM_RANKS] = 0;
-           setAcesLow(true);
-      }
-  }
-  /**
-   *  Changes the histogram to treat Aces as being High. Aces will no longer be treated as Low.
-   */
-  public void lowAcesOff(){
-      if(rank_histogram[1] != 0){
-          rank_histogram[Constants.NUM_RANKS] = rank_histogram[1];
-          rank_histogram[1] = 0;
-          setAcesLow(false);
-      }
+  // @author Ari Ghosh
+  // @author Steve Faulmann
+  // SDF: moved body of code to this method.
+  @Override
+  public String toString() {
+    StringBuilder build_rank_counts = new StringBuilder();
+    for (int count_at_rank : rank_histogram) {
+      build_rank_counts.append(count_at_rank);
+    }
+    return build_rank_counts.toString();
   }
 }
