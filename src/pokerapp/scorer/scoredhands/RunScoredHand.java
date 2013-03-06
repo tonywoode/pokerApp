@@ -1,5 +1,10 @@
 package pokerapp.scorer.scoredhands;
 
+import pokerapp.Hand;
+import pokerapp.scorer.domain.SameRankSequence;
+import pokerapp.scorer.domain.Spares;
+import pokerapp.utils.Comparator;
+
 /**
  * Created with IntelliJ IDEA.
  * User: steve
@@ -7,5 +12,29 @@ package pokerapp.scorer.scoredhands;
  * Time: 00:42
  * To change this template use File | Settings | File Templates.
  */
-public class RunScoredHand {
+public class RunScoredHand extends AbstractScoredHand<RunScoredHand> {
+
+  private String name;
+  private SameRankSequence sameRankSequence;
+  private Spares spares;
+
+  protected RunScoredHand(int handNumber, Hand hand, String name) {
+    super(handNumber, hand);
+    this.name = name;
+  }
+
+  @Override
+  public String getName() {
+    return name;
+  }
+
+  public int getRank() { return sameRankSequence.getRank(); }
+
+  @Override
+  protected int compareEqualCategories(RunScoredHand rhs) {
+    return Comparator
+        .begin(sameRankSequence, rhs.sameRankSequence)
+        .next(spares, rhs.spares)
+        .compare();
+  }
 }
