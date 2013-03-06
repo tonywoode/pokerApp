@@ -1,5 +1,6 @@
 package pokerapp.scorer.scorers;
 
+import lombok.Getter;
 import pokerapp.Hand;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
@@ -12,17 +13,24 @@ import pokerapp.scorer.scoredhands.ScoredHand;
  */
 public abstract class HandScorer {
   private HandScorer next;
+  /*@Getter*/ private int handNumber = -1;
+
+  protected int getHandNumber() { return handNumber; }
 
   public void setNextResolver(HandScorer next) {
     this.next = next;
   }
 
-  public ScoredHand resolve(Hand hand) {
+  public void setHandNumber(int handNumber) {
+    this.handNumber = handNumber;
+  }
+
+  public ScoredHand score(Hand hand) {
     ScoredHand scoredHand = resolveCore(hand);
     if (scoredHand != null)
       return scoredHand;
     else
-      return next.resolve(hand);
+      return next.score(hand);
   }
 
   protected abstract ScoredHand resolveCore(Hand hand);
