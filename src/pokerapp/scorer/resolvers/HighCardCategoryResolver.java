@@ -3,12 +3,11 @@ package pokerapp.scorer.resolvers;
 import pokerapp.scorer.categories.HighCardCategory;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 02:34
- * To change this template use File | Settings | File Templates.
+ * Will rate the lowest poker hand (AKA no-pair) where the only scoring potential is the highest card of the hand 
+ * @author steve
+ * @version 1.0
  */
+
 public class HighCardCategoryResolver extends HandCategoryResolver {
   public HighCardCategoryResolver() {
     super(new HighCardCategory("highCard"));
@@ -16,6 +15,6 @@ public class HighCardCategoryResolver extends HandCategoryResolver {
 
   @Override
   protected boolean matches(HandCategoryResolverRequest request) throws Exception {
-    return true;
+    return true; //TODO: is this always true or are you mocking?
   }
 }

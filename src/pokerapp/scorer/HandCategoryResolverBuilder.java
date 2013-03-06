@@ -7,10 +7,9 @@ import java.util.ArrayList;
 
 /**
  * Builds the categories of scoring hands and returns the ordered list of them
- * User: steve
- * Date: 22/02/13
- * Time: 01:55
- * To change this template use File | Settings | File Templates.
+ * @author Steve
+ * @version 1.0
+ * TODO: I'd like to call this a factory, if it's not a factory steve, what is it? TW
  */
 public class HandCategoryResolverBuilder {
 
