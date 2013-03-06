@@ -28,4 +28,5 @@ public class StraightScoredHand extends AbstractScoredHand<StraightScoredHand> {
   public String getName() {
     return "Straight";
   }
+
 }
