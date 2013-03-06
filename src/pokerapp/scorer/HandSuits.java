@@ -52,4 +52,11 @@ public class HandSuits {
         return false;
     }
 
+    public boolean hasCount(int count) {
+      for (int iter = 1; iter <= Constants.NUM_SUITS; ++iter)
+        if (suit_histogram[iter] == count)
+          return true;
+      return false;
+    }
+
 }
