@@ -15,10 +15,17 @@ import static org.junit.Assert.assertFalse;
  *
  */
 public class StraightHandCategoryResolverTestFixture extends HandCategoryResolverTestFixtureBase {
-     //TODO: wheel evaluator
+
     //TODO: could perhaps use Sam's permutator or variation thereof to populate test cases
     public StraightHandCategoryResolverTestFixture(){
         super(new StraightHandCategoryResolver());
+    }
+
+    @Test
+    public void Hand_Is_Wheel() {
+      HandCategory category = resolveHand("D2", "S3", "C4", "D5", "H14");
+
+      assertEquals("Is straight", "straight", category.getName());
     }
 
     @Test
@@ -33,13 +40,6 @@ public class StraightHandCategoryResolverTestFixture extends HandCategoryResolve
 
         assertEquals("Is straight", "straight", category.getName());
     }
-
-  @Test
-  public void Hand_Is_Wheel() {
-    HandCategory category = resolveHand("D2", "S3", "C4", "D5", "H14");
-
-    assertEquals("Is straight", "straight", category.getName());
-  }
 
     @Test
     public void Hand_Is_Not_Straight() {

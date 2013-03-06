@@ -45,7 +45,7 @@ public class HandFactory {
  * @throws IllegalArgumentException
  */
   private Card createCard(String card) throws IllegalArgumentException {
-    if (card.length() < Constants.LEN_CARD || card.length() > 1 + Constants.LEN_CARD)
+    if (card.length() < Constants.LEN_CARD || card.length() > 3 + Constants.LEN_CARD)
       throw new IllegalArgumentException("Illegal card name: " + card);
 
     Suit suit = Suit.from(card.charAt(0));

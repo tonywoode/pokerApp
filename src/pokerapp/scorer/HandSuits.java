@@ -36,7 +36,7 @@ public class HandSuits {
    //second ctor takes a hand summary
     public HandSuits(HandGrid handGrid){
 
-        for(int j = 1; j < Constants.NUM_RANKS + 1; j++) {
+        for(int j = 1; j < Constants.HIST_SIZE; j++) {
             for(int i = 1; i < Constants.NUM_SUITS + 1; i++) {
                suit_histogram[i] = suit_histogram[i] + handGrid.matrix[i][j];
             }

@@ -20,7 +20,7 @@ import pokerapp.utils.ReverseArrayIterator;
 public class HandRanks {
 
 
-  public int[] rank_histogram = new int[Constants.NUM_RANKS];
+  public int[] rank_histogram = new int[Constants.HIST_SIZE];
   private boolean acesLow;
 
   //first ctor takes a hand
@@ -33,7 +33,7 @@ public class HandRanks {
   //second ctor takes a hand summary
   public HandRanks(HandGrid handGrid){
 
-    for(int j = 1; j < Constants.NUM_RANKS + 1; j++) {
+    for(int j = 1; j < Constants.HIST_SIZE; j++) {
         for(int i = 1; i < Constants.NUM_SUITS + 1; i++) {
             rank_histogram[j] = rank_histogram[j] + handGrid.matrix[i][j];
         }
@@ -72,50 +72,12 @@ public class HandRanks {
   */
 
   public int getRankOfMultiple(int numCards) throws Exception {
-    for (int iter = Constants.NUM_RANKS -1; iter >= 0; --iter)
+    for (int iter = Constants.MAX_RANKS; iter >= 0; --iter)
       if (rank_histogram[iter] == numCards)
         return iter;
 
     throw new Exception(String.valueOf(numCards) + " of a kind does not exist in hand");
   }
 
-  /**
-   * @return boolean indicating whether the histogram is treating aces as being low
-   * 
-   */
-  //TODO: not sure this is still needed
-  public boolean isAcesLow() {
-    return acesLow;
-  }
 
-  /**
-   * Change the Aces Low flag
-   * @param acesLow
-   */
-  // TODO: should this not be private? Are clients supposed to use this directly?
-  public void setAcesLow(boolean acesLow) {
-    this.acesLow = acesLow;
-  }
-
-  /**
-   * Changes the histogram to treat Aces as being Low. Aces continue to be treated as High as well.
-   */
-  // TODO: can we not have a single function that does this, depending on a boolean flag?
-  public void lowAcesOn(){
-      if(rank_histogram[Constants.NUM_RANKS] != 0){
-           rank_histogram[1] = rank_histogram[Constants.NUM_RANKS];
-           rank_histogram[Constants.NUM_RANKS] = 0;
-           setAcesLow(true);
-      }
-  }
-  /**
-   *  Changes the histogram to treat Aces as being High. Aces will no longer be treated as Low.
-   */
-  public void lowAcesOff(){
-      if(rank_histogram[1] != 0){
-          rank_histogram[Constants.NUM_RANKS] = rank_histogram[1];
-          rank_histogram[1] = 0;
-          setAcesLow(false);
-      }
-  }
 }
