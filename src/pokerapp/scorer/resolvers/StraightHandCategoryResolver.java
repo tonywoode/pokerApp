@@ -23,6 +23,10 @@ public class StraightHandCategoryResolver extends HandCategoryResolver {
   }
 
   private boolean isStraight(Hand hand) {
+    // edit: sdf; HandRanks no longer supports aces low/high toggle
+    return false;
+
+    /*
       HandRanks handRanks = new HandRanks(hand);
     if (isStraight(handRanks))
           return true;
@@ -32,6 +36,7 @@ public class StraightHandCategoryResolver extends HandCategoryResolver {
           handRanks.lowAcesOff();
           return  retval;
        }
+    */
   }
 
   private boolean isStraight(HandRanks handRanks) {
