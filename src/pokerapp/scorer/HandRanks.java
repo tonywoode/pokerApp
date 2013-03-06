@@ -20,7 +20,7 @@ import pokerapp.utils.ReverseArrayIterator;
 public class HandRanks {
 
 
-  int[] rank_histogram = new int[Constants.NUM_RANKS];
+  public int[] rank_histogram = new int[Constants.NUM_RANKS];
   private boolean acesLow;
 
   //first ctor takes a hand
@@ -76,14 +76,14 @@ public class HandRanks {
       if (rank_histogram[iter] == numCards)
         return iter;
 
-    throw new Exception(new StringBuilder().append(numCards).append(" of a kind does not exist in hand").toString());
+    throw new Exception(String.valueOf(numCards) + " of a kind does not exist in hand");
   }
 
   /**
    * @return boolean indicating whether the histogram is treating aces as being low
    * 
    */
-  //TODO: make code nicer
+  //TODO: not sure this is still needed
   public boolean isAcesLow() {
     return acesLow;
   }

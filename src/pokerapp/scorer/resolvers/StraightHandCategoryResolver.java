@@ -5,11 +5,11 @@ import pokerapp.scorer.HandRanks;
 import pokerapp.scorer.categories.StraightHandCategory;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 01:58
- * To change this template use File | Settings | File Templates.
+ * StraightHandCategoryResolver
+ * Steve + Ari
+ *
+ *
+ *
  */
 public class StraightHandCategoryResolver extends HandCategoryResolver {
 
@@ -28,13 +28,20 @@ public class StraightHandCategoryResolver extends HandCategoryResolver {
           return true;
     else {
           handRanks.lowAcesOn();
-          boolean retval = (isStraight(handRanks));
+          boolean isstraight = (isStraight(handRanks));
           handRanks.lowAcesOff();
-          return  retval;
+          return  isstraight;
        }
   }
 
   private boolean isStraight(HandRanks handRanks) {
-      return(handRanks.toString().contains("11111"));
+
+    StringBuilder builder = new StringBuilder();
+    for (int count_at_rank : handRanks.rank_histogram) {
+      builder.append(count_at_rank);
+    }
+    String rank_counts = builder.toString();
+    return(rank_counts.contains("11111"));
   }
 }
+
