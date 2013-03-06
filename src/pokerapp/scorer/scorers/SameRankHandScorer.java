@@ -2,7 +2,6 @@ package pokerapp.scorer.scorers;
 
 import pokerapp.Hand;
 import pokerapp.scorer.HandRanks;
-import pokerapp.scorer.scoredhands.RunScoredHand;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
 /**
@@ -12,24 +11,25 @@ import pokerapp.scorer.scoredhands.ScoredHand;
  * Time: 01:25
  * To change this template use File | Settings | File Templates.
  */
-public class SameRankHandResolver extends ScoredHandResolver {
+public class SameRankHandScorer extends HandScorer {
   private int rankValue, rankCount;
 
-  public SameRankHandResolver(String name, int rankValue, int rankCount) {
+  public SameRankHandScorer(String name, int rankValue, int rankCount) {
     this.rankValue = rankValue;
     this.rankCount = rankCount;
   }
 
   @Override
   protected ScoredHand resolveCore(Hand hand) {
-    HandRanks rh = new HandRanks(hand);
-    if (rh.find(rankValue) == rankCount)
+    HandRanks hr = new HandRanks(hand);
+    //if (hr.find(rankValue) == rankCount)
       return createHandCategory(hand, rh);
-    else
+    //else
       return null;
   }
 
-  protected ScoredHand createHandCategory(Hand hand, RankHistogram) {
-    return new RunScoredHand(hand, Spares.create(hand, ???));
+  protected ScoredHand createHandCategory(Hand hand, HandRanks hr) {
+    return null;
+    //return new RunScoredHand(hand, Spares.create(hand, ???));
   }
 }
