@@ -16,7 +16,7 @@ public class HandGrid {
 
     private Hand hand;
 
-    public int [][] matrix = new int[Constants.NUM_SUITS + 1][Constants.NUM_RANKS + 1];
+    public int [][] matrix = new int[Constants.NUM_SUITS + 1][Constants.HIST_SIZE];
 
     public HandGrid(Hand other_hand){
         this.hand = other_hand;

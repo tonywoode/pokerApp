@@ -3,13 +3,14 @@ package pokerapp.scorer.resolvers;
 import pokerapp.Hand;
 import pokerapp.scorer.HandRanks;
 import pokerapp.scorer.categories.StraightHandCategory;
+import pokerapp.utils.Constants;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 01:58
- * To change this template use File | Settings | File Templates.
+ * StraightHandCategoryResolver
+ * Steve + Ari
+ *
+ *
+ *
  */
 public class StraightHandCategoryResolver extends HandCategoryResolver {
 
@@ -24,17 +25,28 @@ public class StraightHandCategoryResolver extends HandCategoryResolver {
 
   private boolean isStraight(Hand hand) {
       HandRanks handRanks = new HandRanks(hand);
-    if (isStraight(handRanks))
-          return true;
-    else {
-          handRanks.lowAcesOn();
-          boolean retval = (isStraight(handRanks));
-          handRanks.lowAcesOff();
-          return  retval;
-       }
+    return (isStraight(handRanks));
   }
 
   private boolean isStraight(HandRanks handRanks) {
-      return(handRanks.toString().contains("11111"));
+
+    StringBuilder build_rank_counts = new StringBuilder();
+    for (int count_at_rank : handRanks.rank_histogram) {
+      build_rank_counts.append(count_at_rank);
+    }
+    String rank_counts = build_rank_counts.toString();
+
+    if(rank_counts.contains("11111")){
+      return true;
+    }
+    else{
+      //check wheel by copying aces to slot 1 (for low aces)
+      char hi_ace_count = rank_counts.charAt(Constants.MAX_RANKS);
+      StringBuilder builder_check_wheel = new StringBuilder(rank_counts);
+      builder_check_wheel.setCharAt(1, hi_ace_count);
+      String check_wheel = builder_check_wheel.toString();
+      return (check_wheel.contains("11111"));
+    }
   }
 }
+

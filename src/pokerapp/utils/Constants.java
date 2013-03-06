@@ -5,7 +5,7 @@ package pokerapp.utils;
  * User: Ari
  * Date: 26/02/13
  * Time: 12:50
- * To change this template use File | Settings | File Templates.
+ *
  */
 
 /**
@@ -21,7 +21,8 @@ public class Constants {
     private Constants() {}    //singleton
 
     public static final int NUM_SUITS = 4;
-    public static final int NUM_RANKS = 14;
+    public static final int MAX_RANKS = 14;
+    public static final int HIST_SIZE = 15;
     public static final int HAND_SIZE = 5;         //We are implementing a 5-card poker variant
     public static final int DECK_SIZE = 52;
     public static final int RANK_ACE_LO = 1;

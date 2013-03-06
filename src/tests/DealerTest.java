@@ -29,7 +29,7 @@ public class DealerTest {
 		//test that every player has a set of independent cards
 
         for(Suit suit : Suit.AllSuits ){
-            for(int rank = 0; rank < Constants.NUM_RANKS; rank++) {
+            for(int rank = 0; rank < Constants.MAX_RANKS; rank++) {
                 Card c = new Card(suit, rank);
                 cardMap.put(c.toString(),c);
             }
