@@ -18,9 +18,11 @@ public class RunScoredHand extends AbstractScoredHand<RunScoredHand> {
   private SameRankSequence sameRankSequence;
   private Spares spares;
 
-  protected RunScoredHand(int handNumber, Hand hand, String name) {
+  public RunScoredHand(int handNumber, Hand hand, String name, SameRankSequence sameRankSequence, Spares spares) {
     super(handNumber, hand);
     this.name = name;
+    this.sameRankSequence = sameRankSequence;
+    this.spares = spares;
   }
 
   @Override
