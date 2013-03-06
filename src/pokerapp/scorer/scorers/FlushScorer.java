@@ -18,7 +18,7 @@ public class FlushScorer extends HandScorer {
   @Override
   protected ScoredHand resolveCore(Hand hand) {
     if (new HandSuits(hand).hasCount(NUM_CARDS_IN_FLUSH))
-      return new FlushScoredHand("flush", hand);
+      return new FlushScoredHand(getHandNumber(), hand);
     else
       return null;
   }

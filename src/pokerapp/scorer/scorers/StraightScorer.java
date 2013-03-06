@@ -12,14 +12,16 @@ import pokerapp.scorer.scoredhands.StraightScoredHand;
  * Time: 01:15
  * To change this template use File | Settings | File Templates.
  */
-public class StraightScorer {
+public class StraightScorer extends HandScorer {
   private static final int NUM_CARDS_IN_STRAIGHT = 5;
 
   protected ScoredHand resolveCore(Hand hand) {
     HandRanks rh = new HandRanks(hand);
-    //if (("1" + rh.toString()).contains(String. "1".repeat(NUM_CARDS_IN_STRAIGHT)))
+    int rank = 0;
+
+    // TODO: fix hardcoded "11111"; would like: "1".repeat(NUM_CARDS_IN_STRAIGHT)
     if (("1" + rh.toString()).contains("11111"))
-      return new StraightScoredHand(getHandNmber(), hand);
+      return new StraightScoredHand(getHandNumber(), hand, rank);
     else
       return null;
   }
