@@ -4,6 +4,7 @@ import org.junit.Test;
 import pokerapp.Hand;
 import pokerapp.scorer.categories.HandCategory;
 import pokerapp.scorer.resolvers.FlushHandCategoryResolver;
+import tests.scorer.resolvers.HandCategoryResolverTestFixtureBase.NullResolver;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
@@ -18,6 +19,7 @@ import static org.junit.Assert.assertSame;
 public class FlushHandCategoryResolverTestFixture extends HandCategoryResolverTestFixtureBase {
     public FlushHandCategoryResolverTestFixture() {
         super(new FlushHandCategoryResolver());
+        getResolver().setNextScorer(null);
     }
 
     @Test // TODO: these should use data providers...
