@@ -1,5 +1,6 @@
 package pokerapp;
 
+import lombok.Data;
 import lombok.Getter;
 import pokerapp.utils.Constants;
 
@@ -9,7 +10,7 @@ import pokerapp.utils.Constants;
  * @author Steve
  * @version 1.0
  */
-public class Card {
+@Data public class Card {
   @Getter private Suit suit;
   @Getter private int rank;
 
