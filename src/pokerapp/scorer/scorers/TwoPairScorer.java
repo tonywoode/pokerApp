@@ -18,26 +18,9 @@ import pokerapp.utils.ReverseArrayIterator;
 public class TwoPairScorer extends SameRankHandScorer {
   private static final int SPARE_COUNT = 1;
 
-  public TwoPairScorer(String name, int rankValue, int rankCount) {
-    super(name, rankValue, rankCount);
+  public TwoPairScorer() {
+    super(null /* TODO: hacky */, 2, 2);
   }
-
-
-  @Override
-  protected ScoredHand resolveCore(Hand hand) {
-    return null;
-
-    /*
-    Pair highPair = Pair.from(hand, rh.highest(rankValue)),
-         lowPair  = Pair.from(hand, rh.lowest(rankValue));
-
-    Spares spares = Spares.from(hand, rh.findWith(SPARE_COUNT));
-
-    return new TwoPairRunHandCategory(highPair, lowPair, spares);
-    */
-  }
-
-
 
   protected ScoredHand createHandCategory(Hand hand, HandRanks hr) {
     try {
