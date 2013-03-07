@@ -7,6 +7,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import pokerapp.Card;
+import pokerapp.Suit;
+import pokerapp.console.Deck;
+import org.junit.Test;
+
 /**
  * @author Tony
  *
@@ -23,14 +28,6 @@ public class DeckTest {
 	}
 
 	/**
-	 * Test method for {@link pokerapp.console.Deck#shuffle()}.
-	 */
-	@Test
-	public final void testShuffle() {
-		//we won't test collection functions
-	}
-
-	/**
 	 * Test method for {@link pokerapp.console.Deck#pop()}.
 	 */
 	@Test
@@ -39,6 +36,12 @@ public class DeckTest {
 		//check that the number of cards has reduced by one
 		//check that you are being returned a card
 		
+		Deck testDeck = new Deck(true);
+		testDeck.create(new Card(Suit.Hearts, 13));
+		Card c = testDeck.pop();
+		
+		assertEquals(13,c.getRank());
+		assertTrue(!testDeck.iterator().hasNext());
 	}
 
 	/**
@@ -46,7 +49,17 @@ public class DeckTest {
 	 */
 	@Test
 	public final void testReturnToBottom() {
-		//pop card, check card, return to bottom, check bottom
+		Deck testDeck = new Deck(true);
+		testDeck.create(new Card(Suit.Hearts, 13));
+		testDeck.create(new Card(Suit.Diamonds, 11));
+		Card c = testDeck.pop();
+
+		testDeck.returnToBottom(c);
+		
+		iter i = testDeck.iterator();
+		
+		assertEquals(13, i.next().getRank());
+		assertEquals(11, i.next().getRank());
 	}
 
 }

@@ -1,6 +1,7 @@
 package pokerapp.console;
 
 import pokerapp.Card;
+import pokerapp.Suit;
 import pokerapp.utils.Constants;
 
 import java.util.ArrayList;
@@ -20,13 +21,20 @@ public class Deck implements Iterable<Card> {
 	private ArrayList<Card> arrayDeck; //TODO: singleton ?
 
   public Deck() {
-	  //Card.getCards()
-	  //deck.create(Card card)
+      for(Suit suit : Suit.AllSuits ){
+          for(int rank = 0; rank < Constants.MAX_RANKS; rank++) {
+              Card c = new Card(suit, rank);
+              arrayDeck.add(c);
+          }
+      }
   }
 	  
-	  
+
+  public Deck(boolean isEmpty) {
+
+  }
+  
 	public ArrayList<Card> create(Card card) throws IndexOutOfBoundsException { 
-    // create all 52 deck...
 		    if (arrayDeck.size() >= Constants.DECK_SIZE)
 	        throw new IndexOutOfBoundsException("Deck is full");
 		    
