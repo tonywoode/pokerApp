@@ -1,8 +1,9 @@
 package tests.scorer.resolvers;
 
 import org.junit.Test;
-import pokerapp.scorer.categories.HandCategory;
-import pokerapp.scorer.resolvers.RankedHandCategoryResolver;
+import pokerapp.scorer.scoredhands.ScoredHand;
+import pokerapp.scorer.scorers.SameRankHandScorer;
+import pokerapp.scorer.scorers.TwoPairScorer;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,22 +17,20 @@ import static org.junit.Assert.assertEquals;
 public class TwoPairHandScorerTest extends HandScorerTestFixtureBase {
 
     public TwoPairHandScorerTest() {
-        super(new RankedHandCategoryResolver("2pair", 2, 2));
+      super(new TwoPairScorer());
     }
 
     @Test // TODO: these should use data providers...
     public void HandIsTwoPair_first4() {
-        HandCategory category = resolveHand("D4", "S4", "D3", "C3", "C5");
+      ScoredHand hand = resolveHand("D4", "S4", "D3", "C3", "C5");
 
-        assertEquals("Is two", "2pair", category.getName());
+      assertEquals("Is two", "Two pair", hand.getName());
     }
 
     @Test // TODO: these should use data providers...
     public void HandIsNotTwoPair() {
-        HandCategory category = resolveHand("D4", "S4", "C2", "C3", "C5");
+      ScoredHand hand = resolveHand("D4", "S4", "C2", "C3", "C5");
 
-        assertEquals("Is not two", null, category);
+      assertEquals("Is not two", null, hand);
     }
-
-
 }

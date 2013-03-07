@@ -2,7 +2,10 @@ package tests.scorer.resolvers;
 
 import org.junit.Test;
 import pokerapp.Hand;
+import pokerapp.scorer.scoredhands.ScoredHand;
+import pokerapp.scorer.scorers.FlushScorer;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 /**
@@ -14,14 +17,14 @@ import static org.junit.Assert.assertFalse;
  */
 public class FlushHandScorerTestFixture extends HandScorerTestFixtureBase {
     public FlushHandScorerTestFixture() {
-        super(new FlushHandCategoryResolver());
+        super(new FlushScorer());
     }
 
     @Test // TODO: these should use data providers...
     public void Simple_Flush() {
-        HandCategory category = resolveHand("D4", "D5", "D6", "D7", "D9");
+      ScoredHand hand = resolveHand("D4", "D5", "D6", "D7", "D9");
 
-        assert("flush".equals(category.getName()));
+      assert("Flush".equals(hand.getName())); // changed capitalisation; TODO: fix this!
     }
 
     // permutation will need a way of passing hand resolver a hand rather than a string
@@ -50,25 +53,29 @@ public class FlushHandScorerTestFixture extends HandScorerTestFixtureBase {
 
     @Test // TODO: these should use data providers...
     public void HandIsNotFlush() {
-        HandCategory category = resolveHand("D4", "D3", "D1", "D5", "C6");
+      ScoredHand hand = resolveHand("D4", "D3", "D1", "D5", "C6");
 
-        assertFalse("flush".equals(category.getName()));
+      // This won't work because hand will be null
+      //assertFalse("flush".equals(hand.getName()));
+
+      // TODO: perhaps we should return a NullScoredHand to indicate the hand wasn't matched?
+
+      assertEquals(null, hand);
     }
 
     @Test
     public void CompareHands_RhsWins() {
-        Hand lhs = createHand("D3", "D5", "D6", "D7", "D9"),
-                rhs = createHand("D4", "D5", "D6", "D7", "D9");
+      Hand lhs = createHand("D3", "D5", "D6", "D7", "D9"),
+           rhs = createHand("D4", "D5", "D6", "D7", "D9");
 
-        verifyWinner(lhs, rhs, rhs);
+      verifyWinner(lhs, rhs, rhs);
     }
 
     @Test
     public void CompareHands_LhsWins() {
         Hand lhs = createHand("D4", "D5", "D6", "D7", "D9"),
-                rhs = createHand("D4", "D5", "D6", "D7", "D8");
+             rhs = createHand("D4", "D5", "D6", "D7", "D8");
 
         verifyWinner(lhs, rhs, lhs);
     }
-
 }

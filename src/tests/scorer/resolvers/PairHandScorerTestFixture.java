@@ -4,8 +4,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import pokerapp.Hand;
-import pokerapp.scorer.categories.HandCategory;
-import pokerapp.scorer.resolvers.RankedHandCategoryResolver;
+import pokerapp.scorer.scoredhands.ScoredHand;
+import pokerapp.scorer.scorers.SameRankHandScorer;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,42 +18,42 @@ import pokerapp.scorer.resolvers.RankedHandCategoryResolver;
 public class PairHandScorerTestFixture extends HandScorerTestFixtureBase {
 
   public PairHandScorerTestFixture() {
-    super(new RankedHandCategoryResolver("pair", 2));
+    super(new SameRankHandScorer("pair", 2, 1));
   }
 
   @Test // TODO: these should use data providers...
   public void HandIsPair_first2() {
-    HandCategory category = resolveHand("D4", "S4", "C2", "C3", "C5");
+    ScoredHand hand = resolveHand("D4", "S4", "C2", "C3", "C5");
 	
-	  assertEquals("Is pair", "pair", category.getName());
+	  assertEquals("Is pair", "pair", hand.getName());
   }
   
   @Test
   public void HandIsPair_second2() {
-    HandCategory category = resolveHand("C2", "D4", "S4", "C3", "C5");
+    ScoredHand hand = resolveHand("C2", "D4", "S4", "C3", "C5");
 
-    assertEquals("Is pair", "pair", category.getName());
+    assertEquals("Is pair", "pair", hand.getName());
   }
   
   @Test
   public void HandIsPair_third2() {
-    HandCategory category = resolveHand("C2", "C3", "D4", "S4", "C5");
+    ScoredHand hand = resolveHand("C2", "C3", "D4", "S4", "C5");
 
-    assertEquals("Is pair", "pair", category.getName());
+    assertEquals("Is pair", "pair", hand.getName());
   }  
   
   @Test
   public void HandIsPair_fourth2() {
-    HandCategory category = resolveHand("C2", "C3", "C5", "D4", "S4");
+    ScoredHand hand = resolveHand("C2", "C3", "C5", "D4", "S4");
 
-    assertEquals("Is pair", "pair", category.getName());
+    assertEquals("Is pair", "pair", hand.getName());
   }    
 
   @Test
   public void HandIsNotPair() {
-    HandCategory category = resolveHand("D4", "S3");
+    ScoredHand hand = resolveHand("D4", "S3");
 	
-	  assertSame("Is pair", null, category);
+	  assertSame("Is pair", null, hand);
   }
   
 

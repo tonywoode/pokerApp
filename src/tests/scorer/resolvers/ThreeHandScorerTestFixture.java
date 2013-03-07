@@ -1,8 +1,8 @@
 package tests.scorer.resolvers;
 
 import org.junit.Test;
-import pokerapp.scorer.categories.HandCategory;
-import pokerapp.scorer.resolvers.RankedHandCategoryResolver;
+import pokerapp.scorer.scoredhands.ScoredHand;
+import pokerapp.scorer.scorers.SameRankHandScorer;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,21 +16,21 @@ import static org.junit.Assert.assertEquals;
 public class ThreeHandScorerTestFixture extends HandScorerTestFixtureBase {
 
   public ThreeHandScorerTestFixture() {
-    super(new RankedHandCategoryResolver("three", 3));
+    super(new SameRankHandScorer("three", 3, 1));
   }
 
      @Test // TODO: these should use data providers...
     public void HandIsThree_first3() {
-        HandCategory category = resolveHand("D4", "S4", "C4", "C3", "C5");
+      ScoredHand hand = resolveHand("D4", "S4", "C4", "C3", "C5");
 
-        assertEquals("Is three", "three", category.getName());
+      assertEquals("Is three", "three", hand.getName());
     }
 
     @Test // TODO: these should use data providers...
     public void HandIsNotThree() {
-        HandCategory category = resolveHand("D4", "S4", "C2", "C3", "C5");
+      ScoredHand hand = resolveHand("D4", "S4", "C2", "C3", "C5");
 
-        assertEquals("Is not three", null, category);
+      assertEquals("Is not three", null, hand);
     }
 
 

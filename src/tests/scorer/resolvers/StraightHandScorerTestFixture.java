@@ -1,8 +1,8 @@
 package tests.scorer.resolvers;
 
 import org.junit.Test;
-import pokerapp.scorer.categories.HandCategory;
-import pokerapp.scorer.resolvers.StraightHandCategoryResolver;
+import pokerapp.scorer.scoredhands.ScoredHand;
+import pokerapp.scorer.scorers.StraightScorer;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,28 +14,28 @@ import static org.junit.Assert.assertEquals;
  * To change this template use File | Settings | File Templates.
  */
 public class StraightHandScorerTestFixture extends HandScorerTestFixtureBase {
-     //TODO: this is just a stub, need to understand the (elegant) class structure
-    //TODO: could perhaps use Sam's permutator or variation thereof to populate test cases
-    public StraightHandScorerTestFixture(){
-        super(new StraightHandCategoryResolver());
+    //TODO: this is just a stub, need to understand the (elegant) class structure
+    //TODO: could perhaps use Sam's permutation or variation thereof to populate test cases
+    public StraightHandScorerTestFixture() {
+      super(new StraightScorer());
     }
 
     @Test
     public void Hand_Is_Straight_in_order() {
-        HandCategory category = resolveHand("D2", "S3", "C4", "D5", "H6");
+      ScoredHand hand = resolveHand("D2", "S3", "C4", "D5", "H6");
 
-        assertEquals("Is straight", "straight", category.getName());
+      assertEquals("Is straight", "Straight", hand.getName());
     }
     @Test
     public void Hand_Is_Straight_not_in_order() {
-        HandCategory category = resolveHand("D3", "S5", "C2", "D4", "H6");
+      ScoredHand hand = resolveHand("D3", "S5", "C2", "D4", "H6");
 
-        assertEquals("Is straight", "straight", category.getName());
+      assertEquals("Is straight", "Straight", hand.getName());
     }
     @Test
     public void Hand_Is_Not_Straight() {
-        HandCategory category = resolveHand("D3", "S9", "C2", "D4", "H6");
+      ScoredHand hand = resolveHand("D3", "S9", "C2", "D4", "H6");
 
-        assertEquals("Is straight", "straight", category.getName());
+      assertEquals("Is straight", null, hand);
     }
 }

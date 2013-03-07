@@ -6,9 +6,8 @@ import static org.junit.Assert.*;
 
 import pokerapp.Hand;
 import pokerapp.HandFactory;
-import pokerapp.scorer.categories.HandCategory;
-import pokerapp.scorer.resolvers.HandCategoryResolver;
-import pokerapp.scorer.resolvers.HandCategoryResolverRequest;
+import pokerapp.scorer.scoredhands.ScoredHand;
+import pokerapp.scorer.scorers.HandScorer;
 
 
 /**
@@ -20,26 +19,21 @@ import pokerapp.scorer.resolvers.HandCategoryResolverRequest;
  */
 public class HandScorerTestFixtureBase {
 
-  private HandCategoryResolver resolver;
-  private HandCategoryResolver nullResolver;
+  private HandScorer scorer;
+  private HandScorer nullScorer;
   private HandFactory handFactory = new HandFactory();
 
-  protected HandScorerTestFixtureBase(HandCategoryResolver resolver) {
-    this.resolver = resolver;
+  protected HandScorerTestFixtureBase(HandScorer scorer) {
+    this.scorer = scorer;
   }
 
-  protected HandCategoryResolver getResolver() {
-    return resolver;
+  protected HandScorer getScorer() {
+    return scorer;
   }
 
-  private class NullResolver extends HandCategoryResolver {
-    private NullResolver() { super(null); }
-
-    @Override
-    public HandCategory resolve(HandCategoryResolverRequest request) throws Exception { return null; }
-
-    @Override
-    protected boolean matches(HandCategoryResolverRequest request) throws Exception { return false; }
+  private class NullScorer extends HandScorer {
+    public ScoredHand score(Hand hand) { return null; }
+    protected ScoredHand resolveCore(Hand hand) { return null;  }
   }
 
   @Before
@@ -50,7 +44,7 @@ public class HandScorerTestFixtureBase {
 
     //getResolver().setNextScorer(nullResolver);
 
-    getResolver().setNextScorer(new NullResolver());
+    getScorer().setNextScorer(new NullScorer());
   }
 
   protected Hand createHand(String... cards) {
@@ -61,17 +55,17 @@ public class HandScorerTestFixtureBase {
     }
   }
 
-  protected HandCategory resolveHand(String... cards) {
-    return getResolver().resolve(createHand(cards));
+  protected ScoredHand resolveHand(String... cards) {
+    return getScorer().score(createHand(cards));
   }
 
   protected Hand pickWinner(Hand lhs, Hand rhs) {
-    HandCategory lhsCat = getResolver().resolve(lhs),
-        rhsCat = getResolver().resolve(rhs);
+    ScoredHand lhsHand = getScorer().score(lhs),
+               rhsHand = getScorer().score(rhs);
 
     int result = 0;
     try {
-      result = lhsCat.compareTo(rhsCat);
+      result = lhsHand.compareTo(rhsHand);
     } catch (Exception e) {
       e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
     }
@@ -90,6 +84,4 @@ public class HandScorerTestFixtureBase {
 
     assertSame("Winner", expectedWinner, winner);
   }
-
-
 }
