@@ -20,7 +20,8 @@ public class ReverseArrayIterator {
   }
 
   public boolean hasPrevious() {
-    return index > src.length;
+    return index >= 0;
+    //return index > src.length;
   }
 
   public int previous() {
