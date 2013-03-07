@@ -1,7 +1,5 @@
 package pokerapp.scorer;
 
-import pokerapp.scorer.categories.RankedHandCategory;
-import pokerapp.scorer.resolvers.*;
 import pokerapp.scorer.scorers.*;
 
 import java.util.ArrayList;
@@ -24,7 +22,7 @@ public class HandScorerBuilder {
     scorers.add(new FlushScorer());
     scorers.add(new StraightScorer());
     scorers.add(new SameRankHandScorer("three", 3, 1));
-    scorers.add(new TwoPairScorer("2pair", 2, 2));
+    scorers.add(new TwoPairScorer());
     scorers.add(new SameRankHandScorer("pair", 2, 1));
     // TODO: implement this....
     //resolvers.add(new HighCardScorer());
