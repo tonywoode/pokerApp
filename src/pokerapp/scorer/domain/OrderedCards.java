@@ -55,7 +55,7 @@ public class OrderedCards implements Comparable<OrderedCards> {
   public int compareTo(OrderedCards rhs) {
     int c = 0;
     for (int iter = 0, max = Math.min(cards.size(), rhs.cards.size()); iter < max; ++iter)
-      if ((c = Integer.compare(cards.get(iter).getRank(), rhs.cards.get(iter).getRank())) == 0)
+      if ((c = Integer.compare(cards.get(iter).getRank(), rhs.cards.get(iter).getRank())) != 0)
         return c;
     return c;
   }
