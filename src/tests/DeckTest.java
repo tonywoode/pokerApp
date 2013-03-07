@@ -5,6 +5,8 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
+
 import org.junit.Test;
 
 import pokerapp.Card;
@@ -56,7 +58,7 @@ public class DeckTest {
 
 		testDeck.returnToBottom(c);
 		
-		iter i = testDeck.iterator();
+		Iterator<Card> i = testDeck.iterator();
 		
 		assertEquals(13, i.next().getRank());
 		assertEquals(11, i.next().getRank());
