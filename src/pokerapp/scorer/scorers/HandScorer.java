@@ -17,7 +17,7 @@ public abstract class HandScorer {
 
   protected int getHandNumber() { return handNumber; }
 
-  public void setNextResolver(HandScorer next) {
+  public void setNextScorer(HandScorer next) {
     this.next = next;
   }
 
