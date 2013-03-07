@@ -1,11 +1,12 @@
 package pokerapp.console;
 
 import lombok.Getter;
-import pokerapp.scorer.HandCategoryResolverBuilder;
-import pokerapp.scorer.categories.HandCategory;
-import pokerapp.scorer.resolvers.HandCategoryResolver;
+import pokerapp.scorer.HandScorerBuilder;
+import pokerapp.scorer.scoredhands.ScoredHand;
+import pokerapp.scorer.scorers.HandScorer;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -14,13 +15,13 @@ import java.util.List;
  * @version 1.0
  */
 
-public class Players {
+public class Players implements Iterable<Player> {
 
 
 
   @Getter
   ArrayList<Player> players = new ArrayList<Player>();
-  HandCategoryResolver resolver = new HandCategoryResolverBuilder().create();
+  HandScorer scorer = new HandScorerBuilder().create();
 
   public Players(Player... players) {
     for (Player player : players)
@@ -51,8 +52,8 @@ public class Players {
    * @return the player with the higher hand grade TODO: and their score?
    */
   protected Player pickWinner(Player lhs, Player rhs) {
-    HandCategory lhsCat = resolver.resolve(lhs.getHand()),
-                 rhsCat = resolver.resolve(rhs.getHand());
+    ScoredHand lhsCat = scorer.score(lhs.getHand()),
+               rhsCat = scorer.score(rhs.getHand());
 
     int result = 0;
     try {
@@ -69,5 +70,10 @@ public class Players {
       return rhs;
     else
       return lhs;
+  }
+
+  @Override
+  public Iterator<Player> iterator() {
+    return players.iterator();
   }
 }
