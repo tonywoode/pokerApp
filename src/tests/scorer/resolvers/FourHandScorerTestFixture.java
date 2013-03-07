@@ -14,8 +14,8 @@ import static org.junit.Assert.assertEquals;
  * Time: 19:03
  * To change this template use File | Settings | File Templates.
  */
-public class FourHandCategoryResolverTestFixture extends HandCategoryResolverTestFixtureBase {
-  public FourHandCategoryResolverTestFixture() {
+public class FourHandScorerTestFixture extends HandScorerTestFixtureBase {
+  public FourHandScorerTestFixture() {
     super(new RankedHandCategoryResolver("four", 4));
   }
 

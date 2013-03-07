@@ -15,9 +15,9 @@ import pokerapp.scorer.resolvers.RankedHandCategoryResolver;
  * To change this template use File | Settings | File Templates.
  */
 
-public class PairHandCategoryResolverTestFixture extends HandCategoryResolverTestFixtureBase {
+public class PairHandScorerTestFixture extends HandScorerTestFixtureBase {
 
-  public PairHandCategoryResolverTestFixture() {
+  public PairHandScorerTestFixture() {
     super(new RankedHandCategoryResolver("pair", 2));
   }
 

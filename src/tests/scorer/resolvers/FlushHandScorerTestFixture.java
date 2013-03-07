@@ -2,8 +2,6 @@ package tests.scorer.resolvers;
 
 import org.junit.Test;
 import pokerapp.Hand;
-import pokerapp.scorer.categories.HandCategory;
-import pokerapp.scorer.resolvers.FlushHandCategoryResolver;
 
 import static org.junit.Assert.assertFalse;
 
@@ -14,8 +12,8 @@ import static org.junit.Assert.assertFalse;
  * Time: 21:48
  * To change this template use File | Settings | File Templates.
  */
-public class FlushHandCategoryResolverTestFixture extends HandCategoryResolverTestFixtureBase {
-    public FlushHandCategoryResolverTestFixture() {
+public class FlushHandScorerTestFixture extends HandScorerTestFixtureBase {
+    public FlushHandScorerTestFixture() {
         super(new FlushHandCategoryResolver());
     }
 

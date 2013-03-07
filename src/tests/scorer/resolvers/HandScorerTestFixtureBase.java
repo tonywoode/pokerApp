@@ -18,13 +18,13 @@ import pokerapp.scorer.resolvers.HandCategoryResolverRequest;
  * Time: 18:51
  * To change this template use File | Settings | File Templates.
  */
-public class HandCategoryResolverTestFixtureBase {
+public class HandScorerTestFixtureBase {
 
   private HandCategoryResolver resolver;
   private HandCategoryResolver nullResolver;
   private HandFactory handFactory = new HandFactory();
 
-  protected HandCategoryResolverTestFixtureBase(HandCategoryResolver resolver) {
+  protected HandScorerTestFixtureBase(HandCategoryResolver resolver) {
     this.resolver = resolver;
   }
 

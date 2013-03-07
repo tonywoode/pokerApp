@@ -13,10 +13,10 @@ import static org.junit.Assert.assertEquals;
  * Time: 21:22
  * To change this template use File | Settings | File Templates.
  */
-public class StraightHandCategoryResolverTestFixture extends HandCategoryResolverTestFixtureBase {
+public class StraightHandScorerTestFixture extends HandScorerTestFixtureBase {
      //TODO: this is just a stub, need to understand the (elegant) class structure
     //TODO: could perhaps use Sam's permutator or variation thereof to populate test cases
-    public StraightHandCategoryResolverTestFixture(){
+    public StraightHandScorerTestFixture(){
         super(new StraightHandCategoryResolver());
     }
 
