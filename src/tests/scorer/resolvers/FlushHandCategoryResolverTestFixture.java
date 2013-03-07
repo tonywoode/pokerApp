@@ -6,6 +6,7 @@ import pokerapp.scorer.categories.HandCategory;
 import pokerapp.scorer.resolvers.FlushHandCategoryResolver;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
 
 /**
  * Created with IntelliJ IDEA.
@@ -54,7 +55,7 @@ public class FlushHandCategoryResolverTestFixture extends HandCategoryResolverTe
     public void HandIsNotFlush() {
         HandCategory category = resolveHand("D4", "D3", "D1", "D5", "C6");
 
-        assertFalse("flush".equals(category.getName()));
+        assertSame("Is flush", null, category);
     }
 
     @Test
