@@ -2,9 +2,9 @@ package pokerapp.basicgame;
 
 import pokerapp.Hand;
 import pokerapp.HandFactory;
-import pokerapp.scorer.HandCategoryResolverBuilder;
-import pokerapp.scorer.categories.HandCategory;
-import pokerapp.scorer.resolvers.HandCategoryResolver;
+import pokerapp.scorer.HandScorerBuilder;
+import pokerapp.scorer.scoredhands.ScoredHand;
+import pokerapp.scorer.scorers.HandScorer;
 
 import java.util.Scanner;
 
@@ -30,12 +30,12 @@ public class InteractiveHandEvaluator {
         if (hand == null)
           return; // treat null as signal to exit
 
-        HandCategory category = determineHandCategory(hand);
+        ScoredHand scoredHand = determineHandCategory(hand);
 
-        System.out.println("The hand is: " + category.getName());
+        System.out.println("The hand is: " + scoredHand.getName());
 
         // TODO: not all categories support the notion of a rank; so how is the next line to be handled?
-        System.out.println("It has a rank of: " + category.getRank());
+        // System.out.println("It has a rank of: " + hand.getRank());
 
         } catch (Exception e) {
           System.out.println(e.getMessage());
@@ -63,13 +63,7 @@ public class InteractiveHandEvaluator {
    * @param hand a hand of cards
    * @return categorisation grade
    */
-  private HandCategory determineHandCategory(Hand hand) {
-    HandCategoryResolver resolver = new HandCategoryResolverBuilder().create();
-
-    HandCategory grade = resolver.resolve(hand);
-    return grade;
+  private ScoredHand determineHandCategory(Hand hand) {
+    return new HandScorerBuilder().create().score(hand);
   }
-
-
-
 }

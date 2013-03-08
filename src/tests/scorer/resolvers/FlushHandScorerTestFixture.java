@@ -2,12 +2,11 @@ package tests.scorer.resolvers;
 
 import org.junit.Test;
 import pokerapp.Hand;
-import pokerapp.scorer.categories.HandCategory;
-import pokerapp.scorer.resolvers.FlushHandCategoryResolver;
-import tests.scorer.resolvers.HandCategoryResolverTestFixtureBase.NullResolver;
+import pokerapp.scorer.scoredhands.ScoredHand;
+import pokerapp.scorer.scorers.FlushScorer;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,17 +15,16 @@ import static org.junit.Assert.assertSame;
  * Time: 21:48
  * To change this template use File | Settings | File Templates.
  */
-public class FlushHandCategoryResolverTestFixture extends HandCategoryResolverTestFixtureBase {
-    public FlushHandCategoryResolverTestFixture() {
-        super(new FlushHandCategoryResolver());
-        getResolver().setNextScorer(null);
+public class FlushHandScorerTestFixture extends HandScorerTestFixtureBase {
+    public FlushHandScorerTestFixture() {
+        super(new FlushScorer());
     }
 
     @Test // TODO: these should use data providers...
     public void Simple_Flush() {
-        HandCategory category = resolveHand("D4", "D5", "D6", "D7", "D9");
+      ScoredHand hand = resolveHand("D4", "D5", "D6", "D7", "D9");
 
-        assert("flush".equals(category.getName()));
+      assert("Flush".equals(hand.getName())); // changed capitalisation; TODO: fix this!
     }
 
     // permutation will need a way of passing hand resolver a hand rather than a string
@@ -55,25 +53,29 @@ public class FlushHandCategoryResolverTestFixture extends HandCategoryResolverTe
 
     @Test // TODO: these should use data providers...
     public void HandIsNotFlush() {
-        HandCategory category = resolveHand("D4", "D3", "D1", "D5", "C6");
+      ScoredHand hand = resolveHand("D4", "D3", "D1", "D5", "C6");
 
-        assertSame("Is flush", null, category);
+      // This won't work because hand will be null
+      //assertFalse("flush".equals(hand.getName()));
+
+      // TODO: perhaps we should return a NullScoredHand to indicate the hand wasn't matched?
+
+      assertEquals(null, hand);
     }
 
     @Test
     public void CompareHands_RhsWins() {
-        Hand lhs = createHand("D3", "D5", "D6", "D7", "D9"),
-                rhs = createHand("D4", "D5", "D6", "D7", "D9");
+      Hand lhs = createHand("D3", "D5", "D6", "D7", "D9"),
+           rhs = createHand("D4", "D5", "D6", "D7", "D9");
 
-        verifyWinner(lhs, rhs, rhs);
+      verifyWinner(lhs, rhs, rhs);
     }
 
     @Test
     public void CompareHands_LhsWins() {
         Hand lhs = createHand("D4", "D5", "D6", "D7", "D9"),
-                rhs = createHand("D4", "D5", "D6", "D7", "D8");
+             rhs = createHand("D4", "D5", "D6", "D7", "D8");
 
         verifyWinner(lhs, rhs, lhs);
     }
-
 }

@@ -1,6 +1,7 @@
 package pokerapp.console;
 
 import lombok.Getter;
+import pokerapp.Card;
 import pokerapp.Hand;
 
 /**
@@ -11,12 +12,14 @@ import pokerapp.Hand;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class Player {
-  @Getter  private Hand hand = new Hand();
+  @Getter private Hand hand = new Hand();
 
   public Player() {}
 
   public abstract void playTurn(IConsole console, Deck deck);
 
 
-
+  public void receiveCard(Card card) {
+    hand.add(card);
+  }
 }

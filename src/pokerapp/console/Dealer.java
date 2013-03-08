@@ -8,19 +8,19 @@ package pokerapp.console;
  * To change this template use File | Settings | File Templates.
  */
 public class Dealer {
+  private Deck deck;
 	
-public Dealer(Deck deck) {
-
-	
-}
-	
-	
- public void dealCards(int noOfPlayers, Players players) {
-    //what was int i steve?
-	 //for each player in players giver them 5 cards
+  public Dealer(Deck deck) {
+    this.deck = deck;
   }
-  
- 
-
+	
+	
+  public void dealCards(int numCards, Players players) {
+    for (int iter = 0; iter < numCards; ++iter) {
+      for (Player player : players) {
+        player.receiveCard(deck.pop());
+      }
+    }
+  }
 
 }

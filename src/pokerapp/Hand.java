@@ -1,7 +1,7 @@
 package pokerapp;
 
 
-import pokerapp.scorer.HighLowCardComparator;
+import pokerapp.scorer.domain.Spares;
 import pokerapp.utils.Constants;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class Hand implements Iterable<Card> {
   public ArrayList<Card> getSortedCards() {
     ArrayList<Card> sortedCards = (ArrayList<Card>)cards.clone();
 
-    Collections.sort(sortedCards, new HighLowCardComparator());
+    Collections.sort(sortedCards, new HighToLowCardComparator());
 
     return sortedCards;
   }
@@ -86,5 +86,41 @@ public class Hand implements Iterable<Card> {
    */
   public Card exchange(int pos, Card card) {
     return cards.set(pos, card);
+  }
+
+  // TODO: This package reference is invalid. Should not deleve down there...
+  // TODO: The implementation is poor; lack the time to do it better...
+  public Spares getKickers(int... keepRanks) {
+    ArrayList<Card> spareCards = new ArrayList<Card>();
+
+    for (Card card : cards) {
+      boolean isNotKicker = false;
+      for (int rank : keepRanks) {
+        if (card.getRank() == rank)
+          isNotKicker = true;
+      }
+      if (!isNotKicker)
+        spareCards.add(card);
+    }
+
+    return new Spares(spareCards);
+  }
+
+  // These don't belong here...
+  public Iterable<Card> cardsOfRank(int... ranks) {
+    ArrayList<Card> cardsSubset = new ArrayList<Card>();
+    for (Card card : cards)
+      for (int rank : ranks)
+        if (card.getRank() == rank)
+          cardsSubset.add(card);
+    return cardsSubset;
+  }
+
+  public Iterable<Card> cardsNotOfRank(int rank) {
+    ArrayList<Card> cardsSubset = new ArrayList<Card>();
+    for (Card card : cards)
+      if (card.getRank() != rank)
+        cardsSubset.add(card);
+    return cardsSubset;
   }
 }

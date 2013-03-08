@@ -10,56 +10,54 @@ import java.util.Iterator;
 
 /**
  * Created with IntelliJ IDEA.
- *  @author Tony, Sam, Ari
+ * @author Tony
+ * @author Sam
+ * @author Ari
+ * @author Steve
  * Date: 22/02/13
  * Time: 19:53
- * To change this template use File | Settings | File Templates.
+ *
+ * TODO: here because it was scratch impl for console app
  */
 public class Deck implements Iterable<Card> {
-    //TODO: here because it was scratch impl for console app
 
-	private ArrayList<Card> arrayDeck; //TODO: singleton ?
+	private ArrayList<Card> cards = new ArrayList<Card>();
 
-  public Deck() {
-      for(Suit suit : Suit.AllSuits ){
-          for(int rank = 0; rank < Constants.MAX_RANKS; rank++) {
-              Card c = new Card(suit, rank);
-              arrayDeck.add(c);
-          }
+  private Deck(ArrayList<Card> cards) {
+    this.cards = (ArrayList<Card>)cards.clone();
+    shuffle();
+  }
+
+  private static ArrayList<Card> allCards;
+
+  public static Deck createDeck() {
+    if (allCards == null) {
+      allCards = new ArrayList<Card>();
+      for (Suit suit : Suit.AllSuits) {
+        for (int rank = 0; rank < Constants.NUM_RANKS; ++rank)
+          allCards.add(new Card(suit, rank));
       }
-  }
-	  
-
-  public Deck(boolean isEmpty) {
-
-  }
-  
-	public ArrayList<Card> create(Card card) throws IndexOutOfBoundsException { 
-		    if (arrayDeck.size() >= Constants.DECK_SIZE)
-	        throw new IndexOutOfBoundsException("Deck is full");
-		    
-		    arrayDeck.add(card);
-		    
-		    return arrayDeck;
+    }
+    return new Deck(allCards);
   }
 
   public void shuffle() {
-    Collections.shuffle(arrayDeck);
+    Collections.shuffle(cards);
   }
 
   public Card pop() {
-    Card card = arrayDeck.get(arrayDeck.size() - 1);
-    arrayDeck.remove(card);
+    Card card = cards.get(cards.size() - 1);
+    cards.remove(card);
     return card;
   }
 
   public void returnToBottom(Card card) {
-    arrayDeck.add(0, card);
+    cards.add(0, card);
   }
   
   public Iterator<Card> iterator() {
-	    return arrayDeck.iterator();
-	  }
+	  return cards.iterator();
+	}
   
   
 }

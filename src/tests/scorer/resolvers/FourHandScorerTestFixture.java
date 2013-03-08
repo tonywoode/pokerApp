@@ -2,8 +2,8 @@ package tests.scorer.resolvers;
 
 import org.junit.Test;
 import pokerapp.Hand;
-import pokerapp.scorer.categories.HandCategory;
-import pokerapp.scorer.resolvers.RankedHandCategoryResolver;
+import pokerapp.scorer.scoredhands.ScoredHand;
+import pokerapp.scorer.scorers.SameRankHandScorer;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,23 +14,23 @@ import static org.junit.Assert.assertEquals;
  * Time: 19:03
  * To change this template use File | Settings | File Templates.
  */
-public class FourHandCategoryResolverTestFixture extends HandCategoryResolverTestFixtureBase {
-  public FourHandCategoryResolverTestFixture() {
-    super(new RankedHandCategoryResolver("four", 4));
+public class FourHandScorerTestFixture extends HandScorerTestFixtureBase {
+  public FourHandScorerTestFixture() {
+    super(new SameRankHandScorer("four", 4, 1));
   }
 
   @Test // TODO: these should use data providers...
   public void HandIsFour_first3() {
-    HandCategory category = resolveHand("D4", "S4", "C4", "H4", "C5");
+    ScoredHand hand= resolveHand("D4", "S4", "C4", "H4", "C5");
 
-    assertEquals("Is four", "four", category.getName());
+    assertEquals("Is four", "four", hand.getName());
   }
 
   @Test // TODO: these should use data providers...
   public void HandIsNotThree() {
-    HandCategory category = resolveHand("D4", "S4", "C4", "H3", "C5");
+    ScoredHand hand = resolveHand("D4", "S4", "C4", "H3", "C5");
 
-    assertEquals("Is not four", null, category);
+    assertEquals("Is not four", null, hand);
   }
 
   @Test
