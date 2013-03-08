@@ -6,10 +6,6 @@ import pokerapp.utils.Constants;
 import pokerapp.utils.ReverseArrayIterator;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve  + Ari
- * Date: 22/02/13
- * Time: 00:57
  *
  * @author Steve Faulmann
  * @author Ari Ghosh
@@ -22,12 +18,12 @@ import pokerapp.utils.ReverseArrayIterator;
  *
  * 2013-03-06 (sdf):
  *   Simplified interface.
- *   Moved string representation to the toString method.
- *   Removed aces low/high code
+ *   Moved string representation to the toString method. << nice
+ *   Removed aces low/high code  TODO: Steve, I'd already done this?
  *
  */
 public class HandRanks {
-  int[] rank_histogram = new int[Constants.NUM_RANKS];
+  int[] rank_histogram = new int[Constants.HIST_SIZE];
 
   //first ctor takes a hand
   public HandRanks(Hand hand) {
@@ -39,7 +35,7 @@ public class HandRanks {
   //second ctor takes a hand summary
   public HandRanks(HandGrid handGrid){
 
-    for(int j = 1; j < Constants.NUM_RANKS + 1; j++) {
+    for(int j = 1; j <= Constants.HIST_SIZE; j++) {
         for(int i = 1; i < Constants.NUM_SUITS + 1; i++) {
             rank_histogram[j] = rank_histogram[j] + handGrid.matrix[i][j];
         }

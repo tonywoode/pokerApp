@@ -14,10 +14,18 @@ import static org.junit.Assert.assertEquals;
  * To change this template use File | Settings | File Templates.
  */
 public class StraightHandScorerTestFixture extends HandScorerTestFixtureBase {
-    //TODO: this is just a stub, need to understand the (elegant) class structure
+
     //TODO: could perhaps use Sam's permutation or variation thereof to populate test cases
+
     public StraightHandScorerTestFixture() {
       super(new StraightScorer());
+    }
+
+    @Test
+    public void Hand_Is_Wheel() {
+      ScoredHand hand = resolveHand("D2", "S3", "C4", "D5", "H14");
+
+      assertEquals("Is straight", "Straight", hand.getName());
     }
 
     @Test
@@ -38,4 +46,5 @@ public class StraightHandScorerTestFixture extends HandScorerTestFixtureBase {
 
       assertEquals("Is straight", null, hand);
     }
+
 }
