@@ -1,5 +1,6 @@
 package pokerapp.scorer.scorers;
 
+import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.scorer.HandRanks;
 import pokerapp.scorer.scoredhands.ScoredHand;
@@ -7,11 +8,12 @@ import pokerapp.scorer.scoredhands.StraightScoredHand;
 import pokerapp.utils.Constants;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 06/03/13
- * Time: 01:15
- * To change this template use File | Settings | File Templates.
+ *
+ * @author Steve
+ * @author Ari
+ *
+ * checks if the hand is a straight and assigns a rank
+ * the rank is the highest card in the straight
  */
 public class StraightScorer extends HandScorer {
   //private static final int NUM_CARDS_IN_STRAIGHT = 5;
@@ -21,9 +23,16 @@ public class StraightScorer extends HandScorer {
     int rank = 0;
 
     // TODO: fix hardcoded "11111"; would like: "1".repeat(NUM_CARDS_IN_STRAIGHT)
+    // addressed this by adding a new constant STRAIGHT_SIGNATURE, I know it's not ideal
+    //TODO: Steve, why does the resolver continue once it has identified this is a straight?
 
 
     if(rh.toString().contains(Constants.STRAIGHT_SIGNATURE)) {
+      for(Card c : hand){
+        if(c.getRank() > rank){
+          rank = c.getRank();
+        }
+      }
       return new StraightScoredHand(getHandNumber(), hand, rank);
     }
     else{
