@@ -106,7 +106,7 @@ public class Hand implements Iterable<Card> {
     return new Spares(spareCards);
   }
 
-  // These don't belong here...
+  // TODO: These don't belong here...
   public Iterable<Card> cardsOfRank(int... ranks) {
     ArrayList<Card> cardsSubset = new ArrayList<Card>();
     for (Card card : cards)
@@ -116,6 +116,7 @@ public class Hand implements Iterable<Card> {
     return cardsSubset;
   }
 
+  //TODO: These don't belong here
   public Iterable<Card> cardsNotOfRank(int rank) {
     ArrayList<Card> cardsSubset = new ArrayList<Card>();
     for (Card card : cards)

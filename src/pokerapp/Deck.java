@@ -1,4 +1,4 @@
-package pokerapp.console;
+package pokerapp;
 
 import pokerapp.Card;
 import pokerapp.Suit;
@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.Iterator;
 
 /**
- * Created with IntelliJ IDEA.
+ * builds a deck of cards for pokerapp and allows operations on the deck.
  * @author Tony
  * @author Sam
  * @author Ari
@@ -30,6 +30,10 @@ public class Deck implements Iterable<Card> {
 
   private static ArrayList<Card> allCards;   //singleton
 
+  /**
+   * creates a pokerapp deck
+   * @return the deck
+   */
   public static Deck createDeck() {
     if (allCards == null) {
       allCards = new ArrayList<Card>();
@@ -41,20 +45,36 @@ public class Deck implements Iterable<Card> {
     return new Deck(allCards);
   }
 
+  /**
+   * Shuffles a deck of cards
+   * (we used collections.shuffle() because it's Fisher-Yates, and really we aren't going to get much better randomness 
+   * with what we have available)
+   */
   public void shuffle() {
     Collections.shuffle(cards);
   }
 
+  /**
+   * pops a card off the deck
+   * @return the removed card
+   */
   public Card pop() {
     Card card = cards.get(cards.size() - 1);
     cards.remove(card);
     return card;
   }
 
+  /**
+   * returns a card to the bottom of the deck
+   * @param card the card you want to return to the bottom of deck
+   */
   public void returnToBottom(Card card) {
     cards.add(0, card);
   }
   
+  /**
+   * @return an iterator through the deck
+   */
   public Iterator<Card> iterator() {
 	  return cards.iterator();
 	}

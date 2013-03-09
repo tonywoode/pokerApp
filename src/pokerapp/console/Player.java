@@ -2,6 +2,7 @@ package pokerapp.console;
 
 import lombok.Getter;
 import pokerapp.Card;
+import pokerapp.Deck;
 import pokerapp.Hand;
 
 /**

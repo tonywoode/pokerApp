@@ -1,11 +1,11 @@
-package pokerapp.console;
+package pokerapp;
+
+import pokerapp.console.Player; //TODO: importing both player and players?
+import pokerapp.console.Players;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve, tony
- * Date: 22/02/13
- * Time: 19:54
- * To change this template use File | Settings | File Templates.
+ * Dealer for pokerapp deals and replaces cards
+ * @author steve, tony
  */
 public class Dealer {
   private Deck deck;

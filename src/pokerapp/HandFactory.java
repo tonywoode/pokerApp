@@ -15,10 +15,9 @@ public class HandFactory {
  * Takes a variable number of cards and returns them in a hand
  * @param cards
  * @return hand of cards
- * @throws Exception 
+ * @throws IllegalArgumentException passing up from createCard
  */
-	//TODO: never just throw "exception" - what exception are you expecting?
-  public Hand create(String... cards) throws Exception {
+  public Hand create(String... cards) throws IllegalArgumentException {
     Hand hand = new Hand();
 
     for (String card : cards)
@@ -31,18 +30,18 @@ public class HandFactory {
  * When  passed a string representing a hand, will return a hand comprising the represented cards
  * @param line a string representing a hand e.g. "S4 D5 H6 C7 S8" - a straight
  * @return a hand of cards recognisable by the application "S4", "D5", "H6", "C7", "S8"
- * @throws Exception TODO: what kind of exception, where does it go
+ * @throws IllegalArgumentException passing up from createCard
  */
-  public Hand createFromLine(String line) throws Exception {
+  public Hand createFromLine(String line) throws IllegalArgumentException {
     return create(line.split(" "));
   }
 
 /**
  * When  passed an abbreviated (in accordance with pokerapp's conventions)
  * card name, returns a corresponding Card instance
- * @param card string representation of card used by pokerapp eg: "H4" for 4 or Hearts
+ * @param card string representation of card used by pokerapp eg: "H4" for 4 of Hearts
  * @return a Card instantiated with the values in the abbreviation
- * @throws IllegalArgumentException
+ * @throws IllegalArgumentException when receiving an illegal card name
  */
   private Card createCard(String card) throws IllegalArgumentException {
     if (card.length() < Constants.LEN_CARD || card.length() > 3 + Constants.LEN_CARD)

@@ -1,6 +1,7 @@
 package pokerapp.console;
 
 import pokerapp.Card;
+import pokerapp.Deck;
 import pokerapp.Hand;
 
 /**

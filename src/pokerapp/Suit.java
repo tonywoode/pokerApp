@@ -4,7 +4,7 @@ import lombok.Getter;
 import pokerapp.utils.Constants;
 
 /**
- * Suits for the poker app
+ * Describes suits (in correct order which is clubs, diamonds, hearts, spades) for pokerapp
  * @author Steve
  * @version 1.0
  */
@@ -27,6 +27,12 @@ public class Suit {
     Clubs, Diamonds, Hearts, Spades
   };
 
+  /**
+   * When passed a character from a card representing a suit, will convert to suit or complain
+   * @param c a character representing a suit
+   * @return suit the character represents
+   * @throws IllegalArgumentException if the character isn't C,D,H,S
+   */
   public static Suit from(char c) throws IllegalArgumentException {
     c = Character.toUpperCase(c);
     for (Suit suit : AllSuits)

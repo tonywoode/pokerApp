@@ -1,5 +1,7 @@
 package pokerapp.console;
 
+import pokerapp.Deck;
+
 /**
  * Created with IntelliJ IDEA.
  * User: steve
