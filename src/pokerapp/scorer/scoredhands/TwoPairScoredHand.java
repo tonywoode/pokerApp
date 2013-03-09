@@ -2,7 +2,7 @@ package pokerapp.scorer.scoredhands;
 
 import lombok.Getter;
 import pokerapp.Hand;
-import pokerapp.scorer.domain.SameRankSequence;
+import pokerapp.scorer.domain.SameRankCards;
 import pokerapp.scorer.domain.Spares;
 import pokerapp.utils.Comparator;
 
@@ -15,10 +15,10 @@ import pokerapp.utils.Comparator;
  */
 public class TwoPairScoredHand extends AbstractScoredHand<TwoPairScoredHand> {
 
-  @Getter private SameRankSequence highPair, lowPair;
+  @Getter private SameRankCards highPair, lowPair;
   @Getter private Spares spares;
 
-  public TwoPairScoredHand(int handNumber, Hand hand, SameRankSequence highPair, SameRankSequence lowPair, Spares spares) {
+  public TwoPairScoredHand(int handNumber, Hand hand, SameRankCards highPair, SameRankCards lowPair, Spares spares) {
     super(handNumber, hand);
     this.highPair = highPair;
     this.lowPair = lowPair;

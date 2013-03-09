@@ -1,7 +1,7 @@
 package pokerapp.scorer.scoredhands;
 
 import pokerapp.Hand;
-import pokerapp.scorer.domain.SameRankSequence;
+import pokerapp.scorer.domain.SameRankCards;
 import pokerapp.scorer.domain.Spares;
 import pokerapp.utils.Comparator;
 
@@ -14,13 +14,13 @@ import pokerapp.utils.Comparator;
 public class RunScoredHand extends AbstractScoredHand<RunScoredHand> {
 
   private String name;
-  private SameRankSequence sameRankSequence;
+  private SameRankCards sameRankCards;
   private Spares spares;
 
-  public RunScoredHand(int handNumber, Hand hand, String name, SameRankSequence sameRankSequence, Spares spares) {
+  public RunScoredHand(int handNumber, Hand hand, String name, SameRankCards sameRankCards, Spares spares) {
     super(handNumber, hand);
     this.name = name;
-    this.sameRankSequence = sameRankSequence;
+    this.sameRankCards = sameRankCards;
     this.spares = spares;
   }
 
@@ -29,12 +29,12 @@ public class RunScoredHand extends AbstractScoredHand<RunScoredHand> {
     return name;
   }
 
-  public int getRank() { return sameRankSequence.getRank(); }
+  public int getRank() { return sameRankCards.getRank(); }
 
   @Override
   protected int compareEqualCategories(RunScoredHand rhs) {
     return Comparator
-        .begin(sameRankSequence, rhs.sameRankSequence)
+        .begin(sameRankCards, rhs.sameRankCards)
         .next(spares, rhs.spares)
         .compare();
   }

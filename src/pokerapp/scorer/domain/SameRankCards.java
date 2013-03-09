@@ -12,12 +12,12 @@ import java.util.List;
  * Implements Comparable<T> to allow for chaining with the Comparator.
  * @author Steve Faulmann
  */
-public class SameRankSequence implements Comparable<SameRankSequence> {
+public class SameRankCards implements Comparable<SameRankCards> {
   private static final int MIN_NUM_CARDS_IN_SEQUENCE = 2;
 
   private final List<Card> cards;
 
-  public SameRankSequence(Card... cards) {
+  public SameRankCards(Card... cards) {
     if (cards.length < MIN_NUM_CARDS_IN_SEQUENCE)
       throw new IllegalArgumentException("Must have at least 2 cards");
     this.cards = new ArrayList<Card>();
@@ -29,7 +29,7 @@ public class SameRankSequence implements Comparable<SameRankSequence> {
    * 
    * @param cards
    */
-  public SameRankSequence(Iterable<Card> cards) {
+  public SameRankCards(Iterable<Card> cards) {
     this.cards = new ArrayList<Card>();
     for (Card card : cards)
       this.cards.add(card);
@@ -48,7 +48,7 @@ public class SameRankSequence implements Comparable<SameRankSequence> {
     return cards.get(0).getRank();
   }
 
-  public int compareTo(SameRankSequence rhs) {
+  public int compareTo(SameRankCards rhs) {
     return Integer.compare(getRank(), rhs.getRank());
   }
 }

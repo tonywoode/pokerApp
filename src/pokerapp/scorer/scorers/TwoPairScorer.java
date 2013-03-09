@@ -2,8 +2,7 @@ package pokerapp.scorer.scorers;
 
 import pokerapp.Hand;
 import pokerapp.scorer.HandRanks;
-import pokerapp.scorer.domain.SameRankSequence;
-import pokerapp.scorer.scoredhands.RunScoredHand;
+import pokerapp.scorer.domain.SameRankCards;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scoredhands.TwoPairScoredHand;
 import pokerapp.utils.ReverseArrayIterator;
@@ -26,8 +25,8 @@ public class TwoPairScorer extends SameRankHandScorer {
     try {
       ReverseArrayIterator iter = hr.iterator();
 
-      SameRankSequence highPair = createSameRankSequence(hand, getRank(iter));
-      SameRankSequence lowPair  = createSameRankSequence(hand, getRank(iter));
+      SameRankCards highPair = createSameRankSequence(hand, getRank(iter));
+      SameRankCards lowPair  = createSameRankSequence(hand, getRank(iter));
 
       final int NUM_CARDS_IN_KICKER = 1;
       int rank = hr.getRankOfMultiple(NUM_CARDS_IN_KICKER);

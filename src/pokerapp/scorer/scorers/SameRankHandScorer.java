@@ -2,7 +2,7 @@ package pokerapp.scorer.scorers;
 
 import pokerapp.Hand;
 import pokerapp.scorer.HandRanks;
-import pokerapp.scorer.domain.SameRankSequence;
+import pokerapp.scorer.domain.SameRankCards;
 import pokerapp.scorer.scoredhands.RunScoredHand;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
@@ -37,7 +37,7 @@ public class SameRankHandScorer extends HandScorer {
   protected ScoredHand createHandCategory(Hand hand, HandRanks hr) {
     try {
       int rank = hr.getRankOfMultiple(rankValue);
-      SameRankSequence sequence = createSameRankSequence(hand, rank);
+      SameRankCards sequence = createSameRankSequence(hand, rank);
       return new RunScoredHand(getHandNumber(), hand, name, sequence, hand.getKickers(rank));
     }
     catch(Exception e) { // TODO: remove this & use checked exceptions properly
@@ -45,7 +45,7 @@ public class SameRankHandScorer extends HandScorer {
     }
   }
 
-  protected SameRankSequence createSameRankSequence(Hand hand, int... rank) {
-    return new SameRankSequence(hand.cardsOfRank(rank));
+  protected SameRankCards createSameRankSequence(Hand hand, int... rank) {
+    return new SameRankCards(hand.cardsOfRank(rank));
   }
 }
