@@ -1,5 +1,6 @@
 package pokerapp.scorer.scoredhands;
 
+import lombok.Getter;
 import pokerapp.Hand;
 
 /**
@@ -13,8 +14,9 @@ import pokerapp.Hand;
  */
 public abstract class ScoredHand implements Comparable<ScoredHand> {
 
-	private int handNumber = -1;
-	protected Hand hand;
+	@Getter
+    protected int handNumber = -1;
+	@Getter protected Hand hand;
 
 	protected ScoredHand(int handNumber, Hand hand) {
 		this.handNumber = handNumber;

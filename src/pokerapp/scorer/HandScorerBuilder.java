@@ -16,6 +16,7 @@ public class HandScorerBuilder {
   public HandScorer create() {
     ArrayList<HandScorer> scorers = new ArrayList<HandScorer>();
 
+    scorers.add(new RoyalFlushScorer(new StraightScorer(), new FlushScorer()));
     scorers.add(new StraightFlushScorer(new StraightScorer(), new FlushScorer()));
     scorers.add(new SameRankHandScorer("four", 4, 1));
     scorers.add(new FullHouseScorer(new SameRankHandScorer("three", 3, 1), new SameRankHandScorer("pair", 2, 1)));
