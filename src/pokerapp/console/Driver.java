@@ -52,9 +52,11 @@ public class Driver {
 
       if (interactivePlayer == winner) {
         console.writeMessage("You won!"); // use SF magic here
-      } else {
+      } else if(winner == null)
+          console.writeMessage("Draw!");
+      else
         console.writeMessage("You lost!");
-      }
+
     }
   }
 }
