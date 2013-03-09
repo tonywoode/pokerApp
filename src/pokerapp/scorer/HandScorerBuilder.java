@@ -24,8 +24,7 @@ public class HandScorerBuilder {
     scorers.add(new SameRankHandScorer("three", 3, 1));
     scorers.add(new TwoPairScorer());
     scorers.add(new SameRankHandScorer("pair", 2, 1));
-    // TODO: implement this....
-    //resolvers.add(new HighCardScorer());
+    scorers.add(new NoPairScorer());
     scorers.add(null);
 
     for (int iter = 0; iter < scorers.size() - 1; ++iter) {

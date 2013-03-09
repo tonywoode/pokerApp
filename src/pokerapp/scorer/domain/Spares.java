@@ -1,6 +1,7 @@
 package pokerapp.scorer.domain;
 
 import pokerapp.Card;
+import pokerapp.Hand;
 import pokerapp.HighToLowCardComparator;
 
 import java.util.ArrayList;
@@ -28,4 +29,8 @@ public class Spares extends OrderedCards {
   public Spares(ArrayList<Card> cards) {
     super(cards);
   }
+
+    public Spares(Hand hand) {
+     super(hand);
+    }
 }

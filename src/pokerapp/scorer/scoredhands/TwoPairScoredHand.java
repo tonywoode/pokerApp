@@ -25,7 +25,7 @@ public class TwoPairScoredHand extends AbstractScoredHand<TwoPairScoredHand> {
     this.spares = spares;
   }
 
-  public int compareEqualCategories(TwoPairScoredHand rhs) {
+  public int compareEqualCategories(TwoPairScoredHand rhs) { //TODO:issue 82
     return Comparator
         .begin(highPair, rhs.highPair)
         .next(lowPair, rhs.lowPair)
