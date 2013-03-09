@@ -1,13 +1,1 @@
-pokerapp
-pokerapp.basicgame
-pokerapp.console
-pokerapp.scorer
 pokerapp.scorer.domain
-pokerapp.scorer.scoredhands
-pokerapp.scorer.scorers
-pokerapp.utils
-tests
-tests.scorer
-tests.scorer.resolvers
-tests.utils
-view

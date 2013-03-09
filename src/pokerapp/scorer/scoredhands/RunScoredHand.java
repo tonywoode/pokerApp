@@ -6,11 +6,10 @@ import pokerapp.scorer.domain.Spares;
 import pokerapp.utils.Comparator;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 06/03/13
- * Time: 00:42
- * To change this template use File | Settings | File Templates.
+ * Sets up ranking for hand ratings, in case we get the same hand rating in more than one hand,
+ * we need to know which hand has higher rating TODO//is that right?
+ * @author Steve
+ * @version 1.0
  */
 public class RunScoredHand extends AbstractScoredHand<RunScoredHand> {
 

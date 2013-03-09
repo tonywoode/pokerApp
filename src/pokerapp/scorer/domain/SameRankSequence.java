@@ -6,17 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 06/03/13
- * Time: 00:30
- *
- * @author Steve Faulmann
- *
  * Represents the concept of a pair, three & four of a kind. Stores
  * the rank of the (pair, triple, four).
  * <p>
  * Implements Comparable<T> to allow for chaining with the Comparator.
+ * @author Steve Faulmann
  */
 public class SameRankSequence implements Comparable<SameRankSequence> {
   private static final int MIN_NUM_CARDS_IN_SEQUENCE = 2;
@@ -31,6 +25,10 @@ public class SameRankSequence implements Comparable<SameRankSequence> {
       this.cards.add(card);
   }
 
+  /**
+   * 
+   * @param cards
+   */
   public SameRankSequence(Iterable<Card> cards) {
     this.cards = new ArrayList<Card>();
     for (Card card : cards)
@@ -39,7 +37,11 @@ public class SameRankSequence implements Comparable<SameRankSequence> {
       throw new IllegalArgumentException("Must have at least 2 cards");
   }
 
-  // @return retrieves the Card at the specified index. Not currently used.
+  /**
+   * 
+   * @param index
+   * @return retrieves the Card at the specified index. Not currently used.
+   */
   public Card get(int index) { return cards.get(index); }
 
   public int getRank() {
