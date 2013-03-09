@@ -2,6 +2,8 @@ package tests;
 
 import org.junit.Test;
 import pokerapp.Card;
+import pokerapp.Dealer;
+import pokerapp.Deck;
 import pokerapp.Suit;
 import pokerapp.console.*;
 import pokerapp.utils.Constants;
