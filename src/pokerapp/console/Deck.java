@@ -28,7 +28,7 @@ public class Deck implements Iterable<Card> {
     shuffle();
   }
 
-  private static ArrayList<Card> allCards;
+  private static ArrayList<Card> allCards;   //singleton
 
   public static Deck createDeck() {
     if (allCards == null) {

@@ -41,7 +41,7 @@ public class HandGridTest {
             Hand testHand = handFactory.create(testHandString);
             HandGrid testHandGrid = new HandGrid(testHand);
             for (int row = 1; row < Constants.NUM_SUITS + 1; row++) {
-                for(int col = 1; col < Constants.MAX_RANKS + 1; col++){
+                for(int col = 1; col < Constants.NUM_RANKS + 1; col++){
                     System.out.print(testHandGrid.matrix[row][col]);
                 }
                 System.out.println();
@@ -68,7 +68,7 @@ public class HandGridTest {
       Hand testHand = handFactory.create(testHandString);
       HandGrid testHandGrid = new HandGrid(testHand);
       for (int row = 1; row < Constants.NUM_SUITS + 1; row++) {
-        for(int col = 1; col < Constants.MAX_RANKS + 1; col++){
+        for(int col = 1; col < Constants.NUM_RANKS + 1; col++){
           System.out.print(testHandGrid.matrix[row][col]);
         }
         System.out.println();
@@ -95,7 +95,7 @@ public class HandGridTest {
             Hand testHand = handFactory.create(testHandString);
             HandGrid testHandGrid = new HandGrid(testHand);
             for (int row = 1; row < Constants.NUM_SUITS + 1; row++) {
-                for(int col = 1; col < Constants.MAX_RANKS + 1; col++){
+                for(int col = 1; col < Constants.NUM_RANKS + 1; col++){
                     System.out.print(testHandGrid.matrix[row][col]);
                 }
                 System.out.println();
@@ -122,7 +122,7 @@ public class HandGridTest {
             Hand testHand = handFactory.create(testHandString);
             HandGrid testHandGrid = new HandGrid(testHand);
             for (int row = 1; row < Constants.NUM_SUITS + 1; row++) {
-                for(int col = 1; col < Constants.MAX_RANKS + 1; col++){
+                for(int col = 1; col < Constants.NUM_RANKS + 1; col++){
                     System.out.print(testHandGrid.matrix[row][col]);
                 }
                 System.out.println();
@@ -149,7 +149,7 @@ public class HandGridTest {
             Hand testHand = handFactory.create(testHandString);
             HandGrid testHandGrid = new HandGrid(testHand);
             for (int row = 1; row < Constants.NUM_SUITS + 1; row++) {
-                for(int col = 1; col < Constants.MAX_RANKS + 1; col++){
+                for(int col = 1; col < Constants.NUM_RANKS + 1; col++){
                     System.out.print(testHandGrid.matrix[row][col]);
                 }
                 System.out.println();
@@ -176,7 +176,7 @@ public class HandGridTest {
             Hand testHand = handFactory.create(testHandString);
             HandGrid testHandGrid = new HandGrid(testHand);
             for (int row = 1; row < Constants.NUM_SUITS + 1; row++) {
-                for(int col = 1; col < Constants.MAX_RANKS + 1; col++){
+                for(int col = 1; col < Constants.NUM_RANKS + 1; col++){
                     System.out.print(testHandGrid.matrix[row][col]);
                 }
                 System.out.println();

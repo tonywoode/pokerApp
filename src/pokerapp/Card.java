@@ -19,7 +19,7 @@ import pokerapp.utils.Constants;
       throw new IllegalArgumentException("Suit must not be null");
 
     // supports aces high & low; TODO: is this sensible?
-    if (rank < Constants.RANK_ACE_LO && rank > Constants.MAX_RANKS)
+    if (rank < Constants.RANK_ACE_LO && rank > Constants.NUM_RANKS)
       throw new IllegalArgumentException("Illegal Rank: " + rank);
 
     this.suit = suit;
