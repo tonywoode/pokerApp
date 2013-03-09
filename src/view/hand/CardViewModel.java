@@ -40,7 +40,7 @@ public class CardViewModel {
     try {
       img = ImageIO.read(new File("pics/" + filename));
     } catch (IOException e) {
-      System.out.println("Error: " + e.getMessage());
+      System.out.println("Error: " + e.getMessage() + " - " + filename);
       return null; // TODO: fix this...
     }
 
@@ -52,10 +52,12 @@ public class CardViewModel {
   }
 
   private static char getRankString(int rank) {
-    if (rank >= 0 && rank <= 10)
+    if (rank >= 0 && rank < 10)
       return (char) ('0' + rank);
     else
       switch (rank) {
+        case 10:
+          return 'T';
         case 11:
           return 'J';
         case 12:

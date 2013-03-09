@@ -33,7 +33,7 @@ public class HandRunner {
     cardsPanel.setLayout(new FlowLayout());
     final ArrayList<ImageView> imageViews = new ArrayList<ImageView>();
 
-    final int MAX_CARDS = 9;
+    final int MAX_CARDS = 15;
 
     for (int iter = 2; iter != MAX_CARDS; ++iter) {
 
