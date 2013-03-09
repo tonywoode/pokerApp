@@ -8,5 +8,12 @@ package pokerapp.console;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class ComputerPlayer extends Player {
+    public ComputerPlayer(String name){
+        setPlayerName(name);
 
+    }
+
+    public ComputerPlayer(){
+        this("Computer");
+    }
 }
