@@ -10,6 +10,21 @@ import pokerapp.Deck;
  * To change this template use File | Settings | File Templates.
  */
 public class InteractivePlayer extends Player {
+
+  public InteractivePlayer(String name){
+    setPlayerName(name);
+  }
+
+  public InteractivePlayer() {
+    this("");
+  }
+
+  public String getPlayerNameFromUser(IConsole console) {
+    console.writeMessage("What's your name?");
+    setPlayerName(console.readLine());
+    return getPlayerName();
+  }
+
   @Override
   public void playTurn(IConsole console, Deck deck) {
 

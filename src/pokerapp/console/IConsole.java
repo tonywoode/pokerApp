@@ -13,8 +13,10 @@ public interface IConsole {
     //TODO: this manages interaction
 
   void writeMessage(String msg);
+  void writeMessage(String msg, Object... args);
 
   String readString();
+  String readLine();
 
   int readInteger();
 
