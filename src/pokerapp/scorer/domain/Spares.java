@@ -1,19 +1,13 @@
 package pokerapp.scorer.domain;
 
 import pokerapp.Card;
+import pokerapp.Hand;
 import pokerapp.HighToLowCardComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 06/03/13
- * Time: 00:39
- *
- * @author Steve Faulmann
- *
  * Provides a simulated typedef to facilitate the
  * Ubiquitous Language of the poker domain model.
  * <p>
@@ -23,6 +17,8 @@ import java.util.Collections;
  * <p>
  * However, the pitfalls mentioned in the article
  * do not apply here. TODO: explain why...
+ * 
+ * @author Steve Faulmann
  *
  */
 public class Spares extends OrderedCards {
@@ -33,4 +29,8 @@ public class Spares extends OrderedCards {
   public Spares(ArrayList<Card> cards) {
     super(cards);
   }
+
+    public Spares(Hand hand) {
+     super(hand);
+    }
 }

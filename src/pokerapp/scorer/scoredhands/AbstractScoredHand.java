@@ -3,15 +3,10 @@ package pokerapp.scorer.scoredhands;
 import pokerapp.Hand;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 06/03/13
- * Time: 01:19
- *
- * @author Steve Faulmann
- *
  * Implements Coplien's Curiously Recurring Template Pattern to
  * avoid issues with Java's lack of covariant parameter types.
+ * 
+ * @author Steve Faulmann
  *
  */
 public abstract class AbstractScoredHand<T> extends ScoredHand {

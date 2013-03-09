@@ -4,11 +4,8 @@ import lombok.Getter;
 import pokerapp.Hand;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 06/03/13
- * Time: 01:08
- * To change this template use File | Settings | File Templates.
+ * Describes a straight flush
+ * @author steve
  */
 public class StraightFlushScoredHand extends AbstractScoredHand<StraightFlushScoredHand> {
 

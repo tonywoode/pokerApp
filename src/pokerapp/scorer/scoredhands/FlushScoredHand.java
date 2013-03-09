@@ -4,12 +4,11 @@ import pokerapp.Hand;
 import pokerapp.scorer.domain.OrderedCards;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 06/03/13
- * Time: 00:59
- * To change this template use File | Settings | File Templates.
+ * Describes a flush hand
+ * @author Steve
+ * @version 1.0
  */
+
 public class FlushScoredHand extends AbstractScoredHand<FlushScoredHand> {
 
   private final Hand hand;
@@ -26,7 +25,11 @@ public class FlushScoredHand extends AbstractScoredHand<FlushScoredHand> {
     return "Flush";
   }
 
-  // actually, only the highest card needs to be checked
+  /**
+   * Compares two equal flush hands for which is the greater
+   * actually, only the highest card needs to be checked
+   * @return TODO:
+   */
   @Override
   protected int compareEqualCategories(FlushScoredHand rhs) {
     return cards.compareTo(rhs.cards);
