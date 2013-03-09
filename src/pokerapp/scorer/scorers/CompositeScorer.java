@@ -34,5 +34,32 @@ public abstract class CompositeScorer extends HandScorer {
     return createCategory(hand, scoredHands);
   }
 
+  // TODO: fix this hacky solution
+  public class NullScorer extends HandScorer {
+
+    public class NullScoredHand extends ScoredHand {
+
+      public NullScoredHand() {
+        super(-100, null);
+      }
+
+      @Override
+      public String getName() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+      }
+
+      @Override
+      protected int compareEqualCategories(ScoredHand rhs) {
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+      }
+    }
+
+
+    @Override
+    protected ScoredHand resolveCore(Hand hand) {
+      return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+  }
+
   protected abstract ScoredHand createCategory(Hand hand, ArrayList<ScoredHand> scoredHands);
 }

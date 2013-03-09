@@ -1,6 +1,5 @@
 package pokerapp.scorer.scorers;
 
-import lombok.Getter;
 import pokerapp.Hand;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
@@ -30,7 +29,10 @@ public abstract class HandScorer {
     if (scoredHand != null)
       return scoredHand;
     else
-      return next.score(hand);
+      if (next != null)
+        return next.score(hand);
+      else
+        return null; // TODO: not good idea to return null; better sentinel value needed
   }
 
   protected abstract ScoredHand resolveCore(Hand hand);
