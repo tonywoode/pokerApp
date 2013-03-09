@@ -2,7 +2,7 @@ package pokerapp.utils;
 
 /**
  * Created with IntelliJ IDEA.
- * User: steve
+ * @author steve
  * Date: 06/03/13
  * Time: 00:45
  *
@@ -41,49 +41,57 @@ public class Comparator {
 	//  TODO: what happens if no omparisons have been made?
 	int c = 1; //needs to start not equal
 
-	// Initialises a new Comparator object. Integer overloads
-	// required, because primitives cannot be used as generic
-	// parameters
-	// @param lhs the value on the left hand side of the comparison
-	// @param rhs the value on the right hand side of the comparison
-	// @return a next Comparator object, containing the result of the comparison
+
+	/** 
+	 * Initialises a new Comparator object. Integer overloads
+	 * required, because primitives cannot be used as generic
+	 * parameters
+	 * @param lhs the value on the left hand side of the comparison
+	 * @param rhs the value on the right hand side of the comparison
+	 * @return a next Comparator object, containing the result of the comparison
+	 */
 	public static Comparator begin(int lhs, int rhs) {
 		return new Comparator().next(lhs, rhs);
 	}
-
-	// Initialises a new Comparator object. Uses Comparable<T>
-	// for all objects (that implement the interface).
-	// @param lhs the value on the left hand side of the comparison
-	// @param rhs the value on the right hand side of the comparison
-	// @return a next Comparator object, containing the result of the comparison
+	/**
+	 * Initialises a new Comparator object. Uses Comparable<T>
+	 * for all objects (that implement the interface).
+	 * @param lhs the value on the left hand side of the comparison
+	 * @param rhs the value on the right hand side of the comparison
+	 * @return a next Comparator object, containing the result of the comparison
+	 */
 	public static <T> Comparator begin(Comparable<T> lhs, T rhs) {
 		return new Comparator().next(lhs, rhs);
 	}
 
-	// Adds another comparison to the current Comparator object. This int
-	// overload is required because primitives cannot be used as
-	// parameters for generic types
-	// @param lhs the value on the left hand side of the comparison
-	// @param rhs the value on the right hand side of the comparison
-	// @return the same Comparator object, containing the result of the comparison
+	/** Adds another comparison to the current Comparator object. This int
+	 * overload is required because primitives cannot be used as
+	 * parameters for generic types
+	 * @param lhs the value on the left hand side of the comparison
+	 * @param rhs the value on the right hand side of the comparison
+	 * @return the same Comparator object, containing the result of the comparison
+	 */
 	public Comparator next(int lhs, int rhs) {
 		if (c == 0)
 			c = Integer.compare(lhs, rhs);
 		return this;
 	}
 
-	// Adds another comparison to the current Comparator object. This
-	// Comparable<T> overload is used by all object instances
-	// @param lhs the value on the left hand side of the comparison
-	// @param rhs the value on the right hand side of the comparison
-	// @return the same Comparator object, containing the result of the comparison
+	/** Adds another comparison to the current Comparator object. This
+	 * Comparable<T> overload is used by all object instances
+	 * @param lhs the value on the left hand side of the comparison
+	 * @param rhs the value on the right hand side of the comparison
+	 * @return the same Comparator object, containing the result of the comparison
+	 */
 	public <T> Comparator next(Comparable<T> lhs, T rhs) {
 		if (c == 0)
 			c = lhs.compareTo(rhs);
 		return this;
 	}
 
-	// @return the current status of the comparison sequence
+	/**
+	 *  @return the current status of the comparison sequence
+	 */
 	public int compare() {
 		return c;
 	}
