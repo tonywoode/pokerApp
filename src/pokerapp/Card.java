@@ -27,19 +27,6 @@ import pokerapp.utils.Constants;
   }
 
   /**
-   * gets the ordinal of the card
-   * @return the card's ordinal
-   */
-  //TODO: what is that exactly?
-  // Ari: I think this is a hangover from card number when we were going to
-  // number the deck from 1 to 52
-  // in which case it should be
-  // suit.getNumber() * (getRank()-1)
-  // not suit.getNumber() * getRank(), so I've changed it to the former
-
-  public int getOrdinal() { return suit.getNumber() * (getRank()-1); }
-
-  /**
    * returns the suit and rank of card
    * @return suit and rank of card
    */
