@@ -38,7 +38,7 @@ public class Deck implements Iterable<Card> {
     if (allCards == null) {
       allCards = new ArrayList<Card>();
       for (Suit suit : Suit.AllSuits) {
-        for (int rank = 0; rank < Constants.NUM_RANKS; ++rank)
+        for (int rank = 2; rank <= Constants.NUM_RANKS; ++rank)
           allCards.add(new Card(suit, rank));
       }
     }

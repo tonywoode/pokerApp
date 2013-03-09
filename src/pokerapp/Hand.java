@@ -78,6 +78,11 @@ public class Hand implements Iterable<Card> {
     return msg.toString();
   }
 
+  @Override
+  public String toString() {
+    return toUserString();
+  }
+
   /**
    * exchanges an individual card in a position in the hand with another
    * @param pos position of card to be removed

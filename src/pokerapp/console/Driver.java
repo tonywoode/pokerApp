@@ -2,6 +2,7 @@ package pokerapp.console;
 
 import pokerapp.Dealer;
 import pokerapp.Deck;
+import pokerapp.utils.Constants;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,26 +12,37 @@ public class Driver {
 
   public void gameLoop() {
 
-    Deck deck = null;
-
     InteractivePlayer interactivePlayer = new InteractivePlayer();
 
     // TODO: change to use a factory
     ComputerPlayer computerPlayer = new StandardComputerPlayer();
 
+    Deck deck = Deck.createDeck();
+
     Dealer dealer = new Dealer(deck);
 
     Players players = new Players(interactivePlayer, computerPlayer);
 
-    IConsole console = null;
+    IConsole console = new StandardConsole();
 
     while (true) {
 
       console.writeMessage("Game beginning");
 
-      deck.shuffle();
+      interactivePlayer.getPlayerNameFromUser(console);
 
-      dealer.dealCards(5, players);
+      dealer.shuffleCards(deck);
+
+      dealer.dealCards(Constants.HAND_SIZE, players);
+
+      for(Player p : players){
+        console.writeMessage("Player %1$2s has %2$2s", p, p.getHand());
+        // SF's amazing magic code
+      }
+
+      for(Player p : players) {
+        //p.playTurn(console, deck);
+      }
 
       computerPlayer.playTurn(console, deck);
 
@@ -39,7 +51,7 @@ public class Driver {
       Player winner = players.pickWinner();
 
       if (interactivePlayer == winner) {
-        console.writeMessage("You won!");
+        console.writeMessage("You won!"); // use SF magic here
       } else {
         console.writeMessage("You lost!");
       }

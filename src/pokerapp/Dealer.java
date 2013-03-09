@@ -23,4 +23,7 @@ public class Dealer {
     }
   }
 
+  public void shuffleCards(Deck deck) {
+    deck.shuffle();
+  }
 }
