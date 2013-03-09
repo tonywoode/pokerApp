@@ -6,7 +6,7 @@ import pokerapp.utils.Constants;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Ari
+ * @author Ari
  * Date: 28/02/13
  * Time: 12:32
  * To change this template use File | Settings | File Templates.
