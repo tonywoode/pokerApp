@@ -29,7 +29,8 @@ public class Constants {
 
     public static final int LEN_CARD = 2;
 
-    public static final String STRAIGHT_SIGNATURE = "11111";
+    public static final String LOW_STRAIGHT_SIGNATURE = "11111";
+    public static final String HIGH_STRAIGHT_SIGNATURE = "1111000000001";
 
     public static final String[] RANK_NAME =
     {"", "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
