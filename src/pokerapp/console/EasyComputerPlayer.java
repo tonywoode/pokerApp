@@ -4,6 +4,8 @@ import pokerapp.Card;
 import pokerapp.Deck;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
+import java.util.Random;
+import pokerapp.utils.Constants;
 
 /**
  * @author ari
@@ -21,33 +23,22 @@ public class EasyComputerPlayer extends ComputerPlayer {
     this("");
   }
 
-  @Override
-  public void playTurn(IConsole console, Deck deck){
+   @Override
+   protected String exchangeDecision(StringBuilder commandBuilder, String handType)
+   {
 
-    StringBuilder commandBuilder = new StringBuilder();
-    ScoredHand scoredHand = new HandScorerBuilder().create().score(getHand());
-    String handType = scoredHand.getName();
-    console.writeMessage(getPlayerName() + " (E) has: " + getHand().toFancyUserString() + handType);
+       Random generator = new Random( 19580427 );
 
+       int r = generator.nextInt(Constants.NUM_RANKS);
 
-    int targetRank = 8;  //easy player discards cards with rank > targetRank
+       setTargetRank(r);
 
-    int n = 0;
-    for(Card card: getHand()) {
-      n++;
-      if ( card.getRank() > targetRank && commandBuilder.length() < 6 )
-            commandBuilder.append(n).append(" ");
-    }
-
-    String command = commandBuilder.toString();
-    ExchangeCardsInterpreter interpreter = new ExchangeCardsInterpreter(command);
-    interpreter.execute(getHand(), deck);
-    console.writeMessage(getPlayerName() + " (E) exchanged " + command);
-
-    scoredHand = new HandScorerBuilder().create().score(getHand());
-    handType = scoredHand.getName();
-    console.writeMessage(getPlayerName() + " (E) has: " + getHand().toFancyUserString() + handType);
-
-  }
-
+       int n = 0;
+       for(Card card: getHand()) {
+           n++;
+           if ( card.getRank() > targetRank && commandBuilder.length() < 6 )
+               commandBuilder.append(n).append(" ");
+       }
+       return commandBuilder.toString();
+   }
 }

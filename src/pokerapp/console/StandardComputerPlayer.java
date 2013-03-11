@@ -1,6 +1,11 @@
 package pokerapp.console;
 
+import pokerapp.Card;
 import pokerapp.Deck;
+import pokerapp.scorer.HandScorerBuilder;
+import pokerapp.scorer.scoredhands.ScoredHand;
+
+import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,9 +16,18 @@ import pokerapp.Deck;
  */
 public class StandardComputerPlayer extends ComputerPlayer {
 
-  @Override
-  public void playTurn(IConsole console, Deck deck) {
+    public StandardComputerPlayer(String name){
+        setPlayerName(name);
+    }
 
-  }
+    public StandardComputerPlayer() {
+        this("");
+    }
+
+    @Override
+    protected String exchangeDecision(StringBuilder commandBuilder, String handType)
+    {
+        return null;
+    }
 
 }
