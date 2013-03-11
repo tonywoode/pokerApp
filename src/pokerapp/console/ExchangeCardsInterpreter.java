@@ -12,24 +12,22 @@ import pokerapp.Hand;
  * To change this template use File | Settings | File Templates.
  */
 public class ExchangeCardsInterpreter {
-    private String command;
+  private String command;
 
-    public ExchangeCardsInterpreter(String command) {
-        this.command = command;
+  public ExchangeCardsInterpreter(String command) {
+    this.command = command;
+  }
+
+  public void execute(Hand hand, Deck deck) {
+    for (String strPos : command.split(" ")) {
+      int pos = Integer.parseInt(strPos);
+
+      Card card = deck.pop();
+
+      Card replacedCard = hand.exchange(pos - 1, card);
+
+      // TODO: Don't think this is the correct behaviour... can we run out of cards?
+      //deck.returnToBottom(replacedCard);
     }
-
-    public void execute(Hand hand, Deck deck) {
-        if (!command.isEmpty()) {
-            for (String strPos : command.split(" ")) {
-                int pos = Integer.parseInt(strPos);
-
-                Card card = deck.pop();
-
-                Card replacedCard = hand.exchange(pos - 1, card);
-
-                // TODO: Don't think this is the correct behaviour... can we run out of cards?
-                //deck.returnToBottom(replacedCard);
-            }
-        }
-    }
+  }
 }

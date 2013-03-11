@@ -44,4 +44,8 @@ public class Suit {
   public String toString() {
       return "" + code;
   }
+
+  public String toFancyString() {
+    return AllSuits[number].toString();
+  }
 }

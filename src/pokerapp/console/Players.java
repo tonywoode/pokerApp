@@ -7,7 +7,6 @@ import pokerapp.scorer.scorers.HandScorer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * Holds players for the poker app, is able to compare to pick a winning player
@@ -75,5 +74,10 @@ public class Players implements Iterable<Player> {
   @Override
   public Iterator<Player> iterator() {
     return players.iterator();
+  }
+
+  //TODO: replace with something better asap
+  public void add(Players players, Player player) {    //TODO: horrible, I know.
+    players.players.add(player);
   }
 }

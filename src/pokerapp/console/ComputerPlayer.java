@@ -16,4 +16,9 @@ public abstract class ComputerPlayer extends Player {
     public ComputerPlayer(){
         this("Computer");
     }
+
+    //@Override
+    // extract common bits of public void playTurn(IConsole console, Deck deck){
+
+
 }

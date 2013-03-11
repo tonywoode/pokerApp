@@ -1,7 +1,7 @@
 package pokerapp;
 
 /**
- * Describes ranks
+ * Describes ranks, allows cards to be called by name or character
  * @author Steve, Tony
  *
  */
