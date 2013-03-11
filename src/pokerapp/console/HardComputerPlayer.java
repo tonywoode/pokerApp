@@ -15,7 +15,15 @@ import java.util.ArrayList;
  */
 public class HardComputerPlayer extends ComputerPlayer {
 
-      @Override
+    public HardComputerPlayer(String name){
+        setPlayerName(name);
+    }
+
+    public HardComputerPlayer() {
+        this("");
+    }
+
+    @Override
       protected String exchangeDecision(StringBuilder commandBuilder,String handType)
       {
           if ("No pair".equals(handType)) {     //hard player swaps lowest three cards if no pair

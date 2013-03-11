@@ -27,7 +27,7 @@ public class StandardComputerPlayer extends ComputerPlayer {
     @Override
     protected String exchangeDecision(StringBuilder commandBuilder, String handType)
     {
-        return null;
+        return "";
     }
 
 }
