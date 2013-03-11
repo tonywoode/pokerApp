@@ -6,10 +6,10 @@ import pokerapp.Hand;
 
 /**
  * Created with IntelliJ IDEA.
- * User: steve
+ * @author Steve
  * Date: 22/02/13
  * Time: 20:13
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class ExchangeCardsInterpreter {
   private String command;
@@ -27,6 +27,7 @@ public class ExchangeCardsInterpreter {
       Card replacedCard = hand.exchange(pos - 1, card);
 
       // TODO: Don't think this is the correct behaviour... can we run out of cards?
+      // TODO: yes we are running out - is that what we want?
       //deck.returnToBottom(replacedCard);
     }
   }
