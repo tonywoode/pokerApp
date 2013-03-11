@@ -34,5 +34,12 @@ import pokerapp.utils.Constants;
   public String toString() {
     return suit.toString() + getRank();
   }
+  /**
+   * returns the suit and rank symbol of card, e.g. J instead of 11
+   * @return suit and rank of card
+   */
+  public String toFancyString() {
+    return getSuit() + Constants.RANK_SYMBOL[getRank()];
+  }
 
 }

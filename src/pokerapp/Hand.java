@@ -30,6 +30,13 @@ public class Hand implements Iterable<Card> {
     cards.add(card);
   }
 
+  public void clear() throws NullPointerException {
+    if(cards.size() == 0)
+      throw new NullPointerException("Hand is empty");
+
+    cards.clear();
+  }
+
   /**
    * presents the cards from the hand
    * @return individual cards from the hand
@@ -68,10 +75,28 @@ public class Hand implements Iterable<Card> {
 
     public String toUserString() {
 
-    StringBuffer msg = new StringBuffer();
+    StringBuilder msg = new StringBuilder();
 
     for (Card card : cards){
       msg.append(card.toString());
+      msg.append(" ");
+    }
+
+    return msg.toString();
+  }
+
+  /**
+   * returns each card as text separated by whitespace
+   * using symbols J,Q,K,A for picture ranks
+   * @return text representation of the hand
+   *
+   */
+  public String toFancyUserString() {
+
+    StringBuilder msg = new StringBuilder();
+
+    for (Card card : cards){
+      msg.append(card.toFancyString());
       msg.append(" ");
     }
 
