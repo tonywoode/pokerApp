@@ -2,6 +2,10 @@ package pokerapp.console;
 
 import pokerapp.Card;
 import pokerapp.Deck;
+import pokerapp.console.strategies.HardStrategyFactory;
+import pokerapp.console.strategies.IStrategy;
+import pokerapp.console.strategies.IStrategyFactory;
+import pokerapp.console.strategies.StandardStrategyFactory;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
@@ -27,7 +31,11 @@ public class StandardComputerPlayer extends ComputerPlayer {
     @Override
     protected String exchangeDecision(StringBuilder commandBuilder, String handType)
     {
-        return "";
+        IStrategyFactory strategyFactory = new StandardStrategyFactory();
+
+        IStrategy decisionMaker =  strategyFactory.createStrategy(handType);
+
+        return decisionMaker.makeDecision(commandBuilder, getHand().getSortedCards());
     }
 
 }

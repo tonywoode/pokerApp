@@ -2,6 +2,9 @@ package pokerapp.console;
 
 import pokerapp.Card;
 import pokerapp.Deck;
+import pokerapp.console.strategies.HardStrategyFactory;
+import pokerapp.console.strategies.IStrategy;
+import pokerapp.console.strategies.IStrategyFactory;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
@@ -26,7 +29,13 @@ public class HardComputerPlayer extends ComputerPlayer {
     @Override
       protected String exchangeDecision(StringBuilder commandBuilder,String handType)
       {
-          if ("No pair".equals(handType)) {     //hard player swaps lowest three cards if no pair
+          IStrategyFactory strategyFactory = new HardStrategyFactory();
+
+          IStrategy decisionMaker =  strategyFactory.createStrategy(handType);
+
+          return decisionMaker.makeDecision(commandBuilder, getHand().getSortedCards());
+   /*
+    if ("No pair".equals(handType)) {     //hard player swaps lowest three cards if no pair
 
 
               ArrayList<Card> sortedCards = getHand().getSortedCards();
@@ -44,11 +53,10 @@ public class HardComputerPlayer extends ComputerPlayer {
 //
 //      if ("Pair".equals(handType)) {
 //
-//    }
-          //TODO: Chain of Resp here?
+//   }
+          //TODO: Strategy pattern will work here
 
           return commandBuilder.toString();
-      }
-
-}
+        */
+      }}
 
