@@ -1,7 +1,10 @@
 package pokerapp.scorer.scoredhands;
 
 import lombok.Getter;
+import pokerapp.Card;
 import pokerapp.Hand;
+
+import java.util.List;
 
 /**
  * Describes a straight flush
@@ -25,4 +28,9 @@ public class StraightFlushScoredHand extends AbstractScoredHand<StraightFlushSco
   public String getName() {
     return "Straight flush";
   }
+
+    @Override
+    public List<Card> getRelevantCards() {
+        return hand.getSortedCards();
+    }
 }

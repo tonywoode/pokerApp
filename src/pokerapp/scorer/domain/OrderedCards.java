@@ -6,6 +6,7 @@ import pokerapp.HighToLowCardComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  * Objects of this type are comparable to each other.
  * @author Steve Faulmann
 */
-public class OrderedCards implements Comparable<OrderedCards> {
+public class OrderedCards implements Comparable<OrderedCards>, Iterable<Card> {
 
   private final List<Card> cards;
 
@@ -63,4 +64,9 @@ public class OrderedCards implements Comparable<OrderedCards> {
         return c;
     return c;
   }
+
+    @Override
+    public Iterator<Card> iterator() {
+        return cards.iterator();
+    }
 }

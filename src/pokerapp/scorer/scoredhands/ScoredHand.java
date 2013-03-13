@@ -1,7 +1,10 @@
 package pokerapp.scorer.scoredhands;
 
 import lombok.Getter;
+import pokerapp.Card;
 import pokerapp.Hand;
+
+import java.util.List;
 
 /**
  * Provides an implementation of the notion of a hand that
@@ -47,4 +50,7 @@ public abstract class ScoredHand implements Comparable<ScoredHand> {
 	 * to determine which hand is better.
 	 */ 
 	protected abstract int compareEqualCategories(ScoredHand rhs);
+
+    public abstract List<Card> getRelevantCards();
+
 }

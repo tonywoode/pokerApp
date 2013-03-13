@@ -6,6 +6,7 @@ import pokerapp.HighToLowCardComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
 /**
  * Provides a simulated typedef to facilitate the

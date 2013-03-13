@@ -1,7 +1,10 @@
 package pokerapp.scorer.scoredhands;
 
 import lombok.Getter;
+import pokerapp.Card;
 import pokerapp.Hand;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,5 +31,10 @@ public class StraightScoredHand extends AbstractScoredHand<StraightScoredHand> {
   public String getName() {
     return "Straight";
   }
+
+    @Override
+    public List<Card> getRelevantCards() {
+        return hand.getSortedCards();
+    }
 
 }

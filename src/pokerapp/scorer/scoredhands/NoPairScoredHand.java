@@ -1,9 +1,13 @@
 package pokerapp.scorer.scoredhands;
 
 import lombok.Getter;
+import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.scorer.domain.Spares;
 import pokerapp.utils.Comparator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -35,5 +39,10 @@ public class NoPairScoredHand extends AbstractScoredHand<NoPairScoredHand> {
     @Override
     public String getName() {
         return "No pair";
+    }
+
+    @Override
+    public List<Card> getRelevantCards() {
+        return new ArrayList<Card>();
     }
 }

@@ -1,8 +1,11 @@
 package pokerapp.scorer.scoredhands;
 
 import lombok.Getter;
+import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.utils.Comparator;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,4 +35,9 @@ public class FullHouseScoredHand extends AbstractScoredHand<FullHouseScoredHand>
   public String getName() {
     return "Full house";
   }
+
+    @Override
+    public List<Card> getRelevantCards() {
+        return hand.getSortedCards();
+    }
 }

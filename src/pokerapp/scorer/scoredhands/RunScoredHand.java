@@ -1,9 +1,14 @@
 package pokerapp.scorer.scoredhands;
 
+import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.scorer.domain.SameRankCards;
 import pokerapp.scorer.domain.Spares;
 import pokerapp.utils.Comparator;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Sets up ranking for hand ratings, in case we get the same hand rating in more than one hand,
@@ -29,7 +34,18 @@ public class RunScoredHand extends AbstractScoredHand<RunScoredHand> {
     return name;
   }
 
-  public int getRank() { return sameRankCards.getRank(); }
+    @Override
+    public List<Card> getRelevantCards() {
+        List<Card> relevantArray = new ArrayList<Card>();
+        Iterator<Card> iter = sameRankCards.iterator();
+
+        for(int i = 0; iter.hasNext();)
+            relevantArray.add(iter.next());
+
+        return relevantArray;
+    }
+
+    public int getRank() { return sameRankCards.getRank(); }
 
   @Override
   protected int compareEqualCategories(RunScoredHand rhs) {

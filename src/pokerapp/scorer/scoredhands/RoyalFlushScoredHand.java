@@ -1,6 +1,9 @@
 package pokerapp.scorer.scoredhands;
 
+import pokerapp.Card;
 import pokerapp.Hand;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,6 +26,11 @@ public class RoyalFlushScoredHand extends StraightFlushScoredHand {
     @Override
     public String getName() {
         return "Royal flush";
+    }
+
+    @Override
+    public List<Card> getRelevantCards() {
+        return hand.getSortedCards();
     }
 
 }

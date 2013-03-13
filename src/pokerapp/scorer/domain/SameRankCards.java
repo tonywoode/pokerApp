@@ -3,6 +3,7 @@ package pokerapp.scorer.domain;
 import pokerapp.Card;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * Implements Comparable<T> to allow for chaining with the Comparator.
  * @author Steve Faulmann
  */
-public class SameRankCards implements Comparable<SameRankCards> {
+public class SameRankCards implements Comparable<SameRankCards>, Iterable<Card> {
   private static final int MIN_NUM_CARDS_IN_SEQUENCE = 2;
 
   private final List<Card> cards;
@@ -51,4 +52,9 @@ public class SameRankCards implements Comparable<SameRankCards> {
   public int compareTo(SameRankCards rhs) {
     return Integer.compare(getRank(), rhs.getRank());
   }
+
+    @Override
+    public Iterator<Card> iterator() {
+        return cards.iterator();
+    }
 }

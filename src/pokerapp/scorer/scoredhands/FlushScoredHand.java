@@ -1,7 +1,10 @@
 package pokerapp.scorer.scoredhands;
 
+import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.scorer.domain.OrderedCards;
+
+import java.util.List;
 
 /**
  * Describes a flush hand
@@ -25,7 +28,12 @@ public class FlushScoredHand extends AbstractScoredHand<FlushScoredHand> {
     return "Flush";
   }
 
-  /**
+    @Override
+    public List<Card> getRelevantCards() {
+        return hand.getSortedCards();
+    }
+
+    /**
    * Compares two equal flush hands for which is the greater
    * actually, only the highest card needs to be checked
    * @return TODO:

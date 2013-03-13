@@ -1,10 +1,14 @@
 package pokerapp.scorer.scoredhands;
 
 import lombok.Getter;
+import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.scorer.domain.SameRankCards;
 import pokerapp.scorer.domain.Spares;
 import pokerapp.utils.Comparator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,6 +18,8 @@ import pokerapp.utils.Comparator;
  * To change this template use File | Settings | File Templates.
  */
 public class TwoPairScoredHand extends AbstractScoredHand<TwoPairScoredHand> {
+
+  private static final int  PAIRLENGTH = 2;
 
   @Getter private SameRankCards highPair, lowPair;
   @Getter private Spares spares;
@@ -37,4 +43,22 @@ public class TwoPairScoredHand extends AbstractScoredHand<TwoPairScoredHand> {
   public String getName() {
     return "Two pair";
   }
+
+    @Override
+    public List<Card> getRelevantCards() {
+        List<Card> relevantArray = new ArrayList<Card>();
+        List<SameRankCards> pairSet = new ArrayList<SameRankCards>();
+
+        pairSet.add(lowPair);
+        pairSet.add(highPair);
+
+        for (SameRankCards pair : pairSet)
+        {
+            for(int i = 0; i < PAIRLENGTH;)
+            {
+                relevantArray.add(pair.get(i));
+            }
+        }
+        return relevantArray;
+    }
 }
