@@ -7,6 +7,7 @@ import pokerapp.HighToLowCardComparator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Provides a simulated typedef to facilitate the
@@ -33,5 +34,16 @@ public class Spares extends OrderedCards {
 
     public Spares(Hand hand) {
      super(hand);
+    }
+
+    public List<Card> getKickers()
+    {
+        Iterator<Card> iter = iterator();
+        List<Card> kickList = new ArrayList<Card>();
+
+        while(iter.hasNext())
+            kickList.add(iter.next());
+
+        return kickList;
     }
 }

@@ -39,7 +39,7 @@ public class RunScoredHand extends AbstractScoredHand<RunScoredHand> {
         List<Card> relevantArray = new ArrayList<Card>();
         Iterator<Card> iter = sameRankCards.iterator();
 
-        for(int i = 0; iter.hasNext();)
+        while(iter.hasNext())
             relevantArray.add(iter.next());
 
         return relevantArray;
