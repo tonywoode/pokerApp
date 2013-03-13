@@ -48,16 +48,14 @@ public class CardViewModel {
   }
 
   private static String filenameFromCard(Card card) {
-    return ("" + getRankString(card.getRank()) + card.getSuit().getCode()).toLowerCase() + ".gif";
+    return ("" + card.getSuit().getCode()).toLowerCase() + getRankString(card.getRank()) + ".gif";
   }
 
   private static char getRankString(int rank) {
-    if (rank >= 0 && rank < 10)
+    if (rank >= 0 && rank <= 10)
       return (char) ('0' + rank);
     else
       switch (rank) {
-        case 10:
-          return 'T';
         case 11:
           return 'J';
         case 12:
