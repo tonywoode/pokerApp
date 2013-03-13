@@ -18,16 +18,17 @@ public class ExchangeCardsInterpreter {
     this.command = command;
   }
 
-  public void execute(Hand hand, Deck deck) {
-    for (String strPos : command.split(" ")) {
-      int pos = Integer.parseInt(strPos);
+    public void execute(Hand hand, Deck deck) {
+        if(!command.isEmpty()){
+            for (String strPos : command.split(" ")) {
+                int pos = Integer.parseInt(strPos);
 
-      Card card = deck.pop();
+                Card card = deck.pop();
 
-      Card replacedCard = hand.exchange(pos - 1, card);
-
-      // TODO: Don't think this is the correct behaviour... can we run out of cards?
-      //deck.returnToBottom(replacedCard);
+                Card replacedCard = hand.exchange(pos - 1, card);
+                // TODO: Don't think this is the correct behaviour... can we run out of cards?
+                //deck.returnToBottom(replacedCard);
+            }
+        }
     }
-  }
 }

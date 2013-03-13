@@ -44,7 +44,7 @@ public class Driver {
         //p.playTurn(console, deck);
       }
 
-      computerPlayer.playTurn(console, deck);
+//      computerPlayer.playTurn(console, deck);
 
       interactivePlayer.playTurn(console, deck);
 
