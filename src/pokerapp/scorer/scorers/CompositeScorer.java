@@ -1,9 +1,11 @@
 package pokerapp.scorer.scorers;
 
+import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -51,6 +53,11 @@ public abstract class CompositeScorer extends HandScorer {
       @Override
       protected int compareEqualCategories(ScoredHand rhs) {
         return 0;  //To change body of implemented methods use File | Settings | File Templates.
+      }
+
+      @Override
+      public List<Card> getRelevantCards() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
       }
     }
 
