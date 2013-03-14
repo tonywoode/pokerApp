@@ -2,11 +2,10 @@ package pokerapp.console;
 
 /**
  * @author Ari
- * Date: 11/03/2013
- * Time: 10:54
- * Created with IntelliJ IDEA.
+ * @version 1.0
+ * @param //TODO:Parameter Description
  */
-public  class ComputerPlayerFactory {
+class ComputerPlayerFactory {
 
   public ComputerPlayer makeComputerPlayer(String playerName, int playerDifficulty) {
 

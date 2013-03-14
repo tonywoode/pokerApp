@@ -5,8 +5,10 @@ import pokerapp.Deck;
 import pokerapp.utils.Constants;
 
 /**
- * Created with IntelliJ IDEA.
- * @author steve
+ * @author   Steve
+ * @author   Ari
+ * @version  1.0
+ * @param    //TODO:Parameter Description
  */
 public class Driver {
 
@@ -24,6 +26,8 @@ public class Driver {
     Players players = new Players(interactivePlayer, computerPlayer);
 
     IConsole console = new StandardConsole();
+
+    ExchangeSetting exchangeSetting = new ExchangeSetting(3,1);
 
     while (true) {
 
@@ -46,7 +50,7 @@ public class Driver {
 
 //      computerPlayer.playTurn(console, deck);
 
-      interactivePlayer.playTurn(console, deck);
+      interactivePlayer.playTurn(console, deck, exchangeSetting);
 
       Player winner = players.pickWinner();
 

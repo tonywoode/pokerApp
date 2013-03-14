@@ -3,16 +3,16 @@ package pokerapp.console;
 import pokerapp.Deck;
 
 /**
- * Created with IntelliJ IDEA.
- * @author steve
- * Date: 22/02/13
- * Time: 19:53
- * To change this template use File | Settings | File Templates.
+ * @author Steve
+ * @author Ari
+ * @author Sam
+ * @version 1.0
+ * @param //TODO:Parameter Description
  */
 public class InteractivePlayer extends Player {
 
-  final String VALID_INPUT = "(([12345]\\s){0,2}[12345])|^$";
-  final int MAXPOS = 5;
+  private final String VALID_INPUT = "(([12345]\\s){0,2}[12345])|^$";
+  private final int MAXPOS = 5;
 
 
     public InteractivePlayer(String name){
@@ -23,36 +23,38 @@ public class InteractivePlayer extends Player {
     this("");
   }
 
-  public String getPlayerNameFromUser(IConsole console) {
+  public String getPlayerNameFromUser(IConsole console) {  //TODO:return value never used
     console.writeMessage("What's your name?");
     setPlayerName(console.readLine());
     return getPlayerName();
   }
 
   @Override
-  public void playTurn(IConsole console, Deck deck) {
+  public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting) {
 
-//    console.writeMessage("Your hand is: " + getHand().toUserString());
-    console.writeMessage("Your hand is: " + getHand().toFancyUserString());
-    console.writeMessage("You can change between 0 and 3 cards.");
-    console.writeMessage("Write the position of each card you want to exchange, separated by spaces. Then press enter");
+    for(int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 
+  //    console.writeMessage("Your hand is: " + getHand().toUserString());
+      console.writeMessage("Your hand is: " + getHand().toFancyUserString());
+      console.writeMessage("Would you like me to sort your hand?\n"); //TODO:sort the hand
+      console.writeMessage("You can change between 0 and " + exchangeSetting.getNumCards() + " cards.");
+      console.writeMessage("Write the position of each card you want to exchange, separated by spaces. Then press enter");
 
-    String command = console.readString();
+      String command = console.readString();
 
-    while(!command.matches(VALID_INPUT) || !isUniquePos(command))
-    {
-        console.writeMessage("Please enter valid input. Then press enter");
-        command = console.readString();
-    }
+      while(!command.matches(VALID_INPUT) || !isUniquePos(command))
+      {
+          console.writeMessage("Please enter valid input. Then press enter");
+          command = console.readString();
+      }
 
-    ExchangeCardsInterpreter interpreter = new ExchangeCardsInterpreter(command);
-    interpreter.execute(getHand(), deck);
+      ExchangeCardsInterpreter interpreter = new ExchangeCardsInterpreter(command);
+      interpreter.execute(getHand(), deck);
 
-//    console.writeMessage("Your new hand is: " + getHand().toUserString());
-    console.writeMessage("Your new hand is: " + getHand().toFancyUserString());
+  //    console.writeMessage("Your new hand is: " + getHand().toUserString());
+      console.writeMessage("Your new hand is: " + getHand().toFancyUserString());
+      }
   }
-
   /* Designed using variant of the code suggested here: http://stackoverflow.com/questions/3951547/java-array-finding-duplicates
   */
 

@@ -1,22 +1,15 @@
 package pokerapp.console;
 
-import pokerapp.Card;
-import pokerapp.Deck;
-import pokerapp.console.strategies.HardStrategyFactory;
 import pokerapp.console.strategies.IStrategy;
 import pokerapp.console.strategies.IStrategyFactory;
 import pokerapp.console.strategies.StandardStrategyFactory;
-import pokerapp.scorer.HandScorerBuilder;
-import pokerapp.scorer.scoredhands.ScoredHand;
-
-import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 19:54
- * To change this template use File | Settings | File Templates.
+ * @author Steve
+ * @author Ari
+ * @author Sam
+ * @version 1.0
+ * @param //TODO:Parameter Description
  */
 public class StandardComputerPlayer extends ComputerPlayer {
 
@@ -26,6 +19,7 @@ public class StandardComputerPlayer extends ComputerPlayer {
 
     public StandardComputerPlayer() {
         this("");
+        setDifficultyCode("S");
     }
 
     @Override

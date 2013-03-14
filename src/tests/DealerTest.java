@@ -4,14 +4,12 @@ import org.junit.Test;
 import pokerapp.Card;
 import pokerapp.Dealer;
 import pokerapp.Deck;
-import pokerapp.Suit;
-import pokerapp.console.*;
-import pokerapp.utils.Constants;
+import pokerapp.console.ExchangeSetting;
+import pokerapp.console.IConsole;
+import pokerapp.console.Player;
+import pokerapp.console.Players;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -107,7 +105,7 @@ public class DealerTest {
     }
 
     @Override
-    public void playTurn(IConsole console, Deck deck) { }
+    public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting) { }
   }
 
 }

@@ -1,20 +1,15 @@
 package pokerapp.console;
 
-import pokerapp.Card;
-import pokerapp.Deck;
 import pokerapp.console.strategies.HardStrategyFactory;
 import pokerapp.console.strategies.IStrategy;
 import pokerapp.console.strategies.IStrategyFactory;
-import pokerapp.scorer.HandScorerBuilder;
-import pokerapp.scorer.scoredhands.ScoredHand;
-
-import java.util.ArrayList;
 
 /**
- * @author ari
- * Date: 11/03/2013
- * Time: 03:49
- * Created with IntelliJ IDEA.
+ * @author Steve
+ * @author Ari
+ * @author Sam
+ * @version 1.0
+ * @param //TODO:Parameter Description
  */
 public class HardComputerPlayer extends ComputerPlayer {
 
@@ -23,7 +18,8 @@ public class HardComputerPlayer extends ComputerPlayer {
     }
 
     public HardComputerPlayer() {
-        this("");
+         this("");
+         setDifficultyCode("H");
     }
 
     @Override

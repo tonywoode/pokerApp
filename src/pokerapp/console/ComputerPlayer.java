@@ -1,21 +1,23 @@
 package pokerapp.console;
 
 import lombok.Setter;
-import pokerapp.Card;
 import pokerapp.Deck;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
+
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 19:54
- * To change this template use File | Settings | File Templates.
+ * @author   Steve
+ * @author   Ari
+ * @author   Sam
+ * @version  1.0
+ * @param    //TODO:Parameter Description
  */
+
 public abstract class ComputerPlayer extends Player {
 
     @Setter int targetRank;
+    @Setter private String difficultyCode = "";
 
     public ComputerPlayer(String name){
         setPlayerName(name);
@@ -26,22 +28,25 @@ public abstract class ComputerPlayer extends Player {
         this("Computer");
     }
 
-    public void playTurn(IConsole console, Deck deck){
+    public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting){
+
+      for(int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 
         StringBuilder commandBuilder = new StringBuilder();
         ScoredHand scoredHand = new HandScorerBuilder().create().score(getHand());
         String handType = scoredHand.getName();
-        console.writeMessage(getPlayerName() + " (E) has: " + getHand().toFancyUserString() + handType);
+        console.writeMessage(getPlayerName() + " (" + difficultyCode + ") has: " + getHand().toFancyUserString() + handType);
         
         String command = exchangeDecision(commandBuilder, handType);
         ExchangeCardsInterpreter interpreter = new ExchangeCardsInterpreter(command);
         interpreter.execute(getHand(), deck);
-        console.writeMessage(getPlayerName() + " (E) exchanged " + command);
+        console.writeMessage(getPlayerName() + " (" + difficultyCode + ") exchanged " + command);
 
         scoredHand = new HandScorerBuilder().create().score(getHand());
         handType = scoredHand.getName();
-        console.writeMessage(getPlayerName() + " (E) has: " + getHand().toFancyUserString() + handType);
+        console.writeMessage(getPlayerName() + " (" + difficultyCode + ") has: " + getHand().toFancyUserString() + handType);
 
+      }
     }
 
     protected abstract String exchangeDecision(StringBuilder commandBuilder, String handType);

@@ -7,15 +7,10 @@ import pokerapp.Deck;
 import pokerapp.Hand;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 19:54
- * To change this template use File | Settings | File Templates.
- *
  * @author Steve
  * @author Ari
- *
+ * @version 1.0
+ * @param //TODO:Parameter Description
  */
 public abstract class Player {
   @Getter private Hand hand = new Hand();
@@ -29,7 +24,7 @@ public abstract class Player {
     return getPlayerName();
   }
 
-  public abstract void playTurn(IConsole console, Deck deck);
+  public abstract void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting);
 
   public void receiveCard(Card card) {
     hand.add(card);

@@ -1,11 +1,9 @@
 package pokerapp.console;
 
 import pokerapp.Card;
-import pokerapp.Deck;
-import pokerapp.scorer.HandScorerBuilder;
-import pokerapp.scorer.scoredhands.ScoredHand;
-import java.util.Random;
 import pokerapp.utils.Constants;
+
+import java.util.Random;
 
 /**
  * @author ari
@@ -20,8 +18,11 @@ public class EasyComputerPlayer extends ComputerPlayer {
   }
 
   public EasyComputerPlayer() {
-    this("");
+      this("");
+      setDifficultyCode("E");
   }
+
+
 
    @Override
    protected String exchangeDecision(StringBuilder commandBuilder, String handType)
