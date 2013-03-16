@@ -40,7 +40,7 @@
             <value>three</value>
         </constructor-arg>
         <constructor-arg>
-            <value>4</value>
+            <value>3</value>
         </constructor-arg>
         <constructor-arg>
             <value>1</value>
