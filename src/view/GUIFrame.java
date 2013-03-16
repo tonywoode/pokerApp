@@ -5,10 +5,13 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import view.PlayerHand.PlayerHandPresenterBridge;
 import view.hand.HandPanel;
+import javax.swing.JButton;
 
 
 /**
@@ -19,12 +22,16 @@ import view.hand.HandPanel;
 public class GUIFrame extends JFrame {
 	Container container = null;
 	JPanel backPanel;
+	
+	private PlayerHandPresenterBridge playerHandPresenterBridge;
 
 	/**
 	 * draws the frame with background
 	 * Poker Table Background adapted from thePokerBox.com
 	 */
-	public GUIFrame() {
+	public GUIFrame(PlayerHandPresenterBridge playerHandPresenterBridge) {
+		this.playerHandPresenterBridge = playerHandPresenterBridge;
+		
 		container = getContentPane();
 		container.setLayout(null);
 		
@@ -59,9 +66,18 @@ public class GUIFrame extends JFrame {
 		JPanel Cardpanel2 = new HandPanel();
 		Cardpanel2.setBounds(270, 430, 390, 105);
 		
+		
+		JComponent playerHandView = playerHandPresenterBridge.getView();
+		playerHandView.setBounds(270, 200, 500, 105);
+		
+		
+		
+		
 		backPanel.add(Cardpanel2);
 		backPanel.add(Cardpanel1);
+
 		
+		backPanel.add(playerHandView);
 
 	}
 }   

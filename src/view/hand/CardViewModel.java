@@ -10,11 +10,13 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 09/03/13
- * Time: 20:13
- * To change this template use File | Settings | File Templates.
+ * Provides UI specific functionality to the domain concept of a poker card.
+ * 
+ * Specifically, it adds selection and the card image
+ * 
+ * It also knows how to load the card's image (TODO: should it?)
+ * 
+ * @author Steve
  */
 public class CardViewModel {
 
@@ -23,10 +25,10 @@ public class CardViewModel {
   Card card;
 
   @Getter
-  boolean isSelected;
+  boolean isSelected; // tracks selection state... i.e., if the user has selected the card on screen
 
   @Getter
-  BufferedImage image; // how's this set?
+  BufferedImage image; // set using the static factory method
 
   public CardViewModel(Card card, BufferedImage image) {
     this.card = card;
