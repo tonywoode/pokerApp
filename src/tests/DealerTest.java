@@ -13,21 +13,21 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 /**
  * @author Tony, Sam, Ari
- *
  */
 public class DealerTest {
 
 
   // not entirely sure what this test is supposed to do; my attempt is at the end
 
-	/**
-	 * Test method for {@link pokerapp.console.Dealer#dealCards(int, pokerapp.console.Players)}.
-	 */
+  /**
+   * Test method for {@link pokerapp.console.Dealer#dealCards(int, pokerapp.console.Players)}.
+   */
 
   /*
-	@Test
+  @Test
 	public final void testDealCards() {
     Map<String, Card> cardMap = new HashMap<String, Card>();
 		//test that every player has a set of independent cards
@@ -63,16 +63,16 @@ public class DealerTest {
 
 	}
 	*/
-
   @Test
   public void ArePlayersDealtDifferentCards() {
     Deck deck = Deck.createDeck();
     Dealer dealer = new Dealer(deck);
 
     MockPlayer playerOne = new MockPlayer(),
-               playerTwo = new MockPlayer();
+        playerTwo = new MockPlayer();
 
-    Players players = new Players(playerOne, playerTwo);
+    // Player registration code changed
+    Players players = new Players().register(playerOne, playerTwo);
 
     final int NUM_CARDS_TO_DEAL = 5;
 
@@ -105,7 +105,8 @@ public class DealerTest {
     }
 
     @Override
-    public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting) { }
+    public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting) {
+    }
   }
 
 }

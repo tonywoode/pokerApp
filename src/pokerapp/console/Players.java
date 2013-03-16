@@ -1,6 +1,7 @@
 package pokerapp.console;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.HandScorer;
@@ -10,25 +11,41 @@ import java.util.Iterator;
 
 /**
  * Holds players for the poker app, is able to compare to pick a winning player
+ *
  * @author Steve
  * @version 1.0
  */
-
+@NoArgsConstructor
 public class Players implements Iterable<Player> {
-
-
 
   @Getter
   ArrayList<Player> players = new ArrayList<Player>();
   HandScorer scorer = new HandScorerBuilder().create();
 
-  public Players(Player... players) {
+  /**
+   * Takes its dependency on the HandScorer through DI
+   *
+   * @param scorer The first HandScorer in the Chain of Responsibility
+   */
+  public Players(HandScorer scorer) {
+    this.scorer = scorer;
+  }
+
+  /**
+   * Player registration is handled through a separate method
+   *
+   * @param players varargs ordered array of players for the current game
+   * @return
+   */
+  public Players register(Player... players) {
     for (Player player : players)
-     this.players.add(player);
+      this.players.add(player);
+    return this;
   }
 
   /**
    * Uses the current players to pick a winner
+   *
    * @return the player that has the highest ranking
    */
   public Player pickWinner() {
@@ -44,15 +61,16 @@ public class Players implements Iterable<Player> {
   }
 
   /**
-   * When passed two players, will compare the hand category grade of the two players 
+   * When passed two players, will compare the hand category grade of the two players
    * for a hand of poker, and return which of them compares higher
+   *
    * @param lhs player one
    * @param rhs player two
    * @return the player with the higher hand grade TODO: and their score?
    */
   protected Player pickWinner(Player lhs, Player rhs) {
     ScoredHand lhsCat = scorer.score(lhs.getHand()),
-               rhsCat = scorer.score(rhs.getHand());
+        rhsCat = scorer.score(rhs.getHand());
 
     int result = 0;
     try {
