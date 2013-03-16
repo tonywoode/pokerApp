@@ -22,7 +22,7 @@ public class SpringGame {
   public static void main(String[] args) {
     try {
       ApplicationContext appContext = new ClassPathXmlApplicationContext("/console-game-application-context.xml");
-
+      //gets the bean, cast it to ConsoleGame, a Spring managed object
       ConsoleGame game = (ConsoleGame) appContext.getBean("consoleGame");
 
       game.play();

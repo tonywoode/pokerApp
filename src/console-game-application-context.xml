@@ -10,7 +10,7 @@
     <bean id="interactivePlayer" class="pokerapp.console.InteractivePlayer"/>
 
     <bean id="computerPlayer" class="pokerapp.console.EasyComputerPlayer"/>
-
+     <!-- SDF Spring needed dealer's constructor argument, not sure why? Possibly because didn't specify Autowire ctor-->
     <bean id="dealer" class="pokerapp.Dealer">
         <constructor-arg>
             <ref bean="deck"/>

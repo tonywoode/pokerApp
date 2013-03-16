@@ -2,7 +2,6 @@ package pokerapp.console;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.HandScorer;
 
@@ -20,7 +19,7 @@ public class Players implements Iterable<Player> {
 
   @Getter
   ArrayList<Player> players = new ArrayList<Player>();
-  HandScorer scorer = new HandScorerBuilder().create();
+  HandScorer scorer;
 
   /**
    * Takes its dependency on the HandScorer through DI

@@ -32,10 +32,10 @@ public class ConsoleGame {
   }
 
   /**
-   * Separate initialiation function used by Spring, because
+   * Separate initialisation function used by Spring, because
    * Lombok's auto generated constructor does not do this for us
    * <p/>
-   * Note that Lombok has been removed because I couldn't get
+   * Note that Lombok has been removed from this class because I couldn't get
    * it to work with final members. TODO: fix this.
    */
   public void initialise() {
@@ -46,7 +46,7 @@ public class ConsoleGame {
    * Play a single game of poker with 1 computer player.
    */
   public void play() {
-    console.writeMessage("Game beginning");
+    console.writeMessage("Let's play poker!");
 
     interactivePlayer.setPlayerName(interactivePlayer.getPlayerNameFromUser(console));
 
@@ -55,12 +55,13 @@ public class ConsoleGame {
     dealer.dealCards(HAND_SIZE, players);
 
     for (Player p : players)
+      //TODO:implement custom String formatting
       console.writeMessage("Player {0} has {0.hand}", p);
 
     // TODO: The play order does not follow the spec
     //for(Player p : players.reverse()) // TODO: .reverse() is an issue!
     for (Player p : players)
-      p.playTurn(console, deck, exchangeSetting); // TODO: what's arg #3?
+      p.playTurn(console, deck, exchangeSetting);
 
     Player winner = players.pickWinner();
 
