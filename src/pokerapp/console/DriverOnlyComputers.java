@@ -11,6 +11,8 @@ import pokerapp.utils.Constants;
  */
 public class DriverOnlyComputers {
 
+  //TODO: change name of class as it includes an interactive player now
+
   private final IConsole console = new StandardConsole();
   private final ExchangeSetting exchangeSetting = new ExchangeSetting(3,1);//default - exchange 3 cards once
 
