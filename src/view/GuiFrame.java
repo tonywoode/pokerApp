@@ -7,8 +7,8 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+
+import view.hand.CardPanel;
 
 
 /**
@@ -22,18 +22,23 @@ public class GuiFrame extends JFrame {
 
 	/**
 	 * draws the frame with background
+	 * Poker Table Background adapted from thePokerBox.com
 	 */
 	public GuiFrame() {
 		container = getContentPane();
 		container.setLayout(null);
 		
+		final int FRAME_WIDTH = 912;
+		final int FRAME_HEIGHT = 620;
+		final String backGround = "pics\\TableBack3.png";
+		
 		//ImageIcon backIcon = new ImageIcon("C:\\Users\\tony\\CODE\\Repo\\Poker\\PokerProject\\pics\\TableBack2.png");
 		//setSize(backIcon.getIconWidth() + 5, backIcon.getIconHeight() + 25);
-		setSize(912, 620);
+		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 
 		backPanel = new JPanel() {
 			public void paintComponent(Graphics g) {
-				Image backImage = new ImageIcon("pics\\TableBack3.png").getImage();
+				Image backImage = new ImageIcon(backGround).getImage();
 				Dimension size = new Dimension(backImage.getWidth(null), backImage.getHeight(null));
 				setPreferredSize(size);
 				setMinimumSize(size);
@@ -45,11 +50,17 @@ public class GuiFrame extends JFrame {
 		};
 
 		container.add(backPanel);
-		backPanel.setBounds(0, 0, 912, 620);
-		GroupLayout backLayout = new GroupLayout(backPanel);
-		backLayout.setHorizontalGroup(backLayout.createParallelGroup(Alignment.LEADING).addGap(0, 760, Short.MAX_VALUE) );
-		backLayout.setVerticalGroup(backLayout.createParallelGroup(Alignment.LEADING).addGap(0, 580, Short.MAX_VALUE) );
-		backPanel.setLayout(backLayout);
+		backPanel.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
+		
+		JPanel Cardpanel1 = new CardPanel();
+		Cardpanel1.setBounds(270, 70, 390, 105);
+		backPanel.setLayout(null);
+		
+		JPanel Cardpanel2 = new CardPanel();
+		Cardpanel2.setBounds(270, 430, 390, 105);
+		
+		backPanel.add(Cardpanel2);
+		backPanel.add(Cardpanel1);
 
 	}
 }   
