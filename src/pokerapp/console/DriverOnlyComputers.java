@@ -63,12 +63,12 @@ public class DriverOnlyComputers {
           UserConfigurable userConfigurableNumCards = new UserConfigurable("How many cards do you want to exchange per hand?", MIN_CARDS_EXCHANGE, MAX_CARDS_EXCHANGE);
           cardsToExchange = userConfigurableNumCards.askUser(console,true);
 
-          UserConfigurable userConfigurableNumHands = new UserConfigurable("How many hands do you want to exchange?" + NEW_LINE, MAX_TIMES_EXCHANGE, MIN_TIMES_EXCHANGE);
+          UserConfigurable userConfigurableNumHands = new UserConfigurable("How many hands do you want to exchange?" + NEW_LINE, MIN_TIMES_EXCHANGE, MAX_TIMES_EXCHANGE);
           timesToExchange = userConfigurableNumHands.askUser(console, true);
 
           exchangeSetting.setNumCards(cardsToExchange);
           exchangeSetting.setNumTimes(timesToExchange);
-          console.writeMessage("Excellent, you've decided to exchange " + cardsToExchange + " cards " + timesToExchange + "times.", 1);
+          console.writeMessage("Excellent, you've decided to exchange " + cardsToExchange + " cards " + timesToExchange + " times.", 1);
           break;
 
         case 2:
@@ -89,16 +89,12 @@ public class DriverOnlyComputers {
       String playerName = console.readLine();
 
       console.writeMessage("Choose difficulty for computer player " + playerName + "  (Easy = 1, Standard = 2, Hard = 3)  : ");
-      //char playerDifficulty = console.readString().charAt(1);
-      //int playerDifficulty = console.readInteger();
-      int[] difficulty = {0,1,2,3,2};
-      int playerDifficulty = difficulty[i];//TODO:fix this
+
+      int playerDifficulty = console.readInteger();
       Player p = computerPlayerFactory.makeComputerPlayer(playerName, playerDifficulty);
       players.add(players,p);
 
     }
-
-
 
     while (true) {
 
