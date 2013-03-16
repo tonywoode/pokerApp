@@ -24,10 +24,8 @@ public class ExchangeCardsInterpreter {
                 int pos = Integer.parseInt(strPos);
 
                 Card card = deck.pop();
-
                 Card replacedCard = hand.exchange(pos - 1, card);
-                // TODO: Don't think this is the correct behaviour... can we run out of cards?
-                //deck.returnToBottom(replacedCard);
+
             }
         }
     }
