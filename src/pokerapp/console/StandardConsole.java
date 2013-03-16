@@ -32,6 +32,13 @@ public class StandardConsole implements IConsole {
 
   @Override
   public int readInteger() {
-    return Integer.getInteger(readLine());
+    try {
+      String line = readLine();
+      return Integer.parseInt(line);
+    } catch (NumberFormatException e) {
+      writeMessage("Try again... you moron!");
+      // Sam suggested we use recursion here... nice!
+      return readInteger(); // TODO: is possibility of stack overflow an issue?
+    }
   }
 }
