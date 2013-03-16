@@ -84,12 +84,13 @@ public class HandRanks {
   // @author Ari Ghosh
   // @author Steve Faulmann
   // SDF: moved body of code to this method.
+  // AG:changed StringBuilder name to fit convention
   @Override
   public String toString() {
-    StringBuilder build_rank_counts = new StringBuilder();
+    StringBuilder buildRankCounts = new StringBuilder();
     for (int count_at_rank : rank_histogram) {
-      build_rank_counts.append(count_at_rank);
+      buildRankCounts.append(count_at_rank);
     }
-    return build_rank_counts.toString();
+    return buildRankCounts.toString();
   }
 }
