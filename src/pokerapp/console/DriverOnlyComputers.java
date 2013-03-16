@@ -91,7 +91,7 @@ public class DriverOnlyComputers {
 
       int playerDifficulty = console.readInteger();
       Player p = computerPlayerFactory.makeComputerPlayer(playerName, playerDifficulty);
-      players.add(players,p);
+      players.register(p);
 
     }
 
