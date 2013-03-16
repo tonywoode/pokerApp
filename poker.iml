@@ -35,6 +35,8 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="JMF" level="project" />
+    <orderEntry type="library" name="Spring" level="project" />
+    <orderEntry type="library" name="Filters" level="project" />
   </component>
 </module>
 

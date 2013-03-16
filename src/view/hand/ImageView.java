@@ -18,6 +18,16 @@ public class ImageView extends JComponent {
   @Getter
   private BufferedImage image;
 
+  @Getter
+  private int index;
+
+  public ImageView(){}
+
+  public ImageView(int index)
+  {
+      this.index = index;
+  }
+
   public void setImage(BufferedImage img) {
     this.image = img;
     this.repaint();

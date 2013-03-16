@@ -3,6 +3,7 @@ package view.hand;
 import lombok.Getter;
 import lombok.Setter;
 import pokerapp.Card;
+import view.imagefilters.IImageFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -23,14 +24,22 @@ public class CardViewModel {
   Card card;
 
   @Getter
+  @Setter
   boolean isSelected;
 
-  @Getter
-  BufferedImage image; // how's this set?
+  public BufferedImage getImage() {
+      return isSelected ? selectedImage : unselectedImage;
+  }
+
+  @Getter @Setter
+  BufferedImage unselectedImage;
+
+  @Getter @Setter
+  BufferedImage selectedImage;
 
   public CardViewModel(Card card, BufferedImage image) {
     this.card = card;
-    this.image = image;
+    this.unselectedImage = image;
   }
 
   public static CardViewModel create(Card card) {
