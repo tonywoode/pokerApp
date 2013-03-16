@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="guiGame" class="view.GUIGame" init-method="initialise" autowire="constructor"/>
+
+    <bean id="console" class="pokerapp.console.StandardConsole"/>
+
+    <bean id="interactivePlayer" class="pokerapp.console.InteractivePlayer"/>
+
+    <bean id="computerPlayer" class="pokerapp.console.EasyComputerPlayer"/>
+     <!-- SDF Spring needed dealer's constructor argument, not sure why? Possibly because didn't specify Autowire ctor-->
+    <bean id="dealer" class="pokerapp.Dealer">
+        <constructor-arg>
+            <ref bean="deck"/>
+        </constructor-arg>
+    </bean>
+
+</beans>
