@@ -41,7 +41,15 @@ public class DriverOnlyComputers {
 
 
 
+
+
+
     try {
+
+      InteractivePlayer interactivePlayer = new InteractivePlayer();
+      interactivePlayer.getPlayerNameFromUser(console);
+      players.register(interactivePlayer);
+
       UserConfigurable userConfigurableNumPlayers =
           new UserConfigurable("How many computer players do you want to play against?" + NEW_LINE,
               MIN_NUMBER_PLAYERS, MAX_NUMBER_PLAYERS); //TODO: include a human player
