@@ -63,7 +63,7 @@ public class DriverOnlyComputers {
           UserConfigurable userConfigurableNumCards = new UserConfigurable("How many cards do you want to exchange per hand?", MIN_CARDS_EXCHANGE, MAX_CARDS_EXCHANGE);
           cardsToExchange = userConfigurableNumCards.askUser(console,true);
 
-          UserConfigurable userConfigurableNumHands = new UserConfigurable("How many hands do you want to exchange?" + NEW_LINE, MAX_TIMES_EXCHANGE, MIN_TIMES_EXCHANGE);
+          UserConfigurable userConfigurableNumHands = new UserConfigurable("How many hands do you want to exchange?" + NEW_LINE, MIN_TIMES_EXCHANGE, MAX_TIMES_EXCHANGE);
           timesToExchange = userConfigurableNumHands.askUser(console, true);
 
           exchangeSetting.setNumCards(cardsToExchange);
