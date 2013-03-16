@@ -32,7 +32,7 @@ import javax.swing.BoxLayout;
  *
  */
 
-public class PokerViewer {
+public class PokerViewer_OLD {
 
 	private JFrame frame;
 	private JLabel txtPictureOfA;
@@ -46,7 +46,7 @@ public class PokerViewer {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PokerViewer window = new PokerViewer();
+					PokerViewer_OLD window = new PokerViewer_OLD();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +58,7 @@ public class PokerViewer {
 	/**
 	 * Create the application.
 	 */
-	public PokerViewer() {
+	public PokerViewer_OLD() {
 		initialize();
 	}
 
