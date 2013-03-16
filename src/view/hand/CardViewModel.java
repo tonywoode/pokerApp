@@ -50,20 +50,23 @@ public class CardViewModel {
   private static String filenameFromCard(Card card) {
     return ("" + card.getSuit().getCode()).toLowerCase() + getRankString(card.getRank()) + ".gif";
   }
-
-  private static char getRankString(int rank) {
-    if (rank >= 0 && rank <= 10)
-      return (char) ('0' + rank);
+  //TODO: no no no use the enum...but how many other classes will that effect eh?
+  
+  private static String getRankString(int rank) {
+    if (rank >= 0 && rank < 11)
+      return (Integer.toString(rank));
     else
       switch (rank) {
+        /*case 10:
+          return "10";*/
         case 11:
-          return 'J';
+          return "J";
         case 12:
-          return 'Q';
+          return "Q";
         case 13:
-          return 'K';
+          return "K";
         case 14:
-          return 'A';
+          return "A";
         default:
           throw new IllegalArgumentException("Illegal rank");
       }
