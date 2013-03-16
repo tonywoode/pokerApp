@@ -89,16 +89,12 @@ public class DriverOnlyComputers {
       String playerName = console.readLine();
 
       console.writeMessage("Choose difficulty for computer player " + playerName + "  (Easy = 1, Standard = 2, Hard = 3)  : ");
-      //char playerDifficulty = console.readString().charAt(1);
-      //int playerDifficulty = console.readInteger();
-      int[] difficulty = {0,1,2,3,2};
-      int playerDifficulty = difficulty[i];//TODO:fix this
+
+      int playerDifficulty = console.readInteger();
       Player p = computerPlayerFactory.makeComputerPlayer(playerName, playerDifficulty);
       players.add(players,p);
 
     }
-
-
 
     while (true) {
 
