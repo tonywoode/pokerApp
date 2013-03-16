@@ -68,7 +68,7 @@ public class DriverOnlyComputers {
 
           exchangeSetting.setNumCards(cardsToExchange);
           exchangeSetting.setNumTimes(timesToExchange);
-          console.writeMessage("Excellent, you've decided to exchange " + cardsToExchange + " cards " + timesToExchange + "times.", 1);
+          console.writeMessage("Excellent, you've decided to exchange " + cardsToExchange + " cards " + timesToExchange + " times.", 1);
           break;
 
         case 2:
