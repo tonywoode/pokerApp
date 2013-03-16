@@ -25,7 +25,4 @@ public class HandGrid {
             ++matrix[c.getSuit().getNumber()][c.getRank()];
         }
     }
-
-    //TODO: create Rank & Flush Histograms here?  maybe use facade?
-
 }
