@@ -2,6 +2,7 @@ package view.hand;
 
 import pokerapp.Card;
 import pokerapp.Suit;
+import view.ImageView;
 
 import javax.swing.*;
 import java.awt.*;

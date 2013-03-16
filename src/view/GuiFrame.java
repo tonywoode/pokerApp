@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import view.hand.CardPanel;
+import view.hand.HandPanel;
 
 
 /**
@@ -52,11 +52,11 @@ public class GuiFrame extends JFrame {
 		container.add(backPanel);
 		backPanel.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
 		
-		JPanel Cardpanel1 = new CardPanel();
+		JPanel Cardpanel1 = new HandPanel();
 		Cardpanel1.setBounds(270, 70, 390, 105);
 		backPanel.setLayout(null);
 		
-		JPanel Cardpanel2 = new CardPanel();
+		JPanel Cardpanel2 = new HandPanel();
 		Cardpanel2.setBounds(270, 430, 390, 105);
 		
 		backPanel.add(Cardpanel2);

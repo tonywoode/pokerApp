@@ -1,4 +1,4 @@
-package view.hand;
+package view;
 
 import lombok.Getter;
 

@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 
 import pokerapp.Card;
 import pokerapp.Suit;
+import view.ImageView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,13 +16,14 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-public final class CardPanel extends JPanel {
+public final class HandPanel extends JPanel {
 	
 	/**
+	 * Displays cards in a panel
+	 * @author tony
 	 * @wbp.factory
 	 */
-		public CardPanel() {
-		    //JPanel cardsPanel = new JPanel();
+		public HandPanel() {
 		    this.setLayout(new FlowLayout());
 		    final ArrayList<ImageView> imageViews = new ArrayList<ImageView>();
 

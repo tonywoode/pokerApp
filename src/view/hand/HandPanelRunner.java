@@ -11,12 +11,17 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-public class CardViewer {
+/**
+ * Just displays a hand panel, for testing
+ * @author Tony
+ *
+ */
+public class HandPanelRunner {
 
   public static void main(String[] args) {
 
     final JFrame frame = new JFrame("Load Image Sample");
-    JPanel cardRender = new CardRenderer();
+    JPanel cardRender = new HandPanel();
 
     frame.setLayout(new BorderLayout());
     
