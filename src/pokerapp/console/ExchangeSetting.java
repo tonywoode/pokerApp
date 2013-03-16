@@ -6,7 +6,6 @@ import lombok.Setter;
 /**
  * @author   Ari
  * @version  1.0
- * @param    //TODO:Parameter Description
  */
 public class ExchangeSetting {
 

@@ -9,8 +9,7 @@ package pokerapp.console;
  */
 public interface IConsole {
 
-    //TODO: this is to aid unit tests - a seam (Michael Feathers)
-    //TODO: this manages interaction
+    //TODO: this is to manage interaction to aid unit tests - a seam (Michael Feathers)
 
   void writeMessage(String msg);
   void writeMessage(String msg, Object... args);

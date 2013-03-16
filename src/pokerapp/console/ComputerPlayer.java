@@ -11,7 +11,6 @@ import pokerapp.scorer.scoredhands.ScoredHand;
  * @author   Ari
  * @author   Sam
  * @version  1.0
- * @param    //TODO:Parameter Description
  */
 
 public abstract class ComputerPlayer extends Player {
