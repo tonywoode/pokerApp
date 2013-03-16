@@ -39,6 +39,7 @@ public final class HandPanel extends JPanel {
 
 		      imageViews.add(imageView);
 		      this.add(imageView);
+		     
 		    }
 
 		  }

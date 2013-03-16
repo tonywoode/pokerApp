@@ -16,7 +16,7 @@ import view.hand.HandPanel;
  * @author tony
  *
  */
-public class GuiFrame extends JFrame {
+public class GUIFrame extends JFrame {
 	Container container = null;
 	JPanel backPanel;
 
@@ -24,7 +24,7 @@ public class GuiFrame extends JFrame {
 	 * draws the frame with background
 	 * Poker Table Background adapted from thePokerBox.com
 	 */
-	public GuiFrame() {
+	public GUIFrame() {
 		container = getContentPane();
 		container.setLayout(null);
 		
@@ -61,6 +61,7 @@ public class GuiFrame extends JFrame {
 		
 		backPanel.add(Cardpanel2);
 		backPanel.add(Cardpanel1);
+		
 
 	}
 }   
