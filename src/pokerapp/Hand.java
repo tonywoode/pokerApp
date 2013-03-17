@@ -10,6 +10,7 @@ import java.util.Iterator;
 
 /**
  * Creates hands from cards and allows ranking, sorting, exchanging and printing of those hands
+ *
  * @author steve
  * @version 1.0
  */
@@ -20,6 +21,7 @@ public class Hand implements Iterable<Card> {
 
   /**
    * Adds a card to a hand
+   *
    * @param card a card
    * @throws IndexOutOfBoundsException
    */
@@ -31,7 +33,7 @@ public class Hand implements Iterable<Card> {
   }
 
   public void clear() throws NullPointerException {
-    if(cards.size() == 0)
+    if (cards.size() == 0)
       throw new NullPointerException("Hand is empty");
 
     cards.clear();
@@ -39,6 +41,7 @@ public class Hand implements Iterable<Card> {
 
   /**
    * presents the cards from the hand
+   *
    * @return individual cards from the hand
    */
   public Iterator<Card> iterator() {
@@ -47,38 +50,40 @@ public class Hand implements Iterable<Card> {
 
   /**
    * sorts a hand of cards and returns on sorted order
+   *
    * @return sorted list of cards
    */
   public ArrayList<Card> getSortedCards() {
-    ArrayList<Card> sortedCards = (ArrayList<Card>)cards.clone();
+    ArrayList<Card> sortedCards = (ArrayList<Card>) cards.clone();
 
     Collections.sort(sortedCards, new HighToLowCardComparator());
 
     return sortedCards;
   }
 
-    /**
-     * returns each card as an unsorted array
-     * @return array of cards in the hand
-     *
-     */
+  /**
+   * returns each card as an unsorted array
+   *
+   * @return array of cards in the hand
+   */
 
-    public ArrayList<Card> getCards() {
-        return cards;
-    }
+  public ArrayList<Card> getCards() {
+    return cards;
+  }
 
-    /**
-     * returns each card as text separated by whitespace
-     * @return text representation of the hand
-     *
-     */
+  /**
+   * returns each card as text separated by whitespace
+   *
+   * @return text representation of the hand
+   */
 
-    public String toUserString() {
+  public String toUserString() {
 
     StringBuilder msg = new StringBuilder();
 
-    for (Card card : cards){
+    for (Card card : cards) {
       msg.append(card.toString());
+      // TODO: remove trailing space
       msg.append(" ");
     }
 
@@ -88,14 +93,14 @@ public class Hand implements Iterable<Card> {
   /**
    * returns each card as text separated by whitespace
    * using symbols J,Q,K,A for picture ranks
-   * @return text representation of the hand
    *
+   * @return text representation of the hand
    */
   public String toFancyUserString() {
 
     StringBuilder msg = new StringBuilder();
 
-    for (Card card : cards){
+    for (Card card : cards) {
       msg.append(card.toFancyString());
       msg.append(" ");
     }
@@ -110,7 +115,8 @@ public class Hand implements Iterable<Card> {
 
   /**
    * exchanges an individual card in a position in the hand with another
-   * @param pos position of card to be removed
+   *
+   * @param pos  position of card to be removed
    * @param card the card to replace with
    * @return the hand after cards have been exchanged
    */
