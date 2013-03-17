@@ -1,7 +1,8 @@
-package view.hand;
+package view.hand.testsvisual;
 
 import pokerapp.Card;
 import pokerapp.Suit;
+import view.hand.HandPanel;
 
 import javax.swing.*;
 import java.awt.*;

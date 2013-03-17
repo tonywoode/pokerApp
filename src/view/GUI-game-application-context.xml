@@ -18,17 +18,5 @@
     <bean id="playerHandView" class="view.playerhand.PlayerHandView" autowire="constructor" />    
 
     <bean id="playerHandPresenterBridge" class="view.playerhand.PlayerHandPresenterBridge" autowire="constructor" />
-  
-  <!--
-  
-  hmm this is making the cards disappear....interesting....
-  
-    
-    <bean id="cpuHandPresenter" class="view.computerhand.ComputerHandPresenter" autowire="constructor" />
 
-    <bean id="cpuHandView" class="view.computerhand.ComputerHandView" autowire="constructor" />    
-
-    <bean id="cpuHandPresenterBridge" class="view.computerhand.ComputerHandPresenterBridge" autowire="constructor" />
-
- -->
 </beans>
