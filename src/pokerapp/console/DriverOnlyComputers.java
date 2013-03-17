@@ -8,9 +8,10 @@ import pokerapp.utils.Constants;
 /**
  * @author Ari
  * @version 1.0
- * @param //TODO:Parameter Description
  */
 public class DriverOnlyComputers {
+
+  //TODO: change name of class as it includes an interactive player now
 
   private final IConsole console = new StandardConsole();
   private final ExchangeSetting exchangeSetting = new ExchangeSetting(3,1);//default - exchange 3 cards once
@@ -42,7 +43,15 @@ public class DriverOnlyComputers {
 
 
 
+
+
+
     try {
+
+      InteractivePlayer interactivePlayer = new InteractivePlayer();
+      interactivePlayer.getPlayerNameFromUser(console);
+      players.register(interactivePlayer);
+
       UserConfigurable userConfigurableNumPlayers =
           new UserConfigurable("How many computer players do you want to play against?" + NEW_LINE,
               MIN_NUMBER_PLAYERS, MAX_NUMBER_PLAYERS); //TODO: include a human player
@@ -63,12 +72,12 @@ public class DriverOnlyComputers {
           UserConfigurable userConfigurableNumCards = new UserConfigurable("How many cards do you want to exchange per hand?", MIN_CARDS_EXCHANGE, MAX_CARDS_EXCHANGE);
           cardsToExchange = userConfigurableNumCards.askUser(console,true);
 
-          UserConfigurable userConfigurableNumHands = new UserConfigurable("How many hands do you want to exchange?" + NEW_LINE, MAX_TIMES_EXCHANGE, MIN_TIMES_EXCHANGE);
+          UserConfigurable userConfigurableNumHands = new UserConfigurable("How many hands do you want to exchange?" + NEW_LINE, MIN_TIMES_EXCHANGE, MAX_TIMES_EXCHANGE);
           timesToExchange = userConfigurableNumHands.askUser(console, true);
 
           exchangeSetting.setNumCards(cardsToExchange);
           exchangeSetting.setNumTimes(timesToExchange);
-          console.writeMessage("Excellent, you've decided to exchange " + cardsToExchange + " cards " + timesToExchange + "times.", 1);
+          console.writeMessage("Excellent, you've decided to exchange " + cardsToExchange + " cards " + timesToExchange + " times.", 1);
           break;
 
         case 2:
@@ -89,16 +98,12 @@ public class DriverOnlyComputers {
       String playerName = console.readLine();
 
       console.writeMessage("Choose difficulty for computer player " + playerName + "  (Easy = 1, Standard = 2, Hard = 3)  : ");
-      //char playerDifficulty = console.readString().charAt(1);
-      //int playerDifficulty = console.readInteger();
-      int[] difficulty = {0,1,2,3,2};
-      int playerDifficulty = difficulty[i];//TODO:fix this
+
+      int playerDifficulty = console.readInteger();
       Player p = computerPlayerFactory.makeComputerPlayer(playerName, playerDifficulty);
-      players.add(players,p);
+      players.register(p);
 
     }
-
-
 
     while (true) {
 

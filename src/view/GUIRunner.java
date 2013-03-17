@@ -7,12 +7,12 @@ import javax.swing.JFrame;
  * @author tony
  *
  */
-public class GuiRunner
+public class GUIRunner
 { 
     public static void main(String[] args)
     {
 
-        JFrame frame = new GuiFrame();
+        JFrame frame = new GUIFrame();
         frame.setTitle("Pokerapp");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         frame.setVisible(true);

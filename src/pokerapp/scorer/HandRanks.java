@@ -13,13 +13,13 @@ import pokerapp.utils.ReverseArrayIterator;
  * Represents the statistical summary of the rank_histogram of the cards in a hand.
  * It determines how many cards of each rank are in the hand
  *
- * See [wiki page] for details. TODO: Ari was (maybe) going to write this key data structure up. & write a test
+ * See [wiki page] for details. TODO: Ari was (maybe) going to write this key data structure up.
  *
  *
  * 2013-03-06 (sdf):
  *   Simplified interface.
  *   Moved string representation to the toString method. << nice
- *   Removed aces low/high code  TODO: Steve, I'd already done this?
+ *   Removed aces low/high code
  *
  */
 public class HandRanks {

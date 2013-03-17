@@ -10,7 +10,6 @@ import pokerapp.Hand;
  * @author Steve
  * @author Ari
  * @version 1.0
- * @param //TODO:Parameter Description
  */
 public abstract class Player {
   @Getter private Hand hand = new Hand();

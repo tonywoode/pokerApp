@@ -16,7 +16,7 @@ public class BackgroundPanel extends JPanel {
 	}
 	private void initialize() {
 		try {
-			image = new ImageIcon(getClass().getResource("C:\\Users\\tony\\CODE\\Repo\\Poker\\PokerProject\\pics\\TableBack2.png")).getImage();
+			image = new ImageIcon(getClass().getResource("pics/TableBack2.png")).getImage();
 		} catch (Exception e) {
 			/*handled in paintComponent()*/
 		}

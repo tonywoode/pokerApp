@@ -18,8 +18,9 @@ public class Driver {
 
     InteractivePlayer interactivePlayer = new InteractivePlayer();
 
-    // TODO: change to use a factory
-    ComputerPlayer computerPlayer = new StandardComputerPlayer();
+    ComputerPlayerFactory computerPlayerFactory = new ComputerPlayerFactory();
+
+    ComputerPlayer computerPlayer = computerPlayerFactory.makeComputerPlayer("standardComputer", 2);//TODO:magic number
 
     Deck deck = Deck.createDeck();
 

@@ -1,4 +1,4 @@
-package view.hand;
+package view;
 
 import lombok.Getter;
 
@@ -18,14 +18,24 @@ public class ImageView extends JComponent {
   @Getter
   private BufferedImage image;
 
+  @Getter
+  private int index;
+
+  public ImageView(){}
+
+  public ImageView(int index)
+  {
+      this.index = index;
+  }
+
   public void setImage(BufferedImage img) {
     this.image = img;
     this.repaint();
   }
 
   @Override
-  public void paint(Graphics g) {
-    super.paint(g);
+  public void paintComponent(Graphics g) {
+    super.paintComponent(g);
     if (image != null)
       g.drawImage(image, 0, 0, null);
   }

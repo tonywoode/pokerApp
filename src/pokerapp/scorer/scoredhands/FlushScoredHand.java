@@ -33,10 +33,9 @@ public class FlushScoredHand extends AbstractScoredHand<FlushScoredHand> {
         return hand.getSortedCards();
     }
 
-    /**
+   /**
    * Compares two equal flush hands for which is the greater
    * actually, only the highest card needs to be checked
-   * @return TODO:
    */
   @Override
   protected int compareEqualCategories(FlushScoredHand rhs) {

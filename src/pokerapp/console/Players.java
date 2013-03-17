@@ -92,9 +92,4 @@ public class Players implements Iterable<Player> {
   public Iterator<Player> iterator() {
     return players.iterator();
   }
-
-  //TODO: replace with something better asap
-  public void add(Players players, Player player) {    //TODO: horrible, I know.
-    players.players.add(player);
-  }
 }
