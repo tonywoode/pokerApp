@@ -1,4 +1,4 @@
-package view.PlayerHand;
+package view;
 
 import javax.swing.JComponent;
 

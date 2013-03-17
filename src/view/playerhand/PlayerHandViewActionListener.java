@@ -1,4 +1,4 @@
-package view.PlayerHand;
+package view.playerhand;
 
 /**
  * Holds actions that user has performed in GUI: hold and exchange. Passes them to presenter

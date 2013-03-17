@@ -9,9 +9,12 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import view.PlayerHand.PlayerHandPresenterBridge;
 import view.hand.HandPanel;
+import view.playerhand.PlayerHandPresenterBridge;
+
 import javax.swing.JButton;
+import javax.swing.JTextField;
+import java.awt.Color;
 
 
 /**
@@ -24,6 +27,7 @@ public class GUIFrame extends JFrame {
 	JPanel backPanel;
 	
 	private PlayerHandPresenterBridge playerHandPresenterBridge;
+	private JTextField txtEllo;
 
 	/**
 	 * draws the frame with background
@@ -63,21 +67,32 @@ public class GUIFrame extends JFrame {
 		Cardpanel1.setBounds(270, 70, 390, 105);
 		backPanel.setLayout(null);
 		
-		JPanel Cardpanel2 = new HandPanel();
-		Cardpanel2.setBounds(270, 430, 390, 105);
+		/**JPanel Cardpanel2 = new HandPanel();
+		Cardpanel2.setBounds(270, 430, 390, 105); */
 		
 		
 		JComponent playerHandView = playerHandPresenterBridge.getView();
-		playerHandView.setBounds(270, 200, 500, 105);
+		playerHandView.setOpaque(false);
+		playerHandView.setBounds(200, 400, 500, 105);
 		
-		
-		
-		
-		backPanel.add(Cardpanel2);
+				
+		//backPanel.add(Cardpanel2);
 		backPanel.add(Cardpanel1);
 
 		
 		backPanel.add(playerHandView);
+		
+		JPanel panel = new JPanel();
+		
+		panel.setBackground(Color.YELLOW);
+		panel.setBounds(220, 280, 122, 105);
+		panel.setOpaque(false);
+		backPanel.add(panel);
+		
+		txtEllo = new JTextField();
+		txtEllo.setText("ello");
+		panel.add(txtEllo);
+		txtEllo.setColumns(10);
 
 	}
 }   

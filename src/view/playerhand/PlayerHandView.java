@@ -1,6 +1,7 @@
-package view.PlayerHand;
+package view.playerhand;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import view.Displayable;
 import view.ExchangeButton;
 import view.HoldButton;
 import view.hand.CardViewModel;
@@ -54,6 +56,8 @@ public class PlayerHandView implements Displayable {
 	private void initComponents() {
 		this.mainView = new JPanel();
 		mainView.setLayout(new BorderLayout());
+		buttonsPanel.setOpaque(false);
+
 		
 		this.buttonsPanel.setLayout(new BoxLayout(this.buttonsPanel, BoxLayout.Y_AXIS));
 		

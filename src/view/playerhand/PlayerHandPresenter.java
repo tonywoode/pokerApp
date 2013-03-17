@@ -1,4 +1,4 @@
-package view.PlayerHand;
+package view.playerhand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,7 @@ import pokerapp.Dealer;
 import pokerapp.Hand;
 import pokerapp.console.Player;
 
+import view.Displayable;
 import view.hand.CardViewModel;
 
 /**

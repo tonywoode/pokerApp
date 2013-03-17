@@ -13,10 +13,22 @@
    
     <bean id="deck" class="pokerapp.Deck" factory-method="createDeck" />
    
-    <bean id="playerHandPresenter" class="view.PlayerHand.PlayerHandPresenter" autowire="constructor" />
+    <bean id="playerHandPresenter" class="view.playerhand.PlayerHandPresenter" autowire="constructor" />
 
-    <bean id="playerHandView" class="view.PlayerHand.PlayerHandView" autowire="constructor" />    
+    <bean id="playerHandView" class="view.playerhand.PlayerHandView" autowire="constructor" />    
 
-    <bean id="playerHandPresenterBridge" class="view.PlayerHand.PlayerHandPresenterBridge" autowire="constructor" />
+    <bean id="playerHandPresenterBridge" class="view.playerhand.PlayerHandPresenterBridge" autowire="constructor" />
+  
+  <!--
+  
+  hmm this is making the cards disappear....interesting....
+  
+    
+    <bean id="cpuHandPresenter" class="view.computerhand.ComputerHandPresenter" autowire="constructor" />
 
+    <bean id="cpuHandView" class="view.computerhand.ComputerHandView" autowire="constructor" />    
+
+    <bean id="cpuHandPresenterBridge" class="view.computerhand.ComputerHandPresenterBridge" autowire="constructor" />
+
+ -->
 </beans>
