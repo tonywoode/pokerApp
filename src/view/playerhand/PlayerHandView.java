@@ -16,6 +16,13 @@ import view.ExchangeButton;
 import view.HoldButton;
 import view.hand.CardViewModel;
 import view.hand.HandPanel;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import java.awt.Component;
+import javax.swing.border.EtchedBorder;
+import javax.swing.Box;
+import java.awt.Dimension;
+import java.awt.Cursor;
 
 /**
  * 
@@ -33,6 +40,8 @@ public class PlayerHandView implements Displayable {
 	private HoldButton holdButton;
 	
 	private List<PlayerHandViewActionListener> listeners = new ArrayList<>();
+	private Component rigidArea;
+	private Component rigidArea_1;
 	
 	public PlayerHandView(HandPanel handPanel) {
 		this.handPanel = handPanel;
@@ -62,6 +71,7 @@ public class PlayerHandView implements Displayable {
 		this.buttonsPanel.setLayout(new BoxLayout(this.buttonsPanel, BoxLayout.Y_AXIS));
 		
 		this.exchangeButton = new ExchangeButton();
+		
 		this.exchangeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -71,6 +81,7 @@ public class PlayerHandView implements Displayable {
 		});
 		
 		this.holdButton = new HoldButton();
+		
 		this.holdButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -84,7 +95,15 @@ public class PlayerHandView implements Displayable {
 	 * Puts the UI widgets in the right place
 	 */
 	private void layoutComponents() {
+		
+		rigidArea = Box.createRigidArea(new Dimension(20, 20));
+		rigidArea.setPreferredSize(new Dimension(30, 20));
+		buttonsPanel.add(rigidArea);
 		buttonsPanel.add(exchangeButton);
+		
+		rigidArea_1 = Box.createRigidArea(new Dimension(20, 20));
+		rigidArea_1.setPreferredSize(new Dimension(50, 20));
+		buttonsPanel.add(rigidArea_1);
 		buttonsPanel.add(holdButton);
 		
 		mainView.add(buttonsPanel, BorderLayout.WEST);

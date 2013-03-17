@@ -2,6 +2,8 @@ package view.computerhand;
 
 
 import java.awt.BorderLayout;
+import java.awt.Cursor;
+
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
@@ -36,6 +38,7 @@ public class ComputerHandView implements Displayable {
 
 	private void initComponents() {
 		this.mainView = new JPanel();
+		handPanel.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR)); //so it doesn't look like you can select the cpu's hand //TODO: does this work here?
 		mainView.setLayout(new BorderLayout());
 	}
 

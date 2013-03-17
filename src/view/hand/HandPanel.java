@@ -1,4 +1,5 @@
 package view.hand;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 
@@ -29,6 +30,8 @@ public final class HandPanel extends JPanel {
 	private final ArrayList<CardViewModel> cards = new ArrayList<>();
 	
 	public HandPanel() {
+		setOpaque(false);
+		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		this.setLayout(new FlowLayout());
 		
 		final int MAX_CARDS = 7;

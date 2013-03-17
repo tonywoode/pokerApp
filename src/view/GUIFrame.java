@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -9,12 +10,14 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import view.computerhand.ComputerHandPresenterBridge;
 import view.hand.HandPanel;
 import view.playerhand.PlayerHandPresenterBridge;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Color;
+import javax.swing.JLabel;
 
 
 /**
@@ -27,14 +30,15 @@ public class GUIFrame extends JFrame {
 	JPanel backPanel;
 	
 	private PlayerHandPresenterBridge playerHandPresenterBridge;
-	private JTextField txtEllo;
+	//private ComputerHandPresenterBridge cpuHandPresenterBridge;
 
 	/**
 	 * draws the frame with background
 	 * Poker Table Background adapted from thePokerBox.com
 	 */
-	public GUIFrame(PlayerHandPresenterBridge playerHandPresenterBridge) {
+	public GUIFrame(PlayerHandPresenterBridge playerHandPresenterBridge) {//, ComputerHandPresenterBridge cpuHandPresenterBridge) {
 		this.playerHandPresenterBridge = playerHandPresenterBridge;
+		//this.cpuHandPresenterBridge = cpuHandPresenterBridge;
 		
 		container = getContentPane();
 		container.setLayout(null);
@@ -59,6 +63,11 @@ public class GUIFrame extends JFrame {
 				g.drawImage(backImage, 0, 0, null);
 			} 
 		};
+		
+		JLabel logo = new JLabel();
+		logo.setBounds(10, 11, 305, 129);
+		backPanel.add(logo);
+		logo.setIcon(new ImageIcon("pics/PokerappLogo.png"));
 
 		container.add(backPanel);
 		backPanel.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
@@ -70,29 +79,22 @@ public class GUIFrame extends JFrame {
 		/**JPanel Cardpanel2 = new HandPanel();
 		Cardpanel2.setBounds(270, 430, 390, 105); */
 		
+		/**JComponent cpuHandView = cpuHandPresenterBridge.getView();
+		cpuHandView.setOpaque(false);
+		cpuHandView.setBounds(270, 70, 390, 105);
+		*/
 		
 		JComponent playerHandView = playerHandPresenterBridge.getView();
 		playerHandView.setOpaque(false);
-		playerHandView.setBounds(200, 400, 500, 105);
+		playerHandView.setBounds(145, 400, 515, 105);
 		
 				
 		//backPanel.add(Cardpanel2);
 		backPanel.add(Cardpanel1);
-
-		
 		backPanel.add(playerHandView);
+		//backPanel.add(cpuHandView);
 		
-		JPanel panel = new JPanel();
 		
-		panel.setBackground(Color.YELLOW);
-		panel.setBounds(220, 280, 122, 105);
-		panel.setOpaque(false);
-		backPanel.add(panel);
-		
-		txtEllo = new JTextField();
-		txtEllo.setText("ello");
-		panel.add(txtEllo);
-		txtEllo.setColumns(10);
 
 	}
 }   
