@@ -17,7 +17,7 @@ public class ExchangeButton extends JButton {
 		
 		/*
 		 * Image created from http://cooltext.com/Logo-Design?LogoID=805750601&Font=802
-		 * Using font KillerBoots and Irish Gradient. Text size 15 and 6x offset shadow with 75 opacity
+		 * Using font KillerBoots and St Patrick Style. Text size 15 and 6x offset shadow with 75 opacity
 		 * The Pressed Icons were those put through XNView with average blur effect with largest filter
 		 */
 		//setText("Exchange");

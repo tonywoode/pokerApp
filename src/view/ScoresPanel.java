@@ -40,6 +40,7 @@ public class ScoresPanel extends JPanel {
 	YouLabel = new JLabel();
 	YouLabel.setIcon(new ImageIcon("pics/You.png"));
 	cpuScore = new JTextField();
+	cpuScore.setEditable(false);
 	cpuScore.setBorder(null);
 	cpuScore.setHorizontalAlignment(SwingConstants.CENTER);
 	cpuScore.setForeground(Color.WHITE);
@@ -49,6 +50,7 @@ public class ScoresPanel extends JPanel {
 	cpuScore.setText("1");
 	cpuScore.setColumns(10);
 	youScore = new JTextField();
+	youScore.setEditable(false);
 	youScore.setBorder(null);
 	youScore.setHorizontalAlignment(SwingConstants.CENTER);
 	youScore.setForeground(Color.WHITE);

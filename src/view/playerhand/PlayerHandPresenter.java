@@ -60,6 +60,10 @@ public class PlayerHandPresenter implements PlayerHandViewActionListener, Displa
 	public void onExchange() {
 		JOptionPane.showMessageDialog(getView(), "Exchange command activated");		
 	}
+	
+	
+	
+
 
 	@Override
 	public JComponent getView() {

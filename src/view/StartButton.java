@@ -20,8 +20,6 @@ public class StartButton extends JButton {
 			setPressedIcon(new ImageIcon("pics/StartGameSelected.png"));
 			setBackground(new Color(34, 142, 34));
 			setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.RED, Color.ORANGE));
-			setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			
-			
+			setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));				
 		}
 }

@@ -1,7 +1,6 @@
 package view.playerhand;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -14,15 +13,13 @@ import javax.swing.JPanel;
 import view.Displayable;
 import view.ExchangeButton;
 import view.HoldButton;
+import view.StartButton;
 import view.hand.CardViewModel;
 import view.hand.HandPanel;
-import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
 import java.awt.Component;
-import javax.swing.border.EtchedBorder;
 import javax.swing.Box;
 import java.awt.Dimension;
-import java.awt.Cursor;
+import javax.swing.JButton;
 
 /**
  * 
@@ -38,17 +35,18 @@ public class PlayerHandView implements Displayable {
 	private HandPanel handPanel;
 	private ExchangeButton exchangeButton;
 	private HoldButton holdButton;
-	
+
 	private List<PlayerHandViewActionListener> listeners = new ArrayList<>();
 	private Component rigidArea;
 	private Component rigidArea_1;
+	private StartButton startButton;
 	
 	public PlayerHandView(HandPanel handPanel) {
 		this.handPanel = handPanel;
 		initComponents();
 		layoutComponents();
 	}
-	
+
 	/**
 	 * since PlayerHandView represents player in the GUI, the listeners will lie here for the view
 	 * they will pass to the PlayerHandActionListener who will then pass onto the presenter
@@ -57,21 +55,21 @@ public class PlayerHandView implements Displayable {
 	public void addListener(PlayerHandViewActionListener listener) {
 		listeners.add(listener);
 	}
-	
+
 	public void setCards(Iterable<CardViewModel> cards) {
 		handPanel.setCards(cards);
 	}
-	
+
 	private void initComponents() {
 		this.mainView = new JPanel();
 		mainView.setLayout(new BorderLayout());
 		buttonsPanel.setOpaque(false);
 
-		
+
 		this.buttonsPanel.setLayout(new BoxLayout(this.buttonsPanel, BoxLayout.Y_AXIS));
-		
+
 		this.exchangeButton = new ExchangeButton();
-		
+
 		this.exchangeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -79,9 +77,9 @@ public class PlayerHandView implements Displayable {
 					listener.onExchange();
 			}
 		});
-		
+
 		this.holdButton = new HoldButton();
-		
+
 		this.holdButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -89,27 +87,31 @@ public class PlayerHandView implements Displayable {
 					listener.onHold();
 			}
 		});
+
+
+		
 	}
-	
+
 	/**
 	 * Puts the UI widgets in the right place
 	 */
 	private void layoutComponents() {
-		
+
 		rigidArea = Box.createRigidArea(new Dimension(20, 20));
 		rigidArea.setPreferredSize(new Dimension(30, 20));
 		buttonsPanel.add(rigidArea);
 		buttonsPanel.add(exchangeButton);
-		
+
 		rigidArea_1 = Box.createRigidArea(new Dimension(20, 20));
 		rigidArea_1.setPreferredSize(new Dimension(50, 20));
 		buttonsPanel.add(rigidArea_1);
 		buttonsPanel.add(holdButton);
-		
+
 		mainView.add(buttonsPanel, BorderLayout.WEST);
 		mainView.add(handPanel);
+		
 	}
-	
+
 	@Override
 	public JComponent getView() {
 		return mainView;
