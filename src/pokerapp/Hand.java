@@ -83,11 +83,10 @@ public class Hand implements Iterable<Card> {
 
     for (Card card : cards) {
       msg.append(card.toString());
-      // TODO: remove trailing space
       msg.append(" ");
     }
 
-    return msg.toString();
+    return msg.toString().trim();
   }
 
   /**
