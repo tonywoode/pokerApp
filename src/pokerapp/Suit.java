@@ -45,8 +45,9 @@ public class Suit implements Formattable {
       SYMBOL_FORMAT = "s",
       NAME_FORMAT = "m",
       DEFAULT_FORMAT = SYMBOL_FORMAT;
+    public static final int SYMBOL_LOCATION = 0,
 
-  /**
+    /**
    * When passed a character from a card representing a suit, will convert to suit or complain
    *
    * @param c a character representing a suit
@@ -56,7 +57,7 @@ public class Suit implements Formattable {
   public static Suit from(char c) throws IllegalArgumentException {
     c = Character.toUpperCase(c);
     for (Suit suit : AllSuits)
-      if (suit.getCode() == c)
+      if (suit.getCode() == c || suit.toString().toCharArray()[SYMBOL_LOCATION] == c)
         return suit;
     throw new IllegalArgumentException("Unknown suit type: " + c);
   }
