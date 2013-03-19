@@ -3,6 +3,7 @@ package view.hand;
 import lombok.Getter;
 import lombok.Setter;
 import pokerapp.Card;
+import view.imagefilters.IImageFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -10,13 +11,11 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Provides UI specific functionality to the domain concept of a poker card.
- * 
- * Specifically, it adds selection and the card image
- * 
- * It also knows how to load the card's image (TODO: should it?)
- * 
- * @author Steve
+ * Created with IntelliJ IDEA.
+ * User: steve
+ * Date: 09/03/13
+ * Time: 20:13
+ * To change this template use File | Settings | File Templates.
  */
 public class CardViewModel {
 
@@ -25,14 +24,22 @@ public class CardViewModel {
   Card card;
 
   @Getter
-  boolean isSelected; // tracks selection state... i.e., if the user has selected the card on screen
+  @Setter
+  boolean isSelected;
 
-  @Getter
-  BufferedImage image; // set using the static factory method
+  public BufferedImage getImage() {
+      return isSelected ? selectedImage : unselectedImage;
+  }
+
+  @Getter @Setter
+  BufferedImage unselectedImage;
+
+  @Getter @Setter
+  BufferedImage selectedImage;
 
   public CardViewModel(Card card, BufferedImage image) {
     this.card = card;
-    this.image = image;
+    this.unselectedImage = image;
   }
 
   public static CardViewModel create(Card card) {
