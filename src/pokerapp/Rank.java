@@ -1,6 +1,7 @@
 package pokerapp;
 
 import lombok.Getter;
+import pokerapp.utils.textformat.*;
 
 /**
  * Describes ranks, assigns each rank name a value, and allows printing to screen of the rank - it was decided that
@@ -26,7 +27,8 @@ import lombok.Getter;
     	case ACE_LOW: return "Low Ace";
  */
 
-public enum Rank {
+public enum Rank implements Formattable<Rank> { // enums implicitly extend Enum & we can't therefore use our own base
+  // class
   DEUCE(2, "Deuce"),
   THREE(3, "Three"),
   FOUR(4, "Four"),
@@ -48,6 +50,27 @@ public enum Rank {
   private String name;
   @Getter
   private String symbol;
+
+  public static Formats<Rank> FORMATS = new Formats<>(
+      new Format<>("n|num|number", new FormatResolver<Rank>() {
+        @Override
+        public String resolve(Rank rank) {
+          return Integer.toString(rank.getNumber());
+        }
+      }),
+      new Format<>("s|symbol", new FormatResolver<Rank>() {
+        @Override
+        public String resolve(Rank rank) {
+          return rank.getSymbol();
+        }
+      }),
+      new Format<>("m|name", new FormatResolver<Rank>() {
+        @Override
+        public String resolve(Rank rank) {
+          return rank.getName();
+        }
+      })
+  );
 
   /**
    * @param number rank of cards 1 to 10
@@ -83,4 +106,22 @@ public enum Rank {
     return name;
   }
 
+  /**
+   * @return The Formats instance for this Value Type
+   */
+  @Override
+  public Formats getFormats() {
+    return FORMATS;
+  }
+
+  /**
+   * @param format The name of the format to use when rendering the Value Object as text
+   * @return A string holding the textual representation of the value object, according to the named format
+   * @throws IllegalFormatCodeException
+   * @throws FormatStringException
+   */
+  @Override
+  public String format(String format) throws IllegalFormatCodeException, FormatStringException {
+    return getFormats().format(this, format);
+  }
 }

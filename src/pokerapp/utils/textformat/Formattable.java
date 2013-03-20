@@ -11,10 +11,10 @@ package pokerapp.utils.textformat;
  * </p>
  *
  * @author Steve
- * @version 2
+ * @version 3
  */
-public interface Formattable {
-  Formats getFormats();  // using the non-generic type here; TODO: not sure if this is even necessary
+public interface Formattable<T> {
+  Formats<T> getFormats();  // using the generic type here now; TODO: not sure if this is even necessary
 
   String format(String format) throws IllegalFormatCodeException, FormatStringException;
 }
