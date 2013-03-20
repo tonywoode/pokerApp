@@ -2,18 +2,19 @@ package pokerapp.utils.textformat;
 
 /**
  * <p>
- * Detailed explanation of the class and its collaborators.
+ * Provides a generic interface through which Value Objects can
+ * be formatted
  * </p>
  * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
+ * Formats are implemented using the Strategy pattern. This is
+ * new in v2.
  * </p>
  *
  * @author Steve
- * @version 1
+ * @version 2
  */
 public interface Formattable {
+  Formats getFormats();  // using the non-generic type here; TODO: not sure if this is even necessary
+
   String format(String format) throws IllegalFormatCodeException, FormatStringException;
 }

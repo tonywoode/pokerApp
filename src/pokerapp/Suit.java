@@ -2,9 +2,10 @@ package pokerapp;
 
 import lombok.Getter;
 import pokerapp.utils.Constants;
-import pokerapp.utils.textformat.FormatStringException;
-import pokerapp.utils.textformat.Formattable;
-import pokerapp.utils.textformat.IllegalFormatCodeException;
+import pokerapp.utils.textformat.AbstractFormattable;
+import pokerapp.utils.textformat.Format;
+import pokerapp.utils.textformat.FormatResolver;
+import pokerapp.utils.textformat.Formats;
 
 /**
  * Describes suits (in correct order which is clubs, diamonds, hearts, spades) for pokerapp
@@ -12,7 +13,7 @@ import pokerapp.utils.textformat.IllegalFormatCodeException;
  * @author Steve
  * @version 1.0
  */
-public class Suit implements Formattable {
+public class Suit extends AbstractFormattable<Suit> {
 
   @Getter
   private final int number;
@@ -40,14 +41,40 @@ public class Suit implements Formattable {
       Clubs, Diamonds, Hearts, Spades
   };
 
-  public static final String NUMBER_FORMAT = "n",
-      CODE_FORMAT = "c",
-      SYMBOL_FORMAT = "s",
-      NAME_FORMAT = "m",
-      DEFAULT_FORMAT = SYMBOL_FORMAT;
-    public static final int SYMBOL_LOCATION = 0,
+  public static final int SYMBOL_LOCATION = 0;
 
-    /**
+  /**
+   * Use the new Formats<T> object to store strongly-typed formatting information.
+   * Would be a lot nicer with Java 8's lambda syntax.
+   */
+  public static final Formats<Suit> FORMATS = new Formats<>(
+      new Format<>("n|num|number", new FormatResolver<Suit>() {
+        @Override
+        public String resolve(Suit suit) {
+          return Integer.toString(suit.number);
+        }
+      }),
+      new Format<>("c|code", new FormatResolver<Suit>() {
+        @Override
+        public String resolve(Suit suit) {
+          return "" + suit.code;
+        }
+      }),
+      new Format<>("s|symbol", new FormatResolver<Suit>() {
+        @Override
+        public String resolve(Suit suit) {
+          return "" + suit.symbol;
+        }
+      }),
+      new Format<>("m|name", new FormatResolver<Suit>() {
+        @Override
+        public String resolve(Suit suit) {
+          return suit.name;
+        }
+      })
+  );
+
+  /**
    * When passed a character from a card representing a suit, will convert to suit or complain
    *
    * @param c a character representing a suit
@@ -71,19 +98,7 @@ public class Suit implements Formattable {
   }
 
   @Override
-  public String format(String format) throws IllegalFormatCodeException, FormatStringException {
-    // TODO: not happy with a switch, but expediency...
-    switch (format) {
-      case NUMBER_FORMAT:
-        return Integer.toString(number);
-      case CODE_FORMAT:
-        return "" + code;
-      case SYMBOL_FORMAT:
-        return "" + symbol;
-      case NAME_FORMAT:
-        return name;
-      default:
-        throw new IllegalFormatCodeException(format, this.getClass());
-    }
+  public Formats getFormats() {
+    return FORMATS;
   }
 }
