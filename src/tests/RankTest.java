@@ -33,7 +33,8 @@ public class RankTest {
   }
 
 
-//TODO: clean this  /*
+//TODO: clean this
+/*
 	public static void Main(String[] args) {
 
 		for (Rank rank : Rank.values() ) {
