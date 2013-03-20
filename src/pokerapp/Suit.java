@@ -41,8 +41,6 @@ public class Suit extends AbstractFormattable<Suit> {
       Clubs, Diamonds, Hearts, Spades
   };
 
-  public static final int SYMBOL_LOCATION = 0;
-
   /**
    * Use the new Formats<T> object to store strongly-typed formatting information.
    * Would be a lot nicer with Java 8's lambda syntax.
@@ -79,12 +77,12 @@ public class Suit extends AbstractFormattable<Suit> {
    *
    * @param c a character representing a suit
    * @return suit the character represents
-   * @throws IllegalArgumentException if the character isn't C,D,H,S
+   * @throws IllegalArgumentException if the character isn't C, D, H, S or the corresponding symbol
    */
   public static Suit from(char c) throws IllegalArgumentException {
     c = Character.toUpperCase(c);
     for (Suit suit : AllSuits)
-      if (suit.getCode() == c || suit.toString().toCharArray()[SYMBOL_LOCATION] == c)
+      if (suit.getCode() == c || suit.getSymbol() == c)
         return suit;
     throw new IllegalArgumentException("Unknown suit type: " + c);
   }
