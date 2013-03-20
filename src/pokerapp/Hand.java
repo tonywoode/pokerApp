@@ -123,15 +123,15 @@ public class Hand implements Iterable<Card> {
     return cards.set(pos, card);
   }
 
-  // TODO: This package reference is invalid. Should not deleve down there...
+  // TODO: This package reference is invalid. Should not delve down there...
   // TODO: The implementation is poor; lack the time to do it better...
-  public Spares getKickers(int... keepRanks) {
+  public Spares getKickers(Rank... keepRanks) {
     ArrayList<Card> spareCards = new ArrayList<Card>();
 
     for (Card card : cards) {
       boolean isNotKicker = false;
-      for (int rank : keepRanks) {
-        if (card.getRank() == rank)
+      for (Rank rank : keepRanks) {
+        if (card.getRank().equals(rank))
           isNotKicker = true;
       }
       if (!isNotKicker)
@@ -142,20 +142,20 @@ public class Hand implements Iterable<Card> {
   }
 
   // TODO: These don't belong here...
-  public Iterable<Card> cardsOfRank(int... ranks) {
+  public Iterable<Card> cardsOfRank(Rank... ranks) {
     ArrayList<Card> cardsSubset = new ArrayList<Card>();
     for (Card card : cards)
-      for (int rank : ranks)
-        if (card.getRank() == rank)
+      for (Rank rank : ranks)
+        if (card.getRank().equals(rank))
           cardsSubset.add(card);
     return cardsSubset;
   }
 
   //TODO: These don't belong here
-  public Iterable<Card> cardsNotOfRank(int rank) {
+  public Iterable<Card> cardsNotOfRank(Rank rank) {
     ArrayList<Card> cardsSubset = new ArrayList<Card>();
     for (Card card : cards)
-      if (card.getRank() != rank)
+      if (!card.getRank().equals(rank))
         cardsSubset.add(card);
     return cardsSubset;
   }

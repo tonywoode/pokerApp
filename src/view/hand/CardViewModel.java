@@ -3,7 +3,6 @@ package view.hand;
 import lombok.Getter;
 import lombok.Setter;
 import pokerapp.Card;
-import view.imagefilters.IImageFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -28,13 +27,15 @@ public class CardViewModel {
   boolean isSelected;
 
   public BufferedImage getImage() {
-      return isSelected ? selectedImage : unselectedImage;
+    return isSelected ? selectedImage : unselectedImage;
   }
 
-  @Getter @Setter
+  @Getter
+  @Setter
   BufferedImage unselectedImage;
 
-  @Getter @Setter
+  @Getter
+  @Setter
   BufferedImage selectedImage;
 
   public CardViewModel(Card card, BufferedImage image) {
@@ -57,10 +58,10 @@ public class CardViewModel {
   }
 
   private static String filenameFromCard(Card card) {
-    return ("" + card.getSuit().getCode()).toLowerCase() + getRankString(card.getRank()) + ".gif";
+    return ("" + card.getSuit().getCode()).toLowerCase() + getRankString(card.getRank().getNumber()) + ".gif";
   }
   //TODO: no no no use the enum...but how many other classes will that effect eh?
-  
+
   private static String getRankString(int rank) {
     if (rank >= 0 && rank < 11)
       return (Integer.toString(rank));

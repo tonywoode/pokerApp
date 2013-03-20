@@ -3,25 +3,28 @@ package pokerapp.scorer.scoredhands;
 import lombok.Getter;
 import pokerapp.Card;
 import pokerapp.Hand;
+import pokerapp.Rank;
 
 import java.util.List;
 
 /**
  * Describes a straight flush
+ *
  * @author steve
  */
 public class StraightFlushScoredHand extends AbstractScoredHand<StraightFlushScoredHand> {
 
-  @Getter private int rank;
+  @Getter
+  private Rank rank;
 
-  public StraightFlushScoredHand(int handNumber, Hand hand, int rank) {
+  public StraightFlushScoredHand(int handNumber, Hand hand, Rank rank) {
     super(handNumber, hand);
     this.rank = rank;
   }
 
   @Override
   protected int compareEqualCategories(StraightFlushScoredHand rhs) {
-    return Integer.compare(rank, rhs.rank);
+    return rank.compareTo(rhs.rank);
   }
 
   @Override
@@ -29,8 +32,8 @@ public class StraightFlushScoredHand extends AbstractScoredHand<StraightFlushSco
     return "Straight flush";
   }
 
-    @Override
-    public List<Card> getRelevantCards() {
-        return hand.getSortedCards();
-    }
+  @Override
+  public List<Card> getRelevantCards() {
+    return hand.getSortedCards();
+  }
 }

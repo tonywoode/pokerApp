@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import pokerapp.Card;
 import pokerapp.Hand;
+import pokerapp.Rank;
 import pokerapp.Suit;
 
 import java.util.Iterator;
@@ -32,12 +33,12 @@ public class HandTest {
 
   @Before
   public void setUp() {
-    testCard1 = new Card(Suit.Clubs, 9);
-    testCard2 = new Card(Suit.Spades, 8);
-    testCard3 = new Card(Suit.Diamonds, 9);
-    testCard4 = new Card(Suit.Hearts, 4);
-    testCard5 = new Card(Suit.Diamonds, 6);
-    testCard6 = new Card(Suit.Spades, 1);
+    testCard1 = new Card(Suit.Clubs, Rank.NINE);
+    testCard2 = new Card(Suit.Spades, Rank.EIGHT);
+    testCard3 = new Card(Suit.Diamonds, Rank.NINE);
+    testCard4 = new Card(Suit.Hearts, Rank.FOUR);
+    testCard5 = new Card(Suit.Diamonds, Rank.SIX);
+    testCard6 = new Card(Suit.Spades, Rank.ACE); // was 1, supposed to be an Ace?
 
     testHand = new Hand();
   }
@@ -46,7 +47,7 @@ public class HandTest {
   @Test
   public void testAdd() {
     testHand.add(testCard1);
-    assertEquals("Hand had card", "♣9 ", testHand.toUserString());
+    assertEquals("Hand had card", "♣9", testHand.toUserString());
   }
 
   @Test
@@ -55,7 +56,7 @@ public class HandTest {
     testHand.add(testCard2);
     testHand.add(testCard3);
 
-    assertEquals("Hand had card", "♣9 ♠8 ♦9 ", testHand.toUserString());
+    assertEquals("Hand had card", "♣9 ♠8 ♦9", testHand.toUserString());
   }
 
   @Test(expected = IndexOutOfBoundsException.class)
@@ -116,7 +117,7 @@ public class HandTest {
     testHand.add(testCard4);
     testHand.add(testCard5);
 
-    assertEquals("User string is right", "♣9 ♠8 ♦9 ♥4 ♦6 ", testHand.toUserString());
+    assertEquals("User string is right", "♣9 ♠8 ♦9 ♥4 ♦6", testHand.toUserString());
   }
 
   @Test
@@ -126,6 +127,6 @@ public class HandTest {
 
     testHand.exchange(1, testCard3);
 
-    assertEquals("Exchange worked", "♣9 ♦9 ", testHand.toUserString());
+    assertEquals("Exchange worked", "♣9 ♦9", testHand.toUserString());
   }
 }

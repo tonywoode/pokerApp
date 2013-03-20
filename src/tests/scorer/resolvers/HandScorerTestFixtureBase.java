@@ -1,13 +1,12 @@
 package tests.scorer.resolvers;
 
 import org.junit.Before;
-
-import static org.junit.Assert.*;
-
 import pokerapp.Hand;
 import pokerapp.HandFactory;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.HandScorer;
+
+import static org.junit.Assert.assertSame;
 
 
 /**
@@ -32,8 +31,13 @@ public class HandScorerTestFixtureBase {
   }
 
   private class NullScorer extends HandScorer {
-    public ScoredHand score(Hand hand) { return null; }
-    protected ScoredHand resolveCore(Hand hand) { return null;  }
+    public ScoredHand score(Hand hand) {
+      return null;
+    }
+
+    protected ScoredHand resolveCore(Hand hand) {
+      return null;
+    }
   }
 
   @Before
@@ -51,6 +55,7 @@ public class HandScorerTestFixtureBase {
     try {
       return handFactory.create(cards);
     } catch (Exception e) {
+      // TODO: do not simply swallow exceptions!
       return null;
     }
   }
@@ -61,7 +66,7 @@ public class HandScorerTestFixtureBase {
 
   protected Hand pickWinner(Hand lhs, Hand rhs) {
     ScoredHand lhsHand = getScorer().score(lhs),
-               rhsHand = getScorer().score(rhs);
+        rhsHand = getScorer().score(rhs);
 
     int result = 0;
     try {

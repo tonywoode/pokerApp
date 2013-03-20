@@ -1,6 +1,7 @@
 package pokerapp.scorer.scorers;
 
 import pokerapp.Hand;
+import pokerapp.Rank;
 import pokerapp.scorer.HandRanks;
 import pokerapp.scorer.domain.SameRankCards;
 import pokerapp.scorer.scoredhands.RunScoredHand;
@@ -36,16 +37,16 @@ public class SameRankHandScorer extends HandScorer {
   // Pattern: Factory Method
   protected ScoredHand createHandCategory(Hand hand, HandRanks hr) {
     try {
-      int rank = hr.getRankOfMultiple(rankValue);
+      // TODO: hacky
+      Rank rank = Rank.from(hr.getRankOfMultiple(rankValue));
       SameRankCards sequence = createSameRankSequence(hand, rank);
       return new RunScoredHand(getHandNumber(), hand, name, sequence, hand.getKickers(rank));
-    }
-    catch(Exception e) { // TODO: remove this & use checked exceptions properly
+    } catch (Exception e) { // TODO: remove this & use checked exceptions properly
       return null;
     }
   }
 
-  protected SameRankCards createSameRankSequence(Hand hand, int... rank) {
+  protected SameRankCards createSameRankSequence(Hand hand, Rank... rank) {
     return new SameRankCards(hand.cardsOfRank(rank));
   }
 }

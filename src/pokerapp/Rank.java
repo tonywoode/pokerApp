@@ -38,11 +38,10 @@ public enum Rank implements Formattable<Rank> { // enums implicitly extend Enum 
   EIGHT(8, "Eight"),
   NINE(9, "Nine"),
   TEN(10, "Ten"),
-  JACK(2, "Jack", "J"),
+  JACK(11, "Jack", "J"),    // typo, was 2
   QUEEN(12, "Queen", "Q"),
   KING(13, "King", "K"),
-  ACE(14, "Ace", "A"),
-  ACE_LOW(1, "Ace", "A");
+  ACE(14, "Ace", "A");
 
   @Getter
   private int number;
@@ -99,11 +98,11 @@ public enum Rank implements Formattable<Rank> { // enums implicitly extend Enum 
   /**
    * Returns the Rank in a form that can be printed onscreen
    *
-   * @throws IllegalArgumentException because it won't be a rank
+   * @throws IllegalArgumentException because it won't be a rank TODO: really?
    */
   @Override
   public String toString() {
-    return name;
+    return Integer.toString(getNumber());
   }
 
   /**
@@ -123,5 +122,24 @@ public enum Rank implements Formattable<Rank> { // enums implicitly extend Enum 
   @Override
   public String format(String format) throws IllegalFormatCodeException, FormatStringException {
     return getFormats().format(this, format);
+  }
+
+  /**
+   * @param rhs The Rank on the right hand side of the expression
+   * @return True if lhs is strictly higher thank rhs
+   */
+  public boolean beats(Rank rhs) {
+    return getNumber() > rhs.getNumber();
+  }
+
+  public static Rank from(String rankNumber) {
+    return from(Integer.parseInt(rankNumber));
+  }
+
+  public static Rank from(int rankNumber) {
+    for (Rank rank : values())
+      if (rank.getNumber() == rankNumber)
+        return rank;
+    throw new IllegalArgumentException("Illegal rank number");
   }
 }

@@ -1,6 +1,7 @@
 package view.hand.testsvisual;
 
 import pokerapp.Card;
+import pokerapp.Rank;
 import pokerapp.Suit;
 import view.ImageView;
 import view.hand.CardViewModel;
@@ -37,9 +38,9 @@ public class HandRunner {
 
     final int MAX_CARDS = 15;
 
-    for (int iter = 2; iter != MAX_CARDS; ++iter) {
+    for (Rank rank : Rank.values()) {
 
-      Card card = new Card(Suit.Hearts, iter);
+      Card card = new Card(Suit.Hearts, rank);
       CardViewModel cardVM = CardViewModel.create(card);
 
       ImageView imageView = new ImageView();
@@ -59,11 +60,12 @@ public class HandRunner {
         Suit suit = (Suit) cb.getSelectedItem();
 
         // change all the images
-        for (int iter = 2; iter != MAX_CARDS; ++iter) {
-          Card card = new Card(suit, iter);
+        int iter = 0;
+        for (Rank rank : Rank.values()) {
+          Card card = new Card(suit, rank);
           CardViewModel cardVM = CardViewModel.create(card);
 
-          imageViews.get(iter - 2).setImage(cardVM.getImage());
+          imageViews.get(iter++).setImage(cardVM.getImage());
         }
       }
     });

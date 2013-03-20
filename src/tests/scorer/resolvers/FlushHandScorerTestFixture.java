@@ -6,7 +6,6 @@ import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.FlushScorer;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,18 +15,18 @@ import static org.junit.Assert.assertFalse;
  * To change this template use File | Settings | File Templates.
  */
 public class FlushHandScorerTestFixture extends HandScorerTestFixtureBase {
-    public FlushHandScorerTestFixture() {
-        super(new FlushScorer());
-    }
+  public FlushHandScorerTestFixture() {
+    super(new FlushScorer());
+  }
 
-    @Test // TODO: these should use data providers...
-    public void Simple_Flush() {
-      ScoredHand hand = resolveHand("D4", "D5", "D6", "D7", "D9");
+  @Test // TODO: these should use data providers...
+  public void Simple_Flush() {
+    ScoredHand hand = resolveHand("D4", "D5", "D6", "D7", "D9");
 
-      assert("Flush".equals(hand.getName())); // changed capitalisation; TODO: fix this!
-    }
+    assert ("Flush".equals(hand.getName())); // changed capitalisation; TODO: fix this!
+  }
 
-    // permutation will need a way of passing hand resolver a hand rather than a string
+  // permutation will need a way of passing hand resolver a hand rather than a string
 //    @Test // TODO: these should use data providers...
 //    public void Permutation_Flush() {
 //
@@ -51,31 +50,31 @@ public class FlushHandScorerTestFixture extends HandScorerTestFixtureBase {
 //    }
 //
 
-    @Test // TODO: these should use data providers...
-    public void HandIsNotFlush() {
-      ScoredHand hand = resolveHand("D4", "D3", "D1", "D5", "C6");
+  @Test // TODO: these should use data providers...
+  public void HandIsNotFlush() {
+    ScoredHand hand = resolveHand("D4", "D3", "D2", "D5", "C6"); // no such card as D1 any more
 
-      // This won't work because hand will be null
-      //assertFalse("flush".equals(hand.getName()));
+    // This won't work because hand will be null
+    //assertFalse("flush".equals(hand.getName()));
 
-      // TODO: perhaps we should return a NullScoredHand to indicate the hand wasn't matched?
+    // TODO: perhaps we should return a NullScoredHand to indicate the hand wasn't matched?
 
-      assertEquals(null, hand);
-    }
+    assertEquals(null, hand);
+  }
 
-    @Test
-    public void CompareHands_RhsWins() {
-      Hand lhs = createHand("D3", "D5", "D6", "D7", "D9"),
-           rhs = createHand("D4", "D5", "D6", "D7", "D9");
+  @Test
+  public void CompareHands_RhsWins() {
+    Hand lhs = createHand("D3", "D5", "D6", "D7", "D9"),
+        rhs = createHand("D4", "D5", "D6", "D7", "D9");
 
-      verifyWinner(lhs, rhs, rhs);
-    }
+    verifyWinner(lhs, rhs, rhs);
+  }
 
-    @Test
-    public void CompareHands_LhsWins() {
-        Hand lhs = createHand("D4", "D5", "D6", "D7", "D9"),
-             rhs = createHand("D4", "D5", "D6", "D7", "D8");
+  @Test
+  public void CompareHands_LhsWins() {
+    Hand lhs = createHand("D4", "D5", "D6", "D7", "D9"),
+        rhs = createHand("D4", "D5", "D6", "D7", "D8");
 
-        verifyWinner(lhs, rhs, lhs);
-    }
+    verifyWinner(lhs, rhs, lhs);
+  }
 }
