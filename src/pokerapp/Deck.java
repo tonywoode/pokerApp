@@ -14,7 +14,7 @@ import java.util.Iterator;
  *         Date: 22/02/13
  *         Time: 19:53
  *         <p/>
- *         TODO: here because it was scratch impl for console app
+ *
  */
 public class Deck implements Iterable<Card> {
 
