@@ -49,7 +49,7 @@ public class Players implements Iterable<Player> {
    */
   public Player pickWinner() {
     Player winner = players.get(0);
-
+   //TODO: make for loop clearer - it isn't in std form
     for (int iter = 1; iter < players.size(); ++iter) {
       Player challenger = players.get(iter);
 
