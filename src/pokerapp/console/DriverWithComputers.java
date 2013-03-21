@@ -116,10 +116,10 @@ public class DriverWithComputers {
         Class<? extends Player> playerClass = p.getClass();
         String className = playerClass.getSimpleName();
         if("InteractivePlayer".equals(className)) {
-            console.writeMessage("You have " + p.getHand());
+            console.writeMessage("You have " + p.getHand().toFancyUserString());
         }
         else
-            console.writeMessage("Player %1$2s has %2$2s", p, p.getHand());
+            console.writeMessage("Player %1$2s has %2$2s", p, p.getHand().toFancyUserString());
       }
 
       console.writeMessage(NEW_LINE);

@@ -104,7 +104,7 @@ public class Hand implements Iterable<Card> {
       msg.append(" ");
     }
 
-    return msg.toString();
+    return msg.toString().trim();
   }
 
   @Override

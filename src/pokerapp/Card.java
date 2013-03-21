@@ -42,9 +42,9 @@ public class Card {
   /**
    * returns the suit and rank symbol of card, e.g. J instead of 11
    *
-   * @return suit and rank of card
+   * @return rank and suit of card
    */
   public String toFancyString() {
-    return getSuit() + Integer.toString(getRank().getNumber());
+    return  getRank().getSymbol() + getSuit().getSymbol();
   }
 }
