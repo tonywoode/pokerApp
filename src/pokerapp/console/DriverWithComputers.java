@@ -112,7 +112,14 @@ public class DriverWithComputers {
       dealer.dealCards(Constants.HAND_SIZE, players);
 
       for(Player p : players) {
-        console.writeMessage("Player %1$2s has %2$2s", p, p.getHand());
+
+        Class<? extends Player> playerClass = p.getClass();
+        String className = playerClass.getSimpleName();
+        if("InteractivePlayer".equals(className)) {
+            console.writeMessage("You have " + p.getHand());
+        }
+        else
+            console.writeMessage("Player %1$2s has %2$2s", p, p.getHand());
       }
 
       console.writeMessage(NEW_LINE);
