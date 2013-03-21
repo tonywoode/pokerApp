@@ -18,8 +18,6 @@ public abstract class ComputerPlayer extends Player {
 
   @Setter
   Rank targetRank;
-  @Setter
-  private String difficultyCode = "";
 
   public ComputerPlayer(String name) {
     setPlayerName(name);
