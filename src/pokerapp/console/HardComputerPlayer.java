@@ -18,7 +18,6 @@ public class HardComputerPlayer extends ComputerPlayer {
 
     public HardComputerPlayer() {
          this("");
-         setDifficultyCode("H");
     }
 
     @Override
