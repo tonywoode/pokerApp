@@ -88,7 +88,7 @@ public enum Rank implements Formattable<Rank> { // enums implicitly extend Enum 
 
   /**
    * Even cards < 11 need two parameters, we pass the number as the second for card ranks < 11
-   *
+   *  TODO: clarify: why two parameters? pass the number as the second what?
    * @param number
    */
   Rank(int number, String name) {
