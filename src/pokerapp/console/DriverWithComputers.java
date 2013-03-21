@@ -96,9 +96,19 @@ public class DriverWithComputers {
       console.writeMessage("Choose a name for computer player " + i + " : ");
       String playerName = console.readLine();
 
-      console.writeMessage("Choose difficulty for computer player " + playerName + "  (Easy = 1, Standard = 2, Hard = 3)  : ");
 
-      int playerDifficulty = console.readInteger();
+      String msg =
+          "Choose difficulty for computer player " + playerName +
+          " (Easy = 1, Standard = 2, Hard = 3)" + NEW_LINE;
+      UserConfigurable userConfigurablePlayerDifficulty = new UserConfigurable(msg, 1, 3);
+
+
+      int playerDifficulty = 0;
+      try {
+        playerDifficulty = userConfigurablePlayerDifficulty.askUser(console, true);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
       Player p = computerPlayerFactory.makeComputerPlayer(playerName, playerDifficulty);
       players.register(p);
 
