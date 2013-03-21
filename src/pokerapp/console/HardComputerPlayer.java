@@ -9,7 +9,6 @@ import pokerapp.console.strategies.IStrategyFactory;
  * @author Ari
  * @author Sam
  * @version 1.0
- * @param //TODO:Parameter Description
  */
 public class HardComputerPlayer extends ComputerPlayer {
 
@@ -19,7 +18,6 @@ public class HardComputerPlayer extends ComputerPlayer {
 
     public HardComputerPlayer() {
          this("");
-         setDifficultyCode("H");
     }
 
     @Override

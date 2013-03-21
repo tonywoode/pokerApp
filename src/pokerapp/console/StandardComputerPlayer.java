@@ -9,7 +9,6 @@ import pokerapp.console.strategies.StandardStrategyFactory;
  * @author Ari
  * @author Sam
  * @version 1.0
- * @param //TODO:Parameter Description
  */
 public class StandardComputerPlayer extends ComputerPlayer {
 
@@ -19,7 +18,6 @@ public class StandardComputerPlayer extends ComputerPlayer {
 
     public StandardComputerPlayer() {
         this("");
-        setDifficultyCode("S");
     }
 
     @Override

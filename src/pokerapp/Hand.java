@@ -10,6 +10,7 @@ import java.util.Iterator;
 
 /**
  * Creates hands from cards and allows ranking, sorting, exchanging and printing of those hands
+ *
  * @author steve
  * @version 1.0
  */
@@ -20,6 +21,7 @@ public class Hand implements Iterable<Card> {
 
   /**
    * Adds a card to a hand
+   *
    * @param card a card
    * @throws IndexOutOfBoundsException
    */
@@ -31,7 +33,7 @@ public class Hand implements Iterable<Card> {
   }
 
   public void clear() throws NullPointerException {
-    if(cards.size() == 0)
+    if (cards.size() == 0)
       throw new NullPointerException("Hand is empty");
 
     cards.clear();
@@ -39,6 +41,7 @@ public class Hand implements Iterable<Card> {
 
   /**
    * presents the cards from the hand
+   *
    * @return individual cards from the hand
    */
   public Iterator<Card> iterator() {
@@ -47,60 +50,61 @@ public class Hand implements Iterable<Card> {
 
   /**
    * sorts a hand of cards and returns on sorted order
+   *
    * @return sorted list of cards
    */
   public ArrayList<Card> getSortedCards() {
-    ArrayList<Card> sortedCards = (ArrayList<Card>)cards.clone();
+    ArrayList<Card> sortedCards = (ArrayList<Card>) cards.clone();
 
     Collections.sort(sortedCards, new HighToLowCardComparator());
 
     return sortedCards;
   }
 
-    /**
-     * returns each card as an unsorted array
-     * @return array of cards in the hand
-     *
-     */
+  /**
+   * returns each card as an unsorted array
+   *
+   * @return array of cards in the hand
+   */
 
-    public ArrayList<Card> getCards() {
-        return cards;
-    }
+  public ArrayList<Card> getCards() {
+    return cards;
+  }
 
-    /**
-     * returns each card as text separated by whitespace
-     * @return text representation of the hand
-     *
-     */
+  /**
+   * returns each card as text separated by whitespace
+   *
+   * @return text representation of the hand
+   */
 
-    public String toUserString() {
+  public String toUserString() {
 
     StringBuilder msg = new StringBuilder();
 
-    for (Card card : cards){
+    for (Card card : cards) {
       msg.append(card.toString());
       msg.append(" ");
     }
 
-    return msg.toString();
+    return msg.toString().trim();
   }
 
   /**
    * returns each card as text separated by whitespace
    * using symbols J,Q,K,A for picture ranks
-   * @return text representation of the hand
    *
+   * @return text representation of the hand
    */
   public String toFancyUserString() {
 
     StringBuilder msg = new StringBuilder();
 
-    for (Card card : cards){
+    for (Card card : cards) {
       msg.append(card.toFancyString());
       msg.append(" ");
     }
 
-    return msg.toString();
+    return msg.toString().trim();
   }
 
   @Override
@@ -110,7 +114,8 @@ public class Hand implements Iterable<Card> {
 
   /**
    * exchanges an individual card in a position in the hand with another
-   * @param pos position of card to be removed
+   *
+   * @param pos  position of card to be removed
    * @param card the card to replace with
    * @return the hand after cards have been exchanged
    */
@@ -118,15 +123,15 @@ public class Hand implements Iterable<Card> {
     return cards.set(pos, card);
   }
 
-  // TODO: This package reference is invalid. Should not deleve down there...
+  // TODO: This package reference is invalid. Should not delve down there...
   // TODO: The implementation is poor; lack the time to do it better...
-  public Spares getKickers(int... keepRanks) {
+  public Spares getKickers(Rank... keepRanks) {
     ArrayList<Card> spareCards = new ArrayList<Card>();
 
     for (Card card : cards) {
       boolean isNotKicker = false;
-      for (int rank : keepRanks) {
-        if (card.getRank() == rank)
+      for (Rank rank : keepRanks) {
+        if (card.getRank().equals(rank))
           isNotKicker = true;
       }
       if (!isNotKicker)
@@ -137,20 +142,20 @@ public class Hand implements Iterable<Card> {
   }
 
   // TODO: These don't belong here...
-  public Iterable<Card> cardsOfRank(int... ranks) {
+  public Iterable<Card> cardsOfRank(Rank... ranks) {
     ArrayList<Card> cardsSubset = new ArrayList<Card>();
     for (Card card : cards)
-      for (int rank : ranks)
-        if (card.getRank() == rank)
+      for (Rank rank : ranks)
+        if (card.getRank().equals(rank))
           cardsSubset.add(card);
     return cardsSubset;
   }
 
   //TODO: These don't belong here
-  public Iterable<Card> cardsNotOfRank(int rank) {
+  public Iterable<Card> cardsNotOfRank(Rank rank) {
     ArrayList<Card> cardsSubset = new ArrayList<Card>();
     for (Card card : cards)
-      if (card.getRank() != rank)
+      if (!card.getRank().equals(rank))
         cardsSubset.add(card);
     return cardsSubset;
   }

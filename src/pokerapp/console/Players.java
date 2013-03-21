@@ -49,7 +49,7 @@ public class Players implements Iterable<Player> {
    */
   public Player pickWinner() {
     Player winner = players.get(0);
-
+   //TODO: make for loop clearer - it isn't in std form
     for (int iter = 1; iter < players.size(); ++iter) {
       Player challenger = players.get(iter);
 
@@ -91,10 +91,5 @@ public class Players implements Iterable<Player> {
   @Override
   public Iterator<Player> iterator() {
     return players.iterator();
-  }
-
-  //TODO: replace with something better asap
-  public void add(Players players, Player player) {    //TODO: horrible, I know.
-    players.players.add(player);
   }
 }

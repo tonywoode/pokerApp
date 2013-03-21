@@ -2,24 +2,27 @@ package pokerapp;
 
 import lombok.Data;
 import lombok.Getter;
-import pokerapp.utils.Constants;
 
 
 /**
  * creates cards for the poker app
+ *
  * @author Steve
  * @version 1.0
  */
-@Data public class Card {
-  @Getter private Suit suit;
-  @Getter private int rank;
+@Data
+public class Card {
+  @Getter
+  private Suit suit;
+  @Getter
+  private Rank rank;
 
-  public Card(Suit suit, int rank) throws IllegalArgumentException {
+  public Card(Suit suit, Rank rank) throws IllegalArgumentException {
     if (suit == null)
       throw new IllegalArgumentException("Suit must not be null");
 
     // supports aces high & low; TODO: is this sensible?
-    if (rank < Constants.RANK_ACE_LO && rank > Constants.NUM_RANKS)
+    if (rank.getNumber() < Rank.DEUCE.getNumber() && rank.getNumber() > Rank.ACE.getNumber())
       throw new IllegalArgumentException("Illegal Rank: " + rank);
 
     this.suit = suit;
@@ -28,18 +31,20 @@ import pokerapp.utils.Constants;
 
   /**
    * returns the suit and rank of card
+   *
    * @return suit and rank of card
    */
   @Override
   public String toString() {
     return suit.toString() + getRank();
   }
+
   /**
    * returns the suit and rank symbol of card, e.g. J instead of 11
-   * @return suit and rank of card
+   *
+   * @return rank and suit of card
    */
   public String toFancyString() {
-    return getSuit() + Constants.RANK_SYMBOL[getRank()];
+    return  getRank().getSymbol() + getSuit().getSymbol();
   }
-
 }

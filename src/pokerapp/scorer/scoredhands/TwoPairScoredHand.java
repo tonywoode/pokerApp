@@ -31,7 +31,7 @@ public class TwoPairScoredHand extends AbstractScoredHand<TwoPairScoredHand> {
     this.spares = spares;
   }
 
-  protected int compareEqualCategories(TwoPairScoredHand rhs) { //TODO:issue 82
+  protected int compareEqualCategories(TwoPairScoredHand rhs) {
     return Comparator
         .begin(highPair, rhs.highPair)
         .next(lowPair, rhs.lowPair)

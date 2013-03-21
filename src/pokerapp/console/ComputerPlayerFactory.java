@@ -3,21 +3,24 @@ package pokerapp.console;
 /**
  * @author Ari
  * @version 1.0
- * @param //TODO:Parameter Description
  */
 class ComputerPlayerFactory {
+
+  public final int HARD_COMPUTER = 3;
+  public final int STANDARD_COMPUTER = 2;
+  public final int EASY_COMPUTER = 1;
 
   public ComputerPlayer makeComputerPlayer(String playerName, int playerDifficulty) {
 
     switch (playerDifficulty) {
 
-      case 3:
+      case HARD_COMPUTER:
         return new HardComputerPlayer(playerName);
 
-      case 2:
+      case STANDARD_COMPUTER:
         return new StandardComputerPlayer(playerName);
 
-      case 1:
+      case EASY_COMPUTER:
         return new EasyComputerPlayer(playerName);
 
     }

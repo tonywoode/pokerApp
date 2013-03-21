@@ -1,6 +1,7 @@
 package pokerapp.scorer.scorers;
 
 import pokerapp.Hand;
+import pokerapp.Rank;
 import pokerapp.scorer.scoredhands.RoyalFlushScoredHand;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scoredhands.StraightFlushScoredHand;
@@ -18,9 +19,9 @@ public class RoyalFlushScorer extends StraightFlushScorer {
   }
 
   protected ScoredHand resolveCore(Hand hand) {
-    StraightFlushScoredHand scoredHand = (StraightFlushScoredHand)super.resolveCore(hand);
-    return scoredHand != null && scoredHand.getRank() == 14 ?
-            new RoyalFlushScoredHand(scoredHand)
-            : null;
+    StraightFlushScoredHand scoredHand = (StraightFlushScoredHand) super.resolveCore(hand);
+    return scoredHand != null && scoredHand.getRank().equals(Rank.ACE) ?
+        new RoyalFlushScoredHand(scoredHand)
+        : null;
   }
 }

@@ -8,9 +8,9 @@ import pokerapp.utils.Constants;
 /**
  * @author Ari
  * @version 1.0
- * @param //TODO:Parameter Description
  */
-public class DriverOnlyComputers {
+public class DriverWithComputers {
+
 
   private final IConsole console = new StandardConsole();
   private final ExchangeSetting exchangeSetting = new ExchangeSetting(3,1);//default - exchange 3 cards once
@@ -42,10 +42,18 @@ public class DriverOnlyComputers {
 
 
 
+
+
+
     try {
+
+      InteractivePlayer interactivePlayer = new InteractivePlayer();
+      interactivePlayer.getPlayerNameFromUser(console);
+      players.register(interactivePlayer);
+
       UserConfigurable userConfigurableNumPlayers =
           new UserConfigurable("How many computer players do you want to play against?" + NEW_LINE,
-              MIN_NUMBER_PLAYERS, MAX_NUMBER_PLAYERS); //TODO: include a human player
+              MIN_NUMBER_PLAYERS, MAX_NUMBER_PLAYERS);
 
       numberOfPlayers = userConfigurableNumPlayers.askUser(console, true);
 
@@ -88,11 +96,21 @@ public class DriverOnlyComputers {
       console.writeMessage("Choose a name for computer player " + i + " : ");
       String playerName = console.readLine();
 
-      console.writeMessage("Choose difficulty for computer player " + playerName + "  (Easy = 1, Standard = 2, Hard = 3)  : ");
 
-      int playerDifficulty = console.readInteger();
+      String msg =
+          "Choose difficulty for computer player " + playerName +
+          " (Easy = 1, Standard = 2, Hard = 3)" + NEW_LINE;
+      UserConfigurable userConfigurablePlayerDifficulty = new UserConfigurable(msg, 1, 3);
+
+
+      int playerDifficulty = 0;
+      try {
+        playerDifficulty = userConfigurablePlayerDifficulty.askUser(console, true);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
       Player p = computerPlayerFactory.makeComputerPlayer(playerName, playerDifficulty);
-      players.add(players,p);
+      players.register(p);
 
     }
 
@@ -104,7 +122,14 @@ public class DriverOnlyComputers {
       dealer.dealCards(Constants.HAND_SIZE, players);
 
       for(Player p : players) {
-        console.writeMessage("Player %1$2s has %2$2s", p, p.getHand());
+
+        Class<? extends Player> playerClass = p.getClass();
+        String className = playerClass.getSimpleName();
+        if("InteractivePlayer".equals(className)) {
+            console.writeMessage("You have " + p.getHand().toFancyUserString());
+        }
+        else
+            console.writeMessage("Player %1$2s has %2$2s", p, p.getHand().toFancyUserString());
       }
 
       console.writeMessage(NEW_LINE);
@@ -117,8 +142,7 @@ public class DriverOnlyComputers {
 
       Player winner = players.pickWinner();
       console.writeMessage(winner.getPlayerName() + " won with " + winner.getHand());
-      //TODO: unicode for each card or just the suit  (or both)
-
+      //TODO: unicode for each card
       for(Player p : players) {             //TODO: this doesn't seem to be working?
         for(Card c : p.getHand()) {
           deck.returnToBottom(c);

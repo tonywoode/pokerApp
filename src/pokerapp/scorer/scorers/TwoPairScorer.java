@@ -1,6 +1,7 @@
 package pokerapp.scorer.scorers;
 
 import pokerapp.Hand;
+import pokerapp.Rank;
 import pokerapp.scorer.HandRanks;
 import pokerapp.scorer.domain.SameRankCards;
 import pokerapp.scorer.scoredhands.ScoredHand;
@@ -26,23 +27,22 @@ public class TwoPairScorer extends SameRankHandScorer {
       ReverseArrayIterator iter = hr.iterator();
 
       SameRankCards highPair = createSameRankSequence(hand, getRank(iter));
-      SameRankCards lowPair  = createSameRankSequence(hand, getRank(iter));
+      SameRankCards lowPair = createSameRankSequence(hand, getRank(iter));
 
       final int NUM_CARDS_IN_KICKER = 1;
-      int rank = hr.getRankOfMultiple(NUM_CARDS_IN_KICKER);
+      Rank rank = Rank.from(hr.getRankOfMultiple(NUM_CARDS_IN_KICKER));
 
       return new TwoPairScoredHand(getHandNumber(), hand, highPair, lowPair, hand.getKickers(rank));
-    }
-    catch(Exception e) { // TODO: remove this & use checked exceptions properly
+    } catch (Exception e) { // TODO: remove this & use checked exceptions properly
       return null;
     }
   }
 
-  private int getRank(ReverseArrayIterator iter) throws Exception {
+  private Rank getRank(ReverseArrayIterator iter) throws Exception {
     final int NUM_CARDS_IN_PAIR = 2;
     while (iter.hasPrevious())
       if (iter.previous() == NUM_CARDS_IN_PAIR)
-        return iter.previousIndex() + 1; // TODO: call to .previous() changed index!
+        return Rank.from(iter.previousIndex() + 1);
 
     throw new Exception("can't get rank!");
   }

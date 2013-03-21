@@ -3,6 +3,7 @@ package pokerapp.scorer.scoredhands;
 import lombok.Getter;
 import pokerapp.Card;
 import pokerapp.Hand;
+import pokerapp.Rank;
 
 import java.util.List;
 
@@ -15,16 +16,17 @@ import java.util.List;
  */
 public class StraightScoredHand extends AbstractScoredHand<StraightScoredHand> {
 
-  @Getter private int rank;
+  @Getter
+  private Rank rank;
 
-  public StraightScoredHand(int handNumber, Hand hand, int rank) {
+  public StraightScoredHand(int handNumber, Hand hand, Rank rank) {
     super(handNumber, hand);
     this.rank = rank;
   }
 
   @Override
   protected int compareEqualCategories(StraightScoredHand rhs) {
-    return Integer.compare(rank, rhs.rank);
+    return rank.compareTo(rank);
   }
 
   @Override
@@ -32,9 +34,9 @@ public class StraightScoredHand extends AbstractScoredHand<StraightScoredHand> {
     return "Straight";
   }
 
-    @Override
-    public List<Card> getRelevantCards() {
-        return hand.getSortedCards();
-    }
+  @Override
+  public List<Card> getRelevantCards() {
+    return hand.getSortedCards();
+  }
 
 }

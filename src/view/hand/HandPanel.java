@@ -1,46 +1,78 @@
 package view.hand;
-import java.awt.FlowLayout;
-import java.util.ArrayList;
-
-import javax.swing.JPanel;
 
 import pokerapp.Card;
+import pokerapp.Hand;
+import pokerapp.Rank;
 import pokerapp.Suit;
 import view.ImageView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 public final class HandPanel extends JPanel {
-	
-	/**
-	 * Displays cards in a panel
-	 * @author tony
-	 * @wbp.factory
-	 */
-		public HandPanel() {
-		    this.setLayout(new FlowLayout());
-		    final ArrayList<ImageView> imageViews = new ArrayList<ImageView>();
 
-		    final int MAX_CARDS = 7;
+  /**
+   * Displays a hand of cards in a panel
+   *
+   * @author tony
+   * @wbp.factory
+   */
 
-		    for (int iter = 2; iter != MAX_CARDS; ++iter) {
+  private final ArrayList<ImageView> imageViews = new ArrayList<>();
+  private final ArrayList<CardViewModel> cards = new ArrayList<>();
 
-		      Card card = new Card(Suit.Hearts, iter);
-		      CardViewModel cardVM = CardViewModel.create(card);
+  public HandPanel() {
+    setOpaque(false);
+    setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    this.setLayout(new FlowLayout());
 
-		      ImageView imageView = new ImageView();
-		      imageView.setImage(cardVM.getImage());
+    final int MAX_CARDS = 7;
 
-		      imageViews.add(imageView);
-		      this.add(imageView);
-		     
-		    }
+    for (Rank rank : Rank.values()) {
 
-		  }
-		}
+      Card card = new Card(Suit.Clubs, rank);
+      CardViewModel cardVM = CardViewModel.create(card);
+
+      ImageView imageView = new ImageView();
+      imageView.setImage(cardVM.getImage());
+
+      imageViews.add(imageView);
+      this.add(imageView);
+
+    }
+
+  }
+
+  public HandPanel(Hand hand) {
+    setOpaque(false);
+    setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    this.setLayout(new FlowLayout());
+
+    final int MAX_CARDS = 7;
+
+    for (Rank rank : Rank.values()) {
+
+      Card card = new Card(Suit.Clubs, rank);
+      CardViewModel cardVM = CardViewModel.create(card);
+
+      ImageView imageView = new ImageView();
+      imageView.setImage(cardVM.getImage());
+
+      imageViews.add(imageView);
+      this.add(imageView);
+
+    }
+
+  }
+
+  public void setCards(Iterable<CardViewModel> cards) {
+    int iter = 0;
+    this.cards.clear();
+    for (CardViewModel card : cards) {
+      imageViews.get(iter++).setImage(card.getImage());
+      this.cards.add(card);
+    }
+  }
+
+}

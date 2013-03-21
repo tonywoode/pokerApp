@@ -1,6 +1,7 @@
 package pokerapp.scorer.domain;
 
 import pokerapp.Card;
+import pokerapp.Rank;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,8 +10,9 @@ import java.util.List;
 /**
  * Represents the concept of a pair, three & four of a kind. Stores
  * the rank of the (pair, triple, four).
- * <p>
+ * <p/>
  * Implements Comparable<T> to allow for chaining with the Comparator.
+ *
  * @author Steve Faulmann
  */
 public class SameRankCards implements Comparable<SameRankCards>, Iterable<Card> {
@@ -27,7 +29,6 @@ public class SameRankCards implements Comparable<SameRankCards>, Iterable<Card> 
   }
 
   /**
-   * 
    * @param cards
    */
   public SameRankCards(Iterable<Card> cards) {
@@ -39,22 +40,23 @@ public class SameRankCards implements Comparable<SameRankCards>, Iterable<Card> 
   }
 
   /**
-   * 
    * @param index
    * @return retrieves the Card at the specified index. Not currently used.
    */
-  public Card get(int index) { return cards.get(index); }
+  public Card get(int index) {
+    return cards.get(index);
+  }
 
-  public int getRank() {
+  public Rank getRank() {
     return cards.get(0).getRank();
   }
 
   public int compareTo(SameRankCards rhs) {
-    return Integer.compare(getRank(), rhs.getRank());
+    return getRank().compareTo(rhs.getRank());
   }
 
-    @Override
-    public Iterator<Card> iterator() {
-        return cards.iterator();
-    }
+  @Override
+  public Iterator<Card> iterator() {
+    return cards.iterator();
+  }
 }

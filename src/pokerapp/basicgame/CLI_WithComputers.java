@@ -1,6 +1,6 @@
 package pokerapp.basicgame;
 
-import pokerapp.console.DriverOnlyComputers;
+import pokerapp.console.DriverWithComputers;
 
 /**
  * User: ari
@@ -8,11 +8,11 @@ import pokerapp.console.DriverOnlyComputers;
  * Time: 14:11
  * Created with IntelliJ IDEA.
  */
-public class CLI_OnlyComputers {
+public class CLI_WithComputers {
   public static void main(String[] args) {
     try {
 
-      new DriverOnlyComputers().gameLoop();
+      new DriverWithComputers().gameLoop();
 
     } catch (Exception e) {
       System.out.println(e.getMessage());

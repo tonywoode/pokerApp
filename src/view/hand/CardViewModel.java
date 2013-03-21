@@ -23,6 +23,7 @@ public class CardViewModel {
   Card card;
 
   @Getter
+  @Setter
   boolean isSelected;
 
   @Getter

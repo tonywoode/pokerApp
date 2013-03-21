@@ -3,18 +3,20 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="guiGame" class="view.GUIGame" init-method="initialise" autowire="constructor"/>
+    <bean id="guiGame" class="view.GUIRunner" autowire="constructor" />
 
-    <bean id="console" class="pokerapp.console.StandardConsole"/>
+    <bean id="guiFrame" class="view.GUIFrame" autowire="constructor" />
 
-    <bean id="interactivePlayer" class="pokerapp.console.InteractivePlayer"/>
+    <bean id="handPanel" class="view.hand.HandPanel" autowire="constructor" />    
 
-    <bean id="computerPlayer" class="pokerapp.console.EasyComputerPlayer"/>
-     <!-- SDF Spring needed dealer's constructor argument, not sure why? Possibly because didn't specify Autowire ctor-->
-    <bean id="dealer" class="pokerapp.Dealer">
-        <constructor-arg>
-            <ref bean="deck"/>
-        </constructor-arg>
-    </bean>
+    <bean id="dealer" class="pokerapp.Dealer" autowire="constructor" />
+   
+    <bean id="deck" class="pokerapp.Deck" factory-method="createDeck" />
+   
+    <bean id="playerHandPresenter" class="view.playerhand.PlayerHandPresenter" autowire="constructor" />
+
+    <bean id="playerHandView" class="view.playerhand.PlayerHandView" autowire="constructor" />    
+
+    <bean id="playerHandPresenterBridge" class="view.playerhand.PlayerHandPresenterBridge" autowire="constructor" />
 
 </beans>

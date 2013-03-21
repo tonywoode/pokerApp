@@ -1,6 +1,7 @@
 package pokerapp;
 
 import lombok.Getter;
+import pokerapp.utils.textformat.*;
 
 /**
  * Describes ranks, assigns each rank name a value, and allows printing to screen of the rank - it was decided that
@@ -26,7 +27,8 @@ import lombok.Getter;
     	case ACE_LOW: return "Low Ace";
  */
 
-public enum Rank {
+public enum Rank implements Formattable<Rank> { // enums implicitly extend Enum & we can't therefore use our own base
+  // class
   DEUCE(2, "Deuce"),
   THREE(3, "Three"),
   FOUR(4, "Four"),
@@ -36,11 +38,10 @@ public enum Rank {
   EIGHT(8, "Eight"),
   NINE(9, "Nine"),
   TEN(10, "Ten"),
-  JACK(2, "Jack", "J"),
+  JACK(11, "Jack", "J"),    // typo, was 2
   QUEEN(12, "Queen", "Q"),
   KING(13, "King", "K"),
-  ACE(14, "Ace", "A"),
-  ACE_LOW(1, "Ace", "A");
+  ACE(14, "Ace", "A");
 
   @Getter
   private int number;
@@ -48,6 +49,27 @@ public enum Rank {
   private String name;
   @Getter
   private String symbol;
+
+  public static Formats<Rank> FORMATS = new Formats<>(
+      new Format<>("n|num|number", new FormatResolver<Rank>() {
+        @Override
+        public String resolve(Rank rank) {
+          return Integer.toString(rank.getNumber());
+        }
+      }),
+      new Format<>("s|symbol", new FormatResolver<Rank>() {
+        @Override
+        public String resolve(Rank rank) {
+          return rank.getSymbol();
+        }
+      }),
+      new Format<>("m|name", new FormatResolver<Rank>() {
+        @Override
+        public String resolve(Rank rank) {
+          return rank.getName();
+        }
+      })
+  );
 
   /**
    * @param number rank of cards 1 to 10
@@ -66,7 +88,7 @@ public enum Rank {
 
   /**
    * Even cards < 11 need two parameters, we pass the number as the second for card ranks < 11
-   *
+   *  TODO: clarify: why two parameters? pass the number as the second what?
    * @param number
    */
   Rank(int number, String name) {
@@ -76,11 +98,48 @@ public enum Rank {
   /**
    * Returns the Rank in a form that can be printed onscreen
    *
-   * @throws IllegalArgumentException because it won't be a rank
+   * @throws IllegalArgumentException because it won't be a rank TODO: really?
    */
   @Override
   public String toString() {
-    return name;
+    return Integer.toString(getNumber());
   }
 
+  /**
+   * @return The Formats instance for this Value Type
+   */
+  @Override
+  public Formats getFormats() {
+    return FORMATS;
+  }
+
+  /**
+   * @param format The name of the format to use when rendering the Value Object as text
+   * @return A string holding the textual representation of the value object, according to the named format
+   * @throws IllegalFormatCodeException
+   * @throws FormatStringException
+   */
+  @Override
+  public String format(String format) throws IllegalFormatCodeException, FormatStringException {
+    return getFormats().format(this, format);
+  }
+
+  /**
+   * @param rhs The Rank on the right hand side of the expression
+   * @return True if lhs is strictly higher thank rhs
+   */
+  public boolean beats(Rank rhs) {
+    return getNumber() > rhs.getNumber();
+  }
+
+  public static Rank from(String rankNumber) {
+    return from(Integer.parseInt(rankNumber));
+  }
+
+  public static Rank from(int rankNumber) {
+    for (Rank rank : values())
+      if (rank.getNumber() == rankNumber)
+        return rank;
+    throw new IllegalArgumentException("Illegal rank number");
+  }
 }

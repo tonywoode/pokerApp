@@ -44,7 +44,7 @@ public class HandSuits {
     }
 
     //TODO: decide where isFlush lives
-    //TODO: do we need a sep histogram for suits, perhaps it could just be another field in HandRanks (which would thenbe renamed)
+
     private boolean isFlush(){
 
         for(int iter = 1; iter <= Constants.NUM_SUITS; ++iter)
