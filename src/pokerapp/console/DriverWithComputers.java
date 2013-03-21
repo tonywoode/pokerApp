@@ -9,9 +9,8 @@ import pokerapp.utils.Constants;
  * @author Ari
  * @version 1.0
  */
-public class DriverOnlyComputers {
+public class DriverWithComputers {
 
-  //TODO: change name of class as it includes an interactive player now
 
   private final IConsole console = new StandardConsole();
   private final ExchangeSetting exchangeSetting = new ExchangeSetting(3,1);//default - exchange 3 cards once
@@ -54,7 +53,7 @@ public class DriverOnlyComputers {
 
       UserConfigurable userConfigurableNumPlayers =
           new UserConfigurable("How many computer players do you want to play against?" + NEW_LINE,
-              MIN_NUMBER_PLAYERS, MAX_NUMBER_PLAYERS); //TODO: include a human player
+              MIN_NUMBER_PLAYERS, MAX_NUMBER_PLAYERS);
 
       numberOfPlayers = userConfigurableNumPlayers.askUser(console, true);
 
@@ -126,8 +125,7 @@ public class DriverOnlyComputers {
 
       Player winner = players.pickWinner();
       console.writeMessage(winner.getPlayerName() + " won with " + winner.getHand());
-      //TODO: unicode for each card or just the suit  (or both)
-
+      //TODO: unicode for each card
       for(Player p : players) {             //TODO: this doesn't seem to be working?
         for(Card c : p.getHand()) {
           deck.returnToBottom(c);
