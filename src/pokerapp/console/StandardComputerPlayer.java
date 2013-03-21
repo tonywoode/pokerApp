@@ -18,7 +18,6 @@ public class StandardComputerPlayer extends ComputerPlayer {
 
     public StandardComputerPlayer() {
         this("");
-        setDifficultyCode("S");
     }
 
     @Override
