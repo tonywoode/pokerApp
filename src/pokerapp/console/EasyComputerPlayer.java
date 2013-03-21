@@ -20,7 +20,6 @@ public class EasyComputerPlayer extends ComputerPlayer {
 
   public EasyComputerPlayer() {
     this("");
-    setDifficultyCode("E");
   }
 
 
