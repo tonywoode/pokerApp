@@ -34,20 +34,23 @@ public abstract class ComputerPlayer extends Player {
 
     for (int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 
+      Class<? extends Player> playerClass = getClass();
+      String playerType = playerClass.getSimpleName().replace("ComputerPlayer","");
+
       StringBuilder commandBuilder = new StringBuilder();
       ScoredHand scoredHand = new HandScorerBuilder().create().score(getHand());
       String handType = scoredHand.getName();
-      console.writeMessage(getPlayerName() + " (" + difficultyCode + ") has: " + getHand().toFancyUserString() +
+      console.writeMessage(getPlayerName() + " (" + playerType + ") has: " + getHand().toFancyUserString() +
           handType);
 
       String command = exchangeDecision(commandBuilder, handType);
       ExchangeCardsInterpreter interpreter = new ExchangeCardsInterpreter(command);
       interpreter.execute(getHand(), deck);
-      console.writeMessage(getPlayerName() + " (" + difficultyCode + ") exchanged " + command);
+      console.writeMessage(getPlayerName() + " (" + playerType + ") exchanged " + command);
 
       scoredHand = new HandScorerBuilder().create().score(getHand());
       handType = scoredHand.getName();
-      console.writeMessage(getPlayerName() + " (" + difficultyCode + ") has: " + getHand().toFancyUserString() +
+      console.writeMessage(getPlayerName() + " (" + playerType + ") has: " + getHand().toFancyUserString() +
           handType);
 
     }
