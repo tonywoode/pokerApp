@@ -32,6 +32,7 @@ public class Suit extends AbstractFormattable<Suit> {
     this.name = name;
   }
 
+  //the java unicode encodings are black suit symbols
   public final static Suit Clubs = new Suit(Constants.POS_CLUB, Constants.CHAR_CLUB, '\u2663' , "Clubs");
   public final static Suit Diamonds = new Suit(Constants.POS_DIAMOND, Constants.CHAR_DIAMOND, '\u2666', "Diamonds");
   public final static Suit Hearts = new Suit(Constants.POS_HEART, Constants.CHAR_HEART, '\u2665', "Hearts");

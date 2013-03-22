@@ -74,7 +74,7 @@ public class GUIFrame extends JFrame {
 		
 		
 		
-		textPanel.setBounds(275, 224, 415, 129);
+		textPanel.setBounds(287, 220, 415, 129);
 
 		//setSize(backIcon.getIconWidth() + 5, backIcon.getIconHeight() + 25);
 		//JPanel Cardpanel1 = new HandPanel();
