@@ -1,7 +1,12 @@
 package view;
 
+import pokerapp.Dealer;
+import pokerapp.Hand;
+import pokerapp.console.InteractivePlayer;
+import pokerapp.console.Players;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
+import view.hand.SuperHandPanel;
 import view.playerhand.PlayerHandPresenterBridge;
 
 import javax.swing.*;
@@ -30,18 +35,22 @@ public class GUIFrame extends JFrame {
   private ScoresPanel scoresPanel;
   private JLabel logo;
 
+  private final Dealer dealer;
+
   /**
    * draws the frame with background
    * Poker Table Background adapted from thePokerBox.com
    */
-  public GUIFrame(PlayerHandPresenterBridge playerHandPresenterBridge, PlayerHandPresenterBridge computerPHPBridge)
+  public GUIFrame(PlayerHandPresenterBridge playerHandPresenterBridge, SuperHandPanel computerHandPanel, Dealer dealer)
       throws FormatStringException, IOException, IllegalFormatCodeException {
+
+    this.dealer = dealer;
 
     this.startButton = new StartButton();
     this.scoresPanel = new ScoresPanel();
 
     playerHandPresenterBridge.playRandomHand();
-    computerPHPBridge.playRandomHand();
+    computerHandPanel.setHand(getHand());
 
     setSize(FRAME_WIDTH, FRAME_HEIGHT);
     container = getContentPane();
@@ -72,7 +81,7 @@ public class GUIFrame extends JFrame {
     /**JPanel Cardpanel2 = new HandPanel();
      Cardpanel2.setBounds(270, 430, 390, 105); */
 
-    JComponent cpuHandView = computerPHPBridge.getView();
+    JComponent cpuHandView = computerHandPanel; // TODO: chp is a view - fix this
     cpuHandView.setOpaque(false);
     cpuHandView.setBounds(270, 70, 390, 105);
 
@@ -94,6 +103,16 @@ public class GUIFrame extends JFrame {
 
   }
 
+
+  // temp...
+  private Hand getHand() {
+    InteractivePlayer ip = new InteractivePlayer();
+    Players players = new Players().register(ip);
+
+    dealer.dealCards(5, players);
+
+    return ip.getHand();
+  }
 
   /**
    * Sets the background image in the GUI Frame

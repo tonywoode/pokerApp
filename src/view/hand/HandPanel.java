@@ -79,5 +79,4 @@ public final class HandPanel extends JPanel {
       this.cards.add(card);
     }
   }
-
 }
