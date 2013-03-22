@@ -15,6 +15,9 @@ import javax.swing.JPanel;
 import view.hand.HandPanel;
 import view.playerhand.PlayerHandPresenterBridge;
 import javax.swing.JLabel;
+import javax.swing.JTextPane;
+import java.awt.Color;
+import java.awt.Font;
 
 
 /**
@@ -33,6 +36,7 @@ public class GUIFrame extends JFrame {
 	private JPanel backPanel;
 	private StartButton startButton;
 	private ScoresPanel scoresPanel;
+	private TextPanel textPanel;
 	private JLabel logo;
 	
 	/**
@@ -43,6 +47,7 @@ public class GUIFrame extends JFrame {
 
 		this.startButton = new StartButton();
 		this.scoresPanel = new ScoresPanel();
+		this.textPanel = new TextPanel();
 
 
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -66,7 +71,10 @@ public class GUIFrame extends JFrame {
 		});
 
 		scoresPanel.setBounds(57, 174, 208, 191);
-
+		
+		
+		
+		textPanel.setBounds(275, 224, 415, 129);
 
 		//setSize(backIcon.getIconWidth() + 5, backIcon.getIconHeight() + 25);
 		//JPanel Cardpanel1 = new HandPanel();
@@ -89,12 +97,29 @@ public class GUIFrame extends JFrame {
 		container.add(backPanel);
 		backPanel.add(logo);
 		backPanel.add(scoresPanel);
+		backPanel.add(textPanel);
 		backPanel.add(cpuHandView);
 		backPanel.add(playerHandView);
 		backPanel.add(startButton);
 		
 		
+		/*JTextPane textPanel = new JTextPane();
+		textPanel.setFont(new Font("Showcard Gothic", Font.ITALIC, 28));
+		textPanel.setForeground(new Color(160, 20, 20));
+		textPanel.setOpaque(false);
+		textPanel.setEditable(false);
+		textPanel.setText("Here the text will go no matter how long it is - I hope the computer Wins!");
+		textPanel.setBounds(275, 224, 415, 129);*/
+
 		
+		/*JTextPane textPanelShadow = new JTextPane();
+		textPanelShadow.setFont(new Font("Showcard Gothic", Font.ITALIC, 28));
+		textPanelShadow.setForeground(new Color(0, 0, 0));
+		textPanelShadow.setOpaque(false);
+		textPanelShadow.setEditable(false);
+		textPanelShadow.setText("Here the text will go no matter how long it is - I hope the computer Wins!");
+		textPanelShadow.setBounds(277, 227, 415, 129);
+		backPanel.add(textPanelShadow);*/
 
 	}
 
@@ -139,6 +164,4 @@ public class GUIFrame extends JFrame {
 		computerLabel.setIcon(new ImageIcon("pics/Computer.png"));
 		computerLabel.setBounds(663, 70, 106, 30);
 		backPanel.add(computerLabel); }
-	
-	
 }   
