@@ -9,6 +9,7 @@ import view.ImageView;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public final class HandPanel extends JPanel {
 
@@ -64,6 +65,10 @@ public final class HandPanel extends JPanel {
 
     }
 
+  }
+
+  public List<Card> getSelectedCards() {
+    return null;
   }
 
   public void setCards(Iterable<CardViewModel> cards) {
