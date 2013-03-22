@@ -32,10 +32,10 @@ public class Suit extends AbstractFormattable<Suit> {
     this.name = name;
   }
 
-  public final static Suit Clubs = new Suit(Constants.POS_CLUB, Constants.CHAR_CLUB, '♣', "Clubs");
-  public final static Suit Diamonds = new Suit(Constants.POS_DIAMOND, Constants.CHAR_DIAMOND, '♦', "Diamonds");
-  public final static Suit Hearts = new Suit(Constants.POS_HEART, Constants.CHAR_HEART, '♥', "Hearts");
-  public final static Suit Spades = new Suit(Constants.POS_SPADE, Constants.CHAR_SPADE, '♠', "Spades");
+  public final static Suit Clubs = new Suit(Constants.POS_CLUB, Constants.CHAR_CLUB, '\u2663' , "Clubs");
+  public final static Suit Diamonds = new Suit(Constants.POS_DIAMOND, Constants.CHAR_DIAMOND, '\u2666', "Diamonds");
+  public final static Suit Hearts = new Suit(Constants.POS_HEART, Constants.CHAR_HEART, '\u2665', "Hearts");
+  public final static Suit Spades = new Suit(Constants.POS_SPADE, Constants.CHAR_SPADE, '\u2660', "Spades");
 
   public final static Suit[] AllSuits = new Suit[]{
       Clubs, Diamonds, Hearts, Spades
