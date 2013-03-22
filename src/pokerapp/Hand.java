@@ -159,4 +159,12 @@ public class Hand implements Iterable<Card> {
         cardsSubset.add(card);
     return cardsSubset;
   }
+
+  public Card replace(Card card, Card newCard) {
+    for (int iter = 0; iter != cards.size(); ++iter)
+      if (cards.get(iter) == card)
+        cards.set(iter, newCard);
+
+    return newCard;
+  }
 }

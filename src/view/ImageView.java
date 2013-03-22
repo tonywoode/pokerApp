@@ -21,11 +21,8 @@ public class ImageView extends JComponent {
   @Getter
   private int index;
 
-  public ImageView(){}
-
-  public ImageView(int index)
-  {
-      this.index = index;
+  public ImageView(int index) {
+    this.index = index;
   }
 
   public void setImage(BufferedImage img) {

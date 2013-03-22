@@ -3,20 +3,96 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="guiGame" class="view.GUIRunner" autowire="constructor" />
+    <bean id="guiGame" class="view.GUIRunner" autowire="constructor"/>
 
-    <bean id="guiFrame" class="view.GUIFrame" autowire="constructor" />
+    <bean id="guiFrame" class="view.GUIFrame" autowire="constructor">
+        <constructor-arg index="0" ref="playerHandPresenterBridge"/>
+        <constructor-arg index="1" ref="computerPHPBridge"/>
+    </bean>
 
-    <bean id="handPanel" class="view.hand.HandPanel" autowire="constructor" />    
+    <bean id="handPanel" class="view.hand.HandPanel" autowire="constructor"/>
+    <bean id="superHandPanel" class="view.hand.SuperHandPanel" autowire="constructor">
+        <constructor-arg index="0" value="5"/>
+        <constructor-arg index="1" ref="cardViewModelFactory"/>
+    </bean>
 
-    <bean id="dealer" class="pokerapp.Dealer" autowire="constructor" />
-   
-    <bean id="deck" class="pokerapp.Deck" factory-method="createDeck" />
-   
-    <bean id="playerHandPresenter" class="view.playerhand.PlayerHandPresenter" autowire="constructor" />
+    <bean id="dealer" class="pokerapp.Dealer" autowire="constructor">
+        <constructor-arg ref="deck"/>
+    </bean>
 
-    <bean id="playerHandView" class="view.playerhand.PlayerHandView" autowire="constructor" />    
+    <bean id="deck" class="pokerapp.Deck" factory-method="createDeck"/>
 
-    <bean id="playerHandPresenterBridge" class="view.playerhand.PlayerHandPresenterBridge" autowire="constructor" />
+    <bean id="playerHandPresenter" class="view.playerhand.PlayerHandPresenter" autowire="constructor"/>
+
+    <bean id="playerHandView" class="view.playerhand.PlayerHandView" autowire="constructor"/>
+
+    <bean id="playerHandPresenterBridge" class="view.playerhand.PlayerHandPresenterBridge" autowire="constructor"/>
+
+    <!-- computer player hand view -->
+    <bean id="computerPHPBridge" class="view.playerhand.PlayerHandPresenterBridge">
+        <constructor-arg>
+            <bean class="view.playerhand.PlayerHandPresenter">
+                <constructor-arg index="0">
+                    <bean class="view.playerhand.PlayerHandView">
+                        <constructor-arg>
+                            <bean id="superHandPanel" class="view.hand.SuperHandPanel">
+                                <constructor-arg index="0" value="5"/>
+                                <!-- num cards in hand -->
+                                <constructor-arg index="1" ref="computerPlayerCardViewModelFactory"/>
+                            </bean>
+                        </constructor-arg>
+                    </bean>
+                </constructor-arg>
+                <constructor-arg index="1" ref="dealer"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg index="1" ref="dealer"/>
+    </bean>
+
+    <!-- string formatters -->
+
+    <bean id="stringFormatter" class="pokerapp.utils.textformat.StringFormatter"/>
+
+    <!-- card images -->
+
+    <bean id="cardImageFactory" class="view.card.CardImageFactoryImpl">
+        <constructor-arg index="0" value="pics/"/>
+        <constructor-arg index="1" ref="stringFormatter"/>
+    </bean>
+
+
+    <bean id="cardImageFlyweightFactory" class="view.card.CardImageFlyweightFactory">
+        <constructor-arg ref="cardImageFactory"/>
+    </bean>
+
+    <bean id="cardBackImageFactory" class="view.card.CardBackImageFactory">
+        <constructor-arg value="pics/"/>
+    </bean>
+
+    <bean id="selectedCardImageFactory" class="view.card.SelectedCardImageFactory">
+        <constructor-arg index="0" ref="cardImageFactory"/>
+        <constructor-arg index="1" ref="selectedCardImageFilter"/>
+    </bean>
+
+    <bean id="selectedCardImageFilter" class="view.imagefilters.CompositeCardFilter">
+        <constructor-arg>
+            <list>
+                <bean class="view.imagefilters.InvertCardFilter"/>
+                <bean class="view.imagefilters.ThresholdCardFilter"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="cardViewModelFactory" class="view.card.CardViewModelFactory">
+        <constructor-arg index="0" ref="cardImageFlyweightFactory"/>
+        <constructor-arg index="1" ref="selectedCardImageFactory"/>
+    </bean>
+
+    <bean id="computerPlayerCardViewModelFactory" class="view.card.CardViewModelFactory">
+        <constructor-arg index="0" ref="cardBackImageFactory"/>
+        <!-- should use the Flyweight as well -->
+        <constructor-arg index="1" ref="selectedCardImageFactory"/>
+    </bean>
+
 
 </beans>

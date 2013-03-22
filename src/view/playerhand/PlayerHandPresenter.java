@@ -1,74 +1,61 @@
 package view.playerhand;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JComponent;
-import javax.swing.JOptionPane;
-
 import pokerapp.Card;
 import pokerapp.Dealer;
 import pokerapp.Hand;
 import pokerapp.console.Player;
-
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
 import view.Displayable;
-import view.hand.CardViewModel;
+
+import javax.swing.*;
+import java.io.IOException;
 
 /**
- * 
- * 
  * PlayerHand presenter MVP pattern: presenter will communicate actions from and to view
- * @author Tony
  *
+ * @author Tony
  */
 public class PlayerHandPresenter implements PlayerHandViewActionListener, Displayable {
 
-	public PlayerHandPresenter(PlayerHandView plHandView, Dealer dealer) {
-		this.plHandView = plHandView;
-		this.plHandView.addListener(this);
-		this.dealer = dealer;
-	}
-	
-	private List<CardViewModel> cards = new ArrayList<>();
-	private PlayerHandView plHandView; 
-	private Player player;
-	private Hand hand;
-	
-	private Dealer dealer;
+  private final PlayerHandView plHandView;
+  private Player player;
+  private Hand hand;
 
-	public void init(Player player, Hand hand) {
-		this.player = player;
-		this.hand = hand;
-		createCardViewModels();
-	}
-	
-	/**
-	 * Turn the cards in the player's hand to 
-	 * CardViewModels so they can be displayed on screen
-	 */
-	private void createCardViewModels() {
-		for (Card card : hand) {
-			CardViewModel vm = CardViewModel.create(card);
-			cards.add(vm);
-		}	
-	}
+  private final Dealer dealer;
 
-	public void onHold() {
-		JOptionPane.showMessageDialog(getView(), "Hold command activated");
-	}
-
-	public void onExchange() {
-		JOptionPane.showMessageDialog(getView(), "Exchange command activated");		
-	}
-	
-	
-	
+  public PlayerHandPresenter(PlayerHandView plHandView, Dealer dealer) {
+    this.plHandView = plHandView;
+    this.plHandView.addListener(this);
+    this.dealer = dealer;
+  }
 
 
-	@Override
-	public JComponent getView() {
-		return plHandView.getView();
-	}
+  public void init(Player player, Hand hand) throws FormatStringException, IOException, IllegalFormatCodeException {
+    this.player = player;
+    this.hand = hand;
+    this.plHandView.setHand(hand);
+  }
 
+  public void onHold() {
+    JOptionPane.showMessageDialog(getView(), "Hold command activated");
+  }
+
+  public void onExchange() {
+    for (Card card : plHandView.getSelectedCards()) {
+      Card newCard = dealer.exchangeCard(hand, card);
+    }
+    // TODO: fix nasty hack
+    try {
+      plHandView.setHand(hand);
+    } catch (Exception e) {
+      // TODO: argh!
+    }
+  }
+
+  @Override
+  public JComponent getView() {
+    return plHandView.getView();
+  }
 }
 

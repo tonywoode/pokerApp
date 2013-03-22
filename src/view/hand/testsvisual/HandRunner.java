@@ -43,7 +43,7 @@ public class HandRunner {
       Card card = new Card(Suit.Hearts, rank);
       CardViewModel cardVM = CardViewModel.create(card);
 
-      ImageView imageView = new ImageView();
+      ImageView imageView = new ImageView(0);
       imageView.setImage(cardVM.getImage());
 
       imageViews.add(imageView);

@@ -35,7 +35,7 @@ public final class HandPanel extends JPanel {
       Card card = new Card(Suit.Clubs, rank);
       CardViewModel cardVM = CardViewModel.create(card);
 
-      ImageView imageView = new ImageView();
+      ImageView imageView = new ImageView(0);
       imageView.setImage(cardVM.getImage());
 
       imageViews.add(imageView);
@@ -57,7 +57,7 @@ public final class HandPanel extends JPanel {
       Card card = new Card(Suit.Clubs, rank);
       CardViewModel cardVM = CardViewModel.create(card);
 
-      ImageView imageView = new ImageView();
+      ImageView imageView = new ImageView(0);
       imageView.setImage(cardVM.getImage());
 
       imageViews.add(imageView);
@@ -66,6 +66,7 @@ public final class HandPanel extends JPanel {
     }
 
   }
+
 
   public List<Card> getSelectedCards() {
     return null;
