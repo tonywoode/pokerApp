@@ -1,8 +1,6 @@
 package pokerapp.console;
 
-import lombok.Setter;
 import pokerapp.Deck;
-import pokerapp.Rank;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
@@ -14,18 +12,17 @@ import pokerapp.scorer.scoredhands.ScoredHand;
  * @version 1.0
  */
 
-public abstract class ComputerPlayer extends Player {
+public class ComputerPlayer extends Player {
 
-  @Setter
-  Rank targetRank;
+  private final ComputerPlayerStrategy turnStrategy;
 
-  public ComputerPlayer(String name) {
+  public ComputerPlayer(String name, ComputerPlayerStrategy turnStrategy) {
+    this.turnStrategy = turnStrategy;
     setPlayerName(name);
-
   }
 
-  public ComputerPlayer() {
-    this("Computer");
+  public ComputerPlayer(ComputerPlayerStrategy turnStrategy) {
+    this("Computer", turnStrategy);
   }
 
   public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting) {
@@ -40,15 +37,15 @@ public abstract class ComputerPlayer extends Player {
       console.writeMessage(getPlayerName() + " (" + playerType + ") has: " + getHand().toFancyUserString() +
           handType);
 
-      exchangeDecision(scoredHand);
-
       scoredHand = new HandScorerBuilder().create().score(getHand());
+
+      turnStrategy.playTurn(scoredHand);
+
       handType = scoredHand.getName();
+
       console.writeMessage(getPlayerName() + " (" + playerType + ") has: " + getHand().toFancyUserString() +
           handType);
 
     }
   }
-
-  protected abstract void exchangeDecision(ScoredHand handType);
 }
