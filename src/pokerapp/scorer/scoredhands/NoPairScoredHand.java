@@ -47,7 +47,7 @@ public class NoPairScoredHand extends AbstractScoredHand<NoPairScoredHand,NoPair
      */
     @Override
     public String getName() {
-        if(name.isEmpty())
+        if(name == null)
         {
             Properties prop = new Properties();
             try {

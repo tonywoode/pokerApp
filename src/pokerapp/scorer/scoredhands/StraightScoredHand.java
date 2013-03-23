@@ -39,7 +39,7 @@ public class StraightScoredHand extends AbstractScoredHand<StraightScoredHand,St
 
   @Override
   public String getName() {
-      if(name.isEmpty())
+      if(name == null)
       {
           Properties prop = new Properties();
           try {
