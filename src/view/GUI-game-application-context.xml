@@ -7,10 +7,9 @@
 
     <bean id="guiFrame" class="view.GUIFrame" autowire="constructor">
         <constructor-arg index="0" ref="playerHandPresenterBridge"/>
-        <constructor-arg index="1" ref="computerPHPBridge"/>
+        <constructor-arg index="1" ref="computerHandPanel"/>
     </bean>
 
-    <bean id="handPanel" class="view.hand.HandPanel" autowire="constructor"/>
     <bean id="superHandPanel" class="view.hand.SuperHandPanel" autowire="constructor">
         <constructor-arg index="0" value="5"/>
         <constructor-arg index="1" ref="cardViewModelFactory"/>
@@ -24,29 +23,17 @@
 
     <bean id="playerHandPresenter" class="view.playerhand.PlayerHandPresenter" autowire="constructor"/>
 
-    <bean id="playerHandView" class="view.playerhand.PlayerHandView" autowire="constructor"/>
+    <bean id="playerHandView" class="view.playerhand.PlayerHandView" autowire="constructor">
+        <constructor-arg ref="superHandPanel"/>
+    </bean>
 
     <bean id="playerHandPresenterBridge" class="view.playerhand.PlayerHandPresenterBridge" autowire="constructor"/>
 
     <!-- computer player hand view -->
-    <bean id="computerPHPBridge" class="view.playerhand.PlayerHandPresenterBridge">
-        <constructor-arg>
-            <bean class="view.playerhand.PlayerHandPresenter">
-                <constructor-arg index="0">
-                    <bean class="view.playerhand.PlayerHandView">
-                        <constructor-arg>
-                            <bean id="superHandPanel" class="view.hand.SuperHandPanel">
-                                <constructor-arg index="0" value="5"/>
-                                <!-- num cards in hand -->
-                                <constructor-arg index="1" ref="computerPlayerCardViewModelFactory"/>
-                            </bean>
-                        </constructor-arg>
-                    </bean>
-                </constructor-arg>
-                <constructor-arg index="1" ref="dealer"/>
-            </bean>
-        </constructor-arg>
-        <constructor-arg index="1" ref="dealer"/>
+    <bean id="computerHandPanel" class="view.hand.SuperHandPanel">
+        <constructor-arg index="0" value="5"/>
+        <!-- num cards in hand -->
+        <constructor-arg index="1" ref="computerPlayerCardViewModelFactory"/>
     </bean>
 
     <!-- string formatters -->

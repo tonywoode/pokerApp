@@ -67,7 +67,6 @@ public final class HandPanel extends JPanel {
 
   }
 
-
   public List<Card> getSelectedCards() {
     return null;
   }
@@ -80,5 +79,4 @@ public final class HandPanel extends JPanel {
       this.cards.add(card);
     }
   }
-
 }

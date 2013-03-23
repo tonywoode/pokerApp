@@ -19,11 +19,11 @@ import java.io.IOException;
 public class CardViewModel {
 
   @Getter
-  private Card card;
+  private final Card card;
 
   @Getter
   @Setter
-  private boolean isSelected;
+  boolean isSelected;
 
   private BufferedImage selectedImage;
   private BufferedImage unselectedImage;
@@ -41,8 +41,8 @@ public class CardViewModel {
 
   public BufferedImage getImage() {
     return getIsSelected() ? selectedImage : unselectedImage;
-  }
-
+  }  
+  
   public static CardViewModel create(Card card) {
     String filename = filenameFromCard(card);
 
@@ -79,5 +79,5 @@ public class CardViewModel {
 
   public void setIsSelected(boolean sel) {
     isSelected = sel;
-  }
+  }  
 }
