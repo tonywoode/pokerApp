@@ -4,10 +4,11 @@ import com.google.common.eventbus.Subscribe;
 import pokerapp.Player;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
+import pokerapp.view.Animation;
+import pokerapp.view.MsgAnimation;
 import pokerapp.view.playerhand.ComputerHandView;
 import pokerapp.view.playerhand.PlayerHandPresenterBridge;
 import pokerapp.view.playerhand.TurnCompletedEvent;
-
 import javax.swing.*;
 import java.io.IOException;
 
@@ -25,13 +26,15 @@ public class PokerGamePresenter {
 
   public PokerGamePresenter(PokerGameModel pokerGameModel, PokerGameView pokerGameView,
                             PlayerHandPresenterBridge playerHandPresenterBridge,
-                            ComputerHandView computerHandView) {
+                            ComputerHandView computerHandView, String userMessage) {
     this.pokerGameModel = pokerGameModel;
     this.pokerGameView = pokerGameView;
     this.playerHandPresenterBridge = playerHandPresenterBridge;
     this.computerHandView = computerHandView;
-
+    
+    
     pokerGameView.registerSubViews(playerHandPresenterBridge, computerHandView);
+    this.pokerGameView.displayMessage(userMessage);
   }
 
   public void play() {
@@ -47,6 +50,10 @@ public class PokerGamePresenter {
 
     playerHandPresenterBridge.setPlayer(pokerGameModel.getInteractivePlayer());
     computerHandView.setHand(pokerGameModel.getComputerPlayer().getHand());
+    
+    pokerGameView.displayMessage("Game Started: Choose Which Cards To Exchange");
+    
+    
   }
 
   @Subscribe
@@ -56,20 +63,23 @@ public class PokerGamePresenter {
 
     Player winner = pokerGameModel.pickWinner();
 
-    String winMessage = getWinMessage(winner);
+    //String winMessage = getWinMessage(winner);
 
+    pokerGameView.displayMessage("Press Start To Begin Another Game....");
+    
     computerHandView.showCards();
 
-    JOptionPane.showMessageDialog(pokerGameView, winMessage);
+	pokerGameView.showGameResultMessage(getWinMessage(winner));
+    
+    //JOptionPane.showMessageDialog(pokerGameView, winMessage);
   }
 
-  private String getWinMessage(Player winner) {
+  private int getWinMessage(Player winner) {
     if (winner == null)
-      return "Tie";
+      return 0; //draw
     else if (winner == pokerGameModel.getInteractivePlayer())
-      return "You won!";
+      return 1; //you win
     else
-      return "You lost!";
+      return -1; //you lose
   }
-
 }
