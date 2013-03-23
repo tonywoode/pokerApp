@@ -9,12 +9,15 @@ import pokerapp.Hand;
 import pokerapp.HandFactory;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scorers.HandScorer;
+import pokerapp.utils.HandPermutationGenerator;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created with IntelliJ IDEA.
@@ -40,17 +43,20 @@ public class ScoreCombinationTest {
         while ((nextLine = reader.readNext()) != null) {
             // nextLine[] is an array of values from the line
             Hand createHand = handFactory.create(nextLine[0]);
-
-         //   expectedScoreHash.put(createHand);
+            ArrayList<Hand> handPerms = HandPermutationGenerator.permute(createHand);
+            for(Hand hands : handPerms){
+                expectedScoreHash.put(hands,nextLine[1]);
+            }
         }
-
     }
 
     @Test
-    public void testHashHands()
-    {
-
-        //handScorerChain.score(testHand);
+    public void testHashHands() throws FileNotFoundException {
+        Iterator it = expectedScoreHash.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pairs = (Map.Entry)it.next();
+            assertEquals(handScorerChain.score((Hand)pairs.getKey()).getName(),(String)pairs.getValue());
+        }
     }
 
 }

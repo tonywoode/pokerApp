@@ -1,10 +1,10 @@
-D1 S2 D8 D9 D10, no pair
-D1 S1 D8 D9 D10,
-D2 S2 DK DK S9,
-D2 S2 H2 DK C1,
-D1 D2 D3 D4 S5,
-D8 D10 DJ DQ DK,
-D2 S2 H2 DK CK,
-D2 S2 C2 H2 CJ,
-C1 C2 C3 C4 C5,
-C10 CJ CQ CK C1, royalpair
+D1 S2 D8 D9 D10,No pair
+D1 S1 D8 D9 D10,Pair
+D2 S2 DK DK S9,Two pair
+D2 S2 H2 DK C1,Three of a kind
+D1 D2 D3 D4 S5,Straight
+D8 D10 DJ DQ DK,Flush
+D2 S2 H2 DK CK,Full house
+D2 S2 C2 H2 CJ,Four of a kind
+C1 C2 C3 C4 C5,Straight flush
+C10 CJ CQ CK C1,Royal flush
