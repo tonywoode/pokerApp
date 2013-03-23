@@ -29,6 +29,22 @@ public class HandFactory {
   }
 
   /**
+   * Takes a variable number of cards and returns them in a hand
+   *
+   * @param cards
+   * @return hand of cards
+   * @throws IllegalArgumentException passing up from createCard
+   */
+  public Hand createFromArray(String[] cards) throws IllegalArgumentException {
+    Hand hand = new Hand();
+
+    for (String card : cards)
+      hand.add(createCard(card));
+
+    return hand;
+  }
+
+  /**
    * When  passed a string representing a hand, will return a hand comprising the represented cards
    *
    * @param line a string representing a hand e.g. "S4 D5 H6 C7 S8" - a straight
