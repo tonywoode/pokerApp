@@ -2,11 +2,8 @@ package pokerapp;
 
 import lombok.Getter;
 import lombok.Setter;
-import pokerapp.Card;
-import pokerapp.Deck;
-import pokerapp.Hand;
 import pokerapp.console.ExchangeSetting;
-import pokerapp.console.IConsole;
+import pokerapp.console.Console;
 
 /**
  * @author Steve
@@ -25,7 +22,7 @@ public abstract class Player {
     return getPlayerName();
   }
 
-  public abstract void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting);
+  public abstract void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting);
 
   public void receiveCard(Card card) {
     hand.add(card);

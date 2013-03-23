@@ -30,7 +30,7 @@ public class Driver {
     // Registering players is now not done through the constructor (because of Spring)
     Players players = new Players(new HandScorerBuilder().create()).register(interactivePlayer, computerPlayer);
 
-    IConsole console = new StandardConsole();
+    Console console = new StandardConsole(formatter);
 
     ExchangeSetting exchangeSetting = new ExchangeSetting(3, 1);
 

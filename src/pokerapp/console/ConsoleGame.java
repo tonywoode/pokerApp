@@ -11,7 +11,7 @@ import pokerapp.*;
 //@AllArgsConstructor
 public class ConsoleGame {
 
-  private final IConsole console;
+  private final Console console;
   private final InteractivePlayer interactivePlayer;
   private final ComputerPlayer computerPlayer;
   private final Dealer dealer;
@@ -20,7 +20,7 @@ public class ConsoleGame {
 
   private static final int HAND_SIZE = 5;
 
-  public ConsoleGame(IConsole console, InteractivePlayer ip, ComputerPlayer cp, Dealer dealer, Deck deck,
+  public ConsoleGame(Console console, InteractivePlayer ip, ComputerPlayer cp, Dealer dealer, Deck deck,
                      Players players) {
     this.console = console;
     this.interactivePlayer = ip;

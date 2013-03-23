@@ -12,7 +12,7 @@ import pokerapp.utils.Constants;
 public class DriverWithComputers {
 
 
-  private final IConsole console = new StandardConsole();
+  private final Console console = new StandardConsole(formatter);
   private final ExchangeSetting exchangeSetting = new ExchangeSetting(3, 1);//default - exchange 3 cards once
 
   public void gameLoop() {

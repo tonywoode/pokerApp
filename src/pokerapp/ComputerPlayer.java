@@ -1,7 +1,7 @@
 package pokerapp;
 
 import pokerapp.console.ExchangeSetting;
-import pokerapp.console.IConsole;
+import pokerapp.console.Console;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.skynet.ComputerPlayerStrategy;
@@ -27,7 +27,7 @@ public class ComputerPlayer extends Player {
     this("Computer", turnStrategy);
   }
 
-  public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting) {
+  public void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) {
 
     for (int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 
