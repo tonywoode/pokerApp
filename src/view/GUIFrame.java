@@ -1,5 +1,6 @@
 package view;
 
+
 import pokerapp.Dealer;
 import pokerapp.Hand;
 import pokerapp.console.InteractivePlayer;
@@ -10,6 +11,7 @@ import view.hand.SuperHandPanel;
 import view.playerhand.PlayerHandPresenterBridge;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,6 +41,7 @@ public class GUIFrame extends JFrame {
 	private JLabel drawLabel;
 	private JLabel winLabel;
 	private JLabel loseLabel;
+	private JLabel startLabel;
 
 	private final Dealer dealer;
 
@@ -107,6 +110,7 @@ public class GUIFrame extends JFrame {
 		drawLabel.setIcon(new ImageIcon("pics/YouDraw.png"));
 		drawLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(drawLabel);
+		
 		winLabel = new JLabel("");
 		winLabel.setVisible(false);
 		winLabel.setIcon(new ImageIcon("pics/YouWin.png"));
@@ -119,6 +123,17 @@ public class GUIFrame extends JFrame {
 		loseLabel.setIcon(new ImageIcon("pics/Youlose.png"));
 		loseLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(loseLabel);
+		
+		
+		startLabel = new JLabel("");
+		startLabel.setVisible(false);
+		startLabel.setIcon(new ImageIcon("pics/LetsPlayPoker.png"));
+		startLabel.setBounds(290, 211, 450, 154);
+		backPanel.add(startLabel);
+		
+		
+		
+		
 		JButton buttonWin = new JButton("Win");
 		buttonWin.setBounds(792, 37, 89, 23);
 		backPanel.add(buttonWin);
@@ -152,8 +167,24 @@ public class GUIFrame extends JFrame {
 				textPanel.setVisible(false);
 			}
 		});
+	
+	
+		JButton buttonStart = new JButton("Start");
+		buttonStart.setBounds(792, 134, 89, 23);
+		backPanel.add(buttonStart);	
+		backPanel.add(startLabel);
+		buttonStart.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				startLabel.setVisible(true);
+				textPanel.setVisible(false);
+			}
+		});
 	}
+	
+	
 
+	
 
 	// temp...
 	private Hand getHand() {

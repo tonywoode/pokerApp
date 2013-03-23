@@ -45,10 +45,10 @@ public class ScoresPanel extends JPanel {
 
 
 		cpuScore = new JTextField();
-		textFieldFormatFactory(cpuScore);
+		textFieldFormatBuilder(cpuScore);
 
 		youScore = new JTextField();
-		textFieldFormatFactory(youScore);
+		textFieldFormatBuilder(youScore);
 
 
 		cpuScore.setText(Integer.toString(cpuScoreText));
@@ -95,10 +95,10 @@ public class ScoresPanel extends JPanel {
 
 
 	/**
-	 * formats the score fields 
+	 * formats the score fields with builder pattern 
 	 * @param textField the text fields you want to format
 	 */
-	private void textFieldFormatFactory (JTextField textField) {
+	private void textFieldFormatBuilder (JTextField textField) {
 		new JTextField();
 		textField.setEditable(false);
 		textField.setBorder(null);
