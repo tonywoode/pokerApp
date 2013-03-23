@@ -21,6 +21,6 @@ public class EasyComputerPlayer extends ComputerPlayer {
 
   @Override
   protected void exchangeDecision(ScoredHand handType) {
-    handType.visit(new StandardStrategyVisitor());
+    handType.visit(new EasyStrategyVisitor());
   }
 }
