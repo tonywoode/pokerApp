@@ -69,13 +69,8 @@ public class Players implements Iterable<Player> {
     ScoredHand lhsCat = scorer.score(lhs.getHand()),
         rhsCat = scorer.score(rhs.getHand());
 
-    int result = 0;
-    try {
-      result = lhsCat.compareTo(rhsCat);
-    } catch (Exception e) {
-      e.printStackTrace();
-      return null; // TODO: fix this...
-    }
+    int result = lhsCat.compareTo(rhsCat);
+
 
     // TODO: clients should not have to do this
     if (result == 0)

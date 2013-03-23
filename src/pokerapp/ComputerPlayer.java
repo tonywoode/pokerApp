@@ -38,7 +38,7 @@ public class ComputerPlayer extends Player {
 
       ScoredHand scoredHand = new HandScorerBuilder().create().score(getHand());
       String handType = scoredHand.getName();
-      console.writeMessage(getPlayerName() + " (" + playerType + ") has: " + getHand().toFancyUserString() +
+      console.writeMessage(getPlayerName() + " (" + playerType + ") has: " + getHand().toFancyUserString() + " " +
           handType);
 
       scoredHand = new HandScorerBuilder().create().score(getHand());
@@ -47,7 +47,7 @@ public class ComputerPlayer extends Player {
 
       handType = scoredHand.getName();
 
-      console.writeMessage(getPlayerName() + " (" + playerType + ") has: " + getHand().toFancyUserString() +
+      console.writeMessage(getPlayerName() + " (" + playerType + ") has: " + getHand().toFancyUserString() + " " +
           handType);
 
     }
