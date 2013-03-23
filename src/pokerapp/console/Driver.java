@@ -45,7 +45,7 @@ public class Driver {
       dealer.dealCards(Constants.HAND_SIZE, players);
 
       for (Player p : players) {
-        console.writeMessage("Player %1$2s has %2$2s", p, p.getHand());
+        console.writeMessage("Player %1$2s has %2$2s", p, p.getHand().toFancyUserString());
         // SF's amazing magic code
       }
 
