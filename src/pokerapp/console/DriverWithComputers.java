@@ -131,7 +131,7 @@ public class DriverWithComputers {
         if ("InteractivePlayer".equals(className)) {
           console.writeMessage("You have " + p.getHand().toFancyUserString());
         } else
-          console.writeMessage("Player %1$2s has %2$2s", p, p.getHand().toFancyUserString());
+          console.writeMessage("Player {0} has {1}", p, p.getHand().toFancyUserString());
       }
 
       console.writeMessage(NEW_LINE);

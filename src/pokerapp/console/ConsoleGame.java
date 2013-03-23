@@ -55,7 +55,7 @@ public class ConsoleGame {
 
     for (Player p : players)
       //TODO:implement custom String formatting
-      console.writeMessage("Player {0} has {0.hand}", p);
+      console.writeMessage("Player {0} has {1}", p, p.getHand());
 
     // TODO: The play order does not follow the spec
     //for(Player p : players.reverse()) // TODO: .reverse() is an issue!
