@@ -33,12 +33,12 @@ public class ComputerPlayer extends Player {
 
     for (int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 
-      Class<? extends Player> playerClass = getClass();
-      String playerType = playerClass.getSimpleName().replace("ComputerPlayer","");
+      Class playerClass = turnStrategy.getClass();
+      String playerType = playerClass.getSimpleName().replace("ComputerPlayerStrategy","");
 
       ScoredHand scoredHand = new HandScorerBuilder().create().score(getHand());
       String handType = scoredHand.getName();
-      console.writeMessage(getPlayerName() + " (" + playerType + ") has: " + getHand().toFancyUserString() +
+      console.writeMessage(getPlayerName() + " (" + playerType + ") has: " + getHand().toFancyUserString() + " " +
           handType);
 
       scoredHand = new HandScorerBuilder().create().score(getHand());
@@ -47,7 +47,7 @@ public class ComputerPlayer extends Player {
 
       handType = scoredHand.getName();
 
-      console.writeMessage(getPlayerName() + " (" + playerType + ") has: " + getHand().toFancyUserString() +
+      console.writeMessage(getPlayerName() + " (" + playerType + ") has: " + getHand().toFancyUserString() + " " +
           handType);
 
     }

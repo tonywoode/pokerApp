@@ -47,7 +47,7 @@ public class Players implements Iterable<Player> {
    */
   public Player pickWinner() {
     Player winner = players.get(0);
-    //TODO: make for loop clearer - it isn't in std form
+
     for (int iter = 1; iter < players.size(); ++iter) {
       Player challenger = players.get(iter);
 
@@ -69,13 +69,8 @@ public class Players implements Iterable<Player> {
     ScoredHand lhsCat = scorer.score(lhs.getHand()),
         rhsCat = scorer.score(rhs.getHand());
 
-    int result = 0;
-    try {
-      result = lhsCat.compareTo(rhsCat);
-    } catch (Exception e) {
-      e.printStackTrace();
-      return null; // TODO: fix this...
-    }
+    int result = lhsCat.compareTo(rhsCat);
+
 
     // TODO: clients should not have to do this
     if (result == 0)

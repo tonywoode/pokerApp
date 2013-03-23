@@ -1,7 +1,5 @@
 package pokerapp.basicgame;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.*;
 import pokerapp.console.Console;
 import pokerapp.console.ExchangeSetting;
