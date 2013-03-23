@@ -1,5 +1,6 @@
 package pokerapp.view.pokergame;
 
+import pokerapp.view.MsgAnimation;
 import pokerapp.view.ScoresPanel;
 import pokerapp.view.StartButton;
 import pokerapp.view.TextPanel;
@@ -152,88 +153,109 @@ public class PokerGameView extends JFrame {
 		computerLabel.setIcon(new ImageIcon("pics/Computer.png"));
 		computerLabel.setBounds(643, 170, 106, 30);
 		backPanel.add(computerLabel);
-	
-	
-	//TODO: just example labels delete them after implementing
-
-	drawLabel = new JLabel("");
-	drawLabel.setVisible(false);
-	drawLabel.setIcon(new ImageIcon("pics/YouDraw.png"));
-	drawLabel.setBounds(260, 211, 450, 154);
-	backPanel.add(drawLabel);
-	
-	winLabel = new JLabel("");
-	winLabel.setVisible(false);
-	winLabel.setIcon(new ImageIcon("pics/YouWin.png"));
-	winLabel.setBounds(260, 211, 450, 154);
-	backPanel.add(winLabel);
 
 
-	loseLabel = new JLabel("");
-	loseLabel.setVisible(false);
-	loseLabel.setIcon(new ImageIcon("pics/Youlose.png"));
-	loseLabel.setBounds(260, 211, 450, 154);
-	backPanel.add(loseLabel);
-	
-	
-	startLabel = new JLabel("");
-	startLabel.setVisible(false);
-	startLabel.setIcon(new ImageIcon("pics/LetsPlayPoker.png"));
-	startLabel.setBounds(290, 211, 450, 154);
-	backPanel.add(startLabel);
-	
-	
-	
-	JButton buttonWin = new JButton("Win");
-	buttonWin.setBounds(792, 37, 89, 23);
-	backPanel.add(buttonWin);
-	buttonWin.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			winLabel.setVisible(true);
-			textPanel.setVisible(false);
+		//TODO: just example labels delete them after implementing
+
+		drawLabel = new JLabel("");
+		drawLabel.setVisible(false);
+		drawLabel.setIcon(new ImageIcon("pics/YouDraw.png"));
+		drawLabel.setBounds(260, 211, 450, 154);
+		backPanel.add(drawLabel);
+
+		winLabel = new JLabel("");
+		winLabel.setVisible(false);
+		winLabel.setIcon(new ImageIcon("pics/YouWin.png"));
+		winLabel.setBounds(260, 211, 450, 154);
+		backPanel.add(winLabel);
+
+
+		loseLabel = new JLabel("");
+		loseLabel.setVisible(false);
+		loseLabel.setIcon(new ImageIcon("pics/Youlose.png"));
+		loseLabel.setBounds(260, 211, 450, 154);
+		backPanel.add(loseLabel);
+
+
+		startLabel = new JLabel("");
+		startLabel.setVisible(false);
+		startLabel.setIcon(new ImageIcon("pics/LetsPlayPoker.png"));
+		startLabel.setBounds(290, 211, 450, 154);
+		backPanel.add(startLabel);
+
+
+
+		JButton buttonWin = new JButton("Win");
+		buttonWin.setBounds(792, 37, 89, 23);
+		backPanel.add(buttonWin);
+		buttonWin.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				MsgAnimation anim = new MsgAnimation(textPanel, winLabel);
+				anim.begin(5000);
+			}
+		});
+
+		JButton buttonLose = new JButton("Lose");
+		buttonLose.setBounds(792, 70, 89, 23);
+		backPanel.add(buttonLose);	
+		buttonLose.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				MsgAnimation anim = new MsgAnimation(textPanel, loseLabel);
+				anim.begin(5000);
+			}
+		});
+
+		JButton buttonDraw = new JButton("Draw");
+		buttonDraw.setBounds(792, 104, 89, 23);
+		backPanel.add(buttonDraw);	
+		backPanel.add(drawLabel);
+		buttonDraw.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				MsgAnimation anim = new MsgAnimation(textPanel, drawLabel);
+				anim.begin(5000);
+			}
+		});
+
+
+		JButton buttonStart = new JButton("Start");
+		buttonStart.setBounds(792, 134, 89, 23);
+		backPanel.add(buttonStart);	
+		backPanel.add(startLabel);
+		buttonStart.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				MsgAnimation anim = new MsgAnimation(textPanel, startLabel);
+				anim.begin(5000);
+			}
+		});
+
+
+	}
+
+	public void showGameResultMessage(int winMessage) {
+		switch (winMessage) {
+		case 0:
+			displayStatusMessage(drawLabel);
+			break;
+		case 1:
+			displayStatusMessage(winLabel);
+			break;
+		case -1:
+			displayStatusMessage(loseLabel);			
+			break;
+		default:				
 		}
-	});
+	}
 
-	JButton buttonLose = new JButton("Lose");
-	buttonLose.setBounds(792, 70, 89, 23);
-	backPanel.add(buttonLose);	
-	buttonLose.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			loseLabel.setVisible(true);
-			textPanel.setVisible(false);
-		}
-	});
-
-	JButton buttonDraw = new JButton("Draw");
-	buttonDraw.setBounds(792, 104, 89, 23);
-	backPanel.add(buttonDraw);	
-	backPanel.add(drawLabel);
-	buttonDraw.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			drawLabel.setVisible(true);
-			textPanel.setVisible(false);
-		}
-	});
-
-
-	JButton buttonStart = new JButton("Start");
-	buttonStart.setBounds(792, 134, 89, 23);
-	backPanel.add(buttonStart);	
-	backPanel.add(startLabel);
-	buttonStart.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			startLabel.setVisible(true);
-			textPanel.setVisible(false);
-		}
-	});
-}
+	private void displayStatusMessage(JLabel label) {
+		MsgAnimation anim = new MsgAnimation(textPanel, label);
+		anim.begin(5000);	
+	}	
 	
-	
-	
-	
-	
+	public void displayMessage(String msg) {
+		textPanel.setMessage(msg);
+	}
 }
