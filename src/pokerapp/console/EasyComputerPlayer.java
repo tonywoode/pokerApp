@@ -1,10 +1,6 @@
 package pokerapp.console;
 
-import pokerapp.Card;
-import pokerapp.Rank;
-import pokerapp.utils.Constants;
-
-import java.util.Random;
+import pokerapp.scorer.scoredhands.ScoredHand;
 
 /**
  * @author ari
@@ -24,20 +20,7 @@ public class EasyComputerPlayer extends ComputerPlayer {
 
 
   @Override
-  protected String exchangeDecision(StringBuilder commandBuilder, String handType) {
-
-    Random generator = new Random(19580427); //TODO:magic number?
-
-    Rank r = Rank.from(generator.nextInt(Constants.NUM_RANKS));
-
-    setTargetRank(r);
-
-    int n = 0;
-    for (Card card : getHand()) {
-      n++;
-      if (card.getRank().beats(targetRank) && commandBuilder.length() < 6)  //TODO:magic number, no longer 6
-        commandBuilder.append(n).append(" ");
-    }
-    return commandBuilder.toString();
+  protected void exchangeDecision(ScoredHand handType) {
+    handType.visit(new StandardStrategyVisitor());
   }
 }
