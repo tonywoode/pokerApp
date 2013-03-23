@@ -36,4 +36,8 @@ public abstract class HandScorer {
   }
 
   protected abstract ScoredHand resolveCore(Hand hand);
+
+  public boolean isEndOfChain() {
+    return next == null;
+  }
 }
