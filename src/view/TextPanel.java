@@ -30,7 +30,7 @@ public class TextPanel extends JTextPane {
 	JTextPane textPanelFront = new JTextPane();
 	textPanelFront.setDoubleBuffered(true);
 	textPanelFront.setFont(font);
-	textPanelFront.setForeground(new Color(255, 0, 0));
+	textPanelFront.setForeground(new Color(250, 35, 50));
 	textPanelFront.setOpaque(false);
 	textPanelFront.setEditable(false);
 	textPanelFront.setText(text);

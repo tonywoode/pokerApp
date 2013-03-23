@@ -12,12 +12,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import view.hand.HandPanel;
 import view.playerhand.PlayerHandPresenterBridge;
 import javax.swing.JLabel;
-import javax.swing.JTextPane;
-import java.awt.Color;
-import java.awt.Font;
+import javax.swing.JButton;
+
+
 
 
 /**
@@ -38,6 +37,9 @@ public class GUIFrame extends JFrame {
 	private ScoresPanel scoresPanel;
 	private TextPanel textPanel;
 	private JLabel logo;
+	private JLabel drawLabel;
+	private JLabel winLabel;
+	private JLabel loseLabel;
 	
 	/**
 	 * draws the frame with background
@@ -62,7 +64,7 @@ public class GUIFrame extends JFrame {
 		backPanel.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
 		backPanel.setLayout(null);
 
-		startButton.setBounds(700, 300, 106, 65);
+		startButton.setBounds(712, 249, 106, 65);
 		startButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -71,16 +73,8 @@ public class GUIFrame extends JFrame {
 		});
 
 		scoresPanel.setBounds(57, 174, 208, 191);
-		
-		
-		
-		textPanel.setBounds(287, 220, 415, 129);
+		textPanel.setBounds(287, 236, 415, 129);
 
-		//setSize(backIcon.getIconWidth() + 5, backIcon.getIconHeight() + 25);
-		//JPanel Cardpanel1 = new HandPanel();
-		//Cardpanel1.setBounds(270, 70, 390, 105);
-		/**JPanel Cardpanel2 = new HandPanel();
-		Cardpanel2.setBounds(270, 430, 390, 105); */
 
 		JComponent cpuHandView = playerHandPresenterBridge.getView();
 		cpuHandView.setOpaque(false);
@@ -92,8 +86,7 @@ public class GUIFrame extends JFrame {
 		playerHandView.setBounds(145, 420, 515, 105);
 
 
-		//backPanel.add(Cardpanel2);
-		//backPanel.add(Cardpanel1);
+
 		container.add(backPanel);
 		backPanel.add(logo);
 		backPanel.add(scoresPanel);
@@ -101,28 +94,73 @@ public class GUIFrame extends JFrame {
 		backPanel.add(cpuHandView);
 		backPanel.add(playerHandView);
 		backPanel.add(startButton);
-		
-		
-		/*JTextPane textPanel = new JTextPane();
-		textPanel.setFont(new Font("Showcard Gothic", Font.ITALIC, 28));
-		textPanel.setForeground(new Color(160, 20, 20));
-		textPanel.setOpaque(false);
-		textPanel.setEditable(false);
-		textPanel.setText("Here the text will go no matter how long it is - I hope the computer Wins!");
-		textPanel.setBounds(275, 224, 415, 129);*/
 
 		
-		/*JTextPane textPanelShadow = new JTextPane();
-		textPanelShadow.setFont(new Font("Showcard Gothic", Font.ITALIC, 28));
-		textPanelShadow.setForeground(new Color(0, 0, 0));
-		textPanelShadow.setOpaque(false);
-		textPanelShadow.setEditable(false);
-		textPanelShadow.setText("Here the text will go no matter how long it is - I hope the computer Wins!");
-		textPanelShadow.setBounds(277, 227, 415, 129);
-		backPanel.add(textPanelShadow);*/
+		
+		
+		//TODO: just example labels delete them
+		
+		drawLabel = new JLabel("");
+		drawLabel.setVisible(false);
+		drawLabel.setIcon(new ImageIcon("pics/YouDraw.png"));
+		drawLabel.setBounds(260, 211, 450, 154);
+		backPanel.add(drawLabel);
+		
+		
+		winLabel = new JLabel("");
+		winLabel.setVisible(false);
+		winLabel.setIcon(new ImageIcon("pics/YouWin.png"));
+		winLabel.setBounds(260, 211, 450, 154);
+		backPanel.add(winLabel);
+		
+		loseLabel = new JLabel("");
+		loseLabel.setVisible(false);
+		loseLabel.setIcon(new ImageIcon("pics/Youlose.png"));
+		loseLabel.setBounds(260, 211, 450, 154);
+		backPanel.add(loseLabel);
+		
+		
+		JButton buttonWin = new JButton("Win");
+		buttonWin.setBounds(792, 37, 89, 23);
+		backPanel.add(buttonWin);
+		buttonWin.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				winLabel.setVisible(true);
+				textPanel.setVisible(false);
+			}
+		});
 
+			
+		JButton buttonLose = new JButton("Lose");
+		buttonLose.setBounds(792, 70, 89, 23);
+		backPanel.add(buttonLose);	
+		buttonLose.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				loseLabel.setVisible(true);
+				textPanel.setVisible(false);
+			}
+		});
+		
+	
+		JButton buttonDraw = new JButton("Draw");
+		buttonDraw.setBounds(792, 104, 89, 23);
+		backPanel.add(buttonDraw);	
+		backPanel.add(drawLabel);
+		buttonDraw.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				drawLabel.setVisible(true);
+				textPanel.setVisible(false);
+			}
+		});
+		
+		
+		
+		
 	}
-
+		
 
 	/**
 	 * Sets the background image in the GUI Frame
@@ -149,8 +187,8 @@ public class GUIFrame extends JFrame {
 		logo.setBounds(10, 11, 305, 129);	
 		logo.setIcon(new ImageIcon(logoFile));
 	}
-	
-	
+
+
 	/**
 	 * Draws the labels for the computer and the player by the right of their cards
 	 */
@@ -159,9 +197,16 @@ public class GUIFrame extends JFrame {
 		playerLabel.setIcon(new ImageIcon("pics/Player.png"));
 		playerLabel.setBounds(663, 414, 127, 41);
 		backPanel.add(playerLabel);
-		
+
 		JLabel computerLabel = new JLabel();
 		computerLabel.setIcon(new ImageIcon("pics/Computer.png"));
 		computerLabel.setBounds(663, 70, 106, 30);
 		backPanel.add(computerLabel); }
-}   
+
+}
+	
+	
+	
+	
+	
+
