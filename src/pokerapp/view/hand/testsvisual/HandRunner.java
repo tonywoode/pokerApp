@@ -15,11 +15,7 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 09/03/13
- * Time: 20:26
- * To change this template use File | Settings | File Templates.
+ * Displays a full suit of cards, user can change suit 
  */
 public class HandRunner {
 
