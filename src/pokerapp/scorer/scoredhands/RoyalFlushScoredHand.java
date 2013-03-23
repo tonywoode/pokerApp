@@ -44,7 +44,7 @@ public class RoyalFlushScoredHand extends StraightFlushScoredHand {
               InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/handnames.properties"));
               prop.load(in);
               in.close();
-              name = prop.getProperty("StraightFlush");
+              name = prop.getProperty("RoyalFlush");
           } catch (IOException e) {
               e.printStackTrace();
           }
