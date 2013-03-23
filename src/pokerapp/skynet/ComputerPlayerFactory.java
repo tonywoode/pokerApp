@@ -1,9 +1,6 @@
 package pokerapp.skynet;
 
 import pokerapp.ComputerPlayer;
-import pokerapp.skynet.ComputerPlayerStrategy;
-import pokerapp.skynet.HardComputerPlayerStrategy;
-import pokerapp.skynet.StandardComputerPlayerStrategy;
 
 /**
  * @author Ari
@@ -28,7 +25,7 @@ public class ComputerPlayerFactory {
       case STANDARD_COMPUTER:
         return new StandardComputerPlayerStrategy();
       case EASY_COMPUTER:
-        return new HardComputerPlayerStrategy();
+        return new EasyComputerPlayerStrategy();
       default:
         throw new IllegalArgumentException("Unknown player difficulty setting");
     }

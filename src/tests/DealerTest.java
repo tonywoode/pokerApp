@@ -1,13 +1,9 @@
 package tests;
 
 import org.junit.Test;
-import pokerapp.Card;
-import pokerapp.Dealer;
-import pokerapp.Deck;
+import pokerapp.*;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.console.IConsole;
-import pokerapp.console.Player;
-import pokerapp.console.Players;
 import pokerapp.scorer.HandScorerBuilder;
 
 import java.io.IOException;
