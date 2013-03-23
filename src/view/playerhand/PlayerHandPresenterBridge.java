@@ -1,19 +1,34 @@
 package view.playerhand;
 
-import javax.swing.JComponent;
+import pokerapp.Dealer;
+import pokerapp.console.InteractivePlayer;
+import pokerapp.console.Players;
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
 
-import view.hand.HandPanel;
+import javax.swing.*;
+import java.io.IOException;
 
 public class PlayerHandPresenterBridge {
 
-	PlayerHandPresenter handPresenter;
-	
-	public PlayerHandPresenterBridge(PlayerHandPresenter phPresenter) {
-		handPresenter = phPresenter;
-	}
-	
-	public JComponent getView() {
-		return handPresenter.getView();	
-	}
-	
+  private final PlayerHandPresenter handPresenter;
+  private final Dealer dealer;
+
+  public PlayerHandPresenterBridge(PlayerHandPresenter phPresenter, Dealer dealer) {
+    handPresenter = phPresenter;
+    this.dealer = dealer;
+  }
+
+  public void playRandomHand() throws FormatStringException, IOException, IllegalFormatCodeException {
+    InteractivePlayer ip = new InteractivePlayer();
+    Players players = new Players().register(ip);
+
+    dealer.dealCards(5, players);
+    handPresenter.init(ip, ip.getHand());
+  }
+
+  public JComponent getView() {
+    return handPresenter.getView();
+  }
+
 }

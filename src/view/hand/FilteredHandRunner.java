@@ -73,7 +73,7 @@ public class FilteredHandRunner {
       if (iter % 2 == 0) {
         BufferedImage filteredImg;
         filteredImg = selectedImageFilter.filter(cloneImage(img));
-        cardVM.setSelected(true);
+        cardVM.setIsSelected(true);
         cardVM.setSelectedImage(filteredImg);
         img = filteredImg;
       }
@@ -88,37 +88,26 @@ public class FilteredHandRunner {
 
           CardViewModel cardVM = cardViewModelList.get(iv.getIndex());
 
-          cardVM.setSelected(!cardVM.isSelected());
+          cardVM.setIsSelected(!cardVM.getIsSelected());
 
-          if (cardVM.getSelectedImage() == null) {
-            BufferedImage selImg = cloneImage(cardVM.getUnselectedImage());
-            cardVM.setSelectedImage(selectedImageFilter.filter(selImg));
-          }
-
-          BufferedImage img = cardVM.getImage();
-
-          iv.setImage(img);
+          iv.setImage(cardVM.getImage());
 
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-          //To change body of implemented methods use File | Settings | File Templates.
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-          //To change body of implemented methods use File | Settings | File Templates.
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
-          //To change body of implemented methods use File | Settings | File Templates.
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
-          //To change body of implemented methods use File | Settings | File Templates.
         }
       });
 
@@ -150,7 +139,7 @@ public class FilteredHandRunner {
           if (iter % 2 == 0) {
             BufferedImage filteredImg;
             filteredImg = selectedImageFilter.filter(cloneImage(img));
-            cardVM.setSelected(true);
+            cardVM.setIsSelected(true);
             cardVM.setSelectedImage(filteredImg);
             img = filteredImg;
           }

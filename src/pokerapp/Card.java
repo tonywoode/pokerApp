@@ -2,6 +2,7 @@ package pokerapp;
 
 import lombok.Data;
 import lombok.Getter;
+import pokerapp.utils.textformat.*;
 
 
 /**
@@ -11,7 +12,7 @@ import lombok.Getter;
  * @version 1.0
  */
 @Data
-public class Card {
+public class Card implements Formattable {
   @Getter
   private Suit suit;
   @Getter
@@ -45,6 +46,31 @@ public class Card {
    * @return rank and suit of card
    */
   public String toFancyString() {
-    return  getRank().getSymbol() + getSuit().getSymbol();
+    return getRank().getSymbol() + getSuit().getSymbol();
+  }
+
+  public static final CompositeFormattable<Card> FORMATS
+      = new CompositeFormattable<Card>()
+      .add("s|suit", new FormattableResolver<Card>() {
+        @Override
+        public Formattable resolve(Card card) {
+          return card.getSuit();
+        }
+      })
+      .add("r|rank", new FormattableResolver<Card>() {
+        @Override
+        public Formattable resolve(Card card) {
+          return card.getRank();
+        }
+      });
+
+  @Override
+  public Formats getFormats() {
+    return null; // TODO: how can we fix this?
+  }
+
+  @Override
+  public String format(String format) throws IllegalFormatCodeException, FormatStringException {
+    return FORMATS.format(this, format);
   }
 }
