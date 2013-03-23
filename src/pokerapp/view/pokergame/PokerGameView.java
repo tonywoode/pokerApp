@@ -59,11 +59,11 @@ public class PokerGameView extends JFrame {
 			final ComputerHandView computerHandView) {
 		JComponent cpuHandView = computerHandView.getView();
 		cpuHandView.setOpaque(false);
-		cpuHandView.setBounds(270, 70, 390, 105);
+		cpuHandView.setBounds(220, 70, 525, 105);
 
 		JComponent playerHandView = playerHandPresenterBridge.getView();
 		playerHandView.setOpaque(false);
-		playerHandView.setBounds(145, 420, 515, 105);
+		playerHandView.setBounds(100, 420, 650, 105);
 
 		backPanel.add(cpuHandView);
 		backPanel.add(playerHandView);
@@ -145,12 +145,12 @@ public class PokerGameView extends JFrame {
 	private void playerLabels() {
 		JLabel playerLabel = new JLabel();
 		playerLabel.setIcon(new ImageIcon("pics/Player.png"));
-		playerLabel.setBounds(663, 414, 127, 41);
+		playerLabel.setBounds(650, 391, 127, 41);
 		backPanel.add(playerLabel);
 
 		JLabel computerLabel = new JLabel();
 		computerLabel.setIcon(new ImageIcon("pics/Computer.png"));
-		computerLabel.setBounds(663, 70, 106, 30);
+		computerLabel.setBounds(643, 170, 106, 30);
 		backPanel.add(computerLabel);
 	
 	

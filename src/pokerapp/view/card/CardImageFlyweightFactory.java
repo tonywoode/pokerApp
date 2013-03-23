@@ -8,16 +8,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
- *
+ * Supplies card images on demand up to maximum of a deck's worth, to preserve memory
  * @author Steve
  * @version 1
  */
