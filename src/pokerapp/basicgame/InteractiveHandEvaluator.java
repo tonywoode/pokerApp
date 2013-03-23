@@ -8,6 +8,7 @@ import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.HandScorer;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -27,7 +28,7 @@ public class InteractiveHandEvaluator extends Application {
     this.handFactory = handFactory;
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     begin("interactiveHandEvaluator", "console-game-application-context.xml");
   }
 
