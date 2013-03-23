@@ -6,19 +6,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.view.pokergame.PokerGamePresenter;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
- *
- * @author Steve
- * @version 1
+ * Main  entry point for GUI game
+ * @author Tony
+ * @author Steve 
  */
+
 public class PokerGame {
   private final PokerGamePresenter pokerGamePresenter;
 
