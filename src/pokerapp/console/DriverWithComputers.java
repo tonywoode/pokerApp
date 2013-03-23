@@ -145,8 +145,14 @@ public class DriverWithComputers {
 
 
       Player winner = players.pickWinner();
+      console.writeMessage(NEW_LINE);
+      console.writeMessage("******************************************************");
+      console.writeMessage(NEW_LINE);
       console.writeMessage(winner.getPlayerName() + " won with " + winner.getHand());
-      //TODO: unicode for each card
+      console.writeMessage(NEW_LINE);
+      console.writeMessage("******************************************************");
+      console.writeMessage(NEW_LINE);
+
       for (Player p : players) {             //TODO: this doesn't seem to be working?
         for (Card c : p.getHand()) {
           deck.returnToBottom(c);
