@@ -1,8 +1,8 @@
 package pokerapp;
 
+import pokerapp.console.Console;
 import pokerapp.console.ExchangeCardsInterpreter;
 import pokerapp.console.ExchangeSetting;
-import pokerapp.console.IConsole;
 
 /**
  * @author Steve
@@ -24,14 +24,14 @@ public class InteractivePlayer extends Player {
     this("");
   }
 
-  public String getPlayerNameFromUser(IConsole console) {  //TODO:return value never used
+  public String getPlayerNameFromUser(Console console) {  //TODO:return value never used
     console.writeMessage("What's your name?");
     setPlayerName(console.readLine());
     return getPlayerName();
   }
 
   @Override
-  public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting) {
+  public void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) {
 
     for (int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 

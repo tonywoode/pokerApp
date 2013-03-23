@@ -1,19 +1,17 @@
 package pokerapp.console;
 
 import pokerapp.*;
-
-import java.io.IOException;
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
 
 /**
  * Spring-based console game loop
  *
  * @author Steve
  */
-// TODO: couldn't get Lombok to work with final members
-//@AllArgsConstructor
 public class ConsoleGame {
 
-  private final IConsole console;
+  private final Console console;
   private final InteractivePlayer interactivePlayer;
   private final ComputerPlayer computerPlayer;
   private final Dealer dealer;
@@ -22,7 +20,7 @@ public class ConsoleGame {
 
   private static final int HAND_SIZE = 5;
 
-  public ConsoleGame(IConsole console, InteractivePlayer ip, ComputerPlayer cp, Dealer dealer, Deck deck,
+  public ConsoleGame(Console console, InteractivePlayer ip, ComputerPlayer cp, Dealer dealer, Deck deck,
                      Players players) {
     this.console = console;
     this.interactivePlayer = ip;
@@ -46,7 +44,7 @@ public class ConsoleGame {
   /**
    * Play a single game of poker with 1 computer player.
    */
-  public void play() throws IOException {
+  public void play() throws FormatStringException, IllegalFormatCodeException {
     console.writeMessage("Let's play poker!");
 
     interactivePlayer.setPlayerName(interactivePlayer.getPlayerNameFromUser(console));
@@ -57,7 +55,7 @@ public class ConsoleGame {
 
     for (Player p : players)
       //TODO:implement custom String formatting
-      console.writeMessage("Player {0} has {0.hand}", p);
+      console.writeMessage("Player {0} has {1}", p, p.getHand());
 
     // TODO: The play order does not follow the spec
     //for(Player p : players.reverse()) // TODO: .reverse() is an issue!

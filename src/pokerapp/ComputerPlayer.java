@@ -1,12 +1,10 @@
 package pokerapp;
 
 import pokerapp.console.ExchangeSetting;
-import pokerapp.console.IConsole;
+import pokerapp.console.Console;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.skynet.ComputerPlayerStrategy;
-
-import java.io.IOException;
 
 
 /**
@@ -29,12 +27,12 @@ public class ComputerPlayer extends Player {
     this("Computer", turnStrategy);
   }
 
-  public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting) throws IOException {
+  public void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) {
 
     for (int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 
-      Class playerClass = turnStrategy.getClass();
-      String playerType = playerClass.getSimpleName().replace("ComputerPlayerStrategy","");
+      Class<? extends Player> playerClass = getClass();
+      String playerType = playerClass.getSimpleName().replace("ComputerPlayer","");
 
       ScoredHand scoredHand = new HandScorerBuilder().create().score(getHand());
       String handType = scoredHand.getName();

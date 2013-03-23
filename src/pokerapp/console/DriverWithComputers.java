@@ -4,8 +4,9 @@ import pokerapp.*;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.skynet.ComputerPlayerFactory;
 import pokerapp.utils.Constants;
-
-import java.io.IOException;
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
+import pokerapp.utils.textformat.StringFormatter;
 
 /**
  * @author Ari
@@ -14,10 +15,10 @@ import java.io.IOException;
 public class DriverWithComputers {
 
 
-  private final IConsole console = new StandardConsole();
+  private final Console console = new StandardConsole(new StringFormatter());
   private final ExchangeSetting exchangeSetting = new ExchangeSetting(3, 1);//default - exchange 3 cards once
 
-  public void gameLoop() throws IOException {
+  public void gameLoop() throws FormatStringException, IllegalFormatCodeException {
 
     final int MAX_NUMBER_PLAYERS = 4;
     final int MIN_NUMBER_PLAYERS = 1;
@@ -130,7 +131,7 @@ public class DriverWithComputers {
         if ("InteractivePlayer".equals(className)) {
           console.writeMessage("You have " + p.getHand().toFancyUserString());
         } else
-          console.writeMessage("Player %1$2s has %2$2s", p, p.getHand().toFancyUserString());
+          console.writeMessage("Player {0} has {1}", p, p.getHand().toFancyUserString());
       }
 
       console.writeMessage(NEW_LINE);
