@@ -4,6 +4,9 @@ import pokerapp.*;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.skynet.ComputerPlayerFactory;
 import pokerapp.utils.Constants;
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
+import pokerapp.utils.textformat.StringFormatter;
 
 /**
  * @author Ari
@@ -12,10 +15,10 @@ import pokerapp.utils.Constants;
 public class DriverWithComputers {
 
 
-  private final Console console = new StandardConsole(formatter);
+  private final Console console = new StandardConsole(new StringFormatter());
   private final ExchangeSetting exchangeSetting = new ExchangeSetting(3, 1);//default - exchange 3 cards once
 
-  public void gameLoop() {
+  public void gameLoop() throws FormatStringException, IllegalFormatCodeException {
 
     final int MAX_NUMBER_PLAYERS = 4;
     final int MIN_NUMBER_PLAYERS = 1;

@@ -1,14 +1,14 @@
 package pokerapp.console;
 
 import pokerapp.*;
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
 
 /**
  * Spring-based console game loop
  *
  * @author Steve
  */
-// TODO: couldn't get Lombok to work with final members
-//@AllArgsConstructor
 public class ConsoleGame {
 
   private final Console console;
@@ -44,7 +44,7 @@ public class ConsoleGame {
   /**
    * Play a single game of poker with 1 computer player.
    */
-  public void play() {
+  public void play() throws FormatStringException, IllegalFormatCodeException {
     console.writeMessage("Let's play poker!");
 
     interactivePlayer.setPlayerName(interactivePlayer.getPlayerNameFromUser(console));

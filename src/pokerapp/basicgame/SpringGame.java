@@ -4,6 +4,8 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.console.ConsoleGame;
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
 
 /**
  * Provides the main entry point to the console app,
@@ -29,10 +31,13 @@ public class SpringGame {
 
     } catch (BeansException e) {
       System.out.println("Error:" + e.getMessage());
+    } catch (FormatStringException e) {
+      e.printStackTrace();
+    } catch (IllegalFormatCodeException e) {
+      e.printStackTrace();
     }
 
     System.out.println("Exiting...");
-
   }
 
 }

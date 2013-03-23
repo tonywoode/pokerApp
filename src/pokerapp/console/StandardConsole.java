@@ -1,23 +1,33 @@
 package pokerapp.console;
 
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
+import pokerapp.utils.textformat.StringFormatter;
+
 import java.util.Scanner;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 09/03/13
- * Time: 19:39
- * To change this template use File | Settings | File Templates.
+ * Provides a default implementation of the Console interface.
+ * It outputs to System.out and formats strings using an
+ * injected StringFormatter.
+ *
+ * @author Steve
  */
-public class StandardConsole implements IConsole {
+public class StandardConsole implements Console {
+  private final StringFormatter formatter;
+
+  public StandardConsole(StringFormatter formatter) {
+    this.formatter = formatter;
+  }
+
   @Override
   public void writeMessage(String msg) {
     System.out.println(msg);
   }
 
   @Override
-  public void writeMessage(String msg, Object... args) {
-    writeMessage(String.format(msg, args));
+  public void writeMessage(String msg, Object... args) throws FormatStringException, IllegalFormatCodeException {
+    writeMessage(formatter.format(msg, args));
   }
 
   @Override
