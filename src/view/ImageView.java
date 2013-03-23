@@ -20,6 +20,10 @@ public class ImageView extends JComponent {
 
   @Getter
   private int index;
+  private int cx, cy;
+  private int bottomPadding;
+
+  private int topPadding;
 
   public ImageView(int index) {
     this.index = index;
@@ -27,6 +31,8 @@ public class ImageView extends JComponent {
 
   public void setImage(BufferedImage img) {
     this.image = img;
+    cx = image.getWidth(null);
+    cy = image.getHeight(null);
     this.repaint();
   }
 
@@ -42,7 +48,26 @@ public class ImageView extends JComponent {
     if (image == null) {
       return new Dimension(100, 100);
     } else {
-      return new Dimension(image.getWidth(null), image.getHeight(null));
+      return new Dimension(cx, cy + bottomPadding + topPadding);
     }
   }
+
+  public void setBottomPadding(int bottomPadding) {
+    this.bottomPadding = bottomPadding;
+    this.revalidate();
+  }
+
+  public int getBottomPadding() {
+    return bottomPadding;
+  }
+
+  public int getTopPadding() {
+    return topPadding;
+  }
+
+  public void setTopPadding(int topPadding) {
+    this.topPadding = topPadding;
+    this.doLayout();
+  }
+
 }

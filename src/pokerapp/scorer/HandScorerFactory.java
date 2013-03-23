@@ -35,7 +35,7 @@ public class HandScorerFactory {
     // avoid running off the end of the list in the following loop
     scorers.add(null);
 
-    for (int iter = 1; iter != scorers.size(); ++iter) {
+    for (int iter = 0; iter != scorers.size() - 1; ++iter) {
       scorer.setNextScorer(scorers.get(iter));
       scorer.setHandNumber(scorers.size() - iter);
     }

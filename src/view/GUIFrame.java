@@ -5,12 +5,14 @@ import pokerapp.Dealer;
 import pokerapp.Hand;
 import pokerapp.console.InteractivePlayer;
 import pokerapp.console.Players;
+import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
-import view.hand.SuperHandPanel;
+import view.playerhand.ComputerHandView;
 import view.playerhand.PlayerHandPresenterBridge;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -236,5 +238,4 @@ public class GUIFrame extends JFrame {
 		computerLabel.setBounds(663, 70, 106, 30);
 		backPanel.add(computerLabel);
 	}
-
 }   
