@@ -20,7 +20,6 @@ public class ExchangeButton extends JButton {
 		 * Using font KillerBoots and St Patrick Style. Text size 15 and 6x offset shadow with 75 opacity
 		 * The Pressed Icons were those put through XNView with average blur effect with largest filter
 		 */
-		//setText("Exchange");
 		
 		setAlignmentX(1.0f);
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
