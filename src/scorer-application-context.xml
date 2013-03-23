@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="Flush" class="pokerapp.scorer.typetag.Flush" autowire="constructor"/>
+
+    <bean id="FullHouse" class="pokerapp.scorer.typetag.FullHouse" autowire="constructor"/>
+
+    <bean id="NoPair" class="pokerapp.scorer.typetag.NoPair" autowire="constructor"/>
+
+    <bean id="RoyalFlush" class="pokerapp.scorer.typetag.RoyalFlush" autowire="constructor"/>
+
+    <bean name="Pair,2" class="pokerapp.scorer.typetag.Run" >
+        <constructor-arg index="0" value="2" />
+    </bean>
+
+    <bean name="ThreeOfAKind,3" class="pokerapp.scorer.typetag.Run" >
+        <constructor-arg index="0" value="3" />
+    </bean>
+
+    <bean name="FourOfAKind,4" class="pokerapp.scorer.typetag.Run" >
+        <constructor-arg index="0" value="4" />
+    </bean>
+
+    <bean id="Straight" class="pokerapp.scorer.typetag.Straight" autowire="constructor"/>
+
+    <bean id="StraightFlush" class="pokerapp.scorer.typetag.StraightFlush" autowire="constructor"/>
+
+</beans>

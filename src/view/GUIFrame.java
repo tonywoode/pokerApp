@@ -8,12 +8,10 @@ import pokerapp.console.Players;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
-import view.playerhand.ComputerHandView;
+import view.hand.SuperHandPanel;
 import view.playerhand.PlayerHandPresenterBridge;
 
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -191,7 +189,7 @@ public class GUIFrame extends JFrame {
 	// temp...
 	private Hand getHand() {
 		InteractivePlayer ip = new InteractivePlayer();
-		Players players = new Players().register(ip);
+		Players players = new Players(new HandScorerBuilder().create()).register(ip);
 		dealer.dealCards(5, players);
 		return ip.getHand();
 	}

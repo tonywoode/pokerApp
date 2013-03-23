@@ -1,6 +1,7 @@
 package pokerapp.console;
 
 import pokerapp.Deck;
+import pokerapp.Hand;
 
 /**
  * @author Steve
@@ -72,4 +73,6 @@ public class InteractivePlayer extends Player {
     }
     return true;
   }
+
+
 }
