@@ -25,7 +25,7 @@
     <bean id="noPair" class="pokerapp.scorer.scorers.NoPairScorer"/>
     <bean id="pair" class="pokerapp.scorer.scorers.SameRankHandScorer">
         <constructor-arg>
-            <value>pair</value>
+            <value>run</value>
         </constructor-arg>
         <constructor-arg>
             <value>2</value>

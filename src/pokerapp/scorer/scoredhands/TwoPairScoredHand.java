@@ -1,10 +1,13 @@
 package pokerapp.scorer.scoredhands;
 
 import lombok.Getter;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.scorer.domain.SameRankCards;
 import pokerapp.scorer.domain.Spares;
+import pokerapp.scorer.typetag.TwoPair;
 import pokerapp.utils.Comparator;
 
 import java.util.ArrayList;
@@ -17,7 +20,7 @@ import java.util.List;
  * Time: 01:02
  * To change this template use File | Settings | File Templates.
  */
-public class TwoPairScoredHand extends AbstractScoredHand<TwoPairScoredHand> {
+public class TwoPairScoredHand extends AbstractScoredHand<TwoPairScoredHand,TwoPair> {
 
   private static final int  PAIRLENGTH = 2;
 
@@ -29,6 +32,8 @@ public class TwoPairScoredHand extends AbstractScoredHand<TwoPairScoredHand> {
     this.highPair = highPair;
     this.lowPair = lowPair;
     this.spares = spares;
+    ApplicationContext appContext = new ClassPathXmlApplicationContext("/scorer-application-context.xml");
+    this.handType = (TwoPair)appContext.getBean("StraightFlush");
   }
 
   protected int compareEqualCategories(TwoPairScoredHand rhs) {
