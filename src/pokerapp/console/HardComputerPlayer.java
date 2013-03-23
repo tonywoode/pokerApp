@@ -22,7 +22,7 @@ public class HardComputerPlayer extends ComputerPlayer {
     @Override
       protected void exchangeDecision(ScoredHand handType)
       {
-          handType.visit(new StandardStrategyVisitor());
+          handType.visit(new HardStrategyVisitor());
    /*
     if ("No pair".equals(handType)) {     //hard player swaps lowest three cards if no pair
 
