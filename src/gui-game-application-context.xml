@@ -3,14 +3,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="filteredHandRunner" class="view.hand.FilteredHandRunner">
+    <bean id="filteredHandRunner" class="pokerapp.view.hand.FilteredHandRunner">
         <constructor-arg>
             <ref bean="compositeFilter"/>
         </constructor-arg>
     </bean>
 
 
-    <bean id="compositeFilter" class="view.imagefilters.CompositeCardFilter">
+    <bean id="compositeFilter" class="pokerapp.view.imagefilters.CompositeCardFilter">
         <constructor-arg>
             <list>
                 <ref bean="invert"/>
@@ -20,8 +20,8 @@
     </bean>
 
 
-    <bean id="invert" class="view.imagefilters.InvertCardFilter"/>
+    <bean id="invert" class="pokerapp.view.imagefilters.InvertCardFilter"/>
 
-    <bean id="threshold" class="view.imagefilters.ThresholdCardFilter"/>
+    <bean id="threshold" class="pokerapp.view.imagefilters.ThresholdCardFilter"/>
 
 </beans>
