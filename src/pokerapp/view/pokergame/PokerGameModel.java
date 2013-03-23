@@ -2,10 +2,10 @@ package pokerapp.view.pokergame;
 
 import lombok.Getter;
 import pokerapp.Dealer;
-import pokerapp.console.ComputerPlayer;
-import pokerapp.console.InteractivePlayer;
-import pokerapp.console.Player;
-import pokerapp.console.Players;
+import pokerapp.Players;
+import pokerapp.ComputerPlayer;
+import pokerapp.InteractivePlayer;
+import pokerapp.Player;
 
 /**
  * <p>

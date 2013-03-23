@@ -3,7 +3,7 @@ package pokerapp.scorer.scoredhands;
 import lombok.Getter;
 import pokerapp.Card;
 import pokerapp.Hand;
-import pokerapp.console.HandVisitor;
+import pokerapp.scorer.HandVisitor;
 import pokerapp.scorer.typetag.HandTypeTag;
 
 import java.util.List;

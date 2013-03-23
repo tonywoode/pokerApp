@@ -1,10 +1,12 @@
-package pokerapp.console;
+package pokerapp;
 
 import lombok.Getter;
 import lombok.Setter;
 import pokerapp.Card;
 import pokerapp.Deck;
 import pokerapp.Hand;
+import pokerapp.console.ExchangeSetting;
+import pokerapp.console.IConsole;
 
 /**
  * @author Steve

@@ -1,13 +1,16 @@
-package pokerapp.console;
+package pokerapp.skynet;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
+import pokerapp.ComputerPlayer;
+import pokerapp.skynet.ComputerPlayerStrategy;
+import pokerapp.skynet.HardComputerPlayerStrategy;
+import pokerapp.skynet.StandardComputerPlayerStrategy;
 
 /**
  * @author Ari
  * @author Steve
  * @version 1.1
  */
-class ComputerPlayerFactory {
+public class ComputerPlayerFactory {
 
   public final int HARD_COMPUTER = 3;
   public final int STANDARD_COMPUTER = 2;

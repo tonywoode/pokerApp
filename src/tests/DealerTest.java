@@ -1,13 +1,11 @@
 package tests;
 
 import org.junit.Test;
-import pokerapp.Card;
-import pokerapp.Dealer;
-import pokerapp.Deck;
+import pokerapp.*;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.console.IConsole;
-import pokerapp.console.Player;
-import pokerapp.console.Players;
+import pokerapp.Player;
+import pokerapp.Players;
 import pokerapp.scorer.HandScorerBuilder;
 
 import java.util.ArrayList;
@@ -24,7 +22,7 @@ public class DealerTest {
   // not entirely sure what this test is supposed to do; my attempt is at the end
 
   /**
-   * Test method for {@link pokerapp.console.Dealer#dealCards(int, pokerapp.console.Players)}.
+   * Test method for {@link pokerapp.console.Dealer#dealCards(int, pokerapp.Players)}.
    */
 
   /*

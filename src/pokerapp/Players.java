@@ -1,4 +1,4 @@
-package pokerapp.console;
+package pokerapp;
 
 import lombok.Getter;
 import pokerapp.scorer.scoredhands.ScoredHand;

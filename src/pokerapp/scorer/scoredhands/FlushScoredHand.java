@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.Card;
 import pokerapp.Hand;
-import pokerapp.console.HandVisitor;
+import pokerapp.scorer.HandVisitor;
 import pokerapp.scorer.domain.OrderedCards;
 import pokerapp.scorer.typetag.Flush;
 

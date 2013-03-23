@@ -1,8 +1,10 @@
-package pokerapp.console;
+package pokerapp;
 
-import pokerapp.Deck;
+import pokerapp.console.ExchangeSetting;
+import pokerapp.console.IConsole;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
+import pokerapp.skynet.ComputerPlayerStrategy;
 
 
 /**

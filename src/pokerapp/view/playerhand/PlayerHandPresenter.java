@@ -3,7 +3,7 @@ package pokerapp.view.playerhand;
 import pokerapp.Card;
 import pokerapp.Dealer;
 import pokerapp.Hand;
-import pokerapp.console.Player;
+import pokerapp.Player;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 import pokerapp.view.Displayable;

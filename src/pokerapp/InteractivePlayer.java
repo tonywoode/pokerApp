@@ -1,7 +1,8 @@
-package pokerapp.console;
+package pokerapp;
 
-import pokerapp.Deck;
-import pokerapp.Hand;
+import pokerapp.console.ExchangeCardsInterpreter;
+import pokerapp.console.ExchangeSetting;
+import pokerapp.console.IConsole;
 
 /**
  * @author Steve

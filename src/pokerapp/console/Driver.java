@@ -1,8 +1,8 @@
 package pokerapp.console;
 
-import pokerapp.Dealer;
-import pokerapp.Deck;
+import pokerapp.*;
 import pokerapp.scorer.HandScorerBuilder;
+import pokerapp.skynet.ComputerPlayerFactory;
 import pokerapp.utils.Constants;
 
 /**

@@ -1,4 +1,4 @@
-package pokerapp.console;
+package pokerapp.skynet;
 
 import pokerapp.scorer.scoredhands.ScoredHand;
 

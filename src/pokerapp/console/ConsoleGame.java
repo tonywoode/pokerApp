@@ -1,7 +1,6 @@
 package pokerapp.console;
 
-import pokerapp.Dealer;
-import pokerapp.Deck;
+import pokerapp.*;
 
 /**
  * Spring-based console game loop

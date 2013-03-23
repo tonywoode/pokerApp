@@ -1,6 +1,6 @@
 package pokerapp.scorer.typetag;
 
-import pokerapp.console.HandVisitor;
+import pokerapp.scorer.HandVisitor;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
 /**
