@@ -34,13 +34,11 @@ public class Driver {
 
     ExchangeSetting exchangeSetting = new ExchangeSetting(3, 1);
 
+    console.writeMessage("Game beginning");
+
+    interactivePlayer.getPlayerNameFromUser(console);
+
     while (true) {
-
-      console.writeMessage("Game beginning");
-
-      interactivePlayer.getPlayerNameFromUser(console);
-
-      dealer.shuffleCards(deck);
 
       dealer.dealCards(Constants.HAND_SIZE, players);
 

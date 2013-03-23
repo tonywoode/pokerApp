@@ -28,4 +28,9 @@ public abstract class Player {
   public void receiveCard(Card card) {
     hand.add(card);
   }
+
+  public void dropHand(){
+   hand = new Hand();
+
+  }
 }
