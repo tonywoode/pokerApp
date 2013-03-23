@@ -5,6 +5,8 @@ import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.skynet.ComputerPlayerFactory;
 import pokerapp.utils.Constants;
 
+import java.io.IOException;
+
 /**
  * A simple driver for the basic game as specified
  * by the assignment's requirements
@@ -15,7 +17,7 @@ import pokerapp.utils.Constants;
  */
 public class Driver {
 
-  public void gameLoop() {
+  public void gameLoop() throws IOException {
 
     InteractivePlayer interactivePlayer = new InteractivePlayer();
 

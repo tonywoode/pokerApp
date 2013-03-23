@@ -5,6 +5,8 @@ import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.skynet.ComputerPlayerFactory;
 import pokerapp.utils.Constants;
 
+import java.io.IOException;
+
 /**
  * @author Ari
  * @version 1.0
@@ -15,7 +17,7 @@ public class DriverWithComputers {
   private final IConsole console = new StandardConsole();
   private final ExchangeSetting exchangeSetting = new ExchangeSetting(3, 1);//default - exchange 3 cards once
 
-  public void gameLoop() {
+  public void gameLoop() throws IOException {
 
     final int MAX_NUMBER_PLAYERS = 4;
     final int MIN_NUMBER_PLAYERS = 1;

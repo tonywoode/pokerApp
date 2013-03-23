@@ -6,6 +6,7 @@ import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.HandScorer;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -63,7 +64,7 @@ public class InteractiveHandEvaluator {
    * @param hand a hand of cards
    * @return categorisation grade
    */
-  private ScoredHand determineHandCategory(Hand hand) {
+  private ScoredHand determineHandCategory(Hand hand) throws IOException {
     return new HandScorerBuilder().create().score(hand);
   }
 }

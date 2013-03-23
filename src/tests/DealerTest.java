@@ -1,13 +1,16 @@
 package tests;
 
 import org.junit.Test;
-import pokerapp.*;
+import pokerapp.Card;
+import pokerapp.Dealer;
+import pokerapp.Deck;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.console.IConsole;
-import pokerapp.Player;
-import pokerapp.Players;
+import pokerapp.console.Player;
+import pokerapp.console.Players;
 import pokerapp.scorer.HandScorerBuilder;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -22,7 +25,7 @@ public class DealerTest {
   // not entirely sure what this test is supposed to do; my attempt is at the end
 
   /**
-   * Test method for {@link pokerapp.console.Dealer#dealCards(int, pokerapp.Players)}.
+   * Test method for .
    */
 
   /*
@@ -63,7 +66,7 @@ public class DealerTest {
 	}
 	*/
   @Test
-  public void ArePlayersDealtDifferentCards() {
+  public void ArePlayersDealtDifferentCards() throws IOException {
     Deck deck = Deck.createDeck();
     Dealer dealer = new Dealer(deck);
 

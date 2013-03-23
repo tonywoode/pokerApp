@@ -6,6 +6,8 @@ import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.skynet.ComputerPlayerStrategy;
 
+import java.io.IOException;
+
 
 /**
  * @author Steve
@@ -27,7 +29,7 @@ public class ComputerPlayer extends Player {
     this("Computer", turnStrategy);
   }
 
-  public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting) {
+  public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting) throws IOException {
 
     for (int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 

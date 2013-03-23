@@ -5,6 +5,8 @@ import pokerapp.Hand;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.FlushScorer;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -20,7 +22,7 @@ public class FlushHandScorerTestFixture extends HandScorerTestFixtureBase {
   }
 
   @Test // TODO: these should use data providers...
-  public void Simple_Flush() {
+  public void Simple_Flush() throws FileNotFoundException {
     ScoredHand hand = resolveHand("D4", "D5", "D6", "D7", "D9");
 
     assert ("Flush".equals(hand.getName())); // changed capitalisation; TODO: fix this!

@@ -4,6 +4,8 @@ import org.junit.Test;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.SameRankHandScorer;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -20,10 +22,10 @@ public class ThreeHandScorerTestFixture extends HandScorerTestFixtureBase {
   }
 
      @Test // TODO: these should use data providers...
-    public void HandIsThree_first3() {
+    public void HandIsThree_first3() throws FileNotFoundException {
       ScoredHand hand = resolveHand("D4", "S4", "C4", "C3", "C5");
 
-      assertEquals("Is three", "three", hand.getName());
+      assertEquals("Is three", "Three of a kind", hand.getName());
     }
 
     @Test // TODO: these should use data providers...
