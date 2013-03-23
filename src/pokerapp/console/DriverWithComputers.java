@@ -120,7 +120,6 @@ public class DriverWithComputers {
 
       console.writeMessage("Ready? Play poker!");
 
-      dealer.shuffleCards(deck);
       dealer.dealCards(Constants.HAND_SIZE, players);
 
       for (Player p : players) {
