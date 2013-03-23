@@ -3,7 +3,7 @@ package tests;
 import org.junit.Test;
 import pokerapp.*;
 import pokerapp.console.ExchangeSetting;
-import pokerapp.console.IConsole;
+import pokerapp.console.Console;
 import pokerapp.Player;
 import pokerapp.Players;
 import pokerapp.scorer.HandScorerBuilder;
@@ -104,7 +104,7 @@ public class DealerTest {
     }
 
     @Override
-    public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting) {
+    public void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) {
     }
   }
 
