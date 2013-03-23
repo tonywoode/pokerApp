@@ -1,6 +1,10 @@
-package pokerapp.console;
+package pokerapp.basicgame;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.*;
+import pokerapp.console.Console;
+import pokerapp.console.ExchangeSetting;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 
@@ -9,8 +13,7 @@ import pokerapp.utils.textformat.IllegalFormatCodeException;
  *
  * @author Steve
  */
-public class ConsoleGame {
-
+public class ConsoleGame extends Application {
   private final Console console;
   private final InteractivePlayer interactivePlayer;
   private final ComputerPlayer computerPlayer;
@@ -30,13 +33,17 @@ public class ConsoleGame {
     this.players = players;
   }
 
+  public static void main(String[] args) {
+    begin("consoleGame", "console-game-application-context.xml");
+  }
+
   /**
-   * Separate initialisation function used by Spring, because
-   * Lombok's auto generated constructor does not do this for us
-   * <p/>
-   * Note that Lombok has been removed from this class because I couldn't get
-   * it to work with final members. TODO: fix this.
-   */
+    * Separate initialisation function used by Spring, because
+    * Lombok's auto generated constructor does not do this for us
+    * <p/>
+    * Note that Lombok has been removed from this class because I couldn't get
+    * it to work with final members. TODO: fix this.
+    */
   public void initialise() {
     players.register(computerPlayer, interactivePlayer);
   }
@@ -44,7 +51,7 @@ public class ConsoleGame {
   /**
    * Play a single game of poker with 1 computer player.
    */
-  public void play() throws FormatStringException, IllegalFormatCodeException {
+  public void run() throws FormatStringException, IllegalFormatCodeException {
     console.writeMessage("Let's play poker!");
 
     interactivePlayer.setPlayerName(interactivePlayer.getPlayerNameFromUser(console));

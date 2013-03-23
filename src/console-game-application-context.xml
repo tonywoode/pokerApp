@@ -3,13 +3,36 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="consoleGame" class="pokerapp.console.ConsoleGame" init-method="initialise" autowire="constructor"/>
+    <bean id="interactiveHandEvaluator" class="pokerapp.basicgame.InteractiveHandEvaluator" >
+        <constructor-arg index="0" ref="console" />
+        <constructor-arg index="1" ref="handScorer" />
+        <constructor-arg index="2" ref="handFactory" />
+    </bean>
 
-    <bean id="console" class="pokerapp.console.StandardConsole"/>
+    <bean id="handFactory" class="pokerapp.HandFactory" />
+
+    <bean id="stringFormatter" class="pokerapp.utils.textformat.StringFormatter"/>
+
+    <bean id="consoleGame" class="pokerapp.basicgame.ConsoleGame" init-method="initialise" autowire="constructor">
+        <constructor-arg index="0" ref="console"/>
+        <constructor-arg index="1" ref="interactivePlayer"/>
+        <constructor-arg index="2" ref="computerPlayer"/>
+        <constructor-arg index="3" ref="dealer"/>
+        <constructor-arg index="4" ref="deck"/>
+        <constructor-arg index="5" ref="players"/>
+    </bean>
+
+    <bean id="console" class="pokerapp.console.StandardConsole">
+        <constructor-arg ref="stringFormatter"/>
+    </bean>
 
     <bean id="interactivePlayer" class="pokerapp.InteractivePlayer"/>
 
-    <bean id="computerPlayer" class="pokerapp.console.EasyComputerPlayer"/>
+    <bean id="computerPlayer" class="pokerapp.ComputerPlayer">
+        <constructor-arg>
+            <bean class="pokerapp.skynet.EasyComputerPlayerStrategy" />
+        </constructor-arg>
+    </bean>
      <!-- SDF Spring needed dealer's constructor argument, not sure why? Possibly because didn't specify Autowire ctor-->
     <bean id="dealer" class="pokerapp.Dealer">
         <constructor-arg>
@@ -19,7 +42,9 @@
 
     <bean id="deck" class="pokerapp.Deck" factory-method="createDeck"/>
 
-    <bean id="players" class="pokerapp.Players" autowire="constructor"/>
+    <bean id="players" class="pokerapp.Players" autowire="constructor">
+        <constructor-arg ref="handScorer"/>
+    </bean>
 
     <!-- define the HandScorer beans in reverse order, so references work... necessary? -->
     <bean id="noPair" class="pokerapp.scorer.scorers.NoPairScorer"/>

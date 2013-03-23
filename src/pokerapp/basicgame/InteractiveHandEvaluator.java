@@ -1,12 +1,13 @@
 package pokerapp.basicgame;
 
+import pokerapp.Application;
 import pokerapp.Hand;
 import pokerapp.HandFactory;
+import pokerapp.console.Console;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.HandScorer;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -15,37 +16,39 @@ import java.util.Scanner;
  * @version 1.0
  */
 
-public class InteractiveHandEvaluator {
+public class InteractiveHandEvaluator extends Application {
+  private final Console console;
+  private final HandScorer handScorer;
+  private final HandFactory handFactory;
 
+  public InteractiveHandEvaluator(Console console, HandScorer handScorer, HandFactory handFactory) {
+    this.console = console;
+    this.handScorer = handScorer;
+    this.handFactory = handFactory;
+  }
+
+  public static void main(String[] args) {
+    begin("interactiveHandEvaluator", "console-game-application-context.xml");
+  }
+
+  @Override
   public void run() {
     try {
-
       while (true) {
-
-        System.out.println("Enter 5 cards (e.g. H4) separated by spaces");
-
-        try {
+        console.writeMessage("Enter 5 cards (e.g. H4) separated by spaces");
 
         Hand hand = createHandFromUserInput();
 
         if (hand == null)
           return; // treat null as signal to exit
 
-        ScoredHand scoredHand = determineHandCategory(hand);
+        ScoredHand scoredHand = handScorer.score(hand);
 
-        System.out.println("The hand is: " + scoredHand.getName());
-
-        // TODO: not all categories support the notion of a rank; so how is the next line to be handled?
-        // System.out.println("It has a rank of: " + hand.getRank());
-
-        } catch (Exception e) {
-          System.out.println(e.getMessage());
-        }
-
+        console.writeMessage("The hand is: " + scoredHand.getName());
       }
 
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      console.writeMessage(e.getMessage());
     }
   }
 
@@ -54,17 +57,8 @@ public class InteractiveHandEvaluator {
    * @return hand comprising the user input
    * @throws Exception
    */
-  private Hand createHandFromUserInput() throws Exception {
-    String line = new Scanner(System.in).nextLine();
-    return line != "" ? new HandFactory().createFromLine(line) : null;
-  }
-
-  /**
-   * when passed a hand, the hand is categorised. Category grade is returned
-   * @param hand a hand of cards
-   * @return categorisation grade
-   */
-  private ScoredHand determineHandCategory(Hand hand) throws IOException {
-    return new HandScorerBuilder().create().score(hand);
+  private Hand createHandFromUserInput() throws IllegalArgumentException {
+    String line = console.readLine();
+    return line != "" ? handFactory.createFromLine(line) : null;
   }
 }
