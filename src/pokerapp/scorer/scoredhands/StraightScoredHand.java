@@ -30,7 +30,7 @@ public class StraightScoredHand extends AbstractScoredHand<StraightScoredHand,St
     super(handNumber, hand);
     this.rank = rank;
     ApplicationContext appContext = new ClassPathXmlApplicationContext("/scorer-application-context.xml");
-    this.handType = (Straight)appContext.getBean("StraightFlush");
+    this.handType = (Straight)appContext.getBean("Straight");
   }
 
   @Override
@@ -40,7 +40,7 @@ public class StraightScoredHand extends AbstractScoredHand<StraightScoredHand,St
 
   @Override
   public String getName() {
-      if(name.isEmpty())
+      if(name == null)
       {
           Properties prop = new Properties();
           try {

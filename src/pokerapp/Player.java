@@ -5,6 +5,8 @@ import lombok.Setter;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.console.Console;
 
+import java.io.IOException;
+
 /**
  * @author Steve
  * @author Ari
@@ -22,7 +24,7 @@ public abstract class Player {
     return getPlayerName();
   }
 
-  public abstract void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting);
+  public abstract void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) throws IOException;
 
   public void receiveCard(Card card) {
     hand.add(card);

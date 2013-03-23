@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import pokerapp.Hand;
 import pokerapp.HandFactory;
 import pokerapp.scorer.HandScorerBuilder;
@@ -12,12 +14,10 @@ import pokerapp.scorer.scorers.HandScorer;
 import pokerapp.utils.HandPermutationGenerator;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.runners.Parameterized.Parameters;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,37 +26,45 @@ import static org.junit.Assert.assertEquals;
  * Time: 17:44
  * To change this template use File | Settings | File Templates.
  */
-public class ScoreCombinationTest {
-    private HandScorer handScorerChain;
-    private  HashMap<Hand,String> expectedScoreHash;
-    private HandFactory handFactory;
 
-    @Before
-    public void initialize() throws IOException {
-        HandScorerBuilder buildHand = new HandScorerBuilder();
-        handScorerChain= buildHand.create();
-        expectedScoreHash = new HashMap();
-        CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(
-                getClass().getResourceAsStream(
-                        "/handtypes.csv"))));
-        String [] nextLine;
-        while ((nextLine = reader.readNext()) != null) {
-            // nextLine[] is an array of values from the line
-            Hand createHand = handFactory.create(nextLine[0]);
-            ArrayList<Hand> handPerms = HandPermutationGenerator.permute(createHand);
-            for(Hand hands : handPerms){
-                expectedScoreHash.put(hands,nextLine[1]);
-            }
-        }
+@RunWith(Parameterized.class)
+public class ScoreCombinationTest {
+
+    public ScoreCombinationTest(Hand testHand, String expectedResult) {
+        this.testHand = testHand;
+        this.expectedResult = expectedResult;
     }
 
-    @Test
-    public void testHashHands() throws FileNotFoundException {
-        Iterator it = expectedScoreHash.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pairs = (Map.Entry)it.next();
-            assertEquals(handScorerChain.score((Hand)pairs.getKey()).getName(),(String)pairs.getValue());
+    @Parameters
+    public static Collection<Object[]> parameters() throws IOException {
+        List<Object[]> output = new ArrayList<>();
+
+        CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(ScoreCombinationTest.class.getResourceAsStream("/handtypes.csv"))));
+        String [] nextLine;
+
+        HandFactory handFactory = new HandFactory();
+        while ((nextLine = reader.readNext()) != null) {
+            // nextLine[] is an array of values from the line
+            Hand createHand = handFactory.createFromLine(nextLine[0]);
+            ArrayList<Hand> handPerms = HandPermutationGenerator.permute(createHand);
+            for(Hand hand : handPerms){
+                Object[] testData = new Object[] { hand, nextLine[1] };
+                output.add(testData);
+            }
         }
+
+        return output;
+    }
+
+    public Hand testHand;
+    public String expectedResult;
+
+    @Test
+    public void testHashHands() throws IOException {
+        HandScorerBuilder buildHand = new HandScorerBuilder();
+        System.out.println(testHand.toUserString());
+        HandScorer handScorerChain= buildHand.create();
+        assertEquals(expectedResult,handScorerChain.score(testHand).getName());
     }
 
 }

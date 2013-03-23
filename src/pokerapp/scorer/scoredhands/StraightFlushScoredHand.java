@@ -39,7 +39,7 @@ public class StraightFlushScoredHand extends AbstractScoredHand<StraightFlushSco
 
   @Override
   public String getName() throws FileNotFoundException {
-    if(name.isEmpty())
+    if(name == null)
     {
         Properties prop = new Properties();
         try {

@@ -8,6 +8,8 @@ import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 import pokerapp.utils.textformat.StringFormatter;
 
+import java.io.IOException;
+
 /**
  * @author Ari
  * @version 1.0
@@ -18,7 +20,7 @@ public class DriverWithComputers {
   private final Console console = new StandardConsole(new StringFormatter());
   private final ExchangeSetting exchangeSetting = new ExchangeSetting(3, 1);//default - exchange 3 cards once
 
-  public void gameLoop() throws FormatStringException, IllegalFormatCodeException {
+  public void gameLoop() throws FormatStringException, IllegalFormatCodeException, IOException {
 
     final int MAX_NUMBER_PLAYERS = 4;
     final int MIN_NUMBER_PLAYERS = 1;
