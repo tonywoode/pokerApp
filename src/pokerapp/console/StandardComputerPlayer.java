@@ -1,8 +1,7 @@
 package pokerapp.console;
 
-import pokerapp.console.strategies.IStrategy;
-import pokerapp.console.strategies.IStrategyFactory;
-import pokerapp.console.strategies.StandardStrategyFactory;
+import pokerapp.scorer.scoredhands.ScoredHand;
+import pokerapp.scorer.typetag.HandTypeTag;
 
 /**
  * @author Steve
@@ -21,13 +20,9 @@ public class StandardComputerPlayer extends ComputerPlayer {
     }
 
     @Override
-    protected String exchangeDecision(StringBuilder commandBuilder, String handType)
+    protected void exchangeDecision(ScoredHand handType)
     {
-        IStrategyFactory strategyFactory = new StandardStrategyFactory();
-
-        IStrategy decisionMaker =  strategyFactory.createStrategy(handType);
-
-        return decisionMaker.makeDecision(commandBuilder, getHand().getSortedCards());
+       handType.visit(new StandardStrategyVisitor());
     }
 
 }

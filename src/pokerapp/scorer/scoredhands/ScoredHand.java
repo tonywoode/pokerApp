@@ -3,6 +3,8 @@ package pokerapp.scorer.scoredhands;
 import lombok.Getter;
 import pokerapp.Card;
 import pokerapp.Hand;
+import pokerapp.console.HandVisitor;
+import pokerapp.scorer.typetag.HandTypeTag;
 
 import java.util.List;
 
@@ -15,9 +17,11 @@ import java.util.List;
  * 
  *@author steve
  */
-public abstract class ScoredHand implements Comparable<ScoredHand> {
+public abstract class ScoredHand<T extends HandTypeTag> implements Comparable<ScoredHand> {
 
-	@Getter
+    @Getter
+    protected T handType;
+    @Getter
     protected int handNumber = -1;
 	@Getter protected Hand hand;
 
@@ -53,4 +57,8 @@ public abstract class ScoredHand implements Comparable<ScoredHand> {
 
     public abstract List<Card> getRelevantCards();
 
+
+    public void visit(HandVisitor visitor) {
+        handType.visit(this, visitor);
+    }
 }
