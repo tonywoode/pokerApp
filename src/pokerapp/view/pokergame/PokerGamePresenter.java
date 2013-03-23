@@ -4,6 +4,8 @@ import com.google.common.eventbus.Subscribe;
 import pokerapp.console.Player;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
+import pokerapp.view.Animation;
+import pokerapp.view.MsgAnimation;
 import pokerapp.view.playerhand.ComputerHandView;
 import pokerapp.view.playerhand.PlayerHandPresenterBridge;
 import pokerapp.view.playerhand.TurnCompletedEvent;
@@ -49,7 +51,9 @@ public class PokerGamePresenter {
     playerHandPresenterBridge.setPlayer(pokerGameModel.getInteractivePlayer());
     computerHandView.setHand(pokerGameModel.getComputerPlayer().getHand());
     
-    pokerGameView.displayMessage("Begin game");
+    pokerGameView.displayMessage("Game Started: Choose Which Cards To Exchange");
+    
+    
   }
 
   @Subscribe
@@ -61,7 +65,7 @@ public class PokerGamePresenter {
 
     //String winMessage = getWinMessage(winner);
 
-    pokerGameView.displayMessage("Checking hands... fingers crossed");
+    pokerGameView.displayMessage("Press Start To Begin Another Game....");
     
     computerHandView.showCards();
 
@@ -72,10 +76,10 @@ public class PokerGamePresenter {
 
   private int getWinMessage(Player winner) {
     if (winner == null)
-      return 0;
+      return 0; //draw
     else if (winner == pokerGameModel.getInteractivePlayer())
-      return 1;
+      return 1; //you win
     else
-      return -1;
+      return -1; //you lose
   }
 }
