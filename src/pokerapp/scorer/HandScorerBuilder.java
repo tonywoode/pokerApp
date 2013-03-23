@@ -2,7 +2,12 @@ package pokerapp.scorer;
 
 import pokerapp.scorer.scorers.*;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Properties;
 
 /**
  * Builds the categories of scoring hands and returns the ordered list of them
@@ -13,18 +18,22 @@ import java.util.ArrayList;
  */
 public class HandScorerBuilder {
 
-  public HandScorer create() {
+  public HandScorer create() throws IOException {
     ArrayList<HandScorer> scorers = new ArrayList<HandScorer>();
+    Properties prop = new Properties();
+    InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/handnames.properties"));
+    prop.load(in);
+    in.close();
 
     scorers.add(new RoyalFlushScorer(new StraightScorer(), new FlushScorer()));
     scorers.add(new StraightFlushScorer(new StraightScorer(), new FlushScorer()));
-    scorers.add(new SameRankHandScorer("four", 4, 1));
-    scorers.add(new FullHouseScorer(new SameRankHandScorer("three", 3, 1), new SameRankHandScorer("pair", 2, 1)));
+    scorers.add(new SameRankHandScorer(prop.getProperty("FourOfAKind"), 4, 1));
+    scorers.add(new FullHouseScorer(new SameRankHandScorer("ThreeOfAKind", 3, 1), new SameRankHandScorer("Pair", 2, 1)));
     scorers.add(new FlushScorer());
     scorers.add(new StraightScorer());
-    scorers.add(new SameRankHandScorer("three", 3, 1));
+    scorers.add(new SameRankHandScorer("ThreeOfAKind", 3, 1));
     scorers.add(new TwoPairScorer());
-    scorers.add(new SameRankHandScorer("pair", 2, 1));
+    scorers.add(new SameRankHandScorer("Pair", 2, 1));
     scorers.add(new NoPairScorer());
     scorers.add(null);
 

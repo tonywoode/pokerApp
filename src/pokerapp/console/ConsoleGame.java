@@ -3,6 +3,8 @@ package pokerapp.console;
 import pokerapp.Dealer;
 import pokerapp.Deck;
 
+import java.io.IOException;
+
 /**
  * Spring-based console game loop
  *
@@ -45,7 +47,7 @@ public class ConsoleGame {
   /**
    * Play a single game of poker with 1 computer player.
    */
-  public void play() {
+  public void play() throws IOException {
     console.writeMessage("Let's play poker!");
 
     interactivePlayer.setPlayerName(interactivePlayer.getPlayerNameFromUser(console));

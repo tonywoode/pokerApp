@@ -6,6 +6,7 @@ import pokerapp.Hand;
 import pokerapp.console.HandVisitor;
 import pokerapp.scorer.typetag.HandTypeTag;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 /**
@@ -48,7 +49,7 @@ public abstract class ScoredHand<T extends HandTypeTag> implements Comparable<Sc
 	/** All hands have a 'category' name. Most know their own name,
 	 * but some must calculate. Hence an abstract property.
 	 */
-	public abstract String getName();
+	public abstract String getName() throws FileNotFoundException;
 
 	/** Called when two hands are in the same category. We need
 	 * to determine which hand is better.

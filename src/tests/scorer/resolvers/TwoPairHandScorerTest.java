@@ -5,6 +5,8 @@ import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.SameRankHandScorer;
 import pokerapp.scorer.scorers.TwoPairScorer;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -21,7 +23,7 @@ public class TwoPairHandScorerTest extends HandScorerTestFixtureBase {
     }
 
     @Test // TODO: these should use data providers...
-    public void HandIsTwoPair_first4() {
+    public void HandIsTwoPair_first4() throws FileNotFoundException {
       ScoredHand hand = resolveHand("D4", "S4", "D3", "C3", "C5");
 
       assertEquals("Is two", "Two pair", hand.getName());

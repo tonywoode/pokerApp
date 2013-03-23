@@ -6,6 +6,8 @@ import pokerapp.Rank;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
+import java.io.IOException;
+
 
 /**
  * @author Steve
@@ -28,7 +30,7 @@ public abstract class ComputerPlayer extends Player {
     this("Computer");
   }
 
-  public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting) {
+  public void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting) throws IOException {
 
     for (int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 

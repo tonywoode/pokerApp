@@ -5,6 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.console.ConsoleGame;
 
+import java.io.IOException;
+
 /**
  * Provides the main entry point to the console app,
  * but this implementation uses Spring for DI
@@ -29,9 +31,11 @@ public class SpringGame {
 
     } catch (BeansException e) {
       System.out.println("Error:" + e.getMessage());
+    } catch (IOException e) {
+        e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
     }
 
-    System.out.println("Exiting...");
+      System.out.println("Exiting...");
 
   }
 

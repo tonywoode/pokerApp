@@ -8,7 +8,12 @@ import pokerapp.Hand;
 import pokerapp.Rank;
 import pokerapp.scorer.typetag.StraightFlush;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Describes a straight flush
@@ -33,8 +38,20 @@ public class StraightFlushScoredHand extends AbstractScoredHand<StraightFlushSco
   }
 
   @Override
-  public String getName() {
-    return "Straight flush";
+  public String getName() throws FileNotFoundException {
+    if(name.isEmpty())
+    {
+        Properties prop = new Properties();
+        try {
+            InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/handnames.properties"));
+                prop.load(in);
+                in.close();
+                name = prop.getProperty("StraightFlush");
+            } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    return name;
   }
 
   @Override

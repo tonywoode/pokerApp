@@ -7,7 +7,11 @@ import pokerapp.Hand;
 import pokerapp.Rank;
 import pokerapp.scorer.typetag.RoyalFlush;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,7 +37,19 @@ public class RoyalFlushScoredHand extends StraightFlushScoredHand {
 
   @Override
   public String getName() {
-    return "Royal flush";
+      if(name.isEmpty())
+      {
+          Properties prop = new Properties();
+          try {
+              InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/handnames.properties"));
+              prop.load(in);
+              in.close();
+              name = prop.getProperty("StraightFlush");
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
+      }
+      return name;
   }
 
   @Override

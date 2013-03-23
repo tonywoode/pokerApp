@@ -4,6 +4,8 @@ import org.junit.Test;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.StraightScorer;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -22,20 +24,20 @@ public class StraightHandScorerTestFixture extends HandScorerTestFixtureBase {
     }
 
     @Test
-    public void Hand_Is_Wheel() {
+    public void Hand_Is_Wheel() throws FileNotFoundException {
       ScoredHand hand = resolveHand("D2", "S3", "C4", "D5", "H14");
 
       assertEquals("Is straight", "Straight", hand.getName());
     }
 
     @Test
-    public void Hand_Is_Straight_in_order() {
+    public void Hand_Is_Straight_in_order() throws FileNotFoundException {
       ScoredHand hand = resolveHand("D2", "S3", "C4", "D5", "H6");
 
       assertEquals("Is straight", "Straight", hand.getName());
     }
     @Test
-    public void Hand_Is_Straight_not_in_order() {
+    public void Hand_Is_Straight_not_in_order() throws FileNotFoundException {
       ScoredHand hand = resolveHand("D3", "S5", "C2", "D4", "H6");
 
       assertEquals("Is straight", "Straight", hand.getName());

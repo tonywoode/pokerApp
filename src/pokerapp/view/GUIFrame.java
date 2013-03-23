@@ -187,7 +187,7 @@ public class GUIFrame extends JFrame {
 	
 
 	// temp...
-	private Hand getHand() {
+	private Hand getHand() throws IOException {
 		InteractivePlayer ip = new InteractivePlayer();
 		Players players = new Players(new HandScorerBuilder().create()).register(ip);
 		dealer.dealCards(5, players);
