@@ -2,6 +2,7 @@ package pokerapp.console;
 
 import pokerapp.Dealer;
 import pokerapp.Deck;
+import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.utils.Constants;
 
 /**
@@ -27,7 +28,7 @@ public class Driver {
     Dealer dealer = new Dealer(deck);
 
     // Registering players is now not done through the constructor (because of Spring)
-    Players players = new Players().register(interactivePlayer, computerPlayer);
+    Players players = new Players(new HandScorerBuilder().create()).register(interactivePlayer, computerPlayer);
 
     IConsole console = new StandardConsole();
 

@@ -5,7 +5,9 @@ import pokerapp.Hand;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 import view.ImageView;
+import view.card.CardImageFactory;
 import view.card.CardViewModelFactory;
+import view.card.NullCardImageFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,6 +36,8 @@ public class SuperHandPanel extends JPanel {
   private final CardViewModelFactory cardViewModelFactory;
   private final List<ImageView> imageViews = new ArrayList<>();
   private final List<CardViewModel> cards = new ArrayList<>();
+
+  private Hand hand;
 
   public SuperHandPanel(final int numCards, CardViewModelFactory cardViewModelFactory) {
     this.cardViewModelFactory = cardViewModelFactory;
@@ -82,6 +86,7 @@ public class SuperHandPanel extends JPanel {
   }
 
   public void setHand(Hand hand) throws FormatStringException, IOException, IllegalFormatCodeException {
+    this.hand = hand;
     this.cards.clear();
     int iter = 0;
     for (Card card : hand) {
@@ -97,6 +102,26 @@ public class SuperHandPanel extends JPanel {
       if (cvm.getIsSelected())
         selectedCards.add(cvm.getCard());
     return selectedCards;
+  }
+
+  public void __hack_setCardViewFactory(CardImageFactory ciFactory) throws FormatStringException, IOException,
+      IllegalFormatCodeException {
+    int iter = 0;
+    for (Card card : hand) {
+      CardViewModel cvm = new CardViewModelFactory(ciFactory, new NullCardImageFactory()).create(card);
+      imageViews.get(iter++).setImage(cvm.getImage());
+      this.cards.add(cvm);
+    }
+  }
+
+  public void popUpCard(int index) {
+    ImageView iv = imageViews.get(index);
+
+    iv.setBottomPadding(100);
+
+    //Insets insets = iv.getInsets();
+
+    //insets.set(0, 0, 100, 0);
   }
 
 }

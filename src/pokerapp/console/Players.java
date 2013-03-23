@@ -1,7 +1,6 @@
 package pokerapp.console;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.HandScorer;
 
@@ -14,12 +13,11 @@ import java.util.Iterator;
  * @author Steve
  * @version 1.0
  */
-@NoArgsConstructor
 public class Players implements Iterable<Player> {
 
   @Getter
   ArrayList<Player> players = new ArrayList<Player>();
-  HandScorer scorer;
+  private final HandScorer scorer;
 
   /**
    * Takes its dependency on the HandScorer through DI
@@ -49,7 +47,7 @@ public class Players implements Iterable<Player> {
    */
   public Player pickWinner() {
     Player winner = players.get(0);
-   //TODO: make for loop clearer - it isn't in std form
+    //TODO: make for loop clearer - it isn't in std form
     for (int iter = 1; iter < players.size(); ++iter) {
       Player challenger = players.get(iter);
 

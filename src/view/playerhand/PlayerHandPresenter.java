@@ -7,6 +7,7 @@ import pokerapp.console.Player;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 import view.Displayable;
+import view.events.EventSource;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -24,12 +25,14 @@ public class PlayerHandPresenter implements PlayerHandViewActionListener, Displa
 
   private final Dealer dealer;
 
-  public PlayerHandPresenter(PlayerHandView plHandView, Dealer dealer) {
+  private final EventSource eventSource;
+
+  public PlayerHandPresenter(EventSource eventSource, PlayerHandView plHandView, Dealer dealer) {
+    this.eventSource = eventSource;
     this.plHandView = plHandView;
     this.plHandView.addListener(this);
     this.dealer = dealer;
   }
-
 
   public void init(Player player, Hand hand) throws FormatStringException, IOException, IllegalFormatCodeException {
     this.player = player;
@@ -51,6 +54,7 @@ public class PlayerHandPresenter implements PlayerHandViewActionListener, Displa
     } catch (Exception e) {
       // TODO: argh!
     }
+    eventSource.fire(new TurnCompletedEvent());
   }
 
   @Override

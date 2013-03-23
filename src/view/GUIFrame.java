@@ -4,12 +4,14 @@ import pokerapp.Dealer;
 import pokerapp.Hand;
 import pokerapp.console.InteractivePlayer;
 import pokerapp.console.Players;
+import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
-import view.hand.SuperHandPanel;
+import view.playerhand.ComputerHandView;
 import view.playerhand.PlayerHandPresenterBridge;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,7 +43,8 @@ public class GUIFrame extends JFrame {
    * draws the frame with background
    * Poker Table Background adapted from thePokerBox.com
    */
-  public GUIFrame(PlayerHandPresenterBridge playerHandPresenterBridge, SuperHandPanel computerHandPanel, Dealer dealer)
+  public GUIFrame(PlayerHandPresenterBridge playerHandPresenterBridge, final ComputerHandView computerHandView,
+                  Dealer dealer)
       throws FormatStringException, IOException, IllegalFormatCodeException {
 
     this.dealer = dealer;
@@ -50,7 +53,7 @@ public class GUIFrame extends JFrame {
     this.scoresPanel = new ScoresPanel();
 
     playerHandPresenterBridge.playRandomHand();
-    computerHandPanel.setHand(getHand());
+    computerHandView.setHand(getHand());
 
     setSize(FRAME_WIDTH, FRAME_HEIGHT);
     container = getContentPane();
@@ -81,7 +84,7 @@ public class GUIFrame extends JFrame {
     /**JPanel Cardpanel2 = new HandPanel();
      Cardpanel2.setBounds(270, 430, 390, 105); */
 
-    JComponent cpuHandView = computerHandPanel; // TODO: chp is a view - fix this
+    JComponent cpuHandView = computerHandView.getView();
     cpuHandView.setOpaque(false);
     cpuHandView.setBounds(270, 70, 390, 105);
 
@@ -101,13 +104,56 @@ public class GUIFrame extends JFrame {
     backPanel.add(startButton);
 
 
+    FlipComputerPlayerCardsButton btn = new FlipComputerPlayerCardsButton();
+    btn.setBounds(600, 170, 106, 65);
+
+    btn.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        try {
+          computerHandView.showCards();
+        } catch (FormatStringException e1) {
+          e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (IOException e1) {
+          e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (IllegalFormatCodeException e1) {
+          e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+      }
+    });
+
+    backPanel.add(btn);
+
+    btn = new FlipComputerPlayerCardsButton();
+    btn.setBounds(600, 240, 106, 65);
+    btn.setText("Pop Up Card");
+
+    btn.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        computerHandView.popUpCard(2);
+      }
+    });
+
+    backPanel.add(btn);
+
   }
 
+  public class FlipComputerPlayerCardsButton extends JButton {
+    public FlipComputerPlayerCardsButton() {
+      setToolTipText("Flip CP Cards");
+      setOpaque(false);
+      setText("Flip CP Cards");
+      setBackground(new Color(34, 142, 34));
+      setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.RED, Color.ORANGE));
+      setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }
+  }
 
   // temp...
   private Hand getHand() {
     InteractivePlayer ip = new InteractivePlayer();
-    Players players = new Players().register(ip);
+    Players players = new Players(new HandScorerBuilder().create()).register(ip);
 
     dealer.dealCards(5, players);
 
