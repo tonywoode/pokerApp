@@ -6,6 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 
+import java.io.IOException;
+
 /**
  * <p>
  * Detailed explanation of the class and its collaborators.
@@ -32,10 +34,12 @@ public abstract class Application {
       e.printStackTrace();
     } catch (IllegalFormatCodeException e) {
       e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
     }
 
     System.out.println("Exiting...");
   }
 
-  public abstract void run() throws FormatStringException, IllegalFormatCodeException;
+  public abstract void run() throws FormatStringException, IllegalFormatCodeException, IOException;
 }

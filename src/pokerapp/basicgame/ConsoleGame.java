@@ -1,12 +1,12 @@
 package pokerapp.basicgame;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.*;
 import pokerapp.console.Console;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
+
+import java.io.IOException;
 
 /**
  * Spring-based console game loop
@@ -51,7 +51,7 @@ public class ConsoleGame extends Application {
   /**
    * Play a single game of poker with 1 computer player.
    */
-  public void run() throws FormatStringException, IllegalFormatCodeException {
+  public void run() throws FormatStringException, IllegalFormatCodeException, IOException {
     console.writeMessage("Let's play poker!");
 
     interactivePlayer.setPlayerName(interactivePlayer.getPlayerNameFromUser(console));
