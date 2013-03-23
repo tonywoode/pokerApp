@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.border.EtchedBorder;
 
 /**
- * Start the game in GUI. Should bring up the popup "let's play poker"
+ * Start the game in GUI
  * @author tony
  *
  */
