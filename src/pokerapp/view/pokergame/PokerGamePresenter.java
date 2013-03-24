@@ -81,23 +81,16 @@ public class PokerGamePresenter {
 
 		 pokerGameView.showGameResultMessage(getWinMessage(winner));
 		 
-		 //sort out scores
-		 if (getWinMessage(winner) == 0)
-		 {
-			 ScoresPanel.setScores(playerScore, cpuScore);
-		 }
-		 if (getWinMessage(winner) == 1)
-		 {
-			 ScoresPanel.setScores(playerScore = playerScore + 1, cpuScore);
-		 }
-		 if (getWinMessage(winner) == -1)
-		 {
-			 ScoresPanel.setScores(playerScore, cpuScore = cpuScore +  1);
-		 }
-		 
+		 scoreTally(winner);
+		
 
 	 }
 
+	 /**
+	  * Simple switch to announce winner
+	  * @param winner player who won
+	  * @return 0 if a draw, 1 if player won, -1 if cpu won
+	  */
 	 private int getWinMessage(Player winner) {
 		 if (winner == null)
 			 return 0; //draw
@@ -106,4 +99,26 @@ public class PokerGamePresenter {
 		 else
 			 return -1; //you lose
 	 }
+	 
+	 /**
+	  * Tally's up score for scores panel - adds to last round - sends to view
+	  * @param winner the player who won the round
+	  */
+	 private void scoreTally(Player winner) {
+		
+		 if (getWinMessage(winner) == 0) //if its a draw
+		 {
+			 ScoresPanel.setScores(playerScore, cpuScore);
+		 }
+		 if (getWinMessage(winner) == 1) //if player wins
+		 {
+			 ScoresPanel.setScores(playerScore , cpuScore += 1); //TODO: that's the wrong way round. Investigate
+		 }
+		 if (getWinMessage(winner) == -1) //if cpu wins
+		 {
+			 ScoresPanel.setScores(playerScore  +=  1, cpuScore); //TODO: that's the wrong way round. Investigate
+		 }
+	 }
+	 
+	 
 }

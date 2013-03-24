@@ -107,7 +107,7 @@ public class PokerGameView extends JFrame {
 		});
 
 		scoresPanel.setBounds(57, 174, 208, 191);
-		textPanel.setBounds(287, 236, 415, 129);
+		textPanel.setBounds(287, 245, 415, 129);
 
 		container.add(backPanel);
 		backPanel.add(logo);
@@ -240,7 +240,7 @@ public class PokerGameView extends JFrame {
 
 	private void displayStatusMessage(JLabel label) {
 		MsgAnimation anim = new MsgAnimation(textPanel, label);
-		anim.begin(5000);	
+		anim.begin(2000);	
 	}	
 	
 	public void displayMessage(String msg) {
