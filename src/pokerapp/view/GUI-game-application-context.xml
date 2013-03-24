@@ -56,12 +56,14 @@
     <!-- new game presenter -->
     <bean id="pokerGame" class="pokerapp.view.PokerGame" autowire="constructor"/>
 
-    <bean id="pokerGamePresenter" class="pokerapp.view.pokergame.PokerGamePresenter" autowire="constructor"/>
+    <bean id="pokerGamePresenter" class="pokerapp.view.pokergame.PokerGamePresenter" autowire="constructor">
+		<constructor-arg index="4" name="userMessage" value="Welcome to PokerApp!!!! Press Start to Play a Game with the Computer..." />
+    </bean>
     <bean class="pokerapp.view.pokergame.PokerGameModel" autowire="constructor">
         <constructor-arg index="0" ref="dealer"/>
         <constructor-arg index="1" ref="interactivePlayer"/>
         <constructor-arg index="2" ref="computerPlayer"/>
-        <constructor-arg index="3" ref="players"/>
+        <constructor-arg index="3" ref="players"/>        
     </bean>
     <bean class="pokerapp.view.pokergame.PokerGameView" autowire="constructor"/>
 

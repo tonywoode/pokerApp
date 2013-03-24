@@ -34,4 +34,9 @@ public abstract class Player {
    hand = new Hand();
 
   }
+
+
+  public void receiveHand(Hand otherHand) {
+    hand = otherHand;
+  }
 }

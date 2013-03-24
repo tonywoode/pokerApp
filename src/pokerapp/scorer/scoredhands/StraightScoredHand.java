@@ -8,7 +8,6 @@ import pokerapp.Hand;
 import pokerapp.Rank;
 import pokerapp.scorer.typetag.Straight;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
