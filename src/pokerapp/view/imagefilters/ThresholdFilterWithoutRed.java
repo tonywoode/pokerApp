@@ -14,7 +14,7 @@ public class ThresholdFilterWithoutRed extends com.jhlabs.image.ThresholdFilter
     public int filterRGB(int x, int y, int rgb)
     {
         int cond = rgb ^ 0x00ff0000;
-        if(cond > 0)
+        if(cond == 0)
             return super.filterRGB(x,y,rgb);
         return rgb;
     }

@@ -13,7 +13,7 @@ public class InvertFilterWithoutRed extends com.jhlabs.image.InvertFilter {
     public int filterRGB(int x, int y, int rgb)
     {
         int cond = rgb ^ 0x00ff0000;
-        if(cond > 0)
+        if(cond == 0)
             return super.filterRGB(x,y,rgb);
         return rgb;
     }
