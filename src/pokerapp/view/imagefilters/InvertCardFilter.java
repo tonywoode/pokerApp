@@ -15,7 +15,7 @@ public class InvertCardFilter implements IImageFilter {
 
     @Override
     public BufferedImage filter(BufferedImage src) {
-        InvertFilter invertFilter = new InvertFilter();
+        InvertFilterWithoutRed invertFilter = new InvertFilterWithoutRed();
 
         return invertFilter.filter(src, src);
     }
