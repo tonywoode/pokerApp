@@ -41,6 +41,8 @@ public class PokerGameView extends JFrame {
 	private JLabel winLabel;
 	private JLabel loseLabel;
 	private JLabel startLabel;
+	private JLabel playerLabel;
+	private JLabel computerLabel;
 
 	private final List<PokerGameViewActionListener> listeners = new ArrayList<PokerGameViewActionListener>();
 
@@ -87,7 +89,7 @@ public class PokerGameView extends JFrame {
 
 		drawBackground();
 		drawLogo();
-		playerLabels();
+		guiLabels();
 
 		backPanel.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
 		backPanel.setLayout(null);
@@ -99,6 +101,8 @@ public class PokerGameView extends JFrame {
 				for (PokerGameViewActionListener listener : listeners)
 					listener.startGame();
 				eventSource.fire(new BeginGameEvent());
+				MsgAnimation anim = new MsgAnimation(textPanel, startLabel);
+				anim.begin(2000);
 			}
 		});
 
@@ -143,44 +147,41 @@ public class PokerGameView extends JFrame {
 	/**
 	 * Draws the labels for the computer and the player by the right of their cards
 	 */
-	private void playerLabels() {
-		JLabel playerLabel = new JLabel();
+	private void guiLabels() {
+		playerLabel = new JLabel();
 		playerLabel.setIcon(new ImageIcon("pics/Player.png"));
 		playerLabel.setBounds(650, 391, 127, 41);
 		backPanel.add(playerLabel);
 
-		JLabel computerLabel = new JLabel();
+		computerLabel = new JLabel();
 		computerLabel.setIcon(new ImageIcon("pics/Computer.png"));
 		computerLabel.setBounds(643, 170, 106, 30);
 		backPanel.add(computerLabel);
 
-
-		//TODO: just example labels delete them after implementing
-
-		drawLabel = new JLabel("");
+		drawLabel = new JLabel();
 		drawLabel.setVisible(false);
 		drawLabel.setIcon(new ImageIcon("pics/YouDraw.png"));
 		drawLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(drawLabel);
 
-		winLabel = new JLabel("");
+		winLabel = new JLabel();
 		winLabel.setVisible(false);
 		winLabel.setIcon(new ImageIcon("pics/YouWin.png"));
 		winLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(winLabel);
 
 
-		loseLabel = new JLabel("");
+		loseLabel = new JLabel();
 		loseLabel.setVisible(false);
 		loseLabel.setIcon(new ImageIcon("pics/Youlose.png"));
 		loseLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(loseLabel);
 
 
-		startLabel = new JLabel("");
+		startLabel = new JLabel();
 		startLabel.setVisible(false);
 		startLabel.setIcon(new ImageIcon("pics/LetsPlayPoker.png"));
-		startLabel.setBounds(290, 211, 450, 154);
+		startLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(startLabel);
 
 
@@ -215,19 +216,6 @@ public class PokerGameView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
 				MsgAnimation anim = new MsgAnimation(textPanel, drawLabel);
-				anim.begin(5000);
-			}
-		});
-
-
-		JButton buttonStart = new JButton("Start");
-		buttonStart.setBounds(792, 134, 89, 23);
-		backPanel.add(buttonStart);	
-		backPanel.add(startLabel);
-		buttonStart.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {				
-				MsgAnimation anim = new MsgAnimation(textPanel, startLabel);
 				anim.begin(5000);
 			}
 		});
