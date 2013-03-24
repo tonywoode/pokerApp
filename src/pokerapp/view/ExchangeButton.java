@@ -14,8 +14,6 @@ import javax.swing.border.EtchedBorder;
  */
 public class ExchangeButton extends JButton {
 
-	private boolean enabled;
-
 	public ExchangeButton() {
 
 		/*

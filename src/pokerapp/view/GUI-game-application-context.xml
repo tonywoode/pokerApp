@@ -58,9 +58,11 @@
 
     <bean id="pokerGamePresenter" class="pokerapp.view.pokergame.PokerGamePresenter" autowire="constructor">
 		<constructor-arg index="4" name="userMessage" value="Welcome to PokerApp!!!! Press Start to Play a Game with the Computer..." />
+
     </bean>
     
-  
+ 
+		
     
     <bean class="pokerapp.view.pokergame.PokerGameModel" autowire="constructor">
         <constructor-arg index="0" ref="dealer"/>

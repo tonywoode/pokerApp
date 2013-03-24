@@ -11,7 +11,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import lombok.Setter;
 
 
 /**
@@ -25,13 +24,11 @@ public class ScoresPanel extends JPanel {
 	private JLabel scoresLabel;
 	private JLabel cpuLabel;
 	private JLabel YouLabel;
-	private JTextField cpuScore;
-	private JTextField youScore;
-	@Setter
-	private int cpuScoreText, youScoreText;
-
-
-
+	private static JTextField cpuScore;
+	private static JTextField youScore;
+	
+	
+	
 	public ScoresPanel() {
 
 		scoresLabel = new JLabel();
@@ -51,8 +48,7 @@ public class ScoresPanel extends JPanel {
 		textFieldFormatBuilder(youScore);
 
 
-		cpuScore.setText(Integer.toString(cpuScoreText));
-		youScore.setText(Integer.toString(youScoreText));
+
 
 		//group layout for scores panel
 		GroupLayout gl_scoresPanel = new GroupLayout(this);
@@ -109,5 +105,11 @@ public class ScoresPanel extends JPanel {
 		textField.setBackground(Color.DARK_GRAY);
 	}
 
+	
+	public static void setScores(int cpuTally, int youTally) {
+		cpuScore.setText(Integer.toString(cpuTally));
+		youScore.setText(Integer.toString(youTally));
+	}
+	
 
 }

@@ -118,7 +118,7 @@ public class PlayerHandView implements Displayable {
 		return mainView;
 	}
 
-	public void userButtonsDisable(boolean enable) {
+	public void userButtonsEnable(boolean enable) {
 		exchangeButton.setEnabled(enable);
 		holdButton.setEnabled(enable);
 	}
