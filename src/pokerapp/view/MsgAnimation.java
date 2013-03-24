@@ -15,9 +15,8 @@ public class MsgAnimation extends Animation {
 	
 	@Override
 	protected void beginAnimation() {
-		label.setVisible(true);
-		
 		panel.setVisible(false);
+		label.setVisible(true);
 	}
 
 	@Override

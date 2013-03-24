@@ -20,6 +20,7 @@ public abstract class Animation  {
 				endAnimation();
 			};
 		});
+		timer.setRepeats(false);
 		timer.start();
 	}
 
