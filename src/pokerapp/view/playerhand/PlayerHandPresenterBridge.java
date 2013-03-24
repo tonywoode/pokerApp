@@ -10,6 +10,11 @@ import pokerapp.utils.textformat.IllegalFormatCodeException;
 import javax.swing.*;
 import java.io.IOException;
 
+/**
+ * Bridge pattern for the display of the presenters hand TODO: why is this required?
+ * @author steve
+ *
+ */
 public class PlayerHandPresenterBridge {
 
   private final PlayerHandPresenter handPresenter;

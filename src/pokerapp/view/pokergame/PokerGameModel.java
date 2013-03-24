@@ -8,16 +8,7 @@ import pokerapp.console.Player;
 import pokerapp.console.Players;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
- *
+ * Sets the basic parameters for a generic pokergame - players and dealer and setting a winner
  * @author Steve
  * @version 1
  */
