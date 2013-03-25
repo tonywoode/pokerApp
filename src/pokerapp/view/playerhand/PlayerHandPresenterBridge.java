@@ -11,7 +11,8 @@ import javax.swing.*;
 import java.io.IOException;
 
 /**
- * Bridge pattern for the display of the presenters hand TODO: why is this required?
+ * Bridge pattern for the display of the presenters hand 
+ * TODO: why is this implementing the bridge pattern
  * @author steve
  *
  */

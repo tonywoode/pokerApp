@@ -8,19 +8,12 @@ import pokerapp.view.card.CardImageFactory;
 import pokerapp.view.hand.SuperHandPanel;
 
 import javax.swing.*;
+
+import java.awt.Cursor;
 import java.io.IOException;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
- *
+ * Sets up the CPU's hand for how it will display onscreen
  * @author Steve
  * @version 1
  */
@@ -53,4 +46,11 @@ public class ComputerHandView implements Displayable {
   public void popUpCard(int index) {
     handView.popUpCard(index);
   }
+  
+  public void handPanelEnabler(boolean enable) {
+	  handView.handPanelEnable(enable);
+  }
+  
+  
+
 }

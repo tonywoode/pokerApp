@@ -36,6 +36,8 @@ public class SuperHandPanel extends JPanel {
   private final CardViewModelFactory cardViewModelFactory;
   private final List<ImageView> imageViews = new ArrayList<>();
   private final List<CardViewModel> cards = new ArrayList<>();
+  
+  private MouseEvent e;
 
   private Hand hand;
 
@@ -123,5 +125,16 @@ public class SuperHandPanel extends JPanel {
 
     //insets.set(0, 0, 100, 0);
   }
+  
+  
+  public void handPanelEnable(boolean enable) {
+		this.setEnabled(enable); 
+		if (enable == false) {
+		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+	
+		}
+		else
+		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+}
 
 }

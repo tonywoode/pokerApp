@@ -17,7 +17,6 @@ public final class HandPanel extends JPanel {
    * Displays a hand of cards in a panel
    *
    * @author tony
-   * @wbp.factory
    */
 
   private final ArrayList<ImageView> imageViews = new ArrayList<>();

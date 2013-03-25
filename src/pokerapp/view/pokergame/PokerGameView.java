@@ -60,9 +60,11 @@ public class PokerGameView extends JFrame {
 
 	public void registerSubViews(final PlayerHandPresenterBridge playerHandPresenterBridge,
 			final ComputerHandView computerHandView) {
+		computerHandView.handPanelEnabler(false);
 		JComponent cpuHandView = computerHandView.getView();
 		cpuHandView.setOpaque(false);
 		cpuHandView.setBounds(220, 70, 525, 105);
+		
 
 		JComponent playerHandView = playerHandPresenterBridge.getView();
 		playerHandView.setOpaque(false);
@@ -183,42 +185,6 @@ public class PokerGameView extends JFrame {
 		startLabel.setIcon(new ImageIcon("pics/LetsPlayPoker.png"));
 		startLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(startLabel);
-
-
-
-		JButton buttonWin = new JButton("Win");
-		buttonWin.setBounds(792, 37, 89, 23);
-		backPanel.add(buttonWin);
-		buttonWin.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {				
-				MsgAnimation anim = new MsgAnimation(textPanel, winLabel);
-				anim.begin(5000);
-			}
-		});
-
-		JButton buttonLose = new JButton("Lose");
-		buttonLose.setBounds(792, 70, 89, 23);
-		backPanel.add(buttonLose);	
-		buttonLose.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {				
-				MsgAnimation anim = new MsgAnimation(textPanel, loseLabel);
-				anim.begin(5000);
-			}
-		});
-
-		JButton buttonDraw = new JButton("Draw");
-		buttonDraw.setBounds(792, 104, 89, 23);
-		backPanel.add(buttonDraw);	
-		backPanel.add(drawLabel);
-		buttonDraw.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {				
-				MsgAnimation anim = new MsgAnimation(textPanel, drawLabel);
-				anim.begin(5000);
-			}
-		});
 
 
 	}

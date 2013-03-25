@@ -80,8 +80,7 @@ public class PlayerHandView implements Displayable {
 		});
 
 		this.holdButton = new HoldButton();
-
-		this.holdButton.addActionListener(new ActionListener() {
+		holdButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				for (PlayerHandViewActionListener listener : listeners) //here we pass event to the PHAL
@@ -121,7 +120,6 @@ public class PlayerHandView implements Displayable {
 		exchangeButton.setBorderPainted(enable);
 		holdButton.setEnabled(enable);
 		holdButton.setBorderPainted(enable);
-		
 	}
 
 }
