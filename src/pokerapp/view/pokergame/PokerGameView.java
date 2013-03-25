@@ -246,5 +246,10 @@ public class PokerGameView extends JFrame {
 	public void displayMessage(String msg) {
 		textPanel.setMessage(msg);
 	}
+
+	public void startButtonEnable(boolean enable) {
+		startButton.setEnabled(enable);
+		startButton.setBorderPainted(enable);
+	}
 	
 }

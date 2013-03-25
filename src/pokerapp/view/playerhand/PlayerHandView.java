@@ -7,9 +7,7 @@ import pokerapp.utils.textformat.IllegalFormatCodeException;
 import pokerapp.view.Displayable;
 import pokerapp.view.ExchangeButton;
 import pokerapp.view.HoldButton;
-import pokerapp.view.StartButton;
 import pokerapp.view.hand.SuperHandPanel;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -123,6 +121,7 @@ public class PlayerHandView implements Displayable {
 		exchangeButton.setBorderPainted(enable);
 		holdButton.setEnabled(enable);
 		holdButton.setBorderPainted(enable);
+		
 	}
 
 }

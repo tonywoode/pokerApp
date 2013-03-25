@@ -53,6 +53,7 @@ public class PokerGamePresenter {
 		pokerGameView.setVisible(true);
 		pokerGameView.setResizable(false);
 		playerHandView.userButtonsEnable(false);
+		pokerGameView.startButtonEnable(true);
 	 }
 
 	 @Subscribe
@@ -64,6 +65,7 @@ public class PokerGamePresenter {
 
 		 pokerGameView.displayMessage("Game Started: Choose Which Cards To Exchange");
 		 playerHandView.userButtonsEnable(true);
+		 pokerGameView.startButtonEnable(false);
 
 
 	 }
@@ -81,6 +83,7 @@ public class PokerGamePresenter {
 		 computerHandView.showCards();
 
 		 pokerGameView.showGameResultMessage(getWinMessage(winner));
+		 pokerGameView.startButtonEnable(true);
 		 
 		 scoreTally(winner);
 		
@@ -95,7 +98,7 @@ public class PokerGamePresenter {
 	 private int getWinMessage(Player winner) {
 		 if (winner == null)
 			 return 0; //draw
-		 else if (winner == pokerGameModel.getInteractivePlayer())
+		 else if (winner == pokerGameModel.getInteractivePlayer()) //TODO: equals()? Or actually doesn't matter same object?
 			 return 1; //you win
 		 else
 			 return -1; //you lose
