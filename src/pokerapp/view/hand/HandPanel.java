@@ -11,13 +11,14 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Displays a hand of cards in a panel
+ *
+ * @author tony
+ */
 public final class HandPanel extends JPanel {
 
-	/**
-	 * Displays a hand of cards in a panel
-	 *
-	 * @author tony
-	 */
 
 	private final ArrayList<ImageView> imageViews = new ArrayList<>();
 	private final ArrayList<CardViewModel> cards = new ArrayList<>();
