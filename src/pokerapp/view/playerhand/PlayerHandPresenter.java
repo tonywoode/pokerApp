@@ -41,6 +41,18 @@ public class PlayerHandPresenter implements PlayerHandViewActionListener, Displa
   }
 
   public void onHold() {
+	  try {
+		plHandView.setHand(hand);
+	} catch (FormatStringException e) {
+		// TODO had to use your nasty hack....
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO damn
+		e.printStackTrace();
+	} catch (IllegalFormatCodeException e) {
+		// TODO fix it
+		e.printStackTrace();
+	}
 	  eventSource.fire(new TurnCompletedEvent());
   }
 
