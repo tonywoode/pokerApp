@@ -115,7 +115,7 @@ public class SuperHandPanel extends JPanel {
   
   public void handPanelEnable(boolean enable) {
 		this.setEnabled(enable); 
-		mouseListenerEnable = false;
+		mouseListenerEnable = enable;
 		if (enable == true) {
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 }

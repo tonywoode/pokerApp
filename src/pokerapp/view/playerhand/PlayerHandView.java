@@ -120,6 +120,7 @@ public class PlayerHandView implements Displayable {
 		exchangeButton.setBorderPainted(enable);
 		holdButton.setEnabled(enable);
 		holdButton.setBorderPainted(enable);
+		handPanel.handPanelEnable(enable);
 	}
 
 }
