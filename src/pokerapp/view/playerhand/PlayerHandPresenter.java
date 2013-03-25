@@ -41,7 +41,7 @@ public class PlayerHandPresenter implements PlayerHandViewActionListener, Displa
   }
 
   public void onHold() {
-    JOptionPane.showMessageDialog(getView(), "Hold command activated");
+	  eventSource.fire(new TurnCompletedEvent());
   }
 
   public void onExchange() {

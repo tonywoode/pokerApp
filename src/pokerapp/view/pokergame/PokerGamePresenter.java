@@ -52,6 +52,7 @@ public class PokerGamePresenter {
 		pokerGameView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pokerGameView.setVisible(true);
 		pokerGameView.setResizable(false);
+		playerHandView.userButtonsEnable(false);
 	 }
 
 	 @Subscribe
