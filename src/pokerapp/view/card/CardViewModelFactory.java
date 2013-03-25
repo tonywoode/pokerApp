@@ -9,15 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
+ * creates card references and images for the card view models
  *
  * @author Steve
  * @version 1

@@ -14,7 +14,6 @@ import java.io.IOException;
 
 /**
  * PlayerHand presenter MVP pattern: presenter will communicate actions from and to pokerapp.view
- *
  * @author Tony
  */
 public class PlayerHandPresenter implements PlayerHandViewActionListener, Displayable {

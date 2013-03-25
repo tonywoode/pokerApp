@@ -9,15 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
+ * Dishes out cards images for pokerapp when passed a filepath
  *
  * @author Steve
  * @version 1
@@ -29,6 +21,9 @@ public class CardBackImageFactory implements CardImageFactory {
     this.path = path;
   }
 
+  /**
+   * creates a card image object from the gif's of cards
+   */
   @Override
   public CardView create(Card card) throws IOException, FormatStringException, IllegalFormatCodeException {
     return new CardImage(ImageIO.read(new File(path + "back.gif")));

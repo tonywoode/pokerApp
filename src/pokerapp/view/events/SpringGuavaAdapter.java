@@ -6,16 +6,8 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Not sure if this is actually an adapter. Don't think so.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
- *
+ * We pass eventbus events in the spring xml allowing spring to register event bus subscriptions
+ * 
  * @author Steve
  * @version 1
  */

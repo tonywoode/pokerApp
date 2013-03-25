@@ -27,7 +27,6 @@ public class PokerGamePresenter {
 	private int playerScore = 0;
 	private int cpuScore = 0;
 	
-
 	public PokerGamePresenter(PokerGameModel pokerGameModel, PokerGameView pokerGameView,
 			PlayerHandPresenterBridge playerHandPresenterBridge,
 			ComputerHandView computerHandView, String userMessage, PlayerHandView playerHandView) {
@@ -37,8 +36,6 @@ public class PokerGamePresenter {
 		this.computerHandView = computerHandView; 
 		this.playerHandView = playerHandView;
 	
-
-
 		pokerGameView.registerSubViews(playerHandPresenterBridge, computerHandView);
 		this.pokerGameView.displayMessage(userMessage);
 
@@ -56,6 +53,13 @@ public class PokerGamePresenter {
 		pokerGameView.startButtonEnable(true);
 	 }
 
+	 /**
+	  * Actions to take on the game beginning - set message, hands, trigger correct buttons
+	  * @param bge game event starting trigger
+	  * @throws FormatStringException 
+	  * @throws IOException
+	  * @throws IllegalFormatCodeException
+	  */
 	 @Subscribe
 	 public void gameBeginning(BeginGameEvent bge) throws FormatStringException, IOException, IllegalFormatCodeException {
 		 pokerGameModel.dealCards();
@@ -66,10 +70,15 @@ public class PokerGamePresenter {
 		 pokerGameView.displayMessage("Game Started: Choose Which Cards To Exchange");
 		 playerHandView.userButtonsEnable(true);
 		 pokerGameView.startButtonEnable(false);
-
-
 	 }
 
+	 /**
+	  * Actions to take when a round is complete - message, hand presentation, winnder tallying
+	  * @param tce round end trigger
+	  * @throws FormatStringException
+	  * @throws IOException
+	  * @throws IllegalFormatCodeException
+	  */
 	 @Subscribe
 	 public void turnCompleted(TurnCompletedEvent tce) throws FormatStringException, IOException,
 	 IllegalFormatCodeException {
@@ -87,8 +96,6 @@ public class PokerGamePresenter {
 		 pokerGameView.startButtonEnable(true);
 		 
 		 scoreTally(winner);
-		
-
 	 }
 
 	 /**

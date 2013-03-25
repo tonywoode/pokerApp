@@ -7,7 +7,7 @@ import pokerapp.utils.textformat.IllegalFormatCodeException;
 import java.io.IOException;
 
 /**
- * Interface that will pass card images to the view
+ * Interface for factory that will pass card images to the view
  *
  * @author Steve
  * @version 1

@@ -29,10 +29,17 @@ public class PokerGameModel {
     this.players.register(interactivePlayer, computerPlayer);
   }
 
+  /**
+   * Getter for winner
+   * @return player that won the round
+   */
   public Player pickWinner() {
     return players.pickWinner();
   }
 
+  /**
+   * Getter for the dealer dishing out a hand
+   */
   public void dealCards() {
     dealer.dealCards(5, players);
   }

@@ -6,15 +6,7 @@ import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
+ * Deals with rendering and providing images to pokerapp
  *
  * @author Steve
  * @version 1
@@ -32,6 +24,9 @@ public class CardImage extends CardView {
       g.drawImage(image, 0, 0, null);
   }
 
+  /**
+   * Copies image so that image can be manipulated e.g.: selection effect
+   */
   @Override
   public BufferedImage copyImage() {
     ColorModel cm = image.getColorModel();

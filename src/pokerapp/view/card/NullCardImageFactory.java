@@ -7,15 +7,7 @@ import pokerapp.utils.textformat.IllegalFormatCodeException;
 import java.io.IOException;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
+ * Returns a null card image which is used by card image fatories
  *
  * @author Steve
  * @version 1

@@ -73,6 +73,13 @@ public class SuperHandPanel extends JPanel {
     }
   }
 
+  /**
+   * passes hands to a hand view model
+   * @param hand a hand of cards
+   * @throws FormatStringException
+   * @throws IOException
+   * @throws IllegalFormatCodeException
+   */
   public void setHand(Hand hand) throws FormatStringException, IOException, IllegalFormatCodeException {
     this.hand = hand;
     this.cards.clear();
@@ -84,6 +91,10 @@ public class SuperHandPanel extends JPanel {
     }
   }
 
+  /**
+   * Gets selected cards a card view model
+   * @return arraylist of selected cards
+   */
   public List<Card> getSelectedCards() {
     List<Card> selectedCards = new ArrayList<>();
     for (CardViewModel cvm : cards)
@@ -113,6 +124,10 @@ public class SuperHandPanel extends JPanel {
   }
   
   
+  /**
+   * Turns off and on user interation with a hand panel
+   * @param enable interaction permitted when true
+   */
   public void handPanelEnable(boolean enable) {
 		this.setEnabled(enable); 
 		mouseListenerEnable = enable;

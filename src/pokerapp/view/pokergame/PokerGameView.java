@@ -54,17 +54,25 @@ public class PokerGameView extends JFrame {
 		layoutComponents();
 	}
 
+	/**
+	 * adds listeners
+	 * @param listener
+	 */
 	public void addActionListener(PokerGameViewActionListener listener) {
 		listeners.add(listener);
 	}
 
+	/**
+	 * sets up views of the two players hands
+	 * @param playerHandPresenterBridge the bridge to the imp of the hand presentation code
+	 * @param computerHandView the rendering of the computers hand
+	 */
 	public void registerSubViews(final PlayerHandPresenterBridge playerHandPresenterBridge,
 			final ComputerHandView computerHandView) {
 		computerHandView.handPanelEnabler(false);
 		JComponent cpuHandView = computerHandView.getView();
 		cpuHandView.setOpaque(false);
-		cpuHandView.setBounds(220, 70, 525, 105);
-		
+		cpuHandView.setBounds(220, 70, 525, 105);	
 
 		JComponent playerHandView = playerHandPresenterBridge.getView();
 		playerHandView.setOpaque(false);
@@ -104,7 +112,7 @@ public class PokerGameView extends JFrame {
 					listener.startGame();
 				eventSource.fire(new BeginGameEvent());
 				MsgAnimation anim = new MsgAnimation(textPanel, startLabel);
-				anim.begin(2000);
+				anim.begin(1000);
 			}
 		});
 
@@ -172,23 +180,23 @@ public class PokerGameView extends JFrame {
 		winLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(winLabel);
 
-
 		loseLabel = new JLabel();
 		loseLabel.setVisible(false);
 		loseLabel.setIcon(new ImageIcon("pics/Youlose.png"));
 		loseLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(loseLabel);
 
-
 		startLabel = new JLabel();
 		startLabel.setVisible(false);
 		startLabel.setIcon(new ImageIcon("pics/LetsPlayPoker.png"));
 		startLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(startLabel);
-
-
 	}
 
+	/**
+	 * Display the appropriate message depending on round result
+	 * @param winMessage win, lose or draw message
+	 */
 	public void showGameResultMessage(int winMessage) {
 		switch (winMessage) {
 		case 0:
@@ -204,18 +212,30 @@ public class PokerGameView extends JFrame {
 		}
 	}
 
+	/**
+	 * Renders the appropriate message on game result
+	 * @param label win, lose or draw label
+	 */
 	private void displayStatusMessage(JLabel label) {
 		MsgAnimation anim = new MsgAnimation(textPanel, label);
-		anim.begin(2000);	
+		anim.begin(1500);	
 	}	
-	
+
+	/**
+	 * renders message to text panel
+	 * @param msg string to display
+	 */
 	public void displayMessage(String msg) {
 		textPanel.setMessage(msg);
 	}
 
+	/**
+	 * Enables or disables start button
+	 * @param enable displays and is clickable when true
+	 */
 	public void startButtonEnable(boolean enable) {
 		startButton.setEnabled(enable);
 		startButton.setBorderPainted(enable);
 	}
-	
+
 }

@@ -10,19 +10,16 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 09/03/13
- * Time: 20:13
- * To change this template use File | Settings | File Templates.
+ * 
+ * Methods for selecting card images and rendering them based on their selection status ie: whether user has
+ * selected cards to change
+ * @author Steve
+ * @version 1
  */
 public class CardViewModel {
 
   @Getter
   private final Card card;
-
-  @Getter
-  @Setter
   boolean isSelected;
 
   private BufferedImage selectedImage;

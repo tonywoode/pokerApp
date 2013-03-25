@@ -29,6 +29,7 @@ public class ExchangeButton extends JButton {
 		setAlignmentX(1.0f);
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		setPressedIcon(new ImageIcon("pics/ExchangeSelected.png"));
+		setOpaque(false);
 		setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.RED, Color.ORANGE));
 		setBackground(new Color(34, 142, 34));
 		setIcon(new ImageIcon("pics/Exchange.png"));

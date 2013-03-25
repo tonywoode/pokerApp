@@ -10,15 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
+ * Factory for converting cards into card image references
  *
  * @author Steve
  * @version 1
@@ -33,6 +25,9 @@ public class CardImageFactoryImpl implements CardImageFactory {
     this.formatter = formatter;
   }
 
+  /**
+   * when passed a card, will return the image from path
+   */
   @Override
   public CardView create(Card card) throws IOException, FormatStringException, IllegalFormatCodeException {
     String filename = path + formatter.format("{0:s=c;r=s}.gif", card);

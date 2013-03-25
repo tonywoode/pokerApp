@@ -3,15 +3,7 @@ package pokerapp.view.events;
 import com.google.common.eventbus.EventBus;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
+ * Guava event handling for message passing events
  *
  * @author Steve
  * @version 1
