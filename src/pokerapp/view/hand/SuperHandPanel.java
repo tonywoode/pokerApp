@@ -18,18 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
- *
+ * Interactive functions for hand panels
  * @author Steve
- * @version 1
+ * @author Tony
+ * @version 2
  */
 public class SuperHandPanel extends JPanel {
 
@@ -37,25 +29,26 @@ public class SuperHandPanel extends JPanel {
   private final List<ImageView> imageViews = new ArrayList<>();
   private final List<CardViewModel> cards = new ArrayList<>();
   
-  private MouseEvent e;
-
+  private boolean mouseListenerEnable = true;
+  
   private Hand hand;
-
+  
   public SuperHandPanel(final int numCards, CardViewModelFactory cardViewModelFactory) {
     this.cardViewModelFactory = cardViewModelFactory;
     setOpaque(false);
     setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     this.setLayout(new FlowLayout());
-
     for (int iter = 0; iter < numCards; ++iter) {
       ImageView imageView = new ImageView(iter);
       imageViews.add(imageView);
       this.add(imageView);
+      
 
       imageView.addMouseListener(new MouseListener() {
 
         @Override
         public void mouseClicked(MouseEvent e) {
+        	if (mouseListenerEnable) {
           ImageView iv = (ImageView) e.getSource();
 
           CardViewModel cardVM = cards.get(iv.getIndex());
@@ -63,27 +56,20 @@ public class SuperHandPanel extends JPanel {
           cardVM.setIsSelected(!cardVM.getIsSelected());
 
           iv.setImage(cardVM.getImage());
-
-        }
-
+        	}}
         @Override
         public void mousePressed(MouseEvent e) {
         }
-
         @Override
         public void mouseReleased(MouseEvent e) {
         }
-
         @Override
         public void mouseEntered(MouseEvent e) {
         }
-
         @Override
         public void mouseExited(MouseEvent e) {
         }
       });
-
-
     }
   }
 
@@ -129,12 +115,10 @@ public class SuperHandPanel extends JPanel {
   
   public void handPanelEnable(boolean enable) {
 		this.setEnabled(enable); 
-		if (enable == false) {
-		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-	
-		}
-		else
+		mouseListenerEnable = false;
+		if (enable == true) {
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 }
-
+  }
 }
+
