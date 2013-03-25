@@ -48,7 +48,8 @@ public class HandScorerTestFixtureBase {
 
     //getResolver().setNextScorer(nullResolver);
 
-    getScorer().setNextScorer(new NullScorer());
+      if (getScorer().isEndOfChain())
+        getScorer().setNextScorer(new NullScorer());
   }
 
   protected Hand createHand(String... cards) {
