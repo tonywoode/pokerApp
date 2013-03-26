@@ -3,6 +3,12 @@ package pokerapp.view;
 import javax.swing.JLabel;
 import pokerapp.view.TextPanel;
 
+/**
+ * Actions for the animation of to-screen message images vs.text in pokerapp.
+ * Used because the images share the same space as the text panel
+ * @author Tony
+ *
+ */
 public class MsgAnimation extends Animation {
 	
 	private TextPanel panel;

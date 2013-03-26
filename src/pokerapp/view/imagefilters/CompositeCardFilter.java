@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Samuel Keays
- * Date: 16/03/13
- * Time: 18:39
- * To change this template use File | Settings | File Templates.
+ * Composite filter allows applying multiple image filters to a single bufferedimage
+ * @author Sam
+ * @version 1
  */
 public class CompositeCardFilter implements IImageFilter {
     private List<IImageFilter> childFilter = new ArrayList<IImageFilter>();

@@ -5,11 +5,9 @@ import com.jhlabs.image.InvertFilter;
 import java.awt.image.BufferedImage;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Samuel Keays
- * Date: 16/03/13
- * Time: 18:23
- * To change this template use File | Settings | File Templates.
+ * Imp for using jhlabs InvertFilter on a buffered image
+ * @author Sam
+ * @version 1
  */
 public class InvertCardFilter implements IImageFilter {
 

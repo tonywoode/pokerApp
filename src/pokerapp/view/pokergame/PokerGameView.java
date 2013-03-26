@@ -26,7 +26,7 @@ import java.util.List;
 public class PokerGameView extends JFrame {
 	final int FRAME_WIDTH = 912;
 	final int FRAME_HEIGHT = 620;
-	final String backGround = "pics/TableBack3.png";
+	final String backGround = "pics/TableBack.png";
 	final String logoFile = "pics/PokerappLogo.png";
 
 	private Container container = null;

@@ -5,11 +5,9 @@ import com.jhlabs.image.ThresholdFilter;
 import java.awt.image.BufferedImage;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Samuel Keays
- * Date: 16/03/13
- * Time: 18:39
- * To change this template use File | Settings | File Templates.
+ * * Imp for using jhlabs ThresholdFilter on a buffered image
+ * @author Sam
+ * @version 1
  */
 public class ThresholdCardFilter implements IImageFilter {
     @Override

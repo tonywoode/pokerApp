@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 /**
- * Animate for image messages
+ * Animate for image messages in pokerapp - separates the use of a timer and event periods
+ * from the imp of what events will animate
  * @author Tony
  *
  */

@@ -3,11 +3,9 @@ package pokerapp.view.imagefilters;
 import java.awt.image.BufferedImage;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Samuel Keays
- * Date: 16/03/13
- * Time: 18:20
- * To change this template use File | Settings | File Templates.
+ * Interface for the image filter which will denote selected cards
+ * @author Sam
+ * @version 1
  */
 public interface IImageFilter {
     BufferedImage filter(BufferedImage src);
