@@ -33,6 +33,7 @@ public class HoldButton extends JButton {
 		setHorizontalAlignment(SwingConstants.LEFT);
 		setAlignmentX(1.0f);
 		setOpaque(false);
+		setToolTipText("Don't Exchange any Cards");
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		setPressedIcon(new ImageIcon("pics/HoldSelected.png"));
 		setBackground(new Color(34, 142, 34));

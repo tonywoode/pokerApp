@@ -14,7 +14,7 @@ import javax.swing.border.EtchedBorder;
  */
 public class StartButton extends JButton {
 		public StartButton() {
-			setToolTipText("Start Or Restart Game");
+			setToolTipText("Start a Game");
 			setOpaque(false);
 			setIcon(new ImageIcon("pics/StartGame.png"));
 			setPressedIcon(new ImageIcon("pics/StartGameSelected.png"));

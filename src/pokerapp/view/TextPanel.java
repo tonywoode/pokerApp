@@ -26,6 +26,7 @@ public class TextPanel extends JTextPane {
 	
 		//set the foregroundtext
 		textPanelFront = new JTextPane();
+		textPanelFront.setFocusable(false);
 		textPanelFront.setDoubleBuffered(true);
 		textPanelFront.setFont(font);
 		textPanelFront.setForeground(new Color(250, 35, 50));
