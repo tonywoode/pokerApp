@@ -102,16 +102,16 @@ public class PokerGamePresenter {
 	  * Simple switch to announce winner
 	  * @param winner player who won
 	  * @return 0 if a draw, 1 if player won, -1 if cpu won
+	  * @throws IllegalArgumentException
 	  */
 	 private int getWinMessage(Player winner) throws IllegalArgumentException {
 		 if (winner == null)
 			 return 0; //draw
-		 else if (winner == pokerGameModel.getInteractivePlayer()) //TODO: equals()? Or actually doesn't matter same object?
+		 else if (winner.equals(pokerGameModel.getInteractivePlayer() ) )
 			 return 1; //you win
-		 else if (winner == pokerGameModel.getComputerPlayer())
+		 else if (winner.equals(pokerGameModel.getComputerPlayer() ) )
 			 return -1; //you lose
 		 else throw new IllegalArgumentException("Something wrong with winner logic");
-		 
 	 }
 	 
 	 /**
