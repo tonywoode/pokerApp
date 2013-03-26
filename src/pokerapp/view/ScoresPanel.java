@@ -43,9 +43,11 @@ public class ScoresPanel extends JPanel {
 
 		cpuScore = new JTextField();
 		textFieldFormatBuilder(cpuScore);
+		cpuScore.setText("0");
 
 		youScore = new JTextField();
 		textFieldFormatBuilder(youScore);
+		youScore.setText("0");
 
 
 
