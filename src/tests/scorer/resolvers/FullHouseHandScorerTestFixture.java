@@ -31,10 +31,10 @@ public class FullHouseHandScorerTestFixture extends HandScorerTestFixtureBase {
     }
 
     @Test
-    public void Hand_Is_FullHouse_Not_Threeofakind() throws FileNotFoundException {
+    public void Hand_Is_Threeofakind_Not_FullHouse() throws FileNotFoundException {
         ScoredHand hand = resolveHand("S9", "D9", "C9", "D2", "S3");
 
-        assertEquals("Is Three of a kind, not Full house", "Three of a kind", hand.getName());
+        assertEquals("Is Three of a kind, not Full house", "ThreeOfAKind", hand.getName());
     }
 
 }

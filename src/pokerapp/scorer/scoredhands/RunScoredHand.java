@@ -1,7 +1,5 @@
 package pokerapp.scorer.scoredhands;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.Rank;
@@ -32,8 +30,8 @@ public class RunScoredHand extends AbstractScoredHand<RunScoredHand, Run> {
     this.name = name;
     this.sameRankCards = sameRankCards;
     this.spares = spares;
-    ApplicationContext appContext = new ClassPathXmlApplicationContext("/scorer-application-context.xml");
-    this.handType = (Run)appContext.getBean(Integer.toString(handNumber));
+//    ApplicationContext appContext = new ClassPathXmlApplicationContext("/scorer-application-context.xml");
+//    this.handType = (Run)appContext.getBean(Integer.toString(handNumber));
   }
 
   @Override
