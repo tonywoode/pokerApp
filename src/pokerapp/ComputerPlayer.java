@@ -5,6 +5,8 @@ import pokerapp.console.Console;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.skynet.ComputerPlayerStrategy;
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
 
 import java.io.IOException;
 
@@ -29,7 +31,7 @@ public class ComputerPlayer extends Player {
     this("Computer", turnStrategy);
   }
 
-  public void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) throws IOException {
+  public void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) throws IOException, FormatStringException, IllegalFormatCodeException {
 
     for (int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 

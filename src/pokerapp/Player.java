@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.console.Console;
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
 
 import java.io.IOException;
 
@@ -24,7 +26,7 @@ public abstract class Player {
     return getPlayerName();
   }
 
-  public abstract void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) throws IOException;
+  public abstract void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) throws IOException, FormatStringException, IllegalFormatCodeException;
 
   public void receiveCard(Card card) {
     hand.add(card);

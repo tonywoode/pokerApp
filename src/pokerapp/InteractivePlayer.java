@@ -3,6 +3,8 @@ package pokerapp;
 import pokerapp.console.Console;
 import pokerapp.console.ExchangeCardsInterpreter;
 import pokerapp.console.ExchangeSetting;
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
 
 /**
  * @author Steve
@@ -24,14 +26,14 @@ public class InteractivePlayer extends Player {
     this("");
   }
 
-  public String getPlayerNameFromUser(Console console) {  //TODO:return value never used
+  public String getPlayerNameFromUser(Console console) throws FormatStringException, IllegalFormatCodeException {  //TODO:return value never used
     console.writeMessage("What's your name?");
     setPlayerName(console.readLine());
     return getPlayerName();
   }
 
   @Override
-  public void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) {
+  public void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) throws FormatStringException, IllegalFormatCodeException {
 
     for (int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 

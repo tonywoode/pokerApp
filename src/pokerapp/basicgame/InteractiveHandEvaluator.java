@@ -4,12 +4,12 @@ import pokerapp.Application;
 import pokerapp.Hand;
 import pokerapp.HandFactory;
 import pokerapp.console.Console;
-import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.HandScorer;
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  * User can specify a hand of cards and evaluator will return rank
@@ -33,7 +33,7 @@ public class InteractiveHandEvaluator extends Application {
   }
 
   @Override
-  public void run() {
+  public void run() throws FormatStringException, IllegalFormatCodeException {
     try {
       while (true) {
         console.writeMessage("Enter 5 cards (e.g. H4) separated by spaces");

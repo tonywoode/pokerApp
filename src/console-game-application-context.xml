@@ -22,8 +22,13 @@
         <constructor-arg index="5" ref="players"/>
     </bean>
 
-    <bean id="console" class="pokerapp.console.StandardConsole">
-        <constructor-arg ref="stringFormatter"/>
+    <bean id="console" class="pokerapp.console.projectX.ProjectXConsole">
+        <constructor-arg>
+          <bean id="console" class="pokerapp.console.StandardConsole">
+            <constructor-arg ref="stringFormatter"/>
+          </bean>
+        </constructor-arg>
+        <constructor-arg ref="stringFormatter" />
     </bean>
 
     <bean id="interactivePlayer" class="pokerapp.InteractivePlayer"/>
