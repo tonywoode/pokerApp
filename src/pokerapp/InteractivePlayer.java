@@ -29,6 +29,7 @@ public class InteractivePlayer extends Player {
   public String getPlayerNameFromUser(Console console) throws FormatStringException, IllegalFormatCodeException {  //TODO:return value never used
     console.writeMessage("What's your name?");
     setPlayerName(console.readLine());
+    console.writeMessage("Hello " + getPlayerName() + ", and welcome to pokerapp.");
     return getPlayerName();
   }
 
