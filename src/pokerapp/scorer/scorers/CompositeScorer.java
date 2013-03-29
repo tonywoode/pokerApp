@@ -36,37 +36,5 @@ public abstract class CompositeScorer extends HandScorer {
     return createCategory(hand, scoredHands);
   }
 
-  // TODO: fix this hacky solution by using Mockito
-  public class NullScorer extends HandScorer {
-
-    public class NullScoredHand extends ScoredHand {
-
-      public NullScoredHand() {
-        super(-100, null, null);
-      }
-
-      @Override
-      public String getName() {
-        return null;
-      }
-
-      @Override
-      protected int compareEqualCategories(ScoredHand rhs) {
-        return 0;
-      }
-
-      @Override
-      public List<Card> getRelevantCards() {
-        return null;
-      }
-    }
-
-
-    @Override
-    protected ScoredHand resolveCore(Hand hand) {
-      return null;
-    }
-  }
-
   protected abstract ScoredHand createCategory(Hand hand, ArrayList<ScoredHand> scoredHands);
 }
