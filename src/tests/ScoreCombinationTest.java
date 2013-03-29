@@ -1,9 +1,6 @@
 package tests;
 
 import au.com.bytecode.opencsv.CSVReader;
-import lombok.Getter;
-import lombok.Setter;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -13,15 +10,20 @@ import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scorers.HandScorer;
 import pokerapp.utils.HandPermutationGenerator;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.runners.Parameterized.Parameters;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Samuel Keays
+ * @author Samuel Keays
+ * @author Steve Faulmann
  * Date: 23/03/13
  * Time: 17:44
  * To change this template use File | Settings | File Templates.
