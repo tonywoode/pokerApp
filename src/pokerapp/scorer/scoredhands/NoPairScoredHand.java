@@ -23,12 +23,12 @@ import java.util.Properties;
  * Time: 20:56
  * To change this template use File | Settings | File Templates.
  */
-public class NoPairScoredHand extends AbstractScoredHand<NoPairScoredHand,NoPair> {
+public class NoPairScoredHand extends AbstractScoredHand<NoPairScoredHand> {
 
     @Getter private Spares spares;
 
     public NoPairScoredHand(int handNumber, Hand hand, Spares spares) {
-        super(handNumber, hand);
+        super(handNumber, hand, new NoPair());
         this.spares = spares;
         ApplicationContext appContext = new ClassPathXmlApplicationContext("/scorer-application-context.xml");
         this.handType = (NoPair)appContext.getBean("NoPair");

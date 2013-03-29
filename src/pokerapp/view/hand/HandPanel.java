@@ -8,6 +8,7 @@ import pokerapp.view.ImageView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public final class HandPanel extends JPanel {
 	/**
 	 * sets up a basic hand panel
 	 */
-	public HandPanel() {
+	public HandPanel() throws IOException {
 		setOpaque(false);
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		this.setLayout(new FlowLayout());

@@ -20,7 +20,6 @@ import static junit.framework.Assert.assertTrue;
 
  *
  */
-class
 public class DeckTest {
 
 	/**
@@ -28,7 +27,7 @@ public class DeckTest {
 	 */
 	@Test
 	public final void testDeck() {
-		check that we have 52 cards
+		//check that we have 52 cards
 
 	}
 
@@ -41,7 +40,7 @@ public class DeckTest {
 		//check that the number of cards has reduced by one
 		//check that you are being returned a card
 
-		Deck testDeck = new Deck(true);
+		Deck testDeck = null; //new Deck(true);
 //		testDeck.add(new Card(Suit.Hearts, 13));
 		Card c = testDeck.pop();
 
@@ -54,7 +53,7 @@ public class DeckTest {
 	 */
 	@Test
 	public final void testReturnToBottom() {
-		Deck testDeck = new Deck(true);
+		Deck testDeck = null; //new Deck(true);
 //		testDeck.create(new Card(Suit.Hearts, 13));
 //		testDeck.create(new Card(Suit.Diamonds, 11));
 		Card c = testDeck.pop();

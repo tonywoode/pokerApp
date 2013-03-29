@@ -22,12 +22,8 @@ import java.util.Properties;
  */
 public class RoyalFlushScoredHand extends StraightFlushScoredHand {
 
-  RoyalFlush handType;
-
   public RoyalFlushScoredHand(int handNumber, Hand hand, Rank rank) {
-    super(handNumber, hand, rank);
-    ApplicationContext appContext = new ClassPathXmlApplicationContext("/scorer-application-context.xml");
-    this.handType = (RoyalFlush)appContext.getBean("RoyalFlush");
+    super(handNumber, hand, rank, new RoyalFlush());
   }
 
   public RoyalFlushScoredHand(StraightFlushScoredHand hand) {

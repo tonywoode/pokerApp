@@ -24,20 +24,18 @@ import java.util.Properties;
  * Time: 01:02
  * To change this template use File | Settings | File Templates.
  */
-public class TwoPairScoredHand extends AbstractScoredHand<TwoPairScoredHand,TwoPair> {
+public class TwoPairScoredHand extends AbstractScoredHand<TwoPairScoredHand> {
 
-  private static final int  PAIRLENGTH = 2;
+  private static final int PAIR_LENGTH = 2;
 
   @Getter private SameRankCards highPair, lowPair;
   @Getter private Spares spares;
 
   public TwoPairScoredHand(int handNumber, Hand hand, SameRankCards highPair, SameRankCards lowPair, Spares spares) {
-    super(handNumber, hand);
+    super(handNumber, hand, new TwoPair());
     this.highPair = highPair;
     this.lowPair = lowPair;
     this.spares = spares;
-    ApplicationContext appContext = new ClassPathXmlApplicationContext("/scorer-application-context.xml");
-    this.handType = (TwoPair)appContext.getBean("StraightFlush");
   }
 
   protected int compareEqualCategories(TwoPairScoredHand rhs) {
@@ -65,21 +63,17 @@ public class TwoPairScoredHand extends AbstractScoredHand<TwoPairScoredHand,TwoP
       return name;
   }
 
-    @Override
-    public List<Card> getRelevantCards() {
-        List<Card> relevantArray = new ArrayList<Card>();
-        List<SameRankCards> pairSet = new ArrayList<SameRankCards>();
+  @Override
+  public List<Card> getRelevantCards() {
+    List<Card> relevantArray = new ArrayList<Card>();
+    List<SameRankCards> pairSet = new ArrayList<SameRankCards>();
 
-        pairSet.add(lowPair);
-        pairSet.add(highPair);
+    pairSet.add(lowPair);
+    pairSet.add(highPair);
 
-        for (SameRankCards pair : pairSet)
-        {
-            for(int i = 0; i < PAIRLENGTH;)
-            {
-                relevantArray.add(pair.get(i));
-            }
-        }
-        return relevantArray;
-    }
+    for (SameRankCards pair : pairSet)
+      for(int iter = 0; iter < PAIR_LENGTH; ++iter)
+        relevantArray.add(pair.get(iter));
+    return relevantArray;
+  }
 }

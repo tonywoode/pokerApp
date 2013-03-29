@@ -42,7 +42,7 @@ public abstract class CompositeScorer extends HandScorer {
     public class NullScoredHand extends ScoredHand {
 
       public NullScoredHand() {
-        super(-100, null);
+        super(-100, null, null);
       }
 
       @Override

@@ -59,4 +59,8 @@ public class SameRankCards implements Comparable<SameRankCards>, Iterable<Card> 
   public Iterator<Card> iterator() {
     return cards.iterator();
   }
+
+  public int getCount() {
+    return cards.size();
+  }
 }

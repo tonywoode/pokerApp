@@ -10,12 +10,9 @@ import pokerapp.scorer.scoredhands.ScoredHand;
  * Time: 22:46
  * To change this template use File | Settings | File Templates.
  */
-public class Flush extends HandTypeTag {
-    public Flush(){}
-
+public class Flush extends HandType {
     @Override
     public void visit(ScoredHand sh, HandVisitor visitor) {
         visitor.accept(sh, this);
     }
-
 }

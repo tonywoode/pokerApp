@@ -10,6 +10,6 @@ import pokerapp.scorer.scoredhands.ScoredHand;
  * Time: 22:46
  * To change this template use File | Settings | File Templates.
  */
-public abstract class HandTypeTag {
+public abstract class HandType {
     public abstract void visit(ScoredHand sh, HandVisitor visitor);
 }

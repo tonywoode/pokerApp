@@ -20,16 +20,14 @@ import java.util.Properties;
  * Time: 01:16
  * To change this template use File | Settings | File Templates.
  */
-public class StraightScoredHand extends AbstractScoredHand<StraightScoredHand,Straight> {
+public class StraightScoredHand extends AbstractScoredHand<StraightScoredHand> {
 
   @Getter
   private Rank rank;
 
   public StraightScoredHand(int handNumber, Hand hand, Rank rank) {
-    super(handNumber, hand);
+    super(handNumber, hand, new Straight());
     this.rank = rank;
-    ApplicationContext appContext = new ClassPathXmlApplicationContext("/scorer-application-context.xml");
-    this.handType = (Straight)appContext.getBean("Straight");
   }
 
   @Override

@@ -1,14 +1,11 @@
 package pokerapp.scorer.scoredhands;
 
 import lombok.Getter;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.Rank;
+import pokerapp.scorer.typetag.HandType;
 import pokerapp.scorer.typetag.StraightFlush;
-
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,16 +17,18 @@ import java.util.Properties;
  *
  * @author steve
  */
-public class StraightFlushScoredHand extends AbstractScoredHand<StraightFlushScoredHand,StraightFlush> {
+public class StraightFlushScoredHand extends AbstractScoredHand<StraightFlushScoredHand> {
 
   @Getter
   private Rank rank;
 
-  public StraightFlushScoredHand(int handNumber, Hand hand, Rank rank) {
-    super(handNumber, hand);
+  public StraightFlushScoredHand(int handNumber, Hand hand, Rank rank, HandType handType) {
+    super(handNumber, hand, handType);
     this.rank = rank;
-    ApplicationContext appContext = new ClassPathXmlApplicationContext("/scorer-application-context.xml");
-    this.handType = (StraightFlush)appContext.getBean("StraightFlush");
+  }
+
+  public StraightFlushScoredHand(int handNumber, Hand hand, Rank rank) {
+    this(handNumber, hand, rank, new StraightFlush());
   }
 
   @Override

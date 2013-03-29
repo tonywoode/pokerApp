@@ -18,14 +18,14 @@ import java.util.List;
  * @author Steve
  * @version 1.0
  */
-public class RunScoredHand extends AbstractScoredHand<RunScoredHand, Run> {
+public class RunScoredHand extends AbstractScoredHand<RunScoredHand> {
 
   private String name;
   private SameRankCards sameRankCards;
   private Spares spares;
 
   public RunScoredHand(int handNumber, Hand hand, String name, SameRankCards sameRankCards, Spares spares) {
-    super(handNumber, hand);
+    super(handNumber, hand, new Run(sameRankCards.getCount()));
     this.name = name;
     this.sameRankCards = sameRankCards;
     this.spares = spares;

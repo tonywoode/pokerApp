@@ -1,7 +1,7 @@
 package pokerapp.scorer.scoredhands;
 
 import pokerapp.Hand;
-import pokerapp.scorer.typetag.HandTypeTag;
+import pokerapp.scorer.typetag.HandType;
 
 /**
  * Implements Coplien's Curiously Recurring Template Pattern to
@@ -10,12 +10,12 @@ import pokerapp.scorer.typetag.HandTypeTag;
  * @author Steve Faulmann
  *
  */
-public abstract class AbstractScoredHand<T,U extends HandTypeTag> extends ScoredHand<U> {
+public abstract class AbstractScoredHand<T> extends ScoredHand {
 
   protected String name;
 
-  protected AbstractScoredHand(int handNumber, Hand hand) {
-    super(handNumber, hand);
+  protected AbstractScoredHand(int handNumber, Hand hand, HandType handType) {
+    super(handNumber, hand, handType);
   }
 
   @Override

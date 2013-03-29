@@ -4,7 +4,7 @@ import lombok.Getter;
 import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.scorer.HandVisitor;
-import pokerapp.scorer.typetag.HandTypeTag;
+import pokerapp.scorer.typetag.HandType;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -18,17 +18,16 @@ import java.util.List;
  * 
  *@author steve
  */
-public abstract class ScoredHand<T extends HandTypeTag> implements Comparable<ScoredHand> {
+public abstract class ScoredHand implements Comparable<ScoredHand> {
 
-    @Getter
-    protected T handType;
-    @Getter
-    protected int handNumber = -1;
-	@Getter protected Hand hand;
+  @Getter protected HandType handType;
+  @Getter protected int handNumber = -1;
+  @Getter protected Hand hand;
 
-	protected ScoredHand(int handNumber, Hand hand) {
+	protected ScoredHand(int handNumber, Hand hand, HandType handType) {
 		this.handNumber = handNumber;
 		this.hand = hand;
+    this.handType = handType;
 	}
 
 	/**

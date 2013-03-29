@@ -75,8 +75,12 @@ public class PlayerHandView implements Displayable {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				for (PlayerHandViewActionListener listener : listeners) //here we pass event to the PHAL
-					listener.onExchange();
-			}
+          try {
+            listener.onExchange();
+          } catch (IOException e1) {
+            // TODO: help!
+          }
+      }
 		});
 
 		this.holdButton = new HoldButton();
@@ -84,8 +88,12 @@ public class PlayerHandView implements Displayable {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				for (PlayerHandViewActionListener listener : listeners) //here we pass event to the PHAL
-					listener.onHold();
-			}
+          try {
+            listener.onHold();
+          } catch (IOException e1) {
+            // TODO: help
+          }
+      }
 		});
 
 	}

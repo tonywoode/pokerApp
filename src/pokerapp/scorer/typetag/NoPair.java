@@ -10,9 +10,7 @@ import pokerapp.scorer.scoredhands.ScoredHand;
  * Time: 22:46
  * To change this template use File | Settings | File Templates.
  */
-public class NoPair extends HandTypeTag {
-    public NoPair(){}
-
+public class NoPair extends HandType {
     @Override
     public void visit(ScoredHand sh, HandVisitor visitor) {
         visitor.accept(sh, this);
