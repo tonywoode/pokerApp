@@ -27,8 +27,7 @@ import pokerapp.utils.textformat.*;
     	case ACE_LOW: return "Low Ace";
  */
 
-public enum Rank implements Formattable<Rank> { // enums implicitly extend Enum & we can't therefore use our own base
-  // class
+public enum Rank implements Formattable<Rank> { // enums implicitly extend Enum & we can't therefore use our own base class
   DEUCE(2, "Deuce"),
   THREE(3, "Three"),
   FOUR(4, "Four"),
@@ -38,7 +37,7 @@ public enum Rank implements Formattable<Rank> { // enums implicitly extend Enum 
   EIGHT(8, "Eight"),
   NINE(9, "Nine"),
   TEN(10, "Ten"),
-  JACK(11, "Jack", "J"),    // typo, was 2
+  JACK(11, "Jack", "J"),
   QUEEN(12, "Queen", "Q"),
   KING(13, "King", "K"),
   ACE(14, "Ace", "A");
@@ -72,7 +71,8 @@ public enum Rank implements Formattable<Rank> { // enums implicitly extend Enum 
   );
 
   /**
-   * @param number rank of cards 1 to 10
+   * @param number rank of cards 2 to 14
+   * @param name The full name of the rank (e.g., Deuce, Jack)
    * @param symbol necessary for jack, queen, king, ace
    * @throws IllegalArgumentException in case constructor receives a second argument that's not ten to ace
    */
@@ -87,9 +87,11 @@ public enum Rank implements Formattable<Rank> { // enums implicitly extend Enum 
   }
 
   /**
-   * Even cards < 11 need two parameters, we pass the number as the second for card ranks < 11
-   *  TODO: clarify: why two parameters? pass the number as the second what?
-   * @param number
+   * Used for Ranks >= 2 && <= 10, as their symbolic representation can be
+   * derived from their number
+   *
+   * @param number rank of cards 2 to 14
+   * @param name The full name of the rank (e.g., Deuce, Jack)
    */
   Rank(int number, String name) {
     this(number, name, Integer.toString(number));
@@ -97,8 +99,6 @@ public enum Rank implements Formattable<Rank> { // enums implicitly extend Enum 
 
   /**
    * Returns the Rank in a form that can be printed onscreen
-   *
-   * @throws IllegalArgumentException because it won't be a rank TODO: really?
    */
   @Override
   public String toString() {

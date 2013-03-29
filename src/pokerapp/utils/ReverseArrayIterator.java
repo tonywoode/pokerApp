@@ -1,18 +1,15 @@
 package pokerapp.utils;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 22/02/13
- * Time: 03:43
- * To change this template use File | Settings | File Templates.
+ * Provides a simple adapter over walking backwards through an array
+ *
+ * Only supports integers (e.g. built-in 'int') as Java does not support reified generic.
+ *
+ * @author Steve
  */
-
-// TODO: only supports integers (e.g. built-in 'int') at the moment
 public class ReverseArrayIterator {
   private final int[] src;
   private int index;
-
 
   public ReverseArrayIterator(int[] src) {
     this.src = src;
@@ -21,7 +18,6 @@ public class ReverseArrayIterator {
 
   public boolean hasPrevious() {
     return index >= 0;
-    //return index > src.length;
   }
 
   public int previous() {

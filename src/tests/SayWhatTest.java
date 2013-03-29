@@ -6,15 +6,11 @@ import pokerapp.console.projectX.ProjectXConsole;
 import pokerapp.console.projectX.SayWhat;
 
 /**
- * @param //TODO:Parameter Description
  * @author Ari
  * @author Steve
  * @version 1.0
- * @return //TODO:Return Description
- * @throws //TODO:ExceptionType
  */
 public class SayWhatTest {
-
 
   @Test
   public void testVickiSays_text() throws Exception {

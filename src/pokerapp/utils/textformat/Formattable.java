@@ -14,7 +14,7 @@ package pokerapp.utils.textformat;
  * @version 3
  */
 public interface Formattable<T> {
-  Formats<T> getFormats();  // using the generic type here now; TODO: not sure if this is even necessary
+  Formats<T> getFormats();
 
   String format(String format) throws IllegalFormatCodeException, FormatStringException;
 }

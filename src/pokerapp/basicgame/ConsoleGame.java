@@ -23,6 +23,10 @@ public class ConsoleGame extends Application {
 
   private static final int HAND_SIZE = 5;
 
+  /**
+   * Note that Lombok has been removed from this class because I couldn't get
+   * it to work with final members.
+   */
   public ConsoleGame(Console console, InteractivePlayer ip, ComputerPlayer cp, Dealer dealer, Deck deck,
                      Players players) {
     this.console = console;
@@ -31,21 +35,11 @@ public class ConsoleGame extends Application {
     this.dealer = dealer;
     this.deck = deck;
     this.players = players;
+    players.register(computerPlayer, interactivePlayer);
   }
 
   public static void main(String[] args) throws IOException {
     begin("consoleGame", "console-game-application-context.xml");
-  }
-
-  /**
-    * Separate initialisation function used by Spring, because
-    * Lombok's auto generated constructor does not do this for us
-    * <p/>
-    * Note that Lombok has been removed from this class because I couldn't get
-    * it to work with final members. TODO: fix this.
-    */
-  public void initialise() {
-    players.register(computerPlayer, interactivePlayer);
   }
 
   /**
@@ -61,11 +55,9 @@ public class ConsoleGame extends Application {
     dealer.dealCards(HAND_SIZE, players);
 
     for (Player p : players)
-      //TODO:implement custom String formatting
       console.writeMessage("Player {0} has {1}", p, p.getHand());
 
     // TODO: The play order does not follow the spec
-    //for(Player p : players.reverse()) // TODO: .reverse() is an issue!
     for (Player p : players)
       p.playTurn(console, deck, exchangeSetting);
 

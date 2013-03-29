@@ -13,7 +13,7 @@
 
     <bean id="stringFormatter" class="pokerapp.utils.textformat.StringFormatter"/>
 
-    <bean id="consoleGame" class="pokerapp.basicgame.ConsoleGame" init-method="initialise" autowire="constructor">
+    <bean id="consoleGame" class="pokerapp.basicgame.ConsoleGame" autowire="constructor">
         <constructor-arg index="0" ref="console"/>
         <constructor-arg index="1" ref="interactivePlayer"/>
         <constructor-arg index="2" ref="computerPlayer"/>

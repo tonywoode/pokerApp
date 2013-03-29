@@ -1,13 +1,14 @@
 package tests.scorer.resolvers;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
-
 import pokerapp.Hand;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.SameRankHandScorer;
 
 import java.io.FileNotFoundException;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,7 +24,7 @@ public class PairHandScorerTestFixture extends HandScorerTestFixtureBase {
     super(new SameRankHandScorer("pair", 2, 1));
   }
 
-  @Test // TODO: these should use data providers...
+  @Test
   public void HandIsPair_first2() throws FileNotFoundException {
     ScoredHand hand = resolveHand("D4", "S4", "C2", "C3", "C5");
 	

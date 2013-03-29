@@ -12,7 +12,7 @@ import pokerapp.utils.ReverseArrayIterator;
  *         Represents the statistical summary of the rank_histogram of the cards in a hand.
  *         It determines how many cards of each rank are in the hand
  *         <p/>
- *         See [wiki page] for details. TODO: Ari was (maybe) going to write this key data structure up.
+ *         See [wiki page] for details.
  *         <p/>
  *         <p/>
  *         2013-03-06 (sdf):
@@ -75,12 +75,12 @@ public class HandRanks {
    * @throws Exception if there is no multiple of numCards in the histogram
    */
 
-  public int getRankOfMultiple(int numCards) throws Exception {
+  public int getRankOfMultiple(int numCards) {
     for (int iter = Constants.NUM_RANKS - 1; iter >= 0; --iter)
       if (rank_histogram[iter] == numCards)
         return iter;
 
-    throw new Exception(new StringBuilder().append(numCards).append(" of a kind does not exist in hand").toString());
+    throw new IllegalArgumentException(new StringBuilder().append(numCards).append(" of a kind does not exist in hand").toString());
   }
 
   // @author Ari Ghosh

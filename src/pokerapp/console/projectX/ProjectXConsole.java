@@ -2,17 +2,13 @@ package pokerapp.console.projectX;
 
 import pokerapp.Suit;
 import pokerapp.console.Console;
-import pokerapp.console.projectX.SayWhat;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 import pokerapp.utils.textformat.StringFormatter;
 
 /**
- * @param //TODO:Parameter Description
  * @author Steve
  * @version 1.0
- * @return //TODO:Return Description
- * @throws //TODO:ExceptionType
  */
 public class ProjectXConsole implements Console {
   private final Console inner;

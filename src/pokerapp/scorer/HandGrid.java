@@ -5,13 +5,10 @@ import pokerapp.Hand;
 import pokerapp.utils.Constants;
 
 /**
- * Created with IntelliJ IDEA.
  *
  * @author Ari
- *         Date: 28/02/13
- *         Time: 12:32
- *         To change this template use File | Settings | File Templates.
- *         represents the hand as a matrix //TODO: write this up
+ *
+ * represents the hand as a matrix
  */
 public class HandGrid {
 

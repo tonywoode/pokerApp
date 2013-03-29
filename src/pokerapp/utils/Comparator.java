@@ -37,10 +37,8 @@ package pokerapp.utils;
  *         Patterns: [tbd]
  */
 public class Comparator {
-  //  tracks the last comparison state;
-  //  TODO: what happens if no comparisons have been made?
-  int c = 0; //needs to start not equal
-
+  // tracks the last comparison state;
+  int c = 0; // needs to start equal
 
   /**
    * Initialises a new Comparator object. Integer overloads

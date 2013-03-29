@@ -18,11 +18,11 @@ public class Card implements Formattable {
   @Getter
   private Rank rank;
 
-  public Card(Suit suit, Rank rank) throws IllegalArgumentException {
+  public Card(Suit suit, Rank rank) {
     if (suit == null)
       throw new IllegalArgumentException("Suit must not be null");
 
-    // supports aces high & low; TODO: is this sensible?
+    // Only supports aces high
     if (rank.getNumber() < Rank.DEUCE.getNumber() && rank.getNumber() > Rank.ACE.getNumber())
       throw new IllegalArgumentException("Illegal Rank: " + rank);
 

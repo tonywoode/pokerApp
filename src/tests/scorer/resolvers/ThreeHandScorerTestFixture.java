@@ -21,14 +21,14 @@ public class ThreeHandScorerTestFixture extends HandScorerTestFixtureBase {
     super(new SameRankHandScorer("three", 3, 1));
   }
 
-     @Test // TODO: these should use data providers...
+     @Test
     public void HandIsThree_first3() throws FileNotFoundException {
       ScoredHand hand = resolveHand("D4", "S4", "C4", "C3", "C5");
 
       assertEquals("Is three", "Three of a kind", hand.getName());
     }
 
-    @Test // TODO: these should use data providers...
+    @Test
     public void HandIsNotThree() {
       ScoredHand hand = resolveHand("D4", "S4", "C2", "C3", "C5");
 

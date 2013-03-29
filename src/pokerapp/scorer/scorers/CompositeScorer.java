@@ -36,7 +36,7 @@ public abstract class CompositeScorer extends HandScorer {
     return createCategory(hand, scoredHands);
   }
 
-  // TODO: fix this hacky solution
+  // TODO: fix this hacky solution by using Mockito
   public class NullScorer extends HandScorer {
 
     public class NullScoredHand extends ScoredHand {
@@ -47,24 +47,24 @@ public abstract class CompositeScorer extends HandScorer {
 
       @Override
       public String getName() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
       }
 
       @Override
       protected int compareEqualCategories(ScoredHand rhs) {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return 0;
       }
 
       @Override
       public List<Card> getRelevantCards() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
       }
     }
 
 
     @Override
     protected ScoredHand resolveCore(Hand hand) {
-      return null;  //To change body of implemented methods use File | Settings | File Templates.
+      return null;
     }
   }
 

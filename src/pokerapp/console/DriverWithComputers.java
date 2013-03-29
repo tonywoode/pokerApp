@@ -153,7 +153,7 @@ public class DriverWithComputers {
       console.writeMessage("******************************************************");
       console.writeMessage(NEW_LINE);
 
-      for (Player p : players) {             //TODO: this doesn't seem to be working?
+      for (Player p : players) { //TODO: Doesn't return cards to the deck properly.
         for (Card c : p.getHand()) {
           deck.returnToBottom(c);
         }

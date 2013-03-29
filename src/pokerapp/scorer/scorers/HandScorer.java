@@ -32,7 +32,7 @@ public abstract class HandScorer {
       if (next != null)
         return next.score(hand);
       else
-        return null; // TODO: not good idea to return null; better sentinel value needed
+        return null;
   }
 
   protected abstract ScoredHand resolveCore(Hand hand);

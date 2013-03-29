@@ -1,7 +1,6 @@
 package pokerapp.view.hand;
 
 import lombok.Getter;
-import lombok.Setter;
 import pokerapp.Card;
 
 import javax.imageio.ImageIO;
@@ -40,18 +39,10 @@ public class CardViewModel {
     return getIsSelected() ? selectedImage : unselectedImage;
   }  
   
-  public static CardViewModel create(Card card) {
+  public static CardViewModel create(Card card) throws IOException {
     String filename = filenameFromCard(card);
 
-    BufferedImage img;
-    try {
-      img = ImageIO.read(new File("pics/" + filename));
-    } catch (IOException e) {
-      System.out.println("Error: " + e.getMessage() + " - " + filename);
-      return null; // TODO: fix this...
-    }
-
-    return new CardViewModel(card, img);
+    return new CardViewModel(card, ImageIO.read(new File("pics/" + filename)));
   }
 
   private static String filenameFromCard(Card card) {

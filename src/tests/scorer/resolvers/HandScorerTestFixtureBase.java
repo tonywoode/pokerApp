@@ -53,12 +53,7 @@ public class HandScorerTestFixtureBase {
   }
 
   protected Hand createHand(String... cards) {
-    try {
-      return handFactory.create(cards);
-    } catch (Exception e) {
-      // TODO: do not simply swallow exceptions!
-      return null;
-    }
+    return handFactory.create(cards);
   }
 
   protected ScoredHand resolveHand(String... cards) {
@@ -69,12 +64,7 @@ public class HandScorerTestFixtureBase {
     ScoredHand lhsHand = getScorer().score(lhs),
         rhsHand = getScorer().score(rhs);
 
-    int result = 0;
-    try {
-      result = lhsHand.compareTo(rhsHand);
-    } catch (Exception e) {
-      e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-    }
+    int result = lhsHand.compareTo(rhsHand);
 
     // TODO: clients should not have to do this
     if (result == 0)

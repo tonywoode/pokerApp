@@ -14,8 +14,6 @@ import static org.junit.Assert.assertEquals;
  * @author Tony
  */
 public class RankTest {
-
-
   @Test
   public void testReturnNumericalsOfARank() {
     assertEquals("Three's code is 3,3", "3,3", Rank.THREE.getNumber() + "," + Rank.THREE.getSymbol());
@@ -31,16 +29,4 @@ public class RankTest {
   public void testRankInt() {
     assertEquals("3", 3, Rank.THREE.getNumber());
   }
-
-
-//TODO: clean this
-/*
-	public static void Main(String[] args) {
-
-		for (Rank rank : Rank.values() ) {
-			//System.out.println(rank + "'s code is " + rank.toString());
-			System.out.println(rank + "'s code is " + rank.getNumber() + "," + rank.getSymbol());
-		}
-	}
-	*/
 }

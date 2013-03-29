@@ -36,14 +36,9 @@ public class SameRankHandScorer extends HandScorer {
 
   // Pattern: Factory Method
   protected ScoredHand createHandCategory(Hand hand, HandRanks hr) {
-    try {
-      // TODO: hacky
-      Rank rank = Rank.from(hr.getRankOfMultiple(rankValue));
-      SameRankCards sequence = createSameRankSequence(hand, rank);
-      return new RunScoredHand(getHandNumber(), hand, name, sequence, hand.getKickers(rank));
-    } catch (Exception e) { // TODO: remove this & use checked exceptions properly
-      return null;
-    }
+    Rank rank = Rank.from(hr.getRankOfMultiple(rankValue));
+    SameRankCards sequence = createSameRankSequence(hand, rank);
+    return new RunScoredHand(getHandNumber(), hand, name, sequence, hand.getKickers(rank));
   }
 
   protected SameRankCards createSameRankSequence(Hand hand, Rank... rank) {

@@ -46,9 +46,10 @@ public class StandardConsole implements Console {
       String line = readLine();
       return Integer.parseInt(line);
     } catch (NumberFormatException e) {
+      // TODO: Ari wants to use the strategy pattern to display different types of messages, depending on a range of factors
       writeMessage("Try again... you moron!");
       // Sam suggested we use recursion here... nice!
-      return readInteger(); // TODO: is possibility of stack overflow an issue?
+      return readInteger();
     }
   }
 }

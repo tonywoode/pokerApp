@@ -21,45 +21,16 @@ public class FlushHandScorerTestFixture extends HandScorerTestFixtureBase {
     super(new FlushScorer());
   }
 
-  @Test // TODO: these should use data providers...
+  @Test
   public void Simple_Flush() throws FileNotFoundException {
     ScoredHand hand = resolveHand("D4", "D5", "D6", "D7", "D9");
 
-    assert ("Flush".equals(hand.getName())); // changed capitalisation; TODO: fix this!
+    assert ("Flush".equals(hand.getName()));
   }
 
-  // permutation will need a way of passing hand resolver a hand rather than a string
-//    @Test // TODO: these should use data providers...
-//    public void Permutation_Flush() {
-//
-//        HandFactory testHandFactory = new HandFactory();
-//        String[] testHandString = {"D4", "D5", "D6", "D7", "D9"};
-//        try {
-//            Hand testHand = testHandFactory.create(testHandString);
-//            ArrayList<Hand> results = HandPermutationGenerator.permute(testHand);
-//            for(Hand result : results) {
-//                HandCategory category = resolveHand(result.);
-//                assertEquals("Is flush", "flush", category.getName());
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
-
-//        HandCategory category = resolveHand("D4", "D5", "D6", "D7", "D9");
-//
-//        assertEquals("Is flush", "flush", category.getName());
-//    }
-//
-
-  @Test // TODO: these should use data providers...
+  @Test
   public void HandIsNotFlush() {
-    ScoredHand hand = resolveHand("D4", "D3", "D2", "D5", "C6"); // no such card as D1 any more
-
-    // This won't work because hand will be null
-    //assertFalse("flush".equals(hand.getName()));
-
-    // TODO: perhaps we should return a NullScoredHand to indicate the hand wasn't matched?
+    ScoredHand hand = resolveHand("D4", "D3", "D2", "D5", "C6");
 
     assertEquals(null, hand);
   }
@@ -67,7 +38,7 @@ public class FlushHandScorerTestFixture extends HandScorerTestFixtureBase {
   @Test
   public void CompareHands_RhsWins() {
     Hand lhs = createHand("D3", "D5", "D6", "D7", "D9"),
-        rhs = createHand("D4", "D5", "D6", "D7", "D9");
+         rhs = createHand("D4", "D5", "D6", "D7", "D9");
 
     verifyWinner(lhs, rhs, rhs);
   }
@@ -75,7 +46,7 @@ public class FlushHandScorerTestFixture extends HandScorerTestFixtureBase {
   @Test
   public void CompareHands_LhsWins() {
     Hand lhs = createHand("D4", "D5", "D6", "D7", "D9"),
-        rhs = createHand("D4", "D5", "D6", "D7", "D8");
+         rhs = createHand("D4", "D5", "D6", "D7", "D8");
 
     verifyWinner(lhs, rhs, lhs);
   }

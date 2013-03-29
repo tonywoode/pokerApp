@@ -1,7 +1,6 @@
 package pokerapp.scorer.domain;
 
 import pokerapp.Card;
-import pokerapp.Hand;
 import pokerapp.HighToLowCardComparator;
 
 import java.util.ArrayList;
@@ -33,25 +32,11 @@ public class OrderedCards implements Comparable<OrderedCards>, Iterable<Card> {
   }
 
   /**
-   * Create a new instance, initialised with a hand
-   * TODO: this is highly repetitive & needs to be refactored
-   *
-   * @param hand
-   */
-  public OrderedCards(Hand hand) {
-    this.cards = new ArrayList<>();
-    for (Card card : hand)
-      this.cards.add(card);
-    Collections.sort(this.cards, HighToLowCardComparator.Default);
-  }
-
-  /**
-   * Create a new instance, initialised with a hand
-   * TODO: this is highly repetitive & needs to be refactored
+   * Create a new instance, initialised with a hand, a list of cards, etc - anything that implements Iterable<Card>
    *
    * @param cards
    */
-  public OrderedCards(ArrayList<Card> cards) {
+  public OrderedCards(Iterable<Card> cards) {
     this.cards = new ArrayList<>();
     for (Card card : cards)
       this.cards.add(card);

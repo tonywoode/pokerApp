@@ -25,7 +25,9 @@ public class Driver {
 
     ComputerPlayerFactory computerPlayerFactory = new ComputerPlayerFactory();
 
-    ComputerPlayer computerPlayer = computerPlayerFactory.makeComputerPlayer("standardComputer", 2);//TODO:magic number
+    final int ComputerDifficultyMedium = 2;
+
+    ComputerPlayer computerPlayer = computerPlayerFactory.makeComputerPlayer("standardComputer",ComputerDifficultyMedium);
 
     Deck deck = Deck.createDeck();
 

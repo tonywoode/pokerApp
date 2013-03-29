@@ -13,8 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Sets up ranking for hand ratings, in case we get the same hand rating in more than one hand,
- * we need to know which hand has higher rating TODO//is that right?
+ * Represents one of (2,3,4) of a kind. TODO: This is not a RUN!!!!!!
  *
  * @author Steve
  * @version 1.0

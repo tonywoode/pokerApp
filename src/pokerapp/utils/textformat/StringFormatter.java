@@ -38,9 +38,9 @@ public class StringFormatter {
       if (index < 0 || index >= args.length)
         throw new FormatStringException("No such argument: {0} is out of bounds ({1})", index, args.length);
 
-      // TODO: Had to manually parse the format string, because
-      //       I can't get the second capturing group in the regex
-      //       to work properly
+      /* TODO: Had to manually parse the format string, because
+         I can't get the second capturing group in the regex
+         to work properly   */
       String format = null;
       if (matcher.groupCount() == FORMAT + 1)
         format = matcher.group(FORMAT);

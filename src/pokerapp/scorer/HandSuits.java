@@ -43,15 +43,6 @@ public class HandSuits {
         }
     }
 
-    //TODO: decide where isFlush lives
-
-    private boolean isFlush(){
-
-        for(int iter = 1; iter <= Constants.NUM_SUITS; ++iter)
-            if(suit_histogram[iter] == Constants.HAND_SIZE) return true;
-        return false;
-    }
-
     public boolean hasCount(int count) {
       for (int iter = 1; iter <= Constants.NUM_SUITS; ++iter)
         if (suit_histogram[iter] == count)

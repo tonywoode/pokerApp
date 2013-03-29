@@ -39,32 +39,17 @@ public class PlayerHandPresenter implements PlayerHandViewActionListener, Displa
     this.plHandView.setHand(hand);
   }
 
-  public void onHold() {
-	  try {
-		plHandView.setHand(hand);
-	} catch (FormatStringException e) {
-		// TODO had to use your nasty hack....
-		e.printStackTrace();
-	} catch (IOException e) {
-		// TODO damn
-		e.printStackTrace();
-	} catch (IllegalFormatCodeException e) {
-		// TODO fix it
-		e.printStackTrace();
-	}
+  public void onHold() throws IOException {
+	  plHandView.setHand(hand);
+
 	  eventSource.fire(new TurnCompletedEvent());
   }
 
-  public void onExchange() {
+  public void onExchange() throws IOException {
     for (Card card : plHandView.getSelectedCards()) {
       Card newCard = dealer.exchangeCard(hand, card);
     }
-    // TODO: fix nasty hack
-    try {
-      plHandView.setHand(hand);
-    } catch (Exception e) {
-      // TODO: argh!
-    }
+    plHandView.setHand(hand);
     eventSource.fire(new TurnCompletedEvent());
   }
 

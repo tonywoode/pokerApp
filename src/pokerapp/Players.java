@@ -63,7 +63,7 @@ public class Players implements Iterable<Player> {
    *
    * @param lhs player one
    * @param rhs player two
-   * @return the player with the higher hand grade TODO: and their score?
+   * @return the player with the higher hand grade
    */
   protected Player pickWinner(Player lhs, Player rhs) {
     ScoredHand lhsCat = scorer.score(lhs.getHand()),
@@ -71,8 +71,6 @@ public class Players implements Iterable<Player> {
 
     int result = lhsCat.compareTo(rhsCat);
 
-
-    // TODO: clients should not have to do this
     if (result == 0)
       return null;
     else if (result < 0)

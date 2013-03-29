@@ -24,7 +24,7 @@ public class UserConfigurable {
     this.settingMessage = settingMessage;
   }
 
-  public int askUser(Console console, boolean showRange) throws Exception{   //TODO:must be a better way than passing console explicitly
+  public int askUser(Console console, boolean showRange) throws Exception {
 
     console.writeMessage(settingMessage);
 
