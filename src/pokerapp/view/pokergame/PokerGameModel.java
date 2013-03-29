@@ -1,11 +1,7 @@
 package pokerapp.view.pokergame;
 
 import lombok.Getter;
-import pokerapp.Dealer;
-import pokerapp.console.ComputerPlayer;
-import pokerapp.console.InteractivePlayer;
-import pokerapp.console.Player;
-import pokerapp.console.Players;
+import pokerapp.*;
 
 /**
  * Sets the basic parameters for a generic pokergame - players and dealer and setting a winner

@@ -73,10 +73,14 @@
     </bean>
     <bean class="pokerapp.view.pokergame.PokerGameView" autowire="constructor"/>
 
-    <bean id="interactivePlayer" class="pokerapp.console.InteractivePlayer"/>
-    <bean id="computerPlayer" class="pokerapp.console.EasyComputerPlayer"/>
+    <bean id="interactivePlayer" class="pokerapp.InteractivePlayer"/>
+    <bean id="computerPlayer" class="pokerapp.ComputerPlayer">
+        <constructor-arg>
+          <bean class="pokerapp.skynet.EasyComputerPlayerStrategy" />
+        </constructor-arg>
+    </bean>
 
-    <bean id="players" class="pokerapp.console.Players" autowire="constructor">
+    <bean id="players" class="pokerapp.Players" autowire="constructor">
         <constructor-arg ref="handScorer"/>
     </bean>
 
