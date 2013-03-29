@@ -1,10 +1,11 @@
-package pokerapp.console;
+package pokerapp;
 
 import lombok.Getter;
 import lombok.Setter;
-import pokerapp.Card;
-import pokerapp.Deck;
-import pokerapp.Hand;
+import pokerapp.console.ExchangeSetting;
+import pokerapp.console.Console;
+
+import java.io.IOException;
 
 /**
  * @author Steve
@@ -23,7 +24,7 @@ public abstract class Player {
     return getPlayerName();
   }
 
-  public abstract void playTurn(IConsole console, Deck deck, ExchangeSetting exchangeSetting);
+  public abstract void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) throws IOException;
 
   public void receiveCard(Card card) {
     hand.add(card);
@@ -32,5 +33,10 @@ public abstract class Player {
   public void dropHand(){
    hand = new Hand();
 
+  }
+
+
+  public void receiveHand(Hand otherHand) {
+    hand = otherHand;
   }
 }

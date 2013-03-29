@@ -9,8 +9,12 @@ import pokerapp.scorer.domain.Spares;
 import pokerapp.scorer.typetag.NoPair;
 import pokerapp.utils.Comparator;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created with IntelliJ IDEA.
@@ -43,7 +47,19 @@ public class NoPairScoredHand extends AbstractScoredHand<NoPairScoredHand,NoPair
      */
     @Override
     public String getName() {
-        return "No pair";
+        if(name == null)
+        {
+            Properties prop = new Properties();
+            try {
+                InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/handnames.properties"));
+                prop.load(in);
+                in.close();
+                name = prop.getProperty("NoPair");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return name;
     }
 
     @Override

@@ -8,7 +8,11 @@ import pokerapp.Hand;
 import pokerapp.scorer.typetag.FullHouse;
 import pokerapp.utils.Comparator;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created with IntelliJ IDEA.
@@ -38,7 +42,19 @@ public class FullHouseScoredHand extends AbstractScoredHand<FullHouseScoredHand,
 
   @Override
   public String getName() {
-    return "Full house";
+      if(name.isEmpty())
+      {
+          Properties prop = new Properties();
+          try {
+              InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/handnames.properties"));
+              prop.load(in);
+              in.close();
+              name = prop.getProperty("FullHouse");
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
+      }
+      return name;
   }
 
     @Override

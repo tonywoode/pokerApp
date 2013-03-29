@@ -1,4 +1,4 @@
-package pokerapp.console;
+package pokerapp.scorer;
 
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.typetag.*;

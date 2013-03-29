@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
 public class ThresholdCardFilter implements IImageFilter {
     @Override
     public BufferedImage filter(BufferedImage src) {
-        ThresholdFilter thresholdFilter = new ThresholdFilter();
+        ThresholdFilterWithoutRed thresholdFilter = new ThresholdFilterWithoutRed();
 
         return thresholdFilter.filter(src, src);
 

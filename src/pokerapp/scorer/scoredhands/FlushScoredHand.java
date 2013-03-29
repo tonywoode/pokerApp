@@ -4,11 +4,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.Card;
 import pokerapp.Hand;
-import pokerapp.console.HandVisitor;
+import pokerapp.scorer.HandVisitor;
 import pokerapp.scorer.domain.OrderedCards;
 import pokerapp.scorer.typetag.Flush;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Describes a flush hand
@@ -31,7 +35,19 @@ public class FlushScoredHand extends AbstractScoredHand<FlushScoredHand,Flush> {
 
   @Override
   public String getName() {
-    return "Flush";
+      if(name == null)
+      {
+          Properties prop = new Properties();
+          try {
+              InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/handnames.properties"));
+              prop.load(in);
+              in.close();
+              name = prop.getProperty("Flush");
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
+      }
+      return name;
   }
 
     @Override

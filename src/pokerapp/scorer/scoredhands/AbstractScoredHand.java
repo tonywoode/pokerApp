@@ -12,6 +12,8 @@ import pokerapp.scorer.typetag.HandTypeTag;
  */
 public abstract class AbstractScoredHand<T,U extends HandTypeTag> extends ScoredHand<U> {
 
+  protected String name;
+
   protected AbstractScoredHand(int handNumber, Hand hand) {
     super(handNumber, hand);
   }

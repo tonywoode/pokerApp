@@ -1,8 +1,8 @@
 package pokerapp.view.playerhand;
 
 import pokerapp.Dealer;
-import pokerapp.console.InteractivePlayer;
-import pokerapp.console.Players;
+import pokerapp.InteractivePlayer;
+import pokerapp.Players;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;

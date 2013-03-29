@@ -1,7 +1,7 @@
 package pokerapp.scorer.typetag;
 
 import lombok.Getter;
-import pokerapp.console.HandVisitor;
+import pokerapp.scorer.HandVisitor;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
 /**

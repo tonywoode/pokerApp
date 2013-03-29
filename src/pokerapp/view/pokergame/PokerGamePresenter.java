@@ -1,7 +1,7 @@
 package pokerapp.view.pokergame;
 
 import com.google.common.eventbus.Subscribe;
-import pokerapp.console.Player;
+import pokerapp.Player;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 import pokerapp.view.ScoresPanel;

@@ -1,9 +1,13 @@
 package pokerapp.console;
 
-import pokerapp.Dealer;
-import pokerapp.Deck;
+import pokerapp.*;
 import pokerapp.scorer.HandScorerBuilder;
+import pokerapp.skynet.ComputerPlayerFactory;
 import pokerapp.utils.Constants;
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
+
+import java.io.IOException;
 
 /**
  * A simple driver for the basic game as specified
@@ -15,7 +19,7 @@ import pokerapp.utils.Constants;
  */
 public class Driver {
 
-  public void gameLoop() {
+  public void gameLoop() throws IOException, FormatStringException, IllegalFormatCodeException {
 
     InteractivePlayer interactivePlayer = new InteractivePlayer();
 
@@ -30,7 +34,7 @@ public class Driver {
     // Registering players is now not done through the constructor (because of Spring)
     Players players = new Players(new HandScorerBuilder().create()).register(interactivePlayer, computerPlayer);
 
-    IConsole console = new StandardConsole();
+    Console console = new StandardConsole(null);
 
     ExchangeSetting exchangeSetting = new ExchangeSetting(3, 1);
 

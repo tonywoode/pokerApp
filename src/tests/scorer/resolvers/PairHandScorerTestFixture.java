@@ -7,6 +7,8 @@ import pokerapp.Hand;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.SameRankHandScorer;
 
+import java.io.FileNotFoundException;
+
 /**
  * Created with IntelliJ IDEA.
  * User: steve
@@ -22,28 +24,28 @@ public class PairHandScorerTestFixture extends HandScorerTestFixtureBase {
   }
 
   @Test // TODO: these should use data providers...
-  public void HandIsPair_first2() {
+  public void HandIsPair_first2() throws FileNotFoundException {
     ScoredHand hand = resolveHand("D4", "S4", "C2", "C3", "C5");
 	
 	  assertEquals("Is pair", "pair", hand.getName());
   }
   
   @Test
-  public void HandIsPair_second2() {
+  public void HandIsPair_second2() throws FileNotFoundException {
     ScoredHand hand = resolveHand("C2", "D4", "S4", "C3", "C5");
 
-    assertEquals("Is pair", "pair", hand.getName());
+    assertEquals("Is pair", "Pair", hand.getName());
   }
   
   @Test
-  public void HandIsPair_third2() {
+  public void HandIsPair_third2() throws FileNotFoundException {
     ScoredHand hand = resolveHand("C2", "C3", "D4", "S4", "C5");
 
-    assertEquals("Is pair", "pair", hand.getName());
+    assertEquals("Is pair", "Pair", hand.getName());
   }  
   
   @Test
-  public void HandIsPair_fourth2() {
+  public void HandIsPair_fourth2() throws FileNotFoundException {
     ScoredHand hand = resolveHand("C2", "C3", "C5", "D4", "S4");
 
     assertEquals("Is pair", "pair", hand.getName());

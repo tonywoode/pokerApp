@@ -8,7 +8,10 @@ import pokerapp.Hand;
 import pokerapp.Rank;
 import pokerapp.scorer.typetag.Straight;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,7 +29,7 @@ public class StraightScoredHand extends AbstractScoredHand<StraightScoredHand,St
     super(handNumber, hand);
     this.rank = rank;
     ApplicationContext appContext = new ClassPathXmlApplicationContext("/scorer-application-context.xml");
-    this.handType = (Straight)appContext.getBean("StraightFlush");
+    this.handType = (Straight)appContext.getBean("Straight");
   }
 
   @Override
@@ -36,7 +39,19 @@ public class StraightScoredHand extends AbstractScoredHand<StraightScoredHand,St
 
   @Override
   public String getName() {
-    return "Straight";
+      if(name == null)
+      {
+          Properties prop = new Properties();
+          try {
+              InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/handnames.properties"));
+              prop.load(in);
+              in.close();
+              name = prop.getProperty("Straight");
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
+      }
+      return name;
   }
 
   @Override

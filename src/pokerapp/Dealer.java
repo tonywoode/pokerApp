@@ -1,8 +1,5 @@
 package pokerapp;
 
-import pokerapp.console.Player;
-import pokerapp.console.Players;
-
 /**
  * Dealer for pokerapp deals and replaces cards
  *
