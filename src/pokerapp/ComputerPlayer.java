@@ -5,9 +5,7 @@ import pokerapp.console.Console;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.skynet.ComputerPlayerStrategy;
-
 import java.io.IOException;
-
 
 /**
  * @author Steve
@@ -17,7 +15,6 @@ import java.io.IOException;
  */
 
 public class ComputerPlayer extends Player {
-
   private final ComputerPlayerStrategy turnStrategy;
 
   public ComputerPlayer(String name, ComputerPlayerStrategy turnStrategy) {
