@@ -4,7 +4,7 @@ import pokerapp.Hand;
 import pokerapp.Rank;
 import pokerapp.scorer.HandRanks;
 import pokerapp.scorer.domain.SameRankCards;
-import pokerapp.scorer.scoredhands.RunScoredHand;
+import pokerapp.scorer.scoredhands.SameRankScoredHand;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
 /**
@@ -38,7 +38,7 @@ public class SameRankHandScorer extends HandScorer {
   protected ScoredHand createHandCategory(Hand hand, HandRanks hr) {
     Rank rank = Rank.from(hr.getRankOfMultiple(rankValue));
     SameRankCards sequence = createSameRankSequence(hand, rank);
-    return new RunScoredHand(getHandNumber(), hand, name, sequence, hand.getKickers(rank));
+    return new SameRankScoredHand(getHandNumber(), hand, name, sequence, hand.getKickers(rank));
   }
 
   protected SameRankCards createSameRankSequence(Hand hand, Rank... rank) {

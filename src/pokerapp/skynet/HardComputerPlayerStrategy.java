@@ -51,7 +51,7 @@ public class HardComputerPlayerStrategy extends ComputerPlayerStrategy implement
   }
 
   @Override
-  public void accept(ScoredHand sh, Run run) {
+  public void accept(ScoredHand sh, SameRank sameRank) {
     
   }
 

@@ -50,7 +50,7 @@ public class StandardComputerPlayerStrategy extends ComputerPlayerStrategy imple
   }
 
   @Override
-  public void accept(ScoredHand sh, Run run) {
+  public void accept(ScoredHand sh, SameRank sameRank) {
     
   }
 
