@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- Computer players, AI, etc. -->
+
+  <bean id="interactivePlayer" class="pokerapp.InteractivePlayer"/>
+  <bean id="computerPlayer" class="pokerapp.ComputerPlayer">
+    <constructor-arg>
+      <bean class="pokerapp.skynet.EasyComputerPlayerStrategy" />
+    </constructor-arg>
+  </bean>
+
+  <bean id="computerPlayerFactory" class="pokerapp.skynet.ComputerPlayerFactory" />
+
+  <bean id="easyComputerStrategy" class="pokerapp.skynet.EasyComputerPlayerStrategy" />
+  <bean id="mediumComputerStrategy" class="pokerapp.skynet.StandardComputerPlayerStrategy" />
+  <bean id="hardComputerStrategy" class="pokerapp.skynet.HardComputerPlayerStrategy" />
+
+  <bean id="namedComputerPlayerFactory" class="pokerapp.skynet.NamedComputerPlayerFactory">
+    <constructor-arg>
+      <list>
+        <bean class="pokerapp.ComputerPlayer">
+          <constructor-arg value="Frank" />
+          <constructor-arg ref="easyComputerStrategy" />
+        </bean>
+        <bean class="pokerapp.ComputerPlayer">
+          <constructor-arg value="Ari" />
+          <constructor-arg ref="hardComputerStrategy" />
+        </bean>
+        <bean class="pokerapp.ComputerPlayer">
+          <constructor-arg value="Vinnie" />
+          <constructor-arg ref="mediumComputerStrategy" />
+        </bean>
+      </list>
+    </constructor-arg>
+  </bean>
+</beans>

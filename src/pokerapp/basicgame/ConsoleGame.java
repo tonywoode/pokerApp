@@ -38,7 +38,6 @@ public class ConsoleGame extends Application {
     this.deck = deck;
     this.players = players;
     this.pokerGameEvaluator = pokerGameEvaluator;
-    players.register(computerPlayer, interactivePlayer);
   }
 
   public static void main(String[] args) throws IOException {
@@ -49,6 +48,8 @@ public class ConsoleGame extends Application {
    * Play a single game of poker with 1 computer player.
    */
   public void run() throws FormatStringException, IllegalFormatCodeException, IOException {
+    players.register(computerPlayer, interactivePlayer);
+
     console.writeMessage("Let's play poker!");
 
     interactivePlayer.setPlayerName(interactivePlayer.getPlayerNameFromUser(console));

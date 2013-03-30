@@ -1,6 +1,9 @@
-package pokerapp.console;
+package pokerapp.basicgame;
 
 import pokerapp.*;
+import pokerapp.console.Console;
+import pokerapp.console.ExchangeSetting;
+import pokerapp.console.UserConfigurable;
 import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.skynet.ComputerPlayerFactory;
 import pokerapp.utils.textformat.FormatStringException;
@@ -13,14 +16,37 @@ import java.io.IOException;
  * @author Ari
  * @version 1.0
  */
-public class DriverWithComputers {
+public class ManyPlayerConsoleGame extends Application {
+  private final Console console;
 
+  private final Deck deck;
+  private final Dealer dealer;
+  private final Players players;
 
-  private final Console console = new StandardConsole(new StringFormatter());
-  private final ExchangeSetting exchangeSetting = new ExchangeSetting(3, 1);//default - exchange 3 cards once
+  private final ComputerPlayerFactory computerPlayerFactory;
 
-  public void gameLoop() throws FormatStringException, IllegalFormatCodeException, IOException {
+  // default - exchange 3 cards once
+  private final ExchangeSetting exchangeSetting = new ExchangeSetting(3, 1);
 
+  public ManyPlayerConsoleGame(Console console, Deck deck, Dealer dealer, Players players, ComputerPlayerFactory
+      computerPlayerFactory) {
+    this.console = console;
+    this.deck = deck;
+    this.dealer = dealer;
+    this.players = players;
+    this.computerPlayerFactory = computerPlayerFactory;
+  }
+
+  public static void main(String[] args) {
+    try {
+      begin("manyPlayerConsoleGame", "console-game-application-context.xml");
+    } catch (IOException e) {
+      System.out.println();
+    }
+  }
+
+  @Override
+  public void run() throws FormatStringException, IllegalFormatCodeException, IOException {
     final int MAX_NUMBER_PLAYERS = 4;
     final int MIN_NUMBER_PLAYERS = 1;
 
@@ -38,60 +64,47 @@ public class DriverWithComputers {
     int timesToExchange = MIN_TIMES_EXCHANGE;
 
 
-    Deck deck = Deck.createDeck();
-    Dealer dealer = new Dealer(deck);
-    Players players = new Players(PokerGameEvaluator.create());
+    InteractivePlayer interactivePlayer = new InteractivePlayer();
+    interactivePlayer.getPlayerNameFromUser(console);
+    players.register(interactivePlayer);
 
-    try {
+    UserConfigurable userConfigurableNumPlayers =
+        new UserConfigurable("How many computer players do you want to play against?" + NEW_LINE,
+            MIN_NUMBER_PLAYERS, MAX_NUMBER_PLAYERS);
 
-      InteractivePlayer interactivePlayer = new InteractivePlayer();
-      interactivePlayer.getPlayerNameFromUser(console);
-      players.register(interactivePlayer);
+    numberOfPlayers = userConfigurableNumPlayers.askUser(console, true);
 
-      UserConfigurable userConfigurableNumPlayers =
-          new UserConfigurable("How many computer players do you want to play against?" + NEW_LINE,
-              MIN_NUMBER_PLAYERS, MAX_NUMBER_PLAYERS);
+    console.writeMessage("OK, let's set up exchanges." + NEW_LINE + NEW_LINE);
+    console.writeMessage("By default you're allowed to exchange up to three cards..." + NEW_LINE);
+    console.writeMessage("...but only for one hand." + NEW_LINE + NEW_LINE);
 
-      numberOfPlayers = userConfigurableNumPlayers.askUser(console, true);
+    UserConfigurable userConfigurableCustomiseExchange = new UserConfigurable("Do you want to customise the way " +
+        "exchanges work? (Yes = 1, No = 2)" + NEW_LINE, 1, 2);
+    int customiseCardExchange = userConfigurableCustomiseExchange.askUser(console, false);
 
-      console.writeMessage("OK, let's set up exchanges." + NEW_LINE + NEW_LINE);
-      console.writeMessage("By default you're allowed to exchange up to three cards..." + NEW_LINE);
-      console.writeMessage("...but only for one hand." + NEW_LINE + NEW_LINE);
+    switch (customiseCardExchange) {
 
-      UserConfigurable userConfigurableCustomiseExchange = new UserConfigurable("Do you want to customise the way " +
-          "exchanges work? (Yes = 1, No = 2)" + NEW_LINE, 1, 2);
-      int customiseCardExchange = userConfigurableCustomiseExchange.askUser(console, false);
-
-
-      switch (customiseCardExchange) {
-
-        case 1:
-          UserConfigurable userConfigurableNumCards = new UserConfigurable("How many cards do you want to exchange " +
+      case 1:
+        UserConfigurable userConfigurableNumCards = new UserConfigurable("How many cards do you want to exchange " +
               "per hand?", MIN_CARDS_EXCHANGE, MAX_CARDS_EXCHANGE);
-          cardsToExchange = userConfigurableNumCards.askUser(console, true);
+        cardsToExchange = userConfigurableNumCards.askUser(console, true);
 
-          UserConfigurable userConfigurableNumHands = new UserConfigurable("How many hands do you want to exchange?"
-              + NEW_LINE, MIN_TIMES_EXCHANGE, MAX_TIMES_EXCHANGE);
-          timesToExchange = userConfigurableNumHands.askUser(console, true);
+        UserConfigurable userConfigurableNumHands = new UserConfigurable("How many hands do you want to exchange?"
+            + NEW_LINE, MIN_TIMES_EXCHANGE, MAX_TIMES_EXCHANGE);
+        timesToExchange = userConfigurableNumHands.askUser(console, true);
 
-          exchangeSetting.setNumCards(cardsToExchange);
-          exchangeSetting.setNumTimes(timesToExchange);
-          console.writeMessage("Excellent, you've decided to exchange " + cardsToExchange + " cards " +
+        exchangeSetting.setNumCards(cardsToExchange);
+        exchangeSetting.setNumTimes(timesToExchange);
+        console.writeMessage("Excellent, you've decided to exchange " + cardsToExchange + " cards " +
               timesToExchange + " times.", 1);
-          break;
+        break;
 
-        case 2:
-          console.writeMessage("No changes made.");     //default values already set
-          break;
-        default:
+      case 2:
+        console.writeMessage("No changes made.");     //default values already set
+        break;
+      default:
 
-      }
-
-    } catch (Exception e1) {
-      e1.printStackTrace();
     }
-
-    ComputerPlayerFactory computerPlayerFactory = new ComputerPlayerFactory();
 
     for (int i = MIN_NUMBER_PLAYERS; i <= numberOfPlayers; ++i) {
 
@@ -106,11 +119,7 @@ public class DriverWithComputers {
 
 
       int playerDifficulty = 0;
-      try {
-        playerDifficulty = userConfigurablePlayerDifficulty.askUser(console, true);
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
+      playerDifficulty = userConfigurablePlayerDifficulty.askUser(console, true);
       Player p = computerPlayerFactory.makeComputerPlayer(playerName, playerDifficulty);
       players.register(p);
 
@@ -169,7 +178,5 @@ public class DriverWithComputers {
       }
 
     }
-
-
   }
 }

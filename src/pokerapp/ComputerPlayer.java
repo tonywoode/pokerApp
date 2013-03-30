@@ -31,6 +31,10 @@ public class ComputerPlayer extends Player {
     this("Computer", turnStrategy);
   }
 
+  public ComputerPlayer createNew() {
+    return new ComputerPlayer(getPlayerName(), turnStrategy.createNew());
+  }
+
   public void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) throws IOException, FormatStringException, IllegalFormatCodeException {
 
     for (int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
@@ -53,5 +57,9 @@ public class ComputerPlayer extends Player {
           handType);
 
     }
+  }
+
+  public String getStrategyFancyName() {
+    return turnStrategy.toString();
   }
 }

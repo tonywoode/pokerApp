@@ -19,6 +19,17 @@ import pokerapp.scorer.typetag.*;
  * @version 1
  */
 public class HardComputerPlayerStrategy extends ComputerPlayerStrategy implements HandVisitor {
+
+  @Override
+  public ComputerPlayerStrategy createNew() {
+    return new HardComputerPlayerStrategy();
+  }
+
+  @Override
+  public String toString() {
+    return "Hot & Spicy";
+  }
+
   @Override
   public void playTurn(ScoredHand handType) {
     handType.visit(this);

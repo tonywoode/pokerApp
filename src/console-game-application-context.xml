@@ -5,13 +5,29 @@
 
   <import resource="game-application-context.xml" />
 
-  <bean id="interactiveHandEvaluator" class="pokerapp.basicgame.InteractiveHandEvaluator" >
+  <bean id="manyPlayerConsoleGameWithFactory" class="pokerapp.basicgame.ManyPlayerConsoleGameWithFactory" autowire="constructor" lazy-init="false">
+    <constructor-arg index="0" ref="console" />
+    <constructor-arg index="1" ref="deck" />
+    <constructor-arg index="2" ref="dealer" />
+    <constructor-arg index="3" ref="players" />
+    <constructor-arg index="4" ref="namedComputerPlayerFactory" />
+  </bean>
+
+  <bean id="manyPlayerConsoleGame" class="pokerapp.basicgame.ManyPlayerConsoleGame" autowire="constructor" lazy-init="false">
+    <constructor-arg index="0" ref="console" />
+    <constructor-arg index="1" ref="deck" />
+    <constructor-arg index="2" ref="dealer" />
+    <constructor-arg index="3" ref="players" />
+    <constructor-arg index="4" ref="computerPlayerFactory" />
+  </bean>
+
+  <bean id="interactiveHandEvaluator" class="pokerapp.basicgame.InteractiveHandEvaluator" lazy-init="false">
     <constructor-arg index="0" ref="console" />
     <constructor-arg index="1" ref="handScorer" />
     <constructor-arg index="2" ref="handFactory" />
   </bean>
 
-  <bean id="consoleGame" class="pokerapp.basicgame.ConsoleGame" autowire="constructor">
+  <bean id="consoleGame" class="pokerapp.basicgame.ConsoleGame" autowire="constructor" lazy-init="false">
     <constructor-arg index="0" ref="console"/>
     <constructor-arg index="1" ref="interactivePlayer"/>
     <constructor-arg index="2" ref="computerPlayer"/>

@@ -26,6 +26,16 @@ public class EasyComputerPlayerStrategy extends ComputerPlayerStrategy implement
   }
 
   @Override
+  public ComputerPlayerStrategy createNew() {
+    return new EasyComputerPlayerStrategy();
+  }
+
+  @Override
+  public String toString() {
+    return "Easy";
+  }
+
+  @Override
   public void accept(ScoredHand sh, Flush flush) {
 
   }

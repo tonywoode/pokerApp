@@ -20,6 +20,16 @@ import pokerapp.scorer.typetag.*;
  */
 public class StandardComputerPlayerStrategy extends ComputerPlayerStrategy implements HandVisitor {
   @Override
+  public ComputerPlayerStrategy createNew() {
+    return new StandardComputerPlayerStrategy();
+  }
+
+  @Override
+  public String toString() {
+    return "Hot";
+  }
+
+  @Override
   public void playTurn(ScoredHand handType) {
     handType.visit(this);
   }

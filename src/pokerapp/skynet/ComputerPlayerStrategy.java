@@ -18,4 +18,11 @@ import pokerapp.scorer.scoredhands.ScoredHand;
  */
 public abstract class ComputerPlayerStrategy {
   public abstract void playTurn(ScoredHand handType);
+
+  /**
+   * Implements the prototype pattern
+   *
+   * @return a clone of the strategy
+   */
+  public abstract ComputerPlayerStrategy createNew();
 }
