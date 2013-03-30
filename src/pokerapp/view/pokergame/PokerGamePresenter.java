@@ -1,6 +1,7 @@
 package pokerapp.view.pokergame;
 
 import com.google.common.eventbus.Subscribe;
+import pokerapp.GameResult;
 import pokerapp.Player;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
@@ -72,6 +73,11 @@ public class PokerGamePresenter {
 		 pokerGameView.startButtonEnable(false);
 	 }
 
+   @Subscribe
+   public void inspectGUIGameState_Hack(PokerGameView.GuiHackEvent ghe) throws IOException {
+     turnCompleted(null);
+   }
+
 	 /**
 	  * Actions to take when a round is complete - message, hand presentation, winnder tallying
 	  * @param tce round end trigger
@@ -84,18 +90,20 @@ public class PokerGamePresenter {
 	 IllegalFormatCodeException {
 		 // TODO: let the computer play its turn
 
-		 Player winner = pokerGameModel.pickWinner();
+     GameResult result = pokerGameModel.evaluate();
 
-		
+
+
 		 playerHandView.userButtonsEnable(false);
 		 pokerGameView.displayMessage("Press Start To Begin Another Game....");
 
 		 computerHandView.showCards();
 
-		 pokerGameView.showGameResultMessage(getWinMessage(winner));
+		 pokerGameView.showGameResultMessage(getWinMessage(result));
+
 		 pokerGameView.startButtonEnable(true);
 		 
-		 scoreTally(winner);
+		 scoreTally(result);
 	 }
 
 	 /**
@@ -104,12 +112,12 @@ public class PokerGamePresenter {
 	  * @return 0 if a draw, 1 if player won, -1 if cpu won
 	  * @throws IllegalArgumentException
 	  */
-	 private int getWinMessage(Player winner) throws IllegalArgumentException {
-		 if (winner == null)
+	 private int getWinMessage(GameResult result) throws IllegalArgumentException {
+		 if (result.isTie())
 			 return 0; //draw
-		 else if (winner.equals(pokerGameModel.getInteractivePlayer() ) )
+		 else if (result.isWinner(pokerGameModel.getInteractivePlayer()))
 			 return 1; //you win
-		 else if (winner.equals(pokerGameModel.getComputerPlayer() ) )
+		 else if (result.isWinner(pokerGameModel.getComputerPlayer()))
 			 return -1; //you lose
 		 else throw new IllegalArgumentException("Something wrong with winner logic");
 	 }
@@ -118,21 +126,19 @@ public class PokerGamePresenter {
 	  * Tally's up score for scores panel - adds to last round - sends to view
 	  * @param winner the player who won the round
 	  */
-	 private void scoreTally(Player winner) {
-		
-		 if (getWinMessage(winner) == 0) //if its a draw
-		 {
-			 ScoresPanel.setScores(playerScore, cpuScore);
-		 }
-		 if (getWinMessage(winner) == 1) //if player wins
-		 {
-			 ScoresPanel.setScores(playerScore , cpuScore += 1); //TODO: that's the wrong way round. Investigate
-		 }
-		 if (getWinMessage(winner) == -1) //if cpu wins
-		 {
-			 ScoresPanel.setScores(playerScore  +=  1, cpuScore); //TODO: that's the wrong way round. Investigate
-		 }
-	 }
-	 
-	 
+	 private void scoreTally(GameResult result) {
+		 int msg = getWinMessage(result);
+
+     switch(msg) {
+       case 0: // draw
+         ScoresPanel.setScores(playerScore, cpuScore);
+         break;
+       case 1: // IP wins
+         ScoresPanel.setScores(++playerScore , cpuScore);
+         break;
+       case -1: // CP wins
+         ScoresPanel.setScores(playerScore, ++cpuScore);
+         break;
+     }
+   }
 }

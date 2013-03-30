@@ -2,6 +2,7 @@ package pokerapp.view.pokergame;
 
 import lombok.Getter;
 import pokerapp.*;
+import pokerapp.scorer.PokerGameEvaluator;
 
 /**
  * Sets the basic parameters for a generic pokergame - players and dealer and setting a winner
@@ -15,22 +16,16 @@ public class PokerGameModel {
   @Getter
   private final ComputerPlayer computerPlayer;
   private final Players players;
+  private final PokerGameEvaluator pokerGameEvaluator;
 
   public PokerGameModel(Dealer dealer, InteractivePlayer interactivePlayer, ComputerPlayer computerPlayer,
-                        Players players) {
+                        Players players, PokerGameEvaluator pokerGameEvaluator) {
     this.dealer = dealer;
     this.interactivePlayer = interactivePlayer;
     this.computerPlayer = computerPlayer;
     this.players = players;
+    this.pokerGameEvaluator = pokerGameEvaluator;
     this.players.register(interactivePlayer, computerPlayer);
-  }
-
-  /**
-   * Getter for winner
-   * @return player that won the round
-   */
-  public Player pickWinner() {
-    return null; // TODO: who uses this?
   }
 
   /**
@@ -38,5 +33,9 @@ public class PokerGameModel {
    */
   public void dealCards() {
     dealer.dealCards(5, players);
+  }
+
+  public GameResult evaluate() {
+    return pokerGameEvaluator.evaluate(players.getPlayers());
   }
 }

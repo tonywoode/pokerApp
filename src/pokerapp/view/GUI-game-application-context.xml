@@ -71,6 +71,11 @@
         <constructor-arg index="3" ref="players"/>  
               
     </bean>
+
+    <bean class="pokerapp.scorer.PokerGameEvaluator">
+        <constructor-arg ref="handScorer"/>
+    </bean>
+
     <bean class="pokerapp.view.pokergame.PokerGameView" autowire="constructor"/>
 
     <bean id="interactivePlayer" class="pokerapp.InteractivePlayer"/>
