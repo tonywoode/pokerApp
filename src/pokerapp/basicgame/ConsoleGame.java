@@ -3,6 +3,7 @@ package pokerapp.basicgame;
 import pokerapp.*;
 import pokerapp.console.Console;
 import pokerapp.console.ExchangeSetting;
+import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 
@@ -20,6 +21,7 @@ public class ConsoleGame extends Application {
   private final Dealer dealer;
   private final Deck deck;
   private final Players players;
+  private final PokerGameEvaluator pokerGameEvaluator;
 
   private static final int HAND_SIZE = 5;
 
@@ -28,13 +30,14 @@ public class ConsoleGame extends Application {
    * it to work with final members.
    */
   public ConsoleGame(Console console, InteractivePlayer ip, ComputerPlayer cp, Dealer dealer, Deck deck,
-                     Players players) {
+                     Players players, PokerGameEvaluator pokerGameEvaluator) {
     this.console = console;
     this.interactivePlayer = ip;
     this.computerPlayer = cp;
     this.dealer = dealer;
     this.deck = deck;
     this.players = players;
+    this.pokerGameEvaluator = pokerGameEvaluator;
     players.register(computerPlayer, interactivePlayer);
   }
 
@@ -61,11 +64,11 @@ public class ConsoleGame extends Application {
     for (Player p : players)
       p.playTurn(console, deck, exchangeSetting);
 
-    Player winner = players.pickWinner();
+    GameResult result = pokerGameEvaluator.evaluate(players.getPlayers());
 
-    if (winner == interactivePlayer)
+    if (result.isWinner(interactivePlayer))
       console.writeMessage("You won!");
-    else if (winner == computerPlayer)
+    else if (result.isTie())
       console.writeMessage("Draw!");
     else
       console.writeMessage("You lost!");
