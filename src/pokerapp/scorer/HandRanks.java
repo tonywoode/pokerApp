@@ -2,6 +2,7 @@ package pokerapp.scorer;
 
 import pokerapp.Card;
 import pokerapp.Hand;
+import pokerapp.Rank;
 import pokerapp.utils.ReverseArrayIterator;
 
 /**
@@ -76,7 +77,7 @@ public class HandRanks {
    */
 
   public int getRankOfMultiple(int numCards) {
-    for (int iter = Card.NUM_RANKS - 1; iter >= 0; --iter)
+    for (int iter = Card.NUM_RANKS; iter >= Rank.DEUCE.getNumber(); --iter)
       if (rank_histogram[iter] == numCards)
         return iter;
 
