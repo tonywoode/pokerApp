@@ -4,10 +4,7 @@ import pokerapp.*;
 import pokerapp.console.Console;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.console.UserConfigurable;
-import pokerapp.skynet.ComputerPlayerFactory;
 import pokerapp.skynet.NamedComputerPlayerFactory;
-import pokerapp.utils.textformat.FormatStringException;
-import pokerapp.utils.textformat.IllegalFormatCodeException;
 
 import java.io.IOException;
 
@@ -165,15 +162,16 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
 
     console.writeMessage("Who do you want to play against?");
 
+    int index = 1;
     for (ComputerPlayer cp : computerPlayerFactory.getPlayers()) {
-      console.writeMessage("{0} - ({1})", cp.getPlayerName(), cp.getStrategyFancyName());
+      console.writeMessage("{0}.\t{1} - ({2})", index++, cp.getPlayerName(), cp.getStrategyFancyName());
     }
 
     for (int i = MIN_NUMBER_PLAYERS; i <= numberOfPlayers; ++i) {
-      console.writeMessage("Enter your opponent's name: ");
-      String name = console.readLine();
+      console.writeMessage("Enter your opponent's number: ");
+      int cpNumber = console.readInteger();
 
-      ComputerPlayer cp = computerPlayerFactory.create(name);
+      ComputerPlayer cp = computerPlayerFactory.create(cpNumber - 1);
       players.register(cp);
     }
   }
