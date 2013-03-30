@@ -29,7 +29,7 @@ public class NamedComputerPlayerFactory {
   }
 
   public Iterable<ComputerPlayer> getPlayers() {
-    return players.values();
+    return playersByIndex;
   }
 }
 
