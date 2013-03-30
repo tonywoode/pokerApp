@@ -97,7 +97,7 @@ public class PokerGameEvaluator {
       return new TiedSimpleGameResult(players);
     else {
       Player winner, loser;
-      if (result == 1) {
+      if (result > 0) { // because we're using enums (for Rank) compareTo returns the difference between ranks
         winner = players.get(0);
         loser  = players.get(1);
       } else {

@@ -12,9 +12,9 @@ import pokerapp.scorer.PokerGameEvaluator;
 public class PokerGameModel {
   private final Dealer dealer;
   @Getter
-  private final InteractivePlayer interactivePlayer;
+  private final Player interactivePlayer;
   @Getter
-  private final ComputerPlayer computerPlayer;
+  private final Player computerPlayer;
   private final Players players;
   private final PokerGameEvaluator pokerGameEvaluator;
 

@@ -92,8 +92,6 @@ public class PokerGamePresenter {
 
      GameResult result = pokerGameModel.evaluate();
 
-
-
 		 playerHandView.userButtonsEnable(false);
 		 pokerGameView.displayMessage("Press Start To Begin Another Game....");
 
