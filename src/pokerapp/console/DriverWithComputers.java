@@ -23,7 +23,6 @@ public class DriverWithComputers {
 
     final int MAX_NUMBER_PLAYERS = 4;
     final int MIN_NUMBER_PLAYERS = 1;
-    final int DEFAULT_NUMBER_PLAYERS = MAX_NUMBER_PLAYERS;
 
     final int MAX_CARDS_EXCHANGE = 5;
     final int MIN_CARDS_EXCHANGE = 0;
@@ -31,13 +30,12 @@ public class DriverWithComputers {
 
     final int MAX_TIMES_EXCHANGE = 5;
     final int MIN_TIMES_EXCHANGE = 1;
-    final int DEFAULT_TIMES_EXCHANGE = MIN_TIMES_EXCHANGE;
 
     final String NEW_LINE = "\n";
 
-    int numberOfPlayers = DEFAULT_NUMBER_PLAYERS;
+    int numberOfPlayers = MAX_NUMBER_PLAYERS;
     int cardsToExchange = DEFAULT_CARDS_EXCHANGE;
-    int timesToExchange = DEFAULT_TIMES_EXCHANGE;
+    int timesToExchange = MIN_TIMES_EXCHANGE;
 
 
     Deck deck = Deck.createDeck();
