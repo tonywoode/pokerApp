@@ -2,6 +2,7 @@ package pokerapp.view.playerhand;
 
 import pokerapp.Dealer;
 import pokerapp.InteractivePlayer;
+import pokerapp.Player;
 import pokerapp.Players;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.PokerGameEvaluator;
@@ -21,7 +22,7 @@ public class PlayerHandPresenterBridge {
 
   private final PlayerHandPresenter handPresenter;
   private final Dealer dealer;
-  private InteractivePlayer player;
+  private Player player;
 
   public PlayerHandPresenterBridge(PlayerHandPresenter phPresenter, Dealer dealer) {
     handPresenter = phPresenter;
@@ -40,13 +41,13 @@ public class PlayerHandPresenterBridge {
     return handPresenter.getView();
   }
 
-  public void setPlayer(InteractivePlayer player) throws FormatStringException, IOException,
+  public void setPlayer(Player player) throws FormatStringException, IOException,
       IllegalFormatCodeException {
     this.player = player;
     handPresenter.init(player, player.getHand());
   }
 
-  public InteractivePlayer getPlayer() {
+  public Player getPlayer() {
     return player;
   }
 }
