@@ -35,7 +35,7 @@ public class HandScorerTestFixture {
 
   private final Player expectedWinner;
   private final List<Player> players;
-  private final PokerGameEvaluator pokerGameEvaluator;
+  protected PokerGameEvaluator pokerGameEvaluator;
   private final StringFormatter formatter = new StringFormatter();
 
   public HandScorerTestFixture(Player expectedWinner, List<Player> players) throws IOException {

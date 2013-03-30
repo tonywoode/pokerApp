@@ -2,7 +2,7 @@ package tests.scorer;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import pokerapp.Hand;
+import pokerapp.Player;
 import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.scorer.scorers.HandScorer;
 
@@ -17,8 +17,8 @@ import java.util.List;
  * @throws //TODO:ExceptionType
  */
 public class SpringBasedHandScorerTestFixture extends HandScorerTestFixture {
-  public SpringBasedHandScorerTestFixture(Hand expectedWinner, List<Hand> hands) throws IOException {
-    super(expectedWinner, hands);
+  public SpringBasedHandScorerTestFixture(Player expectedWinner, List<Player> players) throws IOException {
+    super(expectedWinner, players);
 
     ApplicationContext appContext = new ClassPathXmlApplicationContext("/console-game-application-context.xml");
 
