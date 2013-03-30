@@ -4,8 +4,10 @@ import lombok.Setter;
 import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.Player;
+import pokerapp.Suit;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -78,10 +80,37 @@ public class HardLogic implements LogicBridge {
 
     public ArrayList<Card> getNearFlushRemoval(int index)
     {
+        int maxSize = 0;
         Hand hand = player.getHand();
         ArrayList<Card> sortedCards = hand.getSortedCards();
+        ArrayList<Card> removeCards = new ArrayList<>();
+        HashMap<Suit, ArrayList<Card>> suitHash = new HashMap<Suit, ArrayList<Card>>();
 
-        return null;
+        for(Suit suit : Suit.AllSuits)
+        {
+            suitHash.put(suit, new ArrayList<Card>());
+        }
+
+        if(index > 2)
+            return null;
+        for(Card card : sortedCards)
+        {
+            suitHash.get(card.getSuit()).add(card);
+        }
+
+        for(ArrayList<Card> suitArray : suitHash.values())
+        {
+           if(suitArray.size() > maxSize)
+               maxSize = suitArray.size();
+            if(suitArray.size() >= HANDSIZE - index)
+                removeCards.addAll(suitArray);
+        }
+
+        if(maxSize >= HANDSIZE - index)
+        {
+            return removeCards;
+        }
+        else return null;
     }
 
     public Boolean hasOtherPlayerMoved()
