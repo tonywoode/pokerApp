@@ -89,6 +89,7 @@ public class PokerGamePresenter {
 	 public void turnCompleted(TurnCompletedEvent tce) throws FormatStringException, IOException,
 	 IllegalFormatCodeException {
 		 // TODO: let the computer play its turn
+     pokerGameModel.letComputerPlayerPlay();
 
      GameResult result = pokerGameModel.evaluate();
 

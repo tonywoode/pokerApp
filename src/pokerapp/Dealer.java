@@ -12,6 +12,10 @@ public class Dealer {
     this.deck = deck;
   }
 
+  public Deck getDeck() {
+    return deck;
+  }
+
   public void dealCards(int numCards, Players players) {
     deck = Deck.createDeck();
     deck.shuffle();

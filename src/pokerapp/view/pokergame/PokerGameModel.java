@@ -2,7 +2,13 @@ package pokerapp.view.pokergame;
 
 import lombok.Getter;
 import pokerapp.*;
+import pokerapp.console.Console;
+import pokerapp.console.ExchangeSetting;
+import pokerapp.console.StandardConsole;
 import pokerapp.scorer.PokerGameEvaluator;
+import pokerapp.utils.textformat.StringFormatter;
+
+import java.io.IOException;
 
 /**
  * Sets the basic parameters for a generic pokergame - players and dealer and setting a winner
@@ -37,5 +43,13 @@ public class PokerGameModel {
 
   public GameResult evaluate() {
     return pokerGameEvaluator.evaluate(players.getPlayers());
+  }
+
+  public void letComputerPlayerPlay() throws IOException {
+    Console console = new StandardConsole(new StringFormatter());
+
+    ExchangeSetting exchangeSettings = new ExchangeSetting(3, 1);
+
+    getComputerPlayer().playTurn(console, dealer.getDeck(), exchangeSettings);
   }
 }

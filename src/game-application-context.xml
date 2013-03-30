@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- text formatting -->
+
+  <bean id="stringFormatter" class="pokerapp.utils.textformat.StringFormatter"/>
+
+  <!-- event bus -->
+
+  <bean id="eventSource" class="pokerapp.view.events.EventSource" autowire="constructor"/>
+  <bean id="eventBus" class="com.google.common.eventbus.EventBus"/>
+  <bean class="pokerapp.view.events.SpringGuavaAdapter" autowire="constructor"/>
+
+  <!-- Poker Game Logic -->
+
+  <bean class="pokerapp.scorer.PokerGameEvaluator">
+    <constructor-arg ref="handScorer"/>
+  </bean>
+
+  <bean id="interactivePlayer" class="pokerapp.InteractivePlayer"/>
+  <bean id="computerPlayer" class="pokerapp.ComputerPlayer">
+    <constructor-arg>
+      <bean class="pokerapp.skynet.EasyComputerPlayerStrategy" />
+    </constructor-arg>
+  </bean>
+
+  <bean id="players" class="pokerapp.Players" autowire="constructor">
+    <constructor-arg>
+      <bean class="pokerapp.scorer.PokerGameEvaluator" >
+        <constructor-arg ref="handScorer"/>
+      </bean>
+    </constructor-arg>
+  </bean>
+
+  <bean id="dealer" class="pokerapp.Dealer" autowire="constructor">
+    <constructor-arg ref="deck"/>
+  </bean>
+
+  <bean id="deck" class="pokerapp.Deck" factory-method="createDeck"/>
+
+  <bean id="noPair" class="pokerapp.scorer.scorers.NoPairScorer" scope="prototype"/>
+  <bean id="pair" class="pokerapp.scorer.scorers.SameRankHandScorer" scope="prototype">
+    <constructor-arg>
+      <value>pair</value>
+    </constructor-arg>
+    <constructor-arg>
+      <value>2</value>
+    </constructor-arg>
+    <constructor-arg>
+      <value>1</value>
+    </constructor-arg>
+  </bean>
+  <bean id="twoPair" class="pokerapp.scorer.scorers.TwoPairScorer"  scope="prototype" />
+  <bean id="three" class="pokerapp.scorer.scorers.SameRankHandScorer" scope="prototype">
+    <constructor-arg>
+      <value>three</value>
+    </constructor-arg>
+    <constructor-arg>
+      <value>3</value>
+    </constructor-arg>
+    <constructor-arg>
+      <value>1</value>
+    </constructor-arg>
+  </bean>
+  <bean id="straight" class="pokerapp.scorer.scorers.StraightScorer" scope="prototype"/>
+  <bean id="flush" class="pokerapp.scorer.scorers.FlushScorer" scope="prototype"/>
+  <bean id="fullHouse" class="pokerapp.scorer.scorers.FullHouseScorer" scope="prototype">
+    <constructor-arg>
+      <ref bean="three"/>
+    </constructor-arg>
+    <constructor-arg>
+      <ref bean="pair"/>
+    </constructor-arg>
+  </bean>
+  <bean id="four" class="pokerapp.scorer.scorers.SameRankHandScorer" scope="prototype">
+    <constructor-arg>
+      <value>four</value>
+     </constructor-arg>
+     <constructor-arg>
+       <value>4</value>
+     </constructor-arg>
+     <constructor-arg>
+       <value>1</value>
+     </constructor-arg>
+  </bean>
+  <bean id="straightFlush" class="pokerapp.scorer.scorers.StraightFlushScorer" scope="prototype">
+    <constructor-arg>
+      <ref bean="straight"/>
+    </constructor-arg>
+    <constructor-arg>
+      <ref bean="flush"/>
+    </constructor-arg>
+  </bean>
+  <bean id="royalFlush" class="pokerapp.scorer.scorers.RoyalFlushScorer" scope="prototype">
+    <constructor-arg>
+      <ref bean="straight"/>
+    </constructor-arg>
+    <constructor-arg>
+      <ref bean="flush"/>
+    </constructor-arg>
+  </bean>
+
+  <bean id="handScorer" factory-bean="handScorerFactory" factory-method="getScorer">
+  </bean>
+
+  <bean id="handScorerFactory" class="pokerapp.scorer.HandScorerFactory">
+    <constructor-arg>
+      <list>
+        <ref bean="royalFlush"/>
+        <ref bean="straightFlush"/>
+        <ref bean="four"/>
+        <ref bean="fullHouse"/>
+        <ref bean="flush"/>
+        <ref bean="straight"/>
+        <ref bean="three"/>
+        <ref bean="twoPair"/>
+        <ref bean="pair"/>
+        <ref bean="noPair"/>
+      </list>
+    </constructor-arg>
+  </bean>
+</beans>
