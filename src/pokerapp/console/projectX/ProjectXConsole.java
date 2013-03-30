@@ -1,5 +1,6 @@
 package pokerapp.console.projectX;
 
+import lombok.AllArgsConstructor;
 import pokerapp.Suit;
 import pokerapp.console.Console;
 import pokerapp.utils.textformat.FormatStringException;
@@ -10,14 +11,11 @@ import pokerapp.utils.textformat.StringFormatter;
  * @author Steve
  * @version 1.0
  */
+@AllArgsConstructor
 public class ProjectXConsole implements Console {
+  private final SayWhat sayWhat;
   private final Console inner;
   private final StringFormatter formatter;
-
-  public ProjectXConsole(Console inner, StringFormatter formatter) {
-    this.inner = inner;
-    this.formatter = formatter;
-  }
 
   public static String removeSuitEmoji(String msg, Object... args) {
     for (Suit suit : Suit.AllSuits) {
@@ -30,14 +28,14 @@ public class ProjectXConsole implements Console {
   @Override
   public void writeMessage(String msg) {
     inner.writeMessage(msg);
-    SayWhat.vickiSays(removeSuitEmoji(msg));
+    sayWhat.sayWhat(removeSuitEmoji(msg));
   }
 
   @Override
   public void writeMessage(String msg, Object... args) throws FormatStringException, IllegalFormatCodeException {
     msg = formatter.format(msg, args);
     inner.writeMessage(msg);
-    SayWhat.vickiSays(removeSuitEmoji(msg));
+    sayWhat.sayWhat(removeSuitEmoji(msg));
   }
 
   @Override

@@ -4,6 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <import resource="game-application-context.xml" />
+  <import resource="projectX-application-context.xml" />
 
   <bean id="manyPlayerConsoleGameWithFactory" class="pokerapp.basicgame.ManyPlayerConsoleGameWithFactory" autowire="constructor" lazy-init="false">
     <constructor-arg index="0" ref="console" />
@@ -43,6 +44,7 @@
 
   <!-- Uses the decorator pattern to add text-to-speech; part of ProjectX -->
   <bean id="console" class="pokerapp.console.projectX.ProjectXConsole">
+    <constructor-arg ref="sayWhat" />
     <constructor-arg>
       <bean id="console" class="pokerapp.console.StandardConsole">
         <constructor-arg ref="stringFormatter"/>
