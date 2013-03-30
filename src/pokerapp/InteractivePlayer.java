@@ -38,7 +38,6 @@ public class InteractivePlayer extends Player {
 
     for (int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 
-      //    console.writeMessage("Your hand is: " + getHand().toUserString());
       console.writeMessage("Your hand is: " + getHand().toFancyUserString());
       //console.writeMessage("Would you like me to sort your hand?\n"); //TODO:sort the hand
       console.writeMessage("You can change between 0 and " + exchangeSetting.getNumCards() + " cards.");

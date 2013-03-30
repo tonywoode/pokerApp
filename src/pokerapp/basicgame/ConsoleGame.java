@@ -58,7 +58,7 @@ public class ConsoleGame extends Application {
     dealer.dealCards(HAND_SIZE, players);
 
     for (Player p : players)
-      console.writeMessage("Player {0} has {1}", p, p.getHand());
+      console.writeMessage("Player {0} has {1}", p, p.getHand().toFancyUserString());
 
     // TODO: The play order does not follow the spec
     for (Player p : players)
