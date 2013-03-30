@@ -1,8 +1,6 @@
 package pokerapp.scorer.scoredhands;
 
 import lombok.Getter;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.scorer.typetag.FullHouse;
@@ -18,9 +16,9 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class FullHouseScoredHand extends AbstractScoredHand<FullHouseScoredHand> {
-  @Getter private RunScoredHand triple, pair;
+  @Getter private SameRankScoredHand triple, pair;
 
-  public FullHouseScoredHand(int handNumber, Hand hand, RunScoredHand triple, RunScoredHand pair) {
+  public FullHouseScoredHand(int handNumber, Hand hand, SameRankScoredHand triple, SameRankScoredHand pair) {
     super(handNumber, hand, new FullHouse());
     this.triple = triple;
     this.pair = pair;

@@ -11,8 +11,8 @@ import pokerapp.scorer.scoredhands.ScoredHand;
  * Time: 22:46
  * To change this template use File | Settings | File Templates.
  */
-public class Run extends HandType {
-    public Run(int rankNum) {
+public class SameRank extends HandType {
+    public SameRank(int rankNum) {
       this.rankNum = rankNum;
     }
 

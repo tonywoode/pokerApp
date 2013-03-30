@@ -2,7 +2,7 @@ package pokerapp.scorer.scorers;
 
 import pokerapp.Hand;
 import pokerapp.scorer.scoredhands.FullHouseScoredHand;
-import pokerapp.scorer.scoredhands.RunScoredHand;
+import pokerapp.scorer.scoredhands.SameRankScoredHand;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
 import java.util.ArrayList;
@@ -27,8 +27,8 @@ public class FullHouseScorer extends CompositeScorer {
     return new FullHouseScoredHand(
       getHandNumber(),
       hand,
-      (RunScoredHand)scoredHands.get(TRIPLE_CATEGORY),
-      (RunScoredHand)scoredHands.get(PAIR_CATEGORY)
+      (SameRankScoredHand)scoredHands.get(TRIPLE_CATEGORY),
+      (SameRankScoredHand)scoredHands.get(PAIR_CATEGORY)
     );
   }
 }

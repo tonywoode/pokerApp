@@ -11,15 +11,15 @@
 
     <bean id="RoyalFlush" class="pokerapp.scorer.typetag.RoyalFlush" autowire="constructor"/>
 
-    <bean name="Pair,2" class="pokerapp.scorer.typetag.Run" >
+    <bean name="Pair,2" class="pokerapp.scorer.typetag.SameRank" >
         <constructor-arg index="0" value="2" />
     </bean>
 
-    <bean name="ThreeOfAKind,3" class="pokerapp.scorer.typetag.Run" >
+    <bean name="ThreeOfAKind,3" class="pokerapp.scorer.typetag.SameRank" >
         <constructor-arg index="0" value="3" />
     </bean>
 
-    <bean name="FourOfAKind,4" class="pokerapp.scorer.typetag.Run" >
+    <bean name="FourOfAKind,4" class="pokerapp.scorer.typetag.SameRank" >
         <constructor-arg index="0" value="4" />
     </bean>
 
