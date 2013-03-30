@@ -48,7 +48,7 @@ public abstract class ScoredHand implements Comparable<ScoredHand> {
 	/** All hands have a 'category' name. Most know their own name,
 	 * but some must calculate. Hence an abstract property.
 	 */
-	public abstract String getName() throws FileNotFoundException;
+	public abstract String getName();
 
 	/** Called when two hands are in the same category. We need
 	 * to determine which hand is better.

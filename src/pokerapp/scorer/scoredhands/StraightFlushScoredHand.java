@@ -37,7 +37,7 @@ public class StraightFlushScoredHand extends AbstractScoredHand<StraightFlushSco
   }
 
   @Override
-  public String getName() throws FileNotFoundException {
+  public String getName() {
     return "Straight flush";
   }
 

@@ -4,6 +4,7 @@ import pokerapp.*;
 import pokerapp.console.Console;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.console.UserConfigurable;
+import pokerapp.console.turns.ConsoleGameLoop;
 import pokerapp.skynet.NamedComputerPlayerFactory;
 
 import java.io.IOException;
@@ -36,17 +37,20 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
   // default - exchange 3 cards once
   private final ExchangeSetting exchangeSetting = new ExchangeSetting(3, 1);
 
+  private final ConsoleGameLoop consoleGameLoop;
+
   private int numberOfPlayers = MAX_NUMBER_PLAYERS;
   private int cardsToExchange = DEFAULT_CARDS_EXCHANGE;
   private int timesToExchange = MIN_TIMES_EXCHANGE;
 
   public ManyPlayerConsoleGameWithFactory(Console console, Deck deck, Dealer dealer, Players players,
-                                          NamedComputerPlayerFactory computerPlayerFactory) {
+                                          NamedComputerPlayerFactory computerPlayerFactory, ConsoleGameLoop consoleGameLoop) {
     this.console = console;
     this.deck = deck;
     this.dealer = dealer;
     this.players = players;
     this.computerPlayerFactory = computerPlayerFactory;
+    this.consoleGameLoop = consoleGameLoop;
   }
 
   public static void main(String[] args) {
@@ -115,10 +119,12 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
   }
 
   private void playGame() throws IOException {
-    for (Player p : players) {
-      p.playTurn(console, dealer, deck, exchangeSetting);
-      console.writeMessage(NEW_LINE);
-    }
+    consoleGameLoop.setExchangeSetting(exchangeSetting);
+
+    consoleGameLoop.reset().register(players);
+
+    // TODO: The play order does not follow the spec
+    consoleGameLoop.play(dealer, console);
   }
 
   private void returnCardsToDealer() {

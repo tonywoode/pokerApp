@@ -12,7 +12,9 @@ public class ExchangeSetting {
   @Getter @Setter private int numCards;
   @Getter @Setter private int numTimes;
 
-  public ExchangeSetting(int numCards, int numTimes){
+  public static ExchangeSetting Default = new ExchangeSetting(3, 1);
+
+  public ExchangeSetting(int numCards, int numTimes) {
     this.numCards = numCards;
     this.numTimes = numTimes;
   }

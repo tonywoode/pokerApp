@@ -6,6 +6,8 @@
   <import resource="game-application-context.xml" />
   <import resource="projectX-application-context.xml" />
 
+  <bean id="consoleGameLoop" class="pokerapp.console.turns.ConsoleGameLoop" autowire="constructor" />
+
   <bean id="manyPlayerConsoleGameWithFactory" class="pokerapp.basicgame.ManyPlayerConsoleGameWithFactory" autowire="constructor" lazy-init="false">
     <constructor-arg index="0" ref="console" />
     <constructor-arg index="1" ref="deck" />

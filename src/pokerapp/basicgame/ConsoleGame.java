@@ -3,6 +3,7 @@ package pokerapp.basicgame;
 import pokerapp.*;
 import pokerapp.console.Console;
 import pokerapp.console.ExchangeSetting;
+import pokerapp.console.turns.ConsoleGameLoop;
 import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
@@ -22,6 +23,7 @@ public class ConsoleGame extends Application {
   private final Deck deck;
   private final Players players;
   private final PokerGameEvaluator pokerGameEvaluator;
+  private final ConsoleGameLoop consoleGameLoop;
 
   private static final int HAND_SIZE = 5;
 
@@ -30,7 +32,7 @@ public class ConsoleGame extends Application {
    * it to work with final members.
    */
   public ConsoleGame(Console console, InteractivePlayer ip, ComputerPlayer cp, Dealer dealer, Deck deck,
-                     Players players, PokerGameEvaluator pokerGameEvaluator) {
+                     Players players, PokerGameEvaluator pokerGameEvaluator, ConsoleGameLoop consoleGameLoop) {
     this.console = console;
     this.interactivePlayer = ip;
     this.computerPlayer = cp;
@@ -38,6 +40,7 @@ public class ConsoleGame extends Application {
     this.deck = deck;
     this.players = players;
     this.pokerGameEvaluator = pokerGameEvaluator;
+    this.consoleGameLoop = consoleGameLoop;
   }
 
   public static void main(String[] args) throws IOException {
@@ -61,9 +64,12 @@ public class ConsoleGame extends Application {
     for (Player p : players)
       console.writeMessage("Player {0} has {1}", p, p.getHand().toFancyUserString());
 
+    consoleGameLoop.setExchangeSetting(exchangeSetting);
+
+    consoleGameLoop.reset().register(players);
+
     // TODO: The play order does not follow the spec
-    for (Player p : players)
-      p.playTurn(console, dealer, deck, exchangeSetting);
+    consoleGameLoop.play(dealer, console);
 
     GameResult result = pokerGameEvaluator.evaluate(players.getPlayers());
 

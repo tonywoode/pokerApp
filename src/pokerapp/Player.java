@@ -26,8 +26,6 @@ public abstract class Player {
     return getPlayerName();
   }
 
-  public abstract void playTurn(Console console, Dealer dealer, Deck deck, ExchangeSetting exchangeSetting) throws IOException, FormatStringException, IllegalFormatCodeException;
-
   public void receiveCard(Card card) {
     hand.add(card);
   }
@@ -40,4 +38,7 @@ public abstract class Player {
   public void receiveHand(Hand otherHand) {
     hand = otherHand;
   }
+
+  public abstract void visit(PlayerVisitor visitor);
+
 }

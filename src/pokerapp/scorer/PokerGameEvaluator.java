@@ -44,6 +44,10 @@ public class PokerGameEvaluator {
       return tryMoreThanTwoPlayers(players);
   }
 
+  public ScoredHand score(Hand hand) {
+    return handScorer.score(hand);
+  }
+
   @RequiredArgsConstructor
   private class ScoredPlayer {
     @Getter private final Player player;

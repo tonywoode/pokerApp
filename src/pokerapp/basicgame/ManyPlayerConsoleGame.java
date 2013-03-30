@@ -4,6 +4,7 @@ import pokerapp.*;
 import pokerapp.console.Console;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.console.UserConfigurable;
+import pokerapp.console.turns.ConsoleGameLoop;
 import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.skynet.ComputerPlayerFactory;
 import pokerapp.utils.textformat.FormatStringException;
@@ -28,13 +29,16 @@ public class ManyPlayerConsoleGame extends Application {
   // default - exchange 3 cards once
   private final ExchangeSetting exchangeSetting = new ExchangeSetting(3, 1);
 
+  private final ConsoleGameLoop consoleGameLoop;
+
   public ManyPlayerConsoleGame(Console console, Deck deck, Dealer dealer, Players players, ComputerPlayerFactory
-      computerPlayerFactory) {
+      computerPlayerFactory, ConsoleGameLoop consoleGameLoop) {
     this.console = console;
     this.deck = deck;
     this.dealer = dealer;
     this.players = players;
     this.computerPlayerFactory = computerPlayerFactory;
+    this.consoleGameLoop = consoleGameLoop;
   }
 
   public static void main(String[] args) {
@@ -143,11 +147,12 @@ public class ManyPlayerConsoleGame extends Application {
 
       console.writeMessage(NEW_LINE);
 
-      for (Player p : players) {
-        p.playTurn(console, dealer, deck, exchangeSetting);
-        console.writeMessage(NEW_LINE);
-      }
+      consoleGameLoop.setExchangeSetting(exchangeSetting);
 
+      consoleGameLoop.reset().register(players);
+
+      // TODO: The play order does not follow the spec
+      consoleGameLoop.play(dealer, console);
 
       // TODO: this is a bit hacky...
 

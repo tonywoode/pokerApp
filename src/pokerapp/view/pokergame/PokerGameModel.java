@@ -6,6 +6,7 @@ import pokerapp.console.Console;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.console.StandardConsole;
 import pokerapp.scorer.PokerGameEvaluator;
+import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.utils.textformat.StringFormatter;
 
 import java.io.IOException;
@@ -19,8 +20,8 @@ public class PokerGameModel {
   private final Dealer dealer;
   @Getter
   private final Player interactivePlayer;
-  @Getter
-  private final Player computerPlayer;
+
+  private final ComputerPlayer computerPlayer;
   private final Players players;
   private final PokerGameEvaluator pokerGameEvaluator;
 
@@ -34,6 +35,8 @@ public class PokerGameModel {
     this.players.register(interactivePlayer, computerPlayer);
   }
 
+  public Player getComputerPlayer() { return computerPlayer; }
+
   /**
    * Getter for the dealer dishing out a hand
    */
@@ -46,10 +49,10 @@ public class PokerGameModel {
   }
 
   public void letComputerPlayerPlay() throws IOException {
-    Console console = new StandardConsole(new StringFormatter());
-
     ExchangeSetting exchangeSettings = new ExchangeSetting(3, 1);
 
-    getComputerPlayer().playTurn(console, dealer, dealer.getDeck(), exchangeSettings);
+    ScoredHand scoredHand = pokerGameEvaluator.score(getComputerPlayer().getHand());
+
+    computerPlayer.playTurn(dealer, scoredHand, exchangeSettings);
   }
 }

@@ -106,8 +106,7 @@ public class DealerTest {
     }
 
     @Override
-    public void playTurn(Console console, Dealer dealer, Deck deck, ExchangeSetting exchangeSetting) {
-    }
+    public void visit(PlayerVisitor visitor) { }
   }
 
 }
