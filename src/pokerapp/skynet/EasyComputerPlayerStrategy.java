@@ -1,5 +1,6 @@
 package pokerapp.skynet;
 
+import pokerapp.Player;
 import pokerapp.scorer.HandVisitor;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.typetag.*;

@@ -1,8 +1,15 @@
 package pokerapp.skynet;
 
+import pokerapp.Card;
+import pokerapp.Hand;
+import pokerapp.Player;
+import pokerapp.scorer.HandRanks;
 import pokerapp.scorer.HandVisitor;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.typetag.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -19,7 +26,18 @@ import pokerapp.scorer.typetag.*;
  * @version 1
  */
 public class HardComputerPlayerStrategy extends ComputerPlayerStrategy implements HandVisitor {
-  @Override
+
+    private LogicBridge logic;
+
+    @Override
+    public void setPlayer(Player player)
+    {
+        setPlayer(player);
+        logic = new HardLogic(getPlayer());
+    }
+
+
+    @Override
   public void playTurn(ScoredHand handType) {
     handType.visit(this);
   }
@@ -62,5 +80,6 @@ public class HardComputerPlayerStrategy extends ComputerPlayerStrategy implement
   @Override
   public void accept(ScoredHand sh, TwoPair twoPair) {
     
-  }  
+  }
+
 }

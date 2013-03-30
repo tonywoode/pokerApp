@@ -1,5 +1,8 @@
 package pokerapp.skynet;
 
+import lombok.Getter;
+import lombok.Setter;
+import pokerapp.Player;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
 /**
@@ -17,5 +20,9 @@ import pokerapp.scorer.scoredhands.ScoredHand;
  * @version 1
  */
 public abstract class ComputerPlayerStrategy {
+
+  @Getter @Setter
+  private Player player;
+
   public abstract void playTurn(ScoredHand handType);
 }
