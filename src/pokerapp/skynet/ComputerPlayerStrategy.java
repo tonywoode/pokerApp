@@ -34,6 +34,6 @@ public abstract class ComputerPlayerStrategy {
 
   @Getter @Setter
   private Player player;
-  public abstract void playTurn(Dealer dealer, ScoredHand handType);
+
 
 }

@@ -3,16 +3,13 @@ package pokerapp.skynet;
 import lombok.Setter;
 import pokerapp.Card;
 import pokerapp.Dealer;
-import pokerapp.Hand;
 import pokerapp.Player;
-import pokerapp.scorer.HandRanks;
 import pokerapp.scorer.HandVisitor;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.typetag.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 /**
  * <p>
@@ -48,6 +45,11 @@ public class HardComputerPlayerStrategy extends ComputerPlayerStrategy implement
     public void playTurn(Dealer dealer, ScoredHand handType) {
     handType.visit(this);
     this.dealer = dealer;
+  }
+
+  @Override
+  public ComputerPlayerStrategy createNew() {
+    return null;  //To change body of implemented methods use File | Settings | File Templates.
   }
 
   @Override
@@ -95,7 +97,8 @@ public class HardComputerPlayerStrategy extends ComputerPlayerStrategy implement
   }
 
   @Override
-  public void accept(ScoredHand sh, Run run) {
+  public void accept(ScoredHand sh, SameRank sameRank) {
+
       if(logic.hasOtherPlayerMoved())
       {
           ArrayList<Card> posExchange = new ArrayList<Card>();
@@ -199,6 +202,11 @@ public class HardComputerPlayerStrategy extends ComputerPlayerStrategy implement
               }
           }
       }
+  }
+
+  @Override
+  public String toString() {
+    return "Hard";
   }
 
 }

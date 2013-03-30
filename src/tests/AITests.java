@@ -4,16 +4,13 @@ import org.junit.Test;
 import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.HandFactory;
-import pokerapp.scorer.HandScorerBuilder;
-import pokerapp.scorer.scoredhands.ScoredHand;
-import pokerapp.skynet.HardComputerPlayerStrategy;
 import pokerapp.skynet.HardLogic;
 import tests.scorer.MockPlayer;
 
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.testng.AssertJUnit.assertNull;
+import static org.junit.Assert.assertNull;
 
 /**
  * Created with IntelliJ IDEA.
