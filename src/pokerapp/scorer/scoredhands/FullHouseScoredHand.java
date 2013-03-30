@@ -37,20 +37,7 @@ public class FullHouseScoredHand extends AbstractScoredHand<FullHouseScoredHand>
   @Override
   public String getName() {
     return "Full house";
-                        /*
-      if(name.isEmpty())
-      {
-          Properties prop = new Properties();
-          try {
-              InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/handnames.properties"));
-              prop.load(in);
-              in.close();
-              name = prop.getProperty("FullHouse");
-          } catch (IOException e) {
-              e.printStackTrace();
-          }
-      }
-      return name;        */
+
   }
 
     @Override

@@ -47,19 +47,7 @@ public class NoPairScoredHand extends AbstractScoredHand<NoPairScoredHand> {
      */
     @Override
     public String getName() {
-        if(name == null)
-        {
-            Properties prop = new Properties();
-            try {
-                InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/handnames.properties"));
-                prop.load(in);
-                in.close();
-                name = prop.getProperty("NoPair");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return name;
+      return "No pair";
     }
 
     @Override

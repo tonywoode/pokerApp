@@ -38,19 +38,7 @@ public class StraightFlushScoredHand extends AbstractScoredHand<StraightFlushSco
 
   @Override
   public String getName() throws FileNotFoundException {
-    if(name == null)
-    {
-        Properties prop = new Properties();
-        try {
-            InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/handnames.properties"));
-                prop.load(in);
-                in.close();
-                name = prop.getProperty("StraightFlush");
-            } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    return name;
+    return "Straight flush";
   }
 
   @Override

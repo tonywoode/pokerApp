@@ -48,19 +48,7 @@ public class TwoPairScoredHand extends AbstractScoredHand<TwoPairScoredHand> {
 
   @Override
   public String getName() {
-      if(name.isEmpty())
-      {
-          Properties prop = new Properties();
-          try {
-              InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/handnames.properties"));
-              prop.load(in);
-              in.close();
-              name = prop.getProperty("TwoPair");
-          } catch (IOException e) {
-              e.printStackTrace();
-          }
-      }
-      return name;
+    return "Two pair";
   }
 
   @Override

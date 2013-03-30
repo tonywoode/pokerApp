@@ -30,22 +30,9 @@ public class RoyalFlushScoredHand extends StraightFlushScoredHand {
     this(hand.getHandNumber(), hand.getHand(), hand.getRank());
   }
 
-
   @Override
   public String getName() {
-      if(name == null)
-      {
-          Properties prop = new Properties();
-          try {
-              InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/handnames.properties"));
-              prop.load(in);
-              in.close();
-              name = prop.getProperty("RoyalFlush");
-          } catch (IOException e) {
-              e.printStackTrace();
-          }
-      }
-      return name;
+    return "Royal flush";
   }
 
   @Override
