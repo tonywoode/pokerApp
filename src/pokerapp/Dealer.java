@@ -1,16 +1,16 @@
 package pokerapp;
 
+import lombok.AllArgsConstructor;
+import pokerapp.view.events.EventSource;
+
 /**
  * Dealer for pokerapp deals and replaces cards
  *
  * @author steve, tony
  */
+@AllArgsConstructor
 public class Dealer {
   private Deck deck;
-
-  public Dealer(Deck deck) {
-    this.deck = deck;
-  }
 
   public Deck getDeck() {
     return deck;
