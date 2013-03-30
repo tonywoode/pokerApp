@@ -102,7 +102,7 @@ public class HardLogic implements LogicBridge {
         {
            if(suitArray.size() > maxSize)
                maxSize = suitArray.size();
-            if(suitArray.size() >= HANDSIZE - index)
+            if(suitArray.size() < HANDSIZE - index)
                 removeCards.addAll(suitArray);
         }
 

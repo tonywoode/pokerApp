@@ -140,4 +140,37 @@ public class AITests {
         assertEquals("♦10", testReturn.get(0).toString());
     }
 
+    @Test
+    public void testFlush1()
+    {
+        HandFactory handFactory = new HandFactory();
+        Hand hand = handFactory.createFromLine("D5 D3 D13 D10 S14");
+        HardLogic hardComputerPlayerStrategy= new HardLogic(new MockPlayer(hand,1));
+        ArrayList<Card> testReturn = hardComputerPlayerStrategy.getNearFlushRemoval(1);
+        assertEquals("♠14", testReturn.get(0).toString());
+    }
+
+
+    @Test
+    public void testFlush2()
+    {
+        HandFactory handFactory = new HandFactory();
+        Hand hand = handFactory.createFromLine("D5 D3 S13 D10 S14");
+        HardLogic hardComputerPlayerStrategy= new HardLogic(new MockPlayer(hand,1));
+        ArrayList<Card> testReturn = hardComputerPlayerStrategy.getNearFlushRemoval(2);
+        assertEquals("♠14", testReturn.get(0).toString());
+        assertEquals("♠13", testReturn.get(1).toString());
+    }
+
+    @Test
+    public void testFlush3()
+    {
+        HandFactory handFactory = new HandFactory();
+        Hand hand = handFactory.createFromLine("D5 D3 S13 D10 S14");
+        HardLogic hardComputerPlayerStrategy= new HardLogic(new MockPlayer(hand,1));
+        ArrayList<Card> testReturn = hardComputerPlayerStrategy.getNearFlushRemoval(3);
+        assertNull(testReturn);
+    }
+
+
 }
