@@ -2,7 +2,6 @@ package pokerapp.scorer;
 
 import pokerapp.Card;
 import pokerapp.Hand;
-import pokerapp.utils.Constants;
 
 /**
  *
@@ -14,7 +13,7 @@ public class HandGrid {
 
   private Hand hand;
 
-  public int[][] matrix = new int[Constants.NUM_SUITS + 1][Constants.HIST_SIZE];
+  public int[][] matrix = new int[Card.NUM_SUITS + 1][HandRanks.HIST_SIZE];
 
   public HandGrid(Hand other_hand) {
     this.hand = other_hand;

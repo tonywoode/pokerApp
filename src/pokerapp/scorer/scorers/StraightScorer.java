@@ -6,7 +6,6 @@ import pokerapp.Rank;
 import pokerapp.scorer.HandRanks;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scoredhands.StraightScoredHand;
-import pokerapp.utils.Constants;
 
 /**
  * @author Steve
@@ -17,12 +16,15 @@ import pokerapp.utils.Constants;
  */
 public class StraightScorer extends HandScorer {
 
+  public static final String LOW_STRAIGHT_SIGNATURE = "11111";
+  public static final String HIGH_STRAIGHT_SIGNATURE = "1111000000001";
+
   protected ScoredHand resolveCore(Hand hand) {
     HandRanks rh = new HandRanks(hand);
     Rank rank = Rank.DEUCE;
 
-    if (rh.toString().contains(Constants.LOW_STRAIGHT_SIGNATURE) ||
-        rh.toString().contains(Constants.HIGH_STRAIGHT_SIGNATURE)) {
+    if (rh.toString().contains(LOW_STRAIGHT_SIGNATURE) ||
+        rh.toString().contains(HIGH_STRAIGHT_SIGNATURE)) {
       for (Card c : hand) {
         if (c.getRank().beats(rank))
           rank = c.getRank();

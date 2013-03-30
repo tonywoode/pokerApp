@@ -3,7 +3,6 @@ package pokerapp.console;
 import pokerapp.*;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.skynet.ComputerPlayerFactory;
-import pokerapp.utils.Constants;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 
@@ -46,7 +45,7 @@ public class Driver {
 
     while (true) {
 
-      dealer.dealCards(Constants.HAND_SIZE, players);
+      dealer.dealCards(Hand.HAND_SIZE, players);
 
       for (Player p : players) {
         console.writeMessage("Player %1$2s has %2$2s", p, p.getHand().toFancyUserString());

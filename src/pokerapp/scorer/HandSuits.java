@@ -3,7 +3,6 @@ package pokerapp.scorer;
 
 import pokerapp.Card;
 import pokerapp.Hand;
-import pokerapp.utils.Constants;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,7 +16,7 @@ import pokerapp.utils.Constants;
 public class HandSuits {
 
     private Hand hand = new Hand();
-    public int[] suit_histogram = new int[Constants.NUM_SUITS + 1];
+    public int[] suit_histogram = new int[Card.NUM_SUITS + 1];
 
 /**
  * determines how many cards of each suit are in a hand
@@ -36,15 +35,15 @@ public class HandSuits {
    //second ctor takes a hand summary
     public HandSuits(HandGrid handGrid){
 
-        for(int j = 1; j < Constants.HIST_SIZE; j++) {
-            for(int i = 1; i < Constants.NUM_SUITS + 1; i++) {
+        for(int j = 1; j < HandRanks.HIST_SIZE; j++) {
+            for(int i = 1; i < Card.NUM_SUITS + 1; i++) {
                suit_histogram[i] = suit_histogram[i] + handGrid.matrix[i][j];
             }
         }
     }
 
     public boolean hasCount(int count) {
-      for (int iter = 1; iter <= Constants.NUM_SUITS; ++iter)
+      for (int iter = 1; iter <= Card.NUM_SUITS; ++iter)
         if (suit_histogram[iter] == count)
           return true;
       return false;

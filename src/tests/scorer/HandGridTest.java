@@ -1,10 +1,10 @@
 package tests.scorer;
 
 import org.junit.Test;
+import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.HandFactory;
 import pokerapp.scorer.HandGrid;
-import pokerapp.utils.Constants;
 
 import static org.junit.Assert.assertEquals;
 
@@ -40,8 +40,8 @@ public class HandGridTest {
         try {
             Hand testHand = handFactory.create(testHandString);
             HandGrid testHandGrid = new HandGrid(testHand);
-            for (int row = 1; row < Constants.NUM_SUITS + 1; row++) {
-                for(int col = 1; col < Constants.NUM_RANKS + 1; col++){
+            for (int row = 1; row < Card.NUM_SUITS + 1; row++) {
+                for(int col = 1; col < Card.NUM_RANKS + 1; col++){
                     System.out.print(testHandGrid.matrix[row][col]);
                 }
                 System.out.println();
@@ -67,8 +67,8 @@ public class HandGridTest {
     try {
       Hand testHand = handFactory.create(testHandString);
       HandGrid testHandGrid = new HandGrid(testHand);
-      for (int row = 1; row < Constants.NUM_SUITS + 1; row++) {
-        for(int col = 1; col < Constants.NUM_RANKS + 1; col++){
+      for (int row = 1; row < Card.NUM_SUITS + 1; row++) {
+        for(int col = 1; col < Card.NUM_RANKS + 1; col++){
           System.out.print(testHandGrid.matrix[row][col]);
         }
         System.out.println();
@@ -94,8 +94,8 @@ public class HandGridTest {
         try {
             Hand testHand = handFactory.create(testHandString);
             HandGrid testHandGrid = new HandGrid(testHand);
-            for (int row = 1; row < Constants.NUM_SUITS + 1; row++) {
-                for(int col = 1; col < Constants.NUM_RANKS + 1; col++){
+            for (int row = 1; row < Card.NUM_SUITS + 1; row++) {
+                for(int col = 1; col < Card.NUM_RANKS + 1; col++){
                     System.out.print(testHandGrid.matrix[row][col]);
                 }
                 System.out.println();
@@ -121,8 +121,8 @@ public class HandGridTest {
         try {
             Hand testHand = handFactory.create(testHandString);
             HandGrid testHandGrid = new HandGrid(testHand);
-            for (int row = 1; row < Constants.NUM_SUITS + 1; row++) {
-                for(int col = 1; col < Constants.NUM_RANKS + 1; col++){
+            for (int row = 1; row < Card.NUM_SUITS + 1; row++) {
+                for(int col = 1; col < Card.NUM_RANKS + 1; col++){
                     System.out.print(testHandGrid.matrix[row][col]);
                 }
                 System.out.println();
@@ -148,8 +148,8 @@ public class HandGridTest {
         try {
             Hand testHand = handFactory.create(testHandString);
             HandGrid testHandGrid = new HandGrid(testHand);
-            for (int row = 1; row < Constants.NUM_SUITS + 1; row++) {
-                for(int col = 1; col < Constants.NUM_RANKS + 1; col++){
+            for (int row = 1; row < Card.NUM_SUITS + 1; row++) {
+                for(int col = 1; col < Card.NUM_RANKS + 1; col++){
                     System.out.print(testHandGrid.matrix[row][col]);
                 }
                 System.out.println();
@@ -175,8 +175,8 @@ public class HandGridTest {
         try {
             Hand testHand = handFactory.create(testHandString);
             HandGrid testHandGrid = new HandGrid(testHand);
-            for (int row = 1; row < Constants.NUM_SUITS + 1; row++) {
-                for(int col = 1; col < Constants.NUM_RANKS + 1; col++){
+            for (int row = 1; row < Card.NUM_SUITS + 1; row++) {
+                for(int col = 1; col < Card.NUM_RANKS + 1; col++){
                     System.out.print(testHandGrid.matrix[row][col]);
                 }
                 System.out.println();

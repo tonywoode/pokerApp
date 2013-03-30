@@ -3,7 +3,6 @@ package pokerapp.console;
 import pokerapp.*;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.skynet.ComputerPlayerFactory;
-import pokerapp.utils.Constants;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 import pokerapp.utils.textformat.StringFormatter;
@@ -124,7 +123,7 @@ public class DriverWithComputers {
 
       console.writeMessage("Ready? Play poker!");
 
-      dealer.dealCards(Constants.HAND_SIZE, players);
+      dealer.dealCards(Hand.HAND_SIZE, players);
 
       for (Player p : players) {
 
