@@ -15,8 +15,7 @@ import pokerapp.Hand;
  */
 public class HandSuits {
 
-    private Hand hand = new Hand();
-    public int[] suit_histogram = new int[Card.NUM_SUITS + 1];
+  public int[] suit_histogram = new int[Card.NUM_SUITS + 1];
 
 /**
  * determines how many cards of each suit are in a hand
@@ -24,7 +23,7 @@ public class HandSuits {
  */
     //first ctor takes a hand
     public HandSuits(Hand hand){
-        this.hand = hand;
+      Hand hand1 = hand;
 
         // Determine how many cards of each suit are in the hand
         for(Card card: hand)
