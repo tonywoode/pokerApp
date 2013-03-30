@@ -1,3 +1,4 @@
+1|S14 D8 C14 C13 S7|H2 H3 S4 S5 D9 -- P1 SHOULD WIN (FAILED HANDRANKS::GETRANKOFMULTIPLE)
 1|H3 D3 S3 S5 S8|H2 C8 C3 C5 C8 -- player 1 wins with three of a kind (rank 3)
 T|H3 D3 S3 S5 S8|H3 D3 S3 S5 S8 -- tie
 2|H2 C8 C3 C5 C8|H3 D3 S3 S5 S8 -- player 2 wins with three of a kind (rank 3)
