@@ -27,17 +27,23 @@ public class ProjectXConsole implements Console {
     return msg;
   }
 
+  public static String removeAsterisk(String msg, Object... args) {
+
+    msg = msg.replace("*", "");
+    return msg;
+  }
+
   @Override
   public void writeMessage(String msg) {
     inner.writeMessage(msg);
-    SayWhat.vickiSays(removeSuitEmoji(msg));
+    SayWhat.vickiSays(removeAsterisk(removeSuitEmoji(msg)));
   }
 
   @Override
   public void writeMessage(String msg, Object... args) throws FormatStringException, IllegalFormatCodeException {
     msg = formatter.format(msg, args);
     inner.writeMessage(msg);
-    SayWhat.vickiSays(removeSuitEmoji(msg));
+    SayWhat.vickiSays(removeAsterisk(removeSuitEmoji(msg)));
   }
 
   @Override
