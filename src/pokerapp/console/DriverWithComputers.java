@@ -147,7 +147,7 @@ public class DriverWithComputers {
       console.writeMessage(NEW_LINE);
       console.writeMessage("******************************************************");
       console.writeMessage(NEW_LINE);
-      console.writeMessage(winner.getPlayerName() + " won with " + winner.getHand());
+      console.writeMessage(winner.getPlayerName() + " won with " + winner.getHand().toFancyUserString());
       console.writeMessage(NEW_LINE);
       console.writeMessage("******************************************************");
       console.writeMessage(NEW_LINE);
