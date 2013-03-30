@@ -1,5 +1,6 @@
 package tests.scorer;
 
+import pokerapp.Dealer;
 import pokerapp.Deck;
 import pokerapp.Hand;
 import pokerapp.Player;
@@ -26,5 +27,5 @@ public class MockPlayer extends Player {
   }
 
   @Override
-  public void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) throws IOException, FormatStringException, IllegalFormatCodeException {}
+  public void playTurn(Console console, Dealer dealer, Deck deck, ExchangeSetting exchangeSetting) throws IOException, FormatStringException, IllegalFormatCodeException {}
 }

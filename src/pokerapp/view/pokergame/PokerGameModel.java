@@ -50,6 +50,6 @@ public class PokerGameModel {
 
     ExchangeSetting exchangeSettings = new ExchangeSetting(3, 1);
 
-    getComputerPlayer().playTurn(console, dealer.getDeck(), exchangeSettings);
+    getComputerPlayer().playTurn(console, dealer, dealer.getDeck(), exchangeSettings);
   }
 }

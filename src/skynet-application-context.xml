@@ -5,17 +5,19 @@
 
   <!-- Computer players, AI, etc. -->
 
+  <bean id="randomNumberGenerator" class="pokerapp.skynet.RandomNumberGenerator" />
+
   <bean id="interactivePlayer" class="pokerapp.InteractivePlayer"/>
   <bean id="computerPlayer" class="pokerapp.ComputerPlayer">
     <constructor-arg>
-      <bean class="pokerapp.skynet.EasyComputerPlayerStrategy" />
+      <bean class="pokerapp.skynet.EasyComputerPlayerStrategy" autowire="constructor" />
     </constructor-arg>
   </bean>
 
   <bean id="computerPlayerFactory" class="pokerapp.skynet.ComputerPlayerFactory" />
 
-  <bean id="easyComputerStrategy" class="pokerapp.skynet.EasyComputerPlayerStrategy" />
-  <bean id="mediumComputerStrategy" class="pokerapp.skynet.StandardComputerPlayerStrategy" />
+  <bean id="easyComputerStrategy" class="pokerapp.skynet.EasyComputerPlayerStrategy" autowire="constructor" />
+  <bean id="mediumComputerStrategy" class="pokerapp.skynet.StandardComputerPlayerStrategy" autowire="constructor" />
   <bean id="hardComputerStrategy" class="pokerapp.skynet.HardComputerPlayerStrategy" />
 
   <bean id="namedComputerPlayerFactory" class="pokerapp.skynet.NamedComputerPlayerFactory">
