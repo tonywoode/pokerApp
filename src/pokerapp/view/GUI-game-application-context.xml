@@ -81,7 +81,11 @@
     </bean>
 
     <bean id="players" class="pokerapp.Players" autowire="constructor">
-        <constructor-arg ref="handScorer"/>
+        <constructor-arg>
+            <bean class="pokerapp.scorer.PokerGameEvaluator" >
+                <constructor-arg ref="handScorer"/>
+            </bean>
+        </constructor-arg>
     </bean>
 
     <!-- original GUI -->

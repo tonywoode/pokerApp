@@ -21,7 +21,9 @@
         <constructor-arg index="4" ref="deck"/>
         <constructor-arg index="5" ref="players"/>
         <constructor-arg index="6">
-            <bean class="pokerapp.scorer.PokerGameEvaluator" />
+            <bean class="pokerapp.scorer.PokerGameEvaluator" >
+                <constructor-arg ref="handScorer"/>
+            </bean>
         </constructor-arg>
     </bean>
 
@@ -51,7 +53,11 @@
     <bean id="deck" class="pokerapp.Deck" factory-method="createDeck"/>
 
     <bean id="players" class="pokerapp.Players" autowire="constructor">
-        <constructor-arg ref="handScorer"/>
+        <constructor-arg>
+            <bean class="pokerapp.scorer.PokerGameEvaluator" >
+                <constructor-arg ref="handScorer"/>
+            </bean>
+        </constructor-arg>
     </bean>
 
     <!-- define the HandScorer beans in reverse order, so references work... necessary? -->
