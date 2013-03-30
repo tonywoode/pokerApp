@@ -1,16 +1,9 @@
 package pokerapp.view;
 
-import java.awt.Color;
-import java.awt.Font;
-
-import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.*;
 
 
 /**
@@ -108,7 +101,7 @@ public class ScoresPanel extends JPanel {
 	}
 
 	
-	public static void setScores(int cpuTally, int youTally) {
+	public static void setScores(int youTally, int cpuTally) {
 		cpuScore.setText(Integer.toString(cpuTally));
 		youScore.setText(Integer.toString(youTally));
 	}
