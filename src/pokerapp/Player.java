@@ -15,7 +15,7 @@ import java.io.IOException;
  * @version 1.0
  */
 public abstract class Player {
-  @Getter private Hand hand = new Hand();
+  @Getter protected Hand hand = new Hand();
 
   @Getter @Setter private String playerName = "";
 
@@ -34,7 +34,6 @@ public abstract class Player {
 
   public void dropHand(){
    hand = new Hand();
-
   }
 
 

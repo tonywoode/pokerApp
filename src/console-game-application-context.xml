@@ -20,6 +20,9 @@
         <constructor-arg index="3" ref="dealer"/>
         <constructor-arg index="4" ref="deck"/>
         <constructor-arg index="5" ref="players"/>
+        <constructor-arg index="6">
+            <bean class="pokerapp.scorer.PokerGameEvaluator" />
+        </constructor-arg>
     </bean>
 
     <bean id="console" class="pokerapp.console.projectX.ProjectXConsole">

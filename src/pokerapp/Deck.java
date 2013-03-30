@@ -78,6 +78,4 @@ public class Deck implements Iterable<Card> {
   public Iterator<Card> iterator() {
     return cards.iterator();
   }
-
-
 }

@@ -4,6 +4,7 @@ import pokerapp.Dealer;
 import pokerapp.InteractivePlayer;
 import pokerapp.Players;
 import pokerapp.scorer.HandScorerBuilder;
+import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 
@@ -29,7 +30,7 @@ public class PlayerHandPresenterBridge {
 
   public void playRandomHand() throws FormatStringException, IOException, IllegalFormatCodeException {
     InteractivePlayer ip = new InteractivePlayer();
-    Players players = new Players(new HandScorerBuilder().create()).register(ip);
+    Players players = new Players(PokerGameEvaluator.create()).register(ip);
 
     dealer.dealCards(5, players);
     handPresenter.init(ip, ip.getHand());

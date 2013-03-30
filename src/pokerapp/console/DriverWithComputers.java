@@ -2,6 +2,7 @@ package pokerapp.console;
 
 import pokerapp.*;
 import pokerapp.scorer.HandScorerBuilder;
+import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.skynet.ComputerPlayerFactory;
 import pokerapp.utils.Constants;
 import pokerapp.utils.textformat.FormatStringException;
@@ -43,8 +44,7 @@ public class DriverWithComputers {
 
     Deck deck = Deck.createDeck();
     Dealer dealer = new Dealer(deck);
-    Players players = new Players(new HandScorerBuilder().create());
-
+    Players players = new Players(PokerGameEvaluator.create());
 
     try {
 
@@ -144,11 +144,23 @@ public class DriverWithComputers {
       }
 
 
-      Player winner = players.pickWinner();
+      // TODO: this is a bit hacky...
+
+      GameResult result = players.evaluateGame();
+
       console.writeMessage(NEW_LINE);
       console.writeMessage("******************************************************");
       console.writeMessage(NEW_LINE);
-      console.writeMessage(winner.getPlayerName() + " won with " + winner.getHand());
+
+      if (!result.isTie()) {
+        for (Player p : players)
+          if (players.isWinner(p))
+            console.writeMessage("{0} won with {1}", p.getPlayerName(), p.getHand().toFancyUserString());
+      } else {
+        // TODO: fix this, obviously
+        console.writeMessage("There was a tie... but that's all I know at the moment");
+      }
+
       console.writeMessage(NEW_LINE);
       console.writeMessage("******************************************************");
       console.writeMessage(NEW_LINE);

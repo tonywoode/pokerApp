@@ -1,12 +1,17 @@
 package pokerapp.scorer;
 
-import pokerapp.Hand;
-import pokerapp.Player;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import pokerapp.*;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.HandScorer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -32,66 +37,75 @@ public class PokerGameEvaluator {
     return scoredHand.getName();
   }
 
-  public Hand pickWinner(Hand... hands) throws IllegalArgumentException {
-    if (hands.length < 2)
-      throw new IllegalArgumentException("Need at least 2 hands to pick a winner!");
-
-    Hand currentWinner = hands[0];
-    for (int iter = 1; iter < hands.length; ++iter) {
-      currentWinner = pickWinner(currentWinner, hands[iter]);
-      if (currentWinner == null) // tie
-        currentWinner = hands[iter];
-    }
-
-    return currentWinner;
-  }
-
-  public Hand pickWinner(List<Hand> hands) throws IllegalArgumentException {
-    if (hands.size() < 2)
-      throw new IllegalArgumentException("Need at least 2 hands to pick a winner!");
-
-    Hand currentWinner = hands.get(0);
-    for (int iter = 1; iter < hands.size(); ++iter) {
-      currentWinner = pickWinner(currentWinner, hands.get(iter));
-      if (currentWinner == null) // tie
-        currentWinner = hands.get(iter);
-    }
-
-    return currentWinner;
-  }
-
-
-  /**
-   * When passed two players, will compare the hand category grade of the two players
-   * for a hand of poker, and return which of them compares higher
-   *
-   * <p>
-   *   Stolen from Players.java
-   * </p>
-   *
-   * @param lhs player one
-   * @param rhs player two
-   * @return the player with the higher hand grade
-   */
-  protected Hand pickWinner(Hand lhs, Hand rhs) {
-    ScoredHand lhsCat = handScorer.score(lhs),
-               rhsCat = handScorer.score(rhs);
-
-    int result = 0;
-    try {
-      result = lhsCat.compareTo(rhsCat);
-    } catch (Exception e) {
-      e.printStackTrace();
-      return null; // TODO: fix this...
-    }
-
-    // TODO: clients should not have to do this
-    if (result == 0)
-      return null;
-    else if (result < 0)
-      return rhs;
+  public GameResult evaluate(List<Player> players) {
+    if (players.size() == 2)
+      return simpleGameEvaluator(players);
     else
-      return lhs;
+      return tryMoreThanTwoPlayers(players);
+  }
+
+  @RequiredArgsConstructor
+  private class ScoredPlayer {
+    @Getter private final Player player;
+    @Getter private final ScoredHand scoredHand;
+    @Getter int numWins;
+    @Getter int numLosses;
+    @Getter int numTies;
+
+    public int compareTo(ScoredPlayer rhs) {
+      int c = getScoredHand().compareTo(rhs.getScoredHand());
+      if (c == 0)
+        ++numTies;
+      else if (c == 1)
+        ++numLosses;
+      else
+        ++numWins;
+      return c;
+    }
+  }
+
+  private GameResult tryMoreThanTwoPlayers(List<Player> players) {
+    List<ScoredPlayer> scoredPlayers = new ArrayList<>();
+    for (Player p : players)
+      scoredPlayers.add(new ScoredPlayer(p, handScorer.score(p.getHand())));
+
+    Collections.sort(scoredPlayers, new Comparator<ScoredPlayer>() {
+      @Override public int compare(ScoredPlayer p1, ScoredPlayer p2) {
+        return p2.compareTo(p1); // TODO: swapped; but don't understand why
+      }
+    });
+
+    // check for ties...
+
+    players = new ArrayList<>();
+    for (ScoredPlayer p : scoredPlayers) {
+      if (p.numTies != 0)
+        throw new IllegalArgumentException("Unable to handle >2 players and ties");
+      players.add(p.getPlayer());
+    }
+
+    return new MultiplePlayerNoTieGameResult(players);
+  }
+
+  private GameResult simpleGameEvaluator(List<Player> players) {
+    ScoredHand lhs = handScorer.score(players.get(0).getHand()),
+               rhs = handScorer.score(players.get(1).getHand());
+
+    int result = lhs.compareTo(rhs);
+
+    if (result == 0)
+      return new TiedSimpleGameResult(players);
+    else {
+      Player winner, loser;
+      if (result == 1) {
+        winner = players.get(0);
+        loser  = players.get(1);
+      } else {
+        winner = players.get(1);
+        loser  = players.get(0);
+      }
+      return new SimpleGameResult(winner, loser);
+    }
   }
 
   public static PokerGameEvaluator create() throws IOException {

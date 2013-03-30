@@ -30,7 +30,7 @@ public class PokerGameModel {
    * @return player that won the round
    */
   public Player pickWinner() {
-    return players.pickWinner();
+    return null; // TODO: who uses this?
   }
 
   /**

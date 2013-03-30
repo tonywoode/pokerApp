@@ -1,6 +1,7 @@
 package pokerapp;
 
 import lombok.Getter;
+import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.scorers.HandScorer;
 
@@ -17,15 +18,16 @@ public class Players implements Iterable<Player> {
 
   @Getter
   ArrayList<Player> players = new ArrayList<Player>();
-  private final HandScorer scorer;
+  private final PokerGameEvaluator pokerGameEvaluator;
+
 
   /**
    * Takes its dependency on the HandScorer through DI
    *
-   * @param scorer The first HandScorer in the Chain of Responsibility
+   * @param pokerGameEvaluator The PokerGameEvaluator bridge to the Scoring Engine
    */
-  public Players(HandScorer scorer) {
-    this.scorer = scorer;
+  public Players(PokerGameEvaluator pokerGameEvaluator) {
+    this.pokerGameEvaluator = pokerGameEvaluator;
   }
 
   /**
@@ -40,43 +42,12 @@ public class Players implements Iterable<Player> {
     return this;
   }
 
-  /**
-   * Uses the current players to pick a winner
-   *
-   * @return the player that has the highest ranking
-   */
-  public Player pickWinner() {
-    Player winner = players.get(0);
-
-    for (int iter = 1; iter < players.size(); ++iter) {
-      Player challenger = players.get(iter);
-
-      winner = pickWinner(winner, challenger);
-    }
-
-    return winner;
+  public GameResult evaluateGame() {
+    return pokerGameEvaluator.evaluate(players);
   }
 
-  /**
-   * When passed two players, will compare the hand category grade of the two players
-   * for a hand of poker, and return which of them compares higher
-   *
-   * @param lhs player one
-   * @param rhs player two
-   * @return the player with the higher hand grade
-   */
-  protected Player pickWinner(Player lhs, Player rhs) {
-    ScoredHand lhsCat = scorer.score(lhs.getHand()),
-        rhsCat = scorer.score(rhs.getHand());
-
-    int result = lhsCat.compareTo(rhsCat);
-
-    if (result == 0)
-      return null;
-    else if (result < 0)
-      return rhs;
-    else
-      return lhs;
+  public boolean isWinner(Player player) {
+    return evaluateGame().isWinner(player);
   }
 
   @Override
