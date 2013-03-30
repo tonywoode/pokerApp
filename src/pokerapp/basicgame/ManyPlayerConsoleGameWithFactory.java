@@ -171,7 +171,7 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
       console.writeMessage("Enter your opponent's number: ");
       int cpNumber = console.readInteger();
 
-      ComputerPlayer cp = computerPlayerFactory.create(cpNumber);
+      ComputerPlayer cp = computerPlayerFactory.create(cpNumber - 1);
       players.register(cp);
     }
   }

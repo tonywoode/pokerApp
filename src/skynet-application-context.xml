@@ -24,16 +24,20 @@
     <constructor-arg>
       <list>
         <bean class="pokerapp.ComputerPlayer">
-          <constructor-arg value="Frank" />
+          <constructor-arg value="Linus" />
           <constructor-arg ref="easyComputerStrategy" />
         </bean>
         <bean class="pokerapp.ComputerPlayer">
-          <constructor-arg value="Ari" />
-          <constructor-arg ref="hardComputerStrategy" />
-        </bean>
-        <bean class="pokerapp.ComputerPlayer">
-          <constructor-arg value="Vinnie" />
+          <constructor-arg value="Jessica" />
           <constructor-arg ref="mediumComputerStrategy" />
+        </bean>
+          <bean class="pokerapp.ComputerPlayer">
+              <constructor-arg value="Oscar" />
+              <constructor-arg ref="mediumComputerStrategy" />
+          </bean>
+        <bean class="pokerapp.ComputerPlayer">
+          <constructor-arg value="Sherlock" />
+          <constructor-arg ref="hardComputerStrategy" />
         </bean>
       </list>
     </constructor-arg>
