@@ -34,7 +34,7 @@ public class InteractivePlayer extends Player {
   }
 
   @Override
-  public void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) throws FormatStringException, IllegalFormatCodeException {
+  public void playTurn(Console console, Dealer dealer, Deck deck, ExchangeSetting exchangeSetting) throws FormatStringException, IllegalFormatCodeException {
 
     for (int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 

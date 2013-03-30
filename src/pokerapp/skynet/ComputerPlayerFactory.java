@@ -23,9 +23,9 @@ public class ComputerPlayerFactory {
       case HARD_COMPUTER:
         return new HardComputerPlayerStrategy();
       case STANDARD_COMPUTER:
-        return new StandardComputerPlayerStrategy();
+        return new StandardComputerPlayerStrategy((EasyComputerPlayerStrategy)chooseStrategy(EASY_COMPUTER));
       case EASY_COMPUTER:
-        return new EasyComputerPlayerStrategy();
+        return new EasyComputerPlayerStrategy(new RandomNumberGenerator());
       default:
         throw new IllegalArgumentException("Unknown player difficulty setting");
     }

@@ -3,6 +3,7 @@ package pokerapp.console.madness;
 import pokerapp.ComputerPlayer;
 import pokerapp.InteractivePlayer;
 import pokerapp.skynet.EasyComputerPlayerStrategy;
+import pokerapp.skynet.RandomNumberGenerator;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 import pokerapp.utils.textformat.StringFormatter;
@@ -66,7 +67,7 @@ public class ConsoleGameBuilder {
     List<ConsoleGameState> states = new ArrayList<>();
 
     for (int iter = 0; iter < 3; ++iter)
-      states.add(new ComputerPlayerPlayTurnGameState(new ComputerPlayer(sf.format("Player {0}", iter + 1), new EasyComputerPlayerStrategy())));
+      states.add(new ComputerPlayerPlayTurnGameState(new ComputerPlayer(sf.format("Player {0}", iter + 1), new EasyComputerPlayerStrategy(new RandomNumberGenerator()))));
 
     states.add(new InteractivePlayerPlayTurnGameState(new InteractivePlayer("IP")));
 

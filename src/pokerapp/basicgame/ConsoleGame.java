@@ -63,7 +63,7 @@ public class ConsoleGame extends Application {
 
     // TODO: The play order does not follow the spec
     for (Player p : players)
-      p.playTurn(console, deck, exchangeSetting);
+      p.playTurn(console, dealer, deck, exchangeSetting);
 
     GameResult result = pokerGameEvaluator.evaluate(players.getPlayers());
 

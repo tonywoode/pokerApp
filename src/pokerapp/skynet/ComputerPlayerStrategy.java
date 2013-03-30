@@ -1,5 +1,6 @@
 package pokerapp.skynet;
 
+import pokerapp.Dealer;
 import pokerapp.scorer.scoredhands.ScoredHand;
 
 /**
@@ -17,7 +18,7 @@ import pokerapp.scorer.scoredhands.ScoredHand;
  * @version 1
  */
 public abstract class ComputerPlayerStrategy {
-  public abstract void playTurn(ScoredHand handType);
+  public abstract void playTurn(Dealer dealer, ScoredHand handType);
 
   /**
    * Implements the prototype pattern

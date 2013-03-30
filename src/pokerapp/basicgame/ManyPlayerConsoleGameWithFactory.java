@@ -119,7 +119,7 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
 
   private void playGame() throws IOException {
     for (Player p : players) {
-      p.playTurn(console, deck, exchangeSetting);
+      p.playTurn(console, dealer, deck, exchangeSetting);
       console.writeMessage(NEW_LINE);
     }
   }

@@ -2,10 +2,10 @@ package tests;
 
 import org.junit.Test;
 import pokerapp.*;
-import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.skynet.EasyComputerPlayerStrategy;
 import pokerapp.skynet.HardComputerPlayerStrategy;
+import pokerapp.skynet.RandomNumberGenerator;
 
 import java.util.HashMap;
 
@@ -44,7 +44,7 @@ public class PlayersTest {
     testHands.put(10, royalFlushString);
 
     Player p1 = new ComputerPlayer("p1", new HardComputerPlayerStrategy());
-    Player p2 = new ComputerPlayer("p2", new EasyComputerPlayerStrategy());
+    Player p2 = new ComputerPlayer("p2", new EasyComputerPlayerStrategy(new RandomNumberGenerator()));
 
     for(int iter1 = 1; iter1 <= 10; ++iter1) {
       for(int iter2 = 1; iter2 <= 10; ++iter2) {

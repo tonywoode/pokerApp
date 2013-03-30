@@ -35,7 +35,7 @@ public class ComputerPlayer extends Player {
     return new ComputerPlayer(getPlayerName(), turnStrategy.createNew());
   }
 
-  public void playTurn(Console console, Deck deck, ExchangeSetting exchangeSetting) throws IOException, FormatStringException, IllegalFormatCodeException {
+  public void playTurn(Console console, Dealer dealer, Deck deck, ExchangeSetting exchangeSetting) throws IOException, FormatStringException, IllegalFormatCodeException {
 
     for (int numberExchanges = 0; numberExchanges < exchangeSetting.getNumTimes(); ++numberExchanges) {
 
@@ -49,7 +49,7 @@ public class ComputerPlayer extends Player {
 
       scoredHand = new HandScorerBuilder().create().score(getHand());
 
-      turnStrategy.playTurn(scoredHand);
+      turnStrategy.playTurn(dealer, scoredHand);
 
       handType = scoredHand.getName();
 

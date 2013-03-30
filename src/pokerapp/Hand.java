@@ -72,6 +72,16 @@ public class Hand implements Iterable<Card> {
   }
 
   /**
+   * Returns a single card from the hand
+   *
+   * @param index The position of the card in the Hand
+   * @return The specified card
+   */
+  public Card getCard(int index) {
+    return cards.get(index);
+  }
+
+  /**
    * returns each card as text separated by whitespace
    *
    * @return text representation of the hand

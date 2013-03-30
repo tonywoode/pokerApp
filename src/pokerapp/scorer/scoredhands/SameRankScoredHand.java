@@ -1,5 +1,6 @@
 package pokerapp.scorer.scoredhands;
 
+import lombok.Getter;
 import pokerapp.Card;
 import pokerapp.Hand;
 import pokerapp.Rank;
@@ -21,8 +22,8 @@ import java.util.List;
 public class SameRankScoredHand extends AbstractScoredHand<SameRankScoredHand> {
 
   private String name;
-  private SameRankCards sameRankCards;
-  private Spares spares;
+  @Getter private SameRankCards sameRankCards;
+  @Getter private Spares spares;
 
   public SameRankScoredHand(int handNumber, Hand hand, String name, SameRankCards sameRankCards, Spares spares) {
     super(handNumber, hand, new SameRank(sameRankCards.getCount()));

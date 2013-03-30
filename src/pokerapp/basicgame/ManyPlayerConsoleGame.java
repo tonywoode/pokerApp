@@ -144,7 +144,7 @@ public class ManyPlayerConsoleGame extends Application {
       console.writeMessage(NEW_LINE);
 
       for (Player p : players) {
-        p.playTurn(console, deck, exchangeSetting);
+        p.playTurn(console, dealer, deck, exchangeSetting);
         console.writeMessage(NEW_LINE);
       }
 

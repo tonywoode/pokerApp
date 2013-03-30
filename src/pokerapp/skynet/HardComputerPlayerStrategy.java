@@ -1,5 +1,6 @@
 package pokerapp.skynet;
 
+import pokerapp.Dealer;
 import pokerapp.scorer.HandVisitor;
 import pokerapp.scorer.scoredhands.ScoredHand;
 import pokerapp.scorer.typetag.*;
@@ -31,7 +32,7 @@ public class HardComputerPlayerStrategy extends ComputerPlayerStrategy implement
   }
 
   @Override
-  public void playTurn(ScoredHand handType) {
+  public void playTurn(Dealer dealer, ScoredHand handType) {
     handType.visit(this);
   }
 
