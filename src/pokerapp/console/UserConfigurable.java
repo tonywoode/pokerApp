@@ -33,8 +33,8 @@ public class UserConfigurable {
       String BETTER_LUCK = " better luck next time!";
       String errorMessage = NOT_BETWEEN + settingMin + " and " + settingMax + "," + BETTER_LUCK;
       console.writeMessage(errorMessage);
-      String USER_INVALID_NUMBER = "User entered invalid setting.";
-      throw new IllegalArgumentException(USER_INVALID_NUMBER);
+      return(askUser(console, showRange));
+
     }
 
     return settingValue;
