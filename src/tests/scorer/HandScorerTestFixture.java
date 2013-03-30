@@ -1,6 +1,5 @@
 package tests.scorer;
 
-import lombok.AllArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -38,9 +37,15 @@ import static org.junit.Assert.fail;
 @RunWith(Parameterized.class)
 public class HandScorerTestFixture {
 
+<<<<<<< HEAD
   private final Player expectedWinner;
   private final List<Player> players;
   private final PokerGameEvaluator pokerGameEvaluator;
+=======
+  private final Hand expectedWinner;
+  private final List<Hand> hands;
+  protected PokerGameEvaluator pokerGameEvaluator;
+>>>>>>> 877e428286e08537bd130edf52f8376f54224e3a
   private final StringFormatter formatter = new StringFormatter();
 
   public HandScorerTestFixture(Player expectedWinner, List<Player> players) throws IOException {

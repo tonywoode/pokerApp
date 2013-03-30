@@ -4,7 +4,6 @@ import pokerapp.*;
 import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.skynet.ComputerPlayerFactory;
-import pokerapp.utils.Constants;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
 import pokerapp.utils.textformat.StringFormatter;
@@ -25,7 +24,6 @@ public class DriverWithComputers {
 
     final int MAX_NUMBER_PLAYERS = 4;
     final int MIN_NUMBER_PLAYERS = 1;
-    final int DEFAULT_NUMBER_PLAYERS = MAX_NUMBER_PLAYERS;
 
     final int MAX_CARDS_EXCHANGE = 5;
     final int MIN_CARDS_EXCHANGE = 0;
@@ -33,13 +31,12 @@ public class DriverWithComputers {
 
     final int MAX_TIMES_EXCHANGE = 5;
     final int MIN_TIMES_EXCHANGE = 1;
-    final int DEFAULT_TIMES_EXCHANGE = MIN_TIMES_EXCHANGE;
 
     final String NEW_LINE = "\n";
 
-    int numberOfPlayers = DEFAULT_NUMBER_PLAYERS;
+    int numberOfPlayers = MAX_NUMBER_PLAYERS;
     int cardsToExchange = DEFAULT_CARDS_EXCHANGE;
-    int timesToExchange = DEFAULT_TIMES_EXCHANGE;
+    int timesToExchange = MIN_TIMES_EXCHANGE;
 
 
     Deck deck = Deck.createDeck();
@@ -124,7 +121,7 @@ public class DriverWithComputers {
 
       console.writeMessage("Ready? Play poker!");
 
-      dealer.dealCards(Constants.HAND_SIZE, players);
+      dealer.dealCards(Hand.HAND_SIZE, players);
 
       for (Player p : players) {
 
@@ -151,6 +148,7 @@ public class DriverWithComputers {
       console.writeMessage(NEW_LINE);
       console.writeMessage("******************************************************");
       console.writeMessage(NEW_LINE);
+<<<<<<< HEAD
 
       if (!result.isTie()) {
         for (Player p : players)
@@ -161,6 +159,9 @@ public class DriverWithComputers {
         console.writeMessage("There was a tie... but that's all I know at the moment");
       }
 
+=======
+      console.writeMessage(winner.getPlayerName() + " won with " + winner.getHand().toFancyUserString());
+>>>>>>> 877e428286e08537bd130edf52f8376f54224e3a
       console.writeMessage(NEW_LINE);
       console.writeMessage("******************************************************");
       console.writeMessage(NEW_LINE);

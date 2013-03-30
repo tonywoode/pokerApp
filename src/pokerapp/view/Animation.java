@@ -1,9 +1,8 @@
 package pokerapp.view;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.Timer;
 
 /**
  * Animate for image messages in pokerapp - separates the use of a timer and event periods
@@ -19,8 +18,8 @@ public abstract class Animation  {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				endAnimation();
-			};
-		});
+			}
+    });
 		timer.setRepeats(false);
 		timer.start();
 	}

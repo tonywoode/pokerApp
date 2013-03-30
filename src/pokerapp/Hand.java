@@ -2,7 +2,6 @@ package pokerapp;
 
 
 import pokerapp.scorer.domain.Spares;
-import pokerapp.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,6 +16,7 @@ import java.util.Iterator;
 
 
 public class Hand implements Iterable<Card> {
+  public static final int HAND_SIZE = 5;         //We are implementing a 5-card poker variant
   ArrayList<Card> cards = new ArrayList<Card>();
 
   /**
@@ -26,7 +26,7 @@ public class Hand implements Iterable<Card> {
    * @throws IndexOutOfBoundsException
    */
   public void add(Card card) throws IndexOutOfBoundsException {
-    if (cards.size() >= Constants.HAND_SIZE)
+    if (cards.size() >= HAND_SIZE)
       throw new IndexOutOfBoundsException("Hand is full");
 
     cards.add(card);

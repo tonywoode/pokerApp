@@ -1,7 +1,5 @@
 package pokerapp;
 
-import pokerapp.utils.Constants;
-
 
 /**
  * Instantiates valid passed cards and creates hand instances from them. Can also create
@@ -11,6 +9,8 @@ import pokerapp.utils.Constants;
  * @version 1.0
  */
 public class HandFactory {
+
+  public static final int LEN_CARD = 2;
 
   /**
    * Takes a variable number of cards and returns them in a hand
@@ -64,7 +64,7 @@ public class HandFactory {
    * @throws IllegalArgumentException when receiving an illegal card name
    */
   private Card createCard(String card) throws IllegalArgumentException {
-    if (card.length() < Constants.LEN_CARD || card.length() > 3 + Constants.LEN_CARD)
+    if (card.length() < LEN_CARD || card.length() > 3 + LEN_CARD)
       throw new IllegalArgumentException("Illegal card name: " + card);
 
     Suit suit = Suit.from(card.charAt(0));

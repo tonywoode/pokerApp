@@ -14,10 +14,6 @@ public class UserConfigurable {
   @Getter @Setter private int settingUser;
   @Getter @Setter private String settingMessage;
 
-  private final String USER_INVALID_NUMBER = "User entered invalid setting.";
-  private final String NOT_BETWEEN = "That's not between ";
-  private final String BETTER_LUCK = " better luck next time!";
-
   UserConfigurable(String settingMessage, int settingMin, int settingMax){
     this.settingMin = settingMin;
     this.settingMax = settingMax;
@@ -33,8 +29,11 @@ public class UserConfigurable {
     int settingValue = console.readInteger();
 
     if (settingValue > settingMax || settingValue < settingMin) {
+      String NOT_BETWEEN = "That's not between ";
+      String BETTER_LUCK = " better luck next time!";
       String errorMessage = NOT_BETWEEN + settingMin + " and " + settingMax + "," + BETTER_LUCK;
       console.writeMessage(errorMessage);
+      String USER_INVALID_NUMBER = "User entered invalid setting.";
       throw new Exception(USER_INVALID_NUMBER);
     }
 

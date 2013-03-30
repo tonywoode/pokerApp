@@ -118,8 +118,8 @@
     </bean>
 
     <!-- define the HandScorer beans in reverse order, so references work... necessary? -->
-    <bean id="noPair" class="pokerapp.scorer.scorers.NoPairScorer"/>
-    <bean id="pair" class="pokerapp.scorer.scorers.SameRankHandScorer">
+    <bean id="noPair" class="pokerapp.scorer.scorers.NoPairScorer" scope="prototype"/>
+    <bean id="pair" class="pokerapp.scorer.scorers.SameRankHandScorer" scope="prototype">
         <constructor-arg>
             <value>pair</value>
         </constructor-arg>
@@ -130,8 +130,8 @@
             <value>1</value>
         </constructor-arg>
     </bean>
-    <bean id="twoPair" class="pokerapp.scorer.scorers.TwoPairScorer"/>
-    <bean id="three" class="pokerapp.scorer.scorers.SameRankHandScorer">
+    <bean id="twoPair" class="pokerapp.scorer.scorers.TwoPairScorer"  scope="prototype" />
+    <bean id="three" class="pokerapp.scorer.scorers.SameRankHandScorer" scope="prototype">
         <constructor-arg>
             <value>three</value>
         </constructor-arg>
@@ -142,9 +142,9 @@
             <value>1</value>
         </constructor-arg>
     </bean>
-    <bean id="straight" class="pokerapp.scorer.scorers.StraightScorer"/>
-    <bean id="flush" class="pokerapp.scorer.scorers.FlushScorer"/>
-    <bean id="fullHouse" class="pokerapp.scorer.scorers.FullHouseScorer">
+    <bean id="straight" class="pokerapp.scorer.scorers.StraightScorer" scope="prototype"/>
+    <bean id="flush" class="pokerapp.scorer.scorers.FlushScorer" scope="prototype"/>
+    <bean id="fullHouse" class="pokerapp.scorer.scorers.FullHouseScorer" scope="prototype">
         <constructor-arg>
             <ref bean="three"/>
         </constructor-arg>
@@ -152,7 +152,7 @@
             <ref bean="pair"/>
         </constructor-arg>
     </bean>
-    <bean id="four" class="pokerapp.scorer.scorers.SameRankHandScorer">
+    <bean id="four" class="pokerapp.scorer.scorers.SameRankHandScorer" scope="prototype">
         <constructor-arg>
             <value>four</value>
         </constructor-arg>
@@ -163,7 +163,7 @@
             <value>1</value>
         </constructor-arg>
     </bean>
-    <bean id="straightFlush" class="pokerapp.scorer.scorers.StraightFlushScorer">
+    <bean id="straightFlush" class="pokerapp.scorer.scorers.StraightFlushScorer" scope="prototype">
         <constructor-arg>
             <ref bean="straight"/>
         </constructor-arg>
@@ -171,7 +171,7 @@
             <ref bean="flush"/>
         </constructor-arg>
     </bean>
-    <bean id="royalFlush" class="pokerapp.scorer.scorers.RoyalFlushScorer">
+    <bean id="royalFlush" class="pokerapp.scorer.scorers.RoyalFlushScorer" scope="prototype">
         <constructor-arg>
             <ref bean="straight"/>
         </constructor-arg>

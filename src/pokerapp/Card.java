@@ -13,6 +13,8 @@ import pokerapp.utils.textformat.*;
  */
 @Data
 public class Card implements Formattable {
+  public static final int NUM_SUITS = 4;
+  public static final int NUM_RANKS = 14;
   @Getter
   private Suit suit;
   @Getter

@@ -1,7 +1,6 @@
 package pokerapp;
 
 import lombok.Getter;
-import pokerapp.utils.Constants;
 import pokerapp.utils.textformat.AbstractFormattable;
 import pokerapp.utils.textformat.Format;
 import pokerapp.utils.textformat.FormatResolver;
@@ -31,12 +30,21 @@ public class Suit extends AbstractFormattable<Suit> {
     this.symbol = symbol;
     this.name = name;
   }
-
+  //1 = Clubs, 2 = Diamonds, 3 = Hearts, 4 = Spades
+  //http://wiki.answers.com/Q/What_is_the_suit_order_in_a_deck_of_cards_for_poker
+  public static final char  CHAR_CLUB = 'C';
+  public static final int  POS_CLUB = 1;
   //the java unicode encodings are black suit symbols
-  public final static Suit Clubs = new Suit(Constants.POS_CLUB, Constants.CHAR_CLUB, '\u2663' , "Clubs");
-  public final static Suit Diamonds = new Suit(Constants.POS_DIAMOND, Constants.CHAR_DIAMOND, '\u2666', "Diamonds");
-  public final static Suit Hearts = new Suit(Constants.POS_HEART, Constants.CHAR_HEART, '\u2665', "Hearts");
-  public final static Suit Spades = new Suit(Constants.POS_SPADE, Constants.CHAR_SPADE, '\u2660', "Spades");
+  public final static Suit Clubs = new Suit(POS_CLUB, CHAR_CLUB, '\u2663' , "Clubs");
+  public static final char CHAR_DIAMOND = 'D';
+  public static final int POS_DIAMOND = 2;
+  public final static Suit Diamonds = new Suit(POS_DIAMOND, CHAR_DIAMOND, '\u2666', "Diamonds");
+  public static final char CHAR_HEART = 'H';
+  public static final int POS_HEART = 3;
+  public final static Suit Hearts = new Suit(POS_HEART, CHAR_HEART, '\u2665', "Hearts");
+  public static final char CHAR_SPADE = 'S';
+  public static final int POS_SPADE = 4;
+  public final static Suit Spades = new Suit(POS_SPADE, CHAR_SPADE, '\u2660', "Spades");
 
   public final static Suit[] AllSuits = new Suit[]{
       Clubs, Diamonds, Hearts, Spades

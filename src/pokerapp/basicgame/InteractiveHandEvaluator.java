@@ -60,6 +60,6 @@ public class InteractiveHandEvaluator extends Application {
    */
   private Hand createHandFromUserInput() throws IllegalArgumentException {
     String line = console.readLine();
-    return line != "" ? handFactory.createFromLine(line) : null;
+    return !line.equals("") ? handFactory.createFromLine(line) : null;
   }
 }

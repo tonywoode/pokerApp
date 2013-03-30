@@ -2,7 +2,6 @@ package pokerapp.scorer;
 
 import pokerapp.Card;
 import pokerapp.Hand;
-import pokerapp.utils.Constants;
 import pokerapp.utils.ReverseArrayIterator;
 
 /**
@@ -21,7 +20,8 @@ import pokerapp.utils.ReverseArrayIterator;
  *         Removed aces low/high code
  */
 public class HandRanks {
-  int[] rank_histogram = new int[Constants.HIST_SIZE];
+  public static final int HIST_SIZE = 15;
+  int[] rank_histogram = new int[HIST_SIZE];
 
   //first ctor takes a hand
   public HandRanks(Hand hand) {
@@ -33,8 +33,8 @@ public class HandRanks {
   //second ctor takes a hand summary
   public HandRanks(HandGrid handGrid) {
 
-    for (int j = 1; j <= Constants.HIST_SIZE; j++) {
-      for (int i = 1; i < Constants.NUM_SUITS + 1; i++) {
+    for (int j = 1; j <= HIST_SIZE; j++) {
+      for (int i = 1; i < Card.NUM_SUITS + 1; i++) {
         rank_histogram[j] = rank_histogram[j] + handGrid.matrix[i][j];
       }
     }
@@ -76,7 +76,7 @@ public class HandRanks {
    */
 
   public int getRankOfMultiple(int numCards) {
-    for (int iter = Constants.NUM_RANKS - 1; iter >= 0; --iter)
+    for (int iter = Card.NUM_RANKS - 1; iter >= 0; --iter)
       if (rank_histogram[iter] == numCards)
         return iter;
 
