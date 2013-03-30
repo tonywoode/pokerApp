@@ -41,7 +41,7 @@ public class PokerGameModel {
    * Getter for the dealer dishing out a hand
    */
   public void dealCards() {
-    dealer.dealCards(5, players);
+    dealer.dealCards(Hand.HAND_SIZE, players);
   }
 
   public GameResult evaluate() {
