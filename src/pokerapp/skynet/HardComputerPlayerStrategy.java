@@ -36,7 +36,7 @@ public class HardComputerPlayerStrategy extends ComputerPlayerStrategy implement
     @Override
     public void setPlayer(Player player)
     {
-        setPlayer(player);
+        super.setPlayer(player);
         logic = new HardLogic(getPlayer());
     }
 
@@ -49,7 +49,9 @@ public class HardComputerPlayerStrategy extends ComputerPlayerStrategy implement
 
   @Override
   public ComputerPlayerStrategy createNew() {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    HardComputerPlayerStrategy strategy = new HardComputerPlayerStrategy();
+    strategy.setPlayer(this.getPlayer());
+    return strategy;
   }
 
   @Override

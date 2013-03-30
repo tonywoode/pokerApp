@@ -13,4 +13,9 @@ import lombok.Setter;
 public class HistoryTable {
     @Getter @Setter
     private boolean playerMoved;
+
+    public HistoryTable()
+    {
+        playerMoved = true;
+    }
 }
