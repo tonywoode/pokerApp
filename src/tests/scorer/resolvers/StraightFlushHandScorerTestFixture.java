@@ -25,14 +25,14 @@ public class StraightFlushHandScorerTestFixture extends HandScorerTestFixtureBas
 
     @Test
     public void Hand_Is_StraightFlush() throws FileNotFoundException {
-      ScoredHand hand = resolveHand("D9", "D11", "D12", "D13", "D13");
+      ScoredHand hand = resolveHand("D9", "D10", "D11", "D12", "D13");
 
       assertEquals("Is Straight Flush", "Straight flush", hand.getName());
     }
 
     @Test
-    public void Hand_Is_StraightFlush_Not_Fourofakind() throws FileNotFoundException {
-        ScoredHand hand = resolveHand("D10", "D11", "D12", "D13", "S9");
+    public void Hand_Is_FourOfAKind_Not_StraightFlush() throws FileNotFoundException {
+        ScoredHand hand = resolveHand("D10", "C10", "S10", "H10", "S9");
 
         assertEquals("Is Four of a kind, not Straight Flush", "Four of a kind", hand.getName());
     }

@@ -35,14 +35,14 @@ public class PairHandScorerTestFixture extends HandScorerTestFixtureBase {
   public void HandIsPair_second2() throws FileNotFoundException {
     ScoredHand hand = resolveHand("C2", "D4", "S4", "C3", "C5");
 
-    assertEquals("Is pair", "Pair", hand.getName());
+    assertEquals("Is pair", "pair", hand.getName());
   }
   
   @Test
   public void HandIsPair_third2() throws FileNotFoundException {
     ScoredHand hand = resolveHand("C2", "C3", "D4", "S4", "C5");
 
-    assertEquals("Is pair", "Pair", hand.getName());
+    assertEquals("Is pair", "pair", hand.getName());
   }  
   
   @Test

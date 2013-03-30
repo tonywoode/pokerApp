@@ -4,7 +4,12 @@ import lombok.AllArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import pokerapp.Deck;
+import pokerapp.GameResult;
 import pokerapp.Hand;
+import pokerapp.Player;
+import pokerapp.console.Console;
+import pokerapp.console.ExchangeSetting;
 import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
@@ -33,14 +38,14 @@ import static org.junit.Assert.fail;
 @RunWith(Parameterized.class)
 public class HandScorerTestFixture {
 
-  private final Hand expectedWinner;
-  private final List<Hand> hands;
+  private final Player expectedWinner;
+  private final List<Player> players;
   private final PokerGameEvaluator pokerGameEvaluator;
   private final StringFormatter formatter = new StringFormatter();
 
-  public HandScorerTestFixture(Hand expectedWinner, List<Hand> hands) throws IOException {
+  public HandScorerTestFixture(Player expectedWinner, List<Player> players) throws IOException {
     this.expectedWinner = expectedWinner;
-    this.hands = hands;
+    this.players = players;
     pokerGameEvaluator = PokerGameEvaluator.create();
   }
 
@@ -48,21 +53,24 @@ public class HandScorerTestFixture {
   public static Collection<Object[]> dataProvider() throws IOException {
     List<Object[]> data = new ArrayList<>();
     for (GameEvaluatorModel model : GameEvaluatorModel.load("data/hands.txt", HandScorerTestFixture.class)) {
-      data.add(new Object[] { model.getWinner(), model.getHands() });
+      if (model != null)
+        data.add(new Object[] { model.getWinner(), model.getPlayers() });
     }
     return data;
   }
 
   @Test
   public void PickWinner() throws FormatStringException, IllegalFormatCodeException {
-    Hand winner = pokerGameEvaluator.pickWinner(hands);
+    GameResult result = pokerGameEvaluator.evaluate(players);
 
-    // test for tie separately
-    if (winner == null && expectedWinner != null)
+    if (expectedWinner != null && result.isTie())
       fail("Did not expect tie");
-    else if (winner != null && expectedWinner == null)
-      fail("Expected tie");
-    else if (winner != expectedWinner) // explicitly want reference equality, not value equality
-      fail(formatter.format("Expected {0} to win. Instead {1} won", expectedWinner, winner));
+    else if (expectedWinner == null && !result.isTie())
+      fail("Expected a tie, got a winner");
+    else if (!result.isTie() && !result.isWinner(expectedWinner))
+      fail(formatter.format("Expected {0} to win. Instead {1} won", expectedWinner, result.getWinner()));
+
+
+
   }
 }

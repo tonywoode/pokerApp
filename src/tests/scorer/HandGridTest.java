@@ -20,7 +20,7 @@ public class HandGridTest {
     public void testInitialiseMatrix(){
 
         HandFactory handFactory = new HandFactory();
-        String[] testHandString = {"D9", "S4", "C1", "H3", "C5"};
+        String[] testHandString = {"D9", "S4", "C2", "H3", "C5"};
 
         try {
             Hand testHand = handFactory.create(testHandString);

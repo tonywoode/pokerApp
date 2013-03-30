@@ -2,6 +2,10 @@
 T|H3 D3 S3 S5 S8|H3 D3 S3 S5 S8 -- tie
 2|H2 C8 C3 C5 C8|H3 D3 S3 S5 S8 -- player 2 wins with three of a kind (rank 3)
 3|D9 D10 D11 D12 C10|H2 C8 C3 C5 C8|H3 D3 S3 S5 S8 -- player 3 wins with three of a kind (rank 3)
+2|D9 D10 D11 D12 C10|H10 H11 H12 H13 H14|H3 D3 S3 S5 S8 -- player 2 wins with royal flush
+1|C10 D10 S5 H5 C10|H2 C8 C3 C5 C8|H3 D3 S7 S5 S8 -- player 1 wins with two pair (rank 10, 5)
+--1|C10 D10 S5 H5 C10|H2 C8 C3 C5 C8|H3 D3 S7 S5 S8|H3 D3 S7 S5 S8 -- player 1 wins with two pair (rank 10, 5)
+1|C10 D10 S5 H5 C10|H2 C8 C3 C5 C8|H3 D3 S7 S5 S8|H3 D3 S7 S5 S3 -- player 1 wins with two pair (rank 10, 5)
 1|D11 S11 S8 C3 S6|H10 H9 D4 S14 D13 -- P1 SHOULD WIN WITH PAIR OF JACKS, ISSUE 138
 1|D2 S2 C5 C2 D10|H9 H4 C10 D8 D4 -- P1 SHOULD WIN WITH THREE 2S, ISSUE 138
 2|C14 S7 S10 C9 D10|D2 D3 H3 S2 C3 -- P2 SHOULD WIN WITH FULL HOUSE 3 OVER 2 AGAINST PAIR 10S ISSUE 138

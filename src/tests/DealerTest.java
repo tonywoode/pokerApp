@@ -7,6 +7,7 @@ import pokerapp.console.Console;
 import pokerapp.Player;
 import pokerapp.Players;
 import pokerapp.scorer.HandScorerBuilder;
+import pokerapp.scorer.PokerGameEvaluator;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -72,7 +73,7 @@ public class DealerTest {
         playerTwo = new MockPlayer();
 
     // Player registration code changed
-    Players players = new Players(new HandScorerBuilder().create()).register(playerOne, playerTwo);
+    Players players = new Players(PokerGameEvaluator.create()).register(playerOne, playerTwo);
 
     final int NUM_CARDS_TO_DEAL = 5;
 

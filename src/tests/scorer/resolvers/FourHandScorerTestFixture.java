@@ -18,17 +18,17 @@ import static org.junit.Assert.assertEquals;
  */
 public class FourHandScorerTestFixture extends HandScorerTestFixtureBase {
   public FourHandScorerTestFixture() {
-    super(new SameRankHandScorer("four", 4, 1));
+    super(new SameRankHandScorer("Four of a kind", 4, 1));
   }
 
-  @Test // TODO: these should use data providers...
+  @Test
   public void HandIsFour_first3() throws FileNotFoundException {
     ScoredHand hand= resolveHand("D4", "S4", "C4", "H4", "C5");
 
     assertEquals("Is four", "Four of a kind", hand.getName());
   }
 
-  @Test // TODO: these should use data providers...
+  @Test
   public void HandIsNotThree() {
     ScoredHand hand = resolveHand("D4", "S4", "C4", "H3", "C5");
 

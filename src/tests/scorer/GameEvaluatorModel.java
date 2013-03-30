@@ -2,8 +2,14 @@ package tests.scorer;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import pokerapp.Deck;
 import pokerapp.Hand;
 import pokerapp.HandFactory;
+import pokerapp.Player;
+import pokerapp.console.Console;
+import pokerapp.console.ExchangeSetting;
+import pokerapp.utils.textformat.FormatStringException;
+import pokerapp.utils.textformat.IllegalFormatCodeException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -29,8 +35,8 @@ import java.util.List;
  */
 @AllArgsConstructor
 public class GameEvaluatorModel {
-  @Getter private final Hand winner;
-  @Getter private final List<Hand> hands;
+  @Getter private final Player winner;
+  @Getter private final List<Player> players;
 
   public static List<GameEvaluatorModel> load(String path, Object classpathContext) throws IOException {
     return load(path, classpathContext.getClass());
@@ -59,11 +65,15 @@ public class GameEvaluatorModel {
     //line = line.replace("--.*", "").trim();
 
     int p = line.indexOf("--");
-    if (p != -1) {
+    if (p == 0)
+      return null; // entire line comment
+    else if (p != -1)
       line = line.substring(0, p - 1);
-    }
 
     line = line.trim();
+
+    if (line.length() == 0)
+      return null;
 
     String[] parts = line.split("\\|");
 
@@ -71,14 +81,15 @@ public class GameEvaluatorModel {
 
     HandFactory handFactory = new HandFactory();
 
-    List<Hand> hands = new ArrayList<>();
+    List<Player> players = new ArrayList<>();
+    int iter = 1;
     for (String hand : new IteratorExtensions<String>().from(parts, 1)) { // nice extension method
-      hands.add(handFactory.createFromLine(hand));
+      players.add(new MockPlayer(handFactory.createFromLine(hand), iter++));
     }
 
-    Hand winner = winnerIndex != -1 ? hands.get(winnerIndex) : null;
+    Player winner = winnerIndex != -1 ? players.get(winnerIndex) : null;
 
-    return new GameEvaluatorModel(winner, hands);
+    return new GameEvaluatorModel(winner, players);
   }
 
   public static int parseWinner(String winnerText) {

@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 public class ThreeHandScorerTestFixture extends HandScorerTestFixtureBase {
 
   public ThreeHandScorerTestFixture() {
-    super(new SameRankHandScorer("three", 3, 1));
+    super(new SameRankHandScorer("Three of a kind", 3, 1));
   }
 
      @Test
