@@ -3,12 +3,8 @@ package tests.scorer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import pokerapp.Deck;
 import pokerapp.GameResult;
-import pokerapp.Hand;
 import pokerapp.Player;
-import pokerapp.console.Console;
-import pokerapp.console.ExchangeSetting;
 import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
@@ -37,15 +33,9 @@ import static org.junit.Assert.fail;
 @RunWith(Parameterized.class)
 public class HandScorerTestFixture {
 
-<<<<<<< HEAD
   private final Player expectedWinner;
   private final List<Player> players;
   private final PokerGameEvaluator pokerGameEvaluator;
-=======
-  private final Hand expectedWinner;
-  private final List<Hand> hands;
-  protected PokerGameEvaluator pokerGameEvaluator;
->>>>>>> 877e428286e08537bd130edf52f8376f54224e3a
   private final StringFormatter formatter = new StringFormatter();
 
   public HandScorerTestFixture(Player expectedWinner, List<Player> players) throws IOException {

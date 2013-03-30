@@ -1,7 +1,6 @@
 package pokerapp.console;
 
 import pokerapp.*;
-import pokerapp.scorer.HandScorerBuilder;
 import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.skynet.ComputerPlayerFactory;
 import pokerapp.utils.textformat.FormatStringException;
@@ -148,7 +147,6 @@ public class DriverWithComputers {
       console.writeMessage(NEW_LINE);
       console.writeMessage("******************************************************");
       console.writeMessage(NEW_LINE);
-<<<<<<< HEAD
 
       if (!result.isTie()) {
         for (Player p : players)
@@ -159,9 +157,6 @@ public class DriverWithComputers {
         console.writeMessage("There was a tie... but that's all I know at the moment");
       }
 
-=======
-      console.writeMessage(winner.getPlayerName() + " won with " + winner.getHand().toFancyUserString());
->>>>>>> 877e428286e08537bd130edf52f8376f54224e3a
       console.writeMessage(NEW_LINE);
       console.writeMessage("******************************************************");
       console.writeMessage(NEW_LINE);
