@@ -48,26 +48,6 @@ public class PokerGameEvaluator {
     return handScorer.score(hand);
   }
 
-  @RequiredArgsConstructor
-  private class ScoredPlayer {
-    @Getter private final Player player;
-    @Getter private final ScoredHand scoredHand;
-    @Getter int numWins;
-    @Getter int numLosses;
-    @Getter int numTies;
-
-    public int compareTo(ScoredPlayer rhs) {
-      int c = getScoredHand().compareTo(rhs.getScoredHand());
-      if (c == 0)
-        ++numTies;
-      else if (c == 1)
-        ++numLosses;
-      else
-        ++numWins;
-      return c;
-    }
-  }
-
   private GameResult tryMoreThanTwoPlayers(List<Player> players) {
     List<ScoredPlayer> scoredPlayers = new ArrayList<>();
     for (Player p : players)
@@ -75,7 +55,7 @@ public class PokerGameEvaluator {
 
     Collections.sort(scoredPlayers, new Comparator<ScoredPlayer>() {
       @Override public int compare(ScoredPlayer p1, ScoredPlayer p2) {
-        return p2.compareTo(p1); // TODO: swapped; but don't understand why
+        return p2.compareTo(p1);
       }
     });
 
@@ -88,28 +68,28 @@ public class PokerGameEvaluator {
       players.add(p.getPlayer());
     }
 
-    return new MultiplePlayerNoTieGameResult(players);
+    return new MultiplePlayerNoTieGameResult(players, scoredPlayers);
   }
 
   private GameResult simpleGameEvaluator(List<Player> players) {
     ScoredHand lhs = handScorer.score(players.get(0).getHand()),
                rhs = handScorer.score(players.get(1).getHand());
 
+    List<ScoredPlayer> scoredPlayers = new ArrayList<>();
+    scoredPlayers.add(new ScoredPlayer(players.get(0), lhs));
+    scoredPlayers.add(new ScoredPlayer(players.get(1), rhs));
+    Collections.sort(scoredPlayers, new Comparator<ScoredPlayer>() {
+      @Override public int compare(ScoredPlayer p1, ScoredPlayer p2) {
+        return p2.compareTo(p1);
+      }
+    });
+
     int result = lhs.compareTo(rhs);
 
     if (result == 0)
-      return new TiedSimpleGameResult(players);
-    else {
-      Player winner, loser;
-      if (result > 0) { // because we're using enums (for Rank) compareTo returns the difference between ranks
-        winner = players.get(0);
-        loser  = players.get(1);
-      } else {
-        winner = players.get(1);
-        loser  = players.get(0);
-      }
-      return new SimpleGameResult(winner, loser);
-    }
+      return new TiedSimpleGameResult(players, scoredPlayers);
+    else
+      return new SimpleGameResult(scoredPlayers.get(0), scoredPlayers.get(1));
   }
 
   public static PokerGameEvaluator create() throws IOException {

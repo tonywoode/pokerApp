@@ -2,6 +2,7 @@ package pokerapp;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import pokerapp.scorer.ScoredPlayer;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class MultiplePlayerNoTieGameResult extends GameResult {
   @Getter private final List<Player> playersInWinOrder;
+  @Getter private final List<ScoredPlayer> scoredPlayers;
 
   @Override
   public Player getWinner() { return playersInWinOrder.get(0); }
@@ -33,4 +35,10 @@ public class MultiplePlayerNoTieGameResult extends GameResult {
   public Iterable<Player> getPlayersInRankOrder() {
     return playersInWinOrder;
   }
+
+  @Override
+  public Iterable<ScoredPlayer> getScoredPlayersInRankOrder() {
+    return scoredPlayers;
+  }
+
 }
