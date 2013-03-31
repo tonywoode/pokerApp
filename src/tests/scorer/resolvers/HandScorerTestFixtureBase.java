@@ -66,7 +66,6 @@ public class HandScorerTestFixtureBase {
 
     int result = lhsHand.compareTo(rhsHand);
 
-    // TODO: clients should not have to do this
     if (result == 0)
       return null;
     else if (result < 0)

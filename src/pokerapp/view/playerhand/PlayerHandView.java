@@ -74,11 +74,11 @@ public class PlayerHandView implements Displayable {
 		this.exchangeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for (PlayerHandViewActionListener listener : listeners) //here we pass event to the PHAL
+				for (PlayerHandViewActionListener listener : listeners)
           try {
             listener.onExchange();
           } catch (IOException e1) {
-            // TODO: help!
+            // this will only happen if the property file can't be loaded; plus this is old now.
           }
       }
 		});
@@ -87,11 +87,11 @@ public class PlayerHandView implements Displayable {
 		holdButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for (PlayerHandViewActionListener listener : listeners) //here we pass event to the PHAL
+				for (PlayerHandViewActionListener listener : listeners)
           try {
             listener.onHold();
           } catch (IOException e1) {
-            // TODO: help
+            // this will only happen if the property file can't be loaded; plus this is old now.
           }
       }
 		});

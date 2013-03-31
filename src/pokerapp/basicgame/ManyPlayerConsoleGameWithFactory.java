@@ -104,7 +104,11 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
 
   private void registerInteractivePlayer() {
     InteractivePlayer interactivePlayer = new InteractivePlayer();
-    interactivePlayer.getPlayerNameFromUser(console);
+
+    console.writeMessage("What's your name?");
+    interactivePlayer.setPlayerName(console.readLine());
+    console.writeMessage("Hello {0}! Welcome to Poker App.", interactivePlayer.getPlayerName());
+
     players.register(interactivePlayer);
   }
 
@@ -113,12 +117,11 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
 
     consoleGameLoop.reset().register(players);
 
-    // TODO: The play order does not follow the spec
     consoleGameLoop.play(dealer, console);
   }
 
   private void returnCardsToDealer() {
-    for (Player p : players) { //TODO: Doesn't return cards to the deck properly.
+    for (Player p : players) {
       for (Card c : p.getHand()) {
         deck.returnToBottom(c);
       }
@@ -126,7 +129,6 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
     }
   }
 
-  // TODO: this is a bit hacky...
   private void evaluateGame() {
     GameResult result = players.evaluateGame();
 

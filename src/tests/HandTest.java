@@ -92,10 +92,6 @@ public class HandTest {
     testIter.next();
     assertTrue(testIter.hasNext());
     testIter.next();
-
-    // This won't work because there isn't a next card... I think...
-    // TODO: verify this
-    //assertFalse(testIter.hasNext());
   }
 
   @Test

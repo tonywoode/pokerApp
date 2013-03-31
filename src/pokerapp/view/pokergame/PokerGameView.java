@@ -95,28 +95,6 @@ public class PokerGameView extends JFrame {
 		this.startButton = new StartButton();
 		this.scoresPanel = new ScoresPanel();
 		this.textPanel = new TextPanel();
-
-		/*  configureHackButton();
-	}
-
-  public class GuiHackEvent { } //TODO:get rid of hackery!
-
-  private void configureHackButton() {
-
-
-    hackButton.setToolTipText("Start a Game");
-    hackButton.setOpaque(false);
-    hackButton.setText("Hack");
-    hackButton.setBackground(new Color(34, 142, 34));
-    hackButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-    hackButton.setBounds(712, 200, 106, 65);
-    this.add(hackButton);
-
-    hackButton.addActionListener(new ActionListener() {
-      @Override public void actionPerformed(ActionEvent e) {
-        eventSource.fire(new GuiHackEvent());
-      }
-    });*/
 	}
 
 	/**

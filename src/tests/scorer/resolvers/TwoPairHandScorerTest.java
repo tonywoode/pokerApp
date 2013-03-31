@@ -22,14 +22,14 @@ public class TwoPairHandScorerTest extends HandScorerTestFixtureBase {
       super(new TwoPairScorer());
     }
 
-    @Test // TODO: these should use data providers...
+    @Test
     public void HandIsTwoPair_first4() throws FileNotFoundException {
       ScoredHand hand = resolveHand("D4", "S4", "D3", "C3", "C5");
 
       assertEquals("Is two", "Two pair", hand.getName());
     }
 
-    @Test // TODO: these should use data providers...
+    @Test
     public void HandIsNotTwoPair() {
       ScoredHand hand = resolveHand("D4", "S4", "C2", "C3", "C5");
 

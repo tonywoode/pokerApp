@@ -103,7 +103,7 @@ public class SuperHandPanel extends JPanel {
     return selectedCards;
   }
 
-  public void __hack_setCardViewFactory(CardImageFactory ciFactory) throws FormatStringException, IOException,
+  public void setCardViewFactory(CardImageFactory ciFactory) throws FormatStringException, IOException,
       IllegalFormatCodeException {
     int iter = 0;
     for (Card card : hand) {

@@ -33,9 +33,7 @@ public class ComputerHandView implements Displayable {
   }
 
   public void showCards() throws FormatStringException, IOException, IllegalFormatCodeException {
-    // TOOO: this is unbelievably hacky... but I haven't figured out a better way
-
-    handView.__hack_setCardViewFactory(ciFactory);
+    handView.setCardViewFactory(ciFactory);
   }
 
   @Override
