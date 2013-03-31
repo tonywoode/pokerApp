@@ -44,19 +44,22 @@ public class PokerGameView extends JFrame {
 	private JLabel startLabel;
 	private JLabel playerLabel;
 	private JLabel computerLabel;
+	
+	private String verbalMsg;
+	private JLabel visualMsg;
 
 	private final List<PokerGameViewActionListener> listeners = new ArrayList<PokerGameViewActionListener>();
 
 	private final EventSource eventSource;
 
-  private final SayWhat sayWhat;
+	private final SayWhat sayWhat;
 
-  private JButton hackButton = new JButton();
+	/** private JButton hackButton = new JButton();*/
 
 	public PokerGameView(EventSource eventSource, SayWhat sayWhat) {
 		this.eventSource = eventSource;
-    this.sayWhat = sayWhat;
-    initComponents();
+		this.sayWhat = sayWhat;
+		initComponents();
 		layoutComponents();
 	}
 
@@ -93,7 +96,7 @@ public class PokerGameView extends JFrame {
 		this.scoresPanel = new ScoresPanel();
 		this.textPanel = new TextPanel();
 
-    configureHackButton();
+		/*  configureHackButton();
 	}
 
   public class GuiHackEvent { } //TODO:get rid of hackery!
@@ -113,10 +116,10 @@ public class PokerGameView extends JFrame {
       @Override public void actionPerformed(ActionEvent e) {
         eventSource.fire(new GuiHackEvent());
       }
-    });
-  }
+    });*/
+	}
 
-  /**
+	/**
 	 * draws the frame with background
 	 * Poker Table Background adapted from thePokerBox.com
 	 */
@@ -228,16 +231,19 @@ public class PokerGameView extends JFrame {
 	public void showGameResultMessage(int winMessage) {
 		switch (winMessage) {
 		case 0:
-			displayStatusMessage(drawLabel);
-      sayWhat.sayWhat("OMG a draw!");
+			verbalMsg = "OMG a draw!";
+			visualMsg = drawLabel;
+			threadingMessages();		
 			break;
 		case 1:
-			displayStatusMessage(winLabel);
-      sayWhat.sayWhat("Winner, winner, chicken dinner!");
+			verbalMsg = "Winner, winner, chicken dinner!";
+			visualMsg = winLabel;
+			threadingMessages();
 			break;
 		case -1:
-			displayStatusMessage(loseLabel);
-      sayWhat.sayWhat("Oh noes, you lose!");
+			visualMsg = loseLabel;
+			verbalMsg = "Oh noes, you lose!";
+			threadingMessages();
 			break;
 		default:				
 		}
@@ -258,7 +264,7 @@ public class PokerGameView extends JFrame {
 	 */
 	public void displayMessage(String msg) {
 		textPanel.setMessage(msg);
-    sayWhat.sayWhat(msg);
+		sayWhat.sayWhat(msg);
 	}
 
 	/**
@@ -270,4 +276,20 @@ public class PokerGameView extends JFrame {
 		startButton.setBorderPainted(enable);
 	}
 
+	/**
+	 * ensures onscreen popups and verbal messages happen simultaneously
+	 * 
+	 */
+	public void threadingMessages() {
+		new Thread(new Runnable() {
+			public void run() {
+				sayWhat.sayWhat(verbalMsg);
+			}
+		}).start();
+		new Thread(new Runnable() {
+			public void run() {
+				displayStatusMessage(visualMsg);
+			}
+		}).start();
+	}
 }

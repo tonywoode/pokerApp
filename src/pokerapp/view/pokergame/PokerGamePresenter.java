@@ -73,10 +73,10 @@ public class PokerGamePresenter {
 		 pokerGameView.startButtonEnable(false);
 	 }
 
-   @Subscribe
+   /**@Subscribe
    public void inspectGUIGameState_Hack(PokerGameView.GuiHackEvent ghe) throws IOException {
      turnCompleted(null);
-   }
+   }*/
 
 	 /**
 	  * Actions to take when a round is complete - message, hand presentation, winnder tallying

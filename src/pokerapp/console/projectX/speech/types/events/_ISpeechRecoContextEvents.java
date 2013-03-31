@@ -1,4 +1,4 @@
-package pokerapp.console.projectX.events;
+package pokerapp.console.projectX.speech.types.events;
 
 import com4j.*;
 import pokerapp.console.projectX.speech.types.*;
