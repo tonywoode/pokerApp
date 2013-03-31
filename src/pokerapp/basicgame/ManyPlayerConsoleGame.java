@@ -5,11 +5,10 @@ import pokerapp.console.Console;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.console.UserConfigurable;
 import pokerapp.console.turns.ConsoleGameLoop;
-import pokerapp.scorer.PokerGameEvaluator;
+import pokerapp.scorer.ScoredPlayer;
 import pokerapp.skynet.ComputerPlayerFactory;
 import pokerapp.utils.textformat.FormatStringException;
 import pokerapp.utils.textformat.IllegalFormatCodeException;
-import pokerapp.utils.textformat.StringFormatter;
 
 import java.io.IOException;
 
@@ -163,9 +162,9 @@ public class ManyPlayerConsoleGame extends Application {
       console.writeMessage(NEW_LINE);
 
       if (!result.isTie()) {
-        for (Player p : players)
-          if (players.isWinner(p))
-            console.writeMessage("{0} won with {1}", p.getPlayerName(), p.getHand().toFancyUserString());
+        for (ScoredPlayer p : result.getScoredPlayersInRankOrder())
+          if (players.isWinner(p.getPlayer()))
+            console.writeMessage("{0} won with {1} {2}", p.getPlayer().getPlayerName(), p.getScoredHand(), p.getPlayer().getHand().toFancyUserString());
       } else {
         // TODO: fix this, obviously
         console.writeMessage("There was a tie... but that's all I know at the moment");
