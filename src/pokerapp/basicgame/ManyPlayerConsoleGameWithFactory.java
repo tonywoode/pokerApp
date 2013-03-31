@@ -91,9 +91,13 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
   private boolean userWantsToLeaveUs() {
     console.writeMessage("Play again? Press 'q' to quit");
 
-    String result = console.readString().toLowerCase();
+    String result = console.readString();
 
-    return result != "" && result.charAt(0) == 'q';
+    if (result == null) return false;
+
+    result = result.toLowerCase();
+
+    return result != null && result != "" && result.charAt(0) == 'q';
   }
 
   private void beginGame() {
