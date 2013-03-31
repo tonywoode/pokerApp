@@ -28,19 +28,10 @@ public class ComputerPlayerTurn implements ConsolePlayerTurn {
   
   @Override
   public void playTurn(Dealer dealer, Console console) {
-    Class playerClass = player.getTurnStrategy().getClass();
-    String playerType = playerClass.getSimpleName().replace("ComputerPlayerStrategy","");
+    console.writeMessage("Player {0}'s turn", player.getPlayerName());
 
     ScoredHand scoredHand = pokerGameEvaluator.score(player.getHand());
-    String handType = scoredHand.getName();
-    console.writeMessage(player.getPlayerName() + " (" + playerType + ") has: " + player.getHand().toFancyUserString() + " " +
-          handType);
 
     player.playTurn(dealer, scoredHand, exchangeSetting);
-
-    handType = scoredHand.getName();
-
-    console.writeMessage(player.getPlayerName() + " (" + playerType + ") has: " + player.getHand().toFancyUserString() + " " +
-          handType);
   }
 }

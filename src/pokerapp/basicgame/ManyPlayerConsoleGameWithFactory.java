@@ -8,6 +8,8 @@ import pokerapp.console.turns.ConsoleGameLoop;
 import pokerapp.skynet.NamedComputerPlayerFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ari
@@ -73,8 +75,6 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
 
       beginGame();
 
-      displayInitialHands();
-
       playGame();
 
       evaluateGame();
@@ -85,11 +85,15 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
         break;
     }
 
-    console.writeMessage("Bye bye!");
+    console.writeMessage("\nBye bye!");
   }
 
   private boolean userWantsToLeaveUs() {
-    return false;
+    console.writeMessage("Play again? Press 'q' to quit");
+
+    String result = console.readString().toLowerCase();
+
+    return result != "" && result.charAt(0) == 'q';
   }
 
   private void beginGame() {
@@ -102,20 +106,6 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
     InteractivePlayer interactivePlayer = new InteractivePlayer();
     interactivePlayer.getPlayerNameFromUser(console);
     players.register(interactivePlayer);
-  }
-
-  private void displayInitialHands() {
-    for (Player p : players) {
-
-      Class<? extends Player> playerClass = p.getClass();
-      String className = playerClass.getSimpleName();
-      if ("InteractivePlayer".equals(className)) {
-        console.writeMessage("You have " + p.getHand().toFancyUserString());
-      } else
-        console.writeMessage("Player {0} has {1}", p, p.getHand().toFancyUserString());
-    }
-
-    console.writeMessage(NEW_LINE);
   }
 
   private void playGame() throws IOException {
@@ -145,9 +135,12 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
     console.writeMessage(NEW_LINE);
 
     if (!result.isTie()) {
-      for (Player p : players)
+      for (Player p : result.getPlayersInRankOrder())
         if (players.isWinner(p))
           console.writeMessage("{0} won with {1}", p.getPlayerName(), p.getHand().toFancyUserString());
+      for (Player p : result.getPlayersInRankOrder())
+        if (!players.isWinner(p))
+          console.writeMessage("{0} lost with {1}", p.getPlayerName(), p.getHand().toFancyUserString());
     } else {
       // TODO: fix this, obviously
       console.writeMessage("There was a tie... but that's all I know at the moment");
