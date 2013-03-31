@@ -8,8 +8,6 @@ import pokerapp.console.turns.ConsoleGameLoop;
 import pokerapp.skynet.NamedComputerPlayerFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Ari
@@ -98,6 +96,7 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
     result = result.toLowerCase();
 
     return result != null && result != "" && result.charAt(0) == 'q';
+    //TODO: StringIndexOutOfBoundsException if user presses enter and then letter other than q
   }
 
   private void beginGame() {
