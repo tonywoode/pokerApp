@@ -4,13 +4,11 @@ import java.util.HashMap;
 
 /**
  * <p>
- * Detailed explanation of the class and its collaborators.
+ *   Enables classes that contain multiple Value Objects to
+ *   be formatted.
  * </p>
  * <p>
  * Implements the Builder pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
  * </p>
  *
  * @author Steve

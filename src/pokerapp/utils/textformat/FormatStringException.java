@@ -4,12 +4,6 @@ package pokerapp.utils.textformat;
  * <p>
  * Describes the error in the FormatString.
  * </p>
- * <p>
- * No pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
  *
  * @author Steve
  * @version 1

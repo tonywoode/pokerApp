@@ -8,13 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: steve
- * Date: 06/03/13
- * Time: 21:15
  *
  * Pattern: Implements the Composite pattern
  *
+ * @author Steve
  */
 public abstract class CompositeScorer extends HandScorer {
   private ArrayList<HandScorer> scorers = new ArrayList<HandScorer>();
