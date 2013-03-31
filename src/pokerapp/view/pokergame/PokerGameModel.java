@@ -2,12 +2,9 @@ package pokerapp.view.pokergame;
 
 import lombok.Getter;
 import pokerapp.*;
-import pokerapp.console.Console;
 import pokerapp.console.ExchangeSetting;
-import pokerapp.console.StandardConsole;
 import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.scorer.scoredhands.ScoredHand;
-import pokerapp.utils.textformat.StringFormatter;
 
 import java.io.IOException;
 
@@ -49,7 +46,7 @@ public class PokerGameModel {
   }
 
   public void letComputerPlayerPlay() throws IOException {
-    ExchangeSetting exchangeSettings = new ExchangeSetting(3, 1);
+    ExchangeSetting exchangeSettings = new ExchangeSetting(ExchangeSetting.DEFAULT_NUM_CARDS, ExchangeSetting.DEFAULT_NUM_TURNS);
 
     ScoredHand scoredHand = pokerGameEvaluator.score(getComputerPlayer().getHand());
 
