@@ -245,7 +245,7 @@ public class PokerGameView extends JFrame {
 			if (random < 0.8 ) { verbalMsg = "Shucks, lost, sucker"; }
 			if (random < 0.6 ) { verbalMsg = "Looooser, Shmoooozer!"; }
 			if (random < 0.4 ) { verbalMsg = "hey everybody look at the looooser"; }
-			if (random < 0.2 ) { verbalMsg = "I'm sorry, Dave. I'm afraid I can't do that. "; }
+			if (random < 0.2 ) { verbalMsg = "I'm sorry, Dave. I'm afraid I can't do that."; }
 			threadingMessages();
 			break;
 		default:				
