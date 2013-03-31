@@ -1,5 +1,7 @@
 package pokerapp;
 
+import pokerapp.scorer.ScoredPlayer;
+
 import java.util.List;
 
 /**
@@ -23,4 +25,6 @@ public abstract class GameResult {
   public abstract boolean isTie();
 
   public abstract Iterable<Player> getPlayersInRankOrder();
+
+  public abstract Iterable<ScoredPlayer> getScoredPlayersInRankOrder();
 }

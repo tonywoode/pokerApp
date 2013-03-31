@@ -1,5 +1,7 @@
 package pokerapp;
 
+import lombok.AllArgsConstructor;
+import pokerapp.scorer.ScoredPlayer;
 import tests.scorer.ArrayIterator;
 import tests.scorer.IterableAdapter;
 
@@ -13,13 +15,11 @@ import java.util.List;
  * @author Steve
  * @version 1
  */
+@AllArgsConstructor
 public class TiedSimpleGameResult extends GameResult {
 
   private final List<Player> players;
-
-  public TiedSimpleGameResult(List<Player> players) {
-    this.players = players;
-  }
+  private List<ScoredPlayer> scoredPlayers;
 
   @Override
   public Player getWinner() { return null; } // TODO: this is what I'm not happy with...
@@ -42,5 +42,10 @@ public class TiedSimpleGameResult extends GameResult {
   @Override
   public Iterable<Player> getPlayersInRankOrder() {
     return players;
+  }
+
+  @Override
+  public Iterable<ScoredPlayer> getScoredPlayersInRankOrder() {
+    return scoredPlayers;
   }
 }

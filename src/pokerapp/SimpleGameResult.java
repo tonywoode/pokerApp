@@ -1,6 +1,7 @@
 package pokerapp;
 
 import lombok.AllArgsConstructor;
+import pokerapp.scorer.ScoredPlayer;
 import tests.scorer.ArrayIterator;
 import tests.scorer.IterableAdapter;
 
@@ -15,20 +16,20 @@ import tests.scorer.IterableAdapter;
  */
 @AllArgsConstructor
 public class SimpleGameResult extends GameResult {
-  private final Player winner;
-  private final Player loser;
+  private final ScoredPlayer winner;
+  private final ScoredPlayer loser;
 
   @Override
-  public Player getWinner() { return winner; }
+  public Player getWinner() { return winner.getPlayer(); }
 
   @Override
   public boolean isWinner(Player player) {
-    return player == winner;
+    return player == winner.getPlayer();
   }
 
   @Override
   public boolean isLoser(Player player) {
-    return player == loser;
+    return player == loser.getPlayer();
   }
 
   @Override
@@ -38,6 +39,11 @@ public class SimpleGameResult extends GameResult {
 
   @Override
   public Iterable<Player> getPlayersInRankOrder() {
-    return new IterableAdapter<Player>(new ArrayIterator(new Player[] { winner, loser }));
+    return new IterableAdapter<Player>(new ArrayIterator(new Player[] { winner.getPlayer(), loser.getPlayer() }));
+  }
+
+  @Override
+  public Iterable<ScoredPlayer> getScoredPlayersInRankOrder() {
+    return new IterableAdapter<ScoredPlayer>(new ArrayIterator(new ScoredPlayer[] { winner, loser }));
   }
 }

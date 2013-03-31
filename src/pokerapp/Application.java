@@ -9,21 +9,20 @@ import pokerapp.utils.textformat.IllegalFormatCodeException;
 import java.io.IOException;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
+ * Provides a base class for spring-initialised application
+ * entry points.
  *
  * @author Steve
  * @version 1
  */
 public abstract class Application {
 
+  /**
+   *
+   * @param name The name of the initial bean to get from spring
+   * @param springConfig The spring config file to load
+   * @throws IOException
+   */
   public static void begin(String name, String springConfig) throws IOException {
     try {
       ApplicationContext appContext = new ClassPathXmlApplicationContext("/" + springConfig);
@@ -39,5 +38,13 @@ public abstract class Application {
     System.out.println("Exiting...");
   }
 
+  /**
+   * The main entry point for the application, after the object
+   * has had its dependencies injected.
+   *
+   * @throws FormatStringException
+   * @throws IllegalFormatCodeException
+   * @throws IOException
+   */
   public abstract void run() throws FormatStringException, IllegalFormatCodeException, IOException;
 }

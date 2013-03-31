@@ -2,19 +2,13 @@ package pokerapp;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import pokerapp.scorer.ScoredPlayer;
 
 import java.util.List;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
+ * Represents the (most common) outcome where a single player
+ * has won when many (>2) were playing.
  *
  * @author Steve
  * @version 1
@@ -22,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class MultiplePlayerNoTieGameResult extends GameResult {
   @Getter private final List<Player> playersInWinOrder;
+  @Getter private final List<ScoredPlayer> scoredPlayers;
 
   @Override
   public Player getWinner() { return playersInWinOrder.get(0); }
@@ -40,4 +35,10 @@ public class MultiplePlayerNoTieGameResult extends GameResult {
   public Iterable<Player> getPlayersInRankOrder() {
     return playersInWinOrder;
   }
+
+  @Override
+  public Iterable<ScoredPlayer> getScoredPlayersInRankOrder() {
+    return scoredPlayers;
+  }
+
 }
