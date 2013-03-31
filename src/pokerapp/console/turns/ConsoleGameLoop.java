@@ -13,15 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
+ * Implements a game loop for the console.
+ *
+ * Uses the visitor pattern to enable different
+ * decisions for InteractivePlayers and ComputerPlayers
  *
  * @author Steve
  * @version 1

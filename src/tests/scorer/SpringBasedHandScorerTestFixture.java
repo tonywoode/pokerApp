@@ -10,11 +10,12 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @param //TODO:Parameter Description
+ *
+ * This test fixture checks that the spring config is correctly
+ * loading the HandScorers (i.e., in the correct order).
+ *
  * @author Ari
  * @version 1.0
- * @return //TODO:Return Description
- * @throws //TODO:ExceptionType
  */
 public class SpringBasedHandScorerTestFixture extends HandScorerTestFixture {
   public SpringBasedHandScorerTestFixture(Player expectedWinner, List<Player> players) throws IOException {

@@ -13,8 +13,11 @@ import javax.swing.*;
 import java.io.IOException;
 
 /**
- * Bridge pattern for the display of the presenters hand 
- * TODO: why is this implementing the bridge pattern
+ * Bridge pattern for the display of the presenters hand.
+ *
+ * Uses the bridge because the presenter API was very
+ * unstable when first introduced.
+ *
  * @author steve
  *
  */

@@ -1,9 +1,5 @@
 package pokerapp;
 
-import pokerapp.console.Console;
-import pokerapp.utils.textformat.FormatStringException;
-import pokerapp.utils.textformat.IllegalFormatCodeException;
-
 /**
  * @author Steve
  * @author Ari
@@ -24,13 +20,4 @@ public class InteractivePlayer extends Player {
   public void visit(PlayerVisitor visitor) {
     visitor.accept(this);
   }
-
-  // TODO: move this elsewhere
-  public String getPlayerNameFromUser(Console console) throws FormatStringException, IllegalFormatCodeException {
-    console.writeMessage("What's your name?");
-    setPlayerName(console.readLine());
-    console.writeMessage("Hello {0}! Welcome to Poker App.", getPlayerName());
-    return getPlayerName();
-  }
-
 }

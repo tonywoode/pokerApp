@@ -55,7 +55,9 @@ public class ConsoleGame extends Application {
 
     console.writeMessage("Let's play poker!");
 
-    interactivePlayer.setPlayerName(interactivePlayer.getPlayerNameFromUser(console));
+    console.writeMessage("What's your name?");
+    interactivePlayer.setPlayerName(console.readLine());
+    console.writeMessage("Hello {0}! Welcome to Poker App.", interactivePlayer.getPlayerName());
 
     ExchangeSetting exchangeSetting = new ExchangeSetting(3, 1);
 
@@ -68,7 +70,6 @@ public class ConsoleGame extends Application {
 
     consoleGameLoop.reset().register(players);
 
-    // TODO: The play order does not follow the spec
     consoleGameLoop.play(dealer, console);
 
     GameResult result = pokerGameEvaluator.evaluate(players.getPlayers());

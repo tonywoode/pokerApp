@@ -3,15 +3,16 @@ package pokerapp.console.projectX;
 import org.apache.commons.lang3.SystemUtils;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
+ * Provides a instance of the SayWhat type,
+ * based on the underlying OS.
+ *
+ * We currently support Windows and Mac OS X.
+ *
+ * We're using Apache Commons Lang3 for
+ * platform detection.
+ *
+ * Used by spring to automagically give clients
+ * the correct SayWhat instance.
  *
  * @author Steve
  * @version 1

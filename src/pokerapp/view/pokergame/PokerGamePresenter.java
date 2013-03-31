@@ -79,10 +79,6 @@ public class PokerGamePresenter {
 		 pokerGameView.startButtonEnable(false);
 	 }
 
-   /**@Subscribe
-   public void inspectGUIGameState_Hack(PokerGameView.GuiHackEvent ghe) throws IOException {
-     turnCompleted(null);
-   }*/
 
 	 /**
 	  * Actions to take when a round is complete - message, hand presentation, winnder tallying
@@ -94,8 +90,7 @@ public class PokerGamePresenter {
 	 @Subscribe
 	 public void turnCompleted(TurnCompletedEvent tce) throws FormatStringException, IOException,
 	 IllegalFormatCodeException {
-		 // TODO: let the computer play its turn
-     pokerGameModel.letComputerPlayerPlay();
+		 pokerGameModel.letComputerPlayerPlay();
 
      GameResult result = pokerGameModel.evaluate();
 

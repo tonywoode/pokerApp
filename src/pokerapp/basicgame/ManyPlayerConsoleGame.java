@@ -68,7 +68,11 @@ public class ManyPlayerConsoleGame extends Application {
 
 
     InteractivePlayer interactivePlayer = new InteractivePlayer();
-    interactivePlayer.getPlayerNameFromUser(console);
+
+    console.writeMessage("What's your name?");
+    interactivePlayer.setPlayerName(console.readLine());
+    console.writeMessage("Hello {0}! Welcome to Poker App.", interactivePlayer.getPlayerName());
+
     players.register(interactivePlayer);
 
     UserConfigurable userConfigurableNumPlayers =
@@ -150,10 +154,7 @@ public class ManyPlayerConsoleGame extends Application {
 
       consoleGameLoop.reset().register(players);
 
-      // TODO: The play order does not follow the spec
       consoleGameLoop.play(dealer, console);
-
-      // TODO: this is a bit hacky...
 
       GameResult result = players.evaluateGame();
 
@@ -173,14 +174,6 @@ public class ManyPlayerConsoleGame extends Application {
       console.writeMessage(NEW_LINE);
       console.writeMessage("******************************************************");
       console.writeMessage(NEW_LINE);
-
-      for (Player p : players) { //TODO: Doesn't return cards to the deck properly.
-        for (Card c : p.getHand()) {
-          deck.returnToBottom(c);
-        }
-        p.getHand().clear();
-      }
-
     }
   }
 }

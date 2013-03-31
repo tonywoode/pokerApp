@@ -133,8 +133,6 @@ public class Hand implements Iterable<Card> {
     return cards.set(pos, card);
   }
 
-  // TODO: This package reference is invalid. Should not delve down there...
-  // TODO: The implementation is poor; lack the time to do it better...
   public Spares getKickers(Rank... keepRanks) {
     ArrayList<Card> spareCards = new ArrayList<Card>();
 

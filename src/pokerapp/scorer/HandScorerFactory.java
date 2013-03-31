@@ -10,7 +10,7 @@ import java.util.List;
  * <p/>
  * The HandScorers are injected using DI.
  * <p/>
- * Implements the Factory/Builder pattern. TODO: which?
+ * Implements the Factory and Builder patterns.
  *
  * @author Steve
  * @version 1.0

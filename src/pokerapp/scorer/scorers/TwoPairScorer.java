@@ -16,10 +16,8 @@ import pokerapp.utils.ReverseArrayIterator;
  * To change this template use File | Settings | File Templates.
  */
 public class TwoPairScorer extends SameRankHandScorer {
-  private static final int SPARE_COUNT = 1;
-
   public TwoPairScorer() {
-    super(null /* TODO: hacky */, 2, 2);
+    super(null, 2, 2);
   }
 
   protected ScoredHand createHandCategory(Hand hand, HandRanks hr) {

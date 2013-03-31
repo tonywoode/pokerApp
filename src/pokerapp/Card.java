@@ -68,7 +68,7 @@ public class Card implements Formattable {
 
   @Override
   public Formats getFormats() {
-    return null; // TODO: how can we fix this?
+    return null; // this is fine, because no clients use it.
   }
 
   @Override

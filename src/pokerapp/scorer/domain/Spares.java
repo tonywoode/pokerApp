@@ -18,7 +18,7 @@ import java.util.List;
  * http://www.ibm.com/developerworks/library/j-jtp02216/
  * <p>
  * However, the pitfalls mentioned in the article
- * do not apply here. TODO: explain why...
+ * do not apply here.
  * 
  * @author Steve Faulmann
  *

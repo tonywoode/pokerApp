@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 public class TiedSimpleGameResult extends GameResult {
 
-  private final List<Player> players;
+  private List<Player> players;
   private List<ScoredPlayer> scoredPlayers;
 
   @Override

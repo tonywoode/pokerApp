@@ -13,6 +13,5 @@ public abstract class CardView {
 
   public abstract void render(Graphics g);
 
-  // TODO: not happy with this
   public abstract BufferedImage copyImage();
 }
