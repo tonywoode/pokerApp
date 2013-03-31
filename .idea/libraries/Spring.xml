@@ -1,10 +1,25 @@
 <component name="libraryTable">
   <library name="Spring">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/libs/Spring" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-jms-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-jdbc-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-instrument-tomcat-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-expression-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-core-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-context-support-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-instrument-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/aopalliance-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-context-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-tx-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-beans-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-oxm-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-test-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-aop-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-orm-3.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Spring/spring-aspects-3.2.1.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <jarDirectory url="file://$PROJECT_DIR$/libs/Spring" recursive="false" />
   </library>
 </component>

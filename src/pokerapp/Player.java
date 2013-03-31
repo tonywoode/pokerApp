@@ -19,6 +19,8 @@ public abstract class Player {
 
   @Getter @Setter private String playerName = "";
 
+  @Getter private HistoryTable historyTable = new HistoryTable();
+
   public Player() {}
 
   @Override

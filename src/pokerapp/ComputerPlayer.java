@@ -25,10 +25,12 @@ public class ComputerPlayer extends Player {
   public ComputerPlayer(String name, ComputerPlayerStrategy turnStrategy) {
     this.turnStrategy = turnStrategy;
     setPlayerName(name);
+    turnStrategy.setPlayer(this);
   }
 
   public ComputerPlayer(ComputerPlayerStrategy turnStrategy) {
     this("Computer", turnStrategy);
+
   }
 
   public ComputerPlayer createNew() {
