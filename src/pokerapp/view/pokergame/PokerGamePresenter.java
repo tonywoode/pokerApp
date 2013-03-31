@@ -67,8 +67,14 @@ public class PokerGamePresenter {
 
 		 playerHandPresenterBridge.setPlayer(pokerGameModel.getInteractivePlayer());
 		 computerHandView.setHand(pokerGameModel.getComputerPlayer().getHand());
+		 
+		 new Thread(new Runnable() {
+			    public void run() {
+			    	pokerGameView.displayMessage("Game Started: Choose Which Cards To Exchange");
+			    }
+			}).start();
 
-		 pokerGameView.displayMessage("Game Started: Choose Which Cards To Exchange");
+		 
 		 playerHandView.userButtonsEnable(true);
 		 pokerGameView.startButtonEnable(false);
 	 }
@@ -94,7 +100,7 @@ public class PokerGamePresenter {
      GameResult result = pokerGameModel.evaluate();
 
 		 playerHandView.userButtonsEnable(false);
-		 pokerGameView.displayMessage("Press Start To Begin Another Game....");
+		 
 
 		 computerHandView.showCards();
 
@@ -103,6 +109,13 @@ public class PokerGamePresenter {
 		 pokerGameView.startButtonEnable(true);
 		 
 		 scoreTally(result);
+		 
+		 new Thread(new Runnable() {
+			    public void run() {
+			    	pokerGameView.displayMessage("Press Start To Begin Another Game....");
+			    }
+			}).start();
+		 
 	 }
 
 	 /**
