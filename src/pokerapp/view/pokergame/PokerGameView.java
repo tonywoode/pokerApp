@@ -1,5 +1,6 @@
 package pokerapp.view.pokergame;
 
+import pokerapp.console.projectX.SayWhat;
 import pokerapp.view.MsgAnimation;
 import pokerapp.view.ScoresPanel;
 import pokerapp.view.StartButton;
@@ -48,11 +49,14 @@ public class PokerGameView extends JFrame {
 
 	private final EventSource eventSource;
 
+  private final SayWhat sayWhat;
+
   private JButton hackButton = new JButton();
 
-	public PokerGameView(EventSource eventSource) {
+	public PokerGameView(EventSource eventSource, SayWhat sayWhat) {
 		this.eventSource = eventSource;
-		initComponents();
+    this.sayWhat = sayWhat;
+    initComponents();
 		layoutComponents();
 	}
 
@@ -92,7 +96,7 @@ public class PokerGameView extends JFrame {
     configureHackButton();
 	}
 
-  public class GuiHackEvent { }
+  public class GuiHackEvent { } //TODO:get rid of hackery!
 
   private void configureHackButton() {
 
@@ -251,6 +255,7 @@ public class PokerGameView extends JFrame {
 	 */
 	public void displayMessage(String msg) {
 		textPanel.setMessage(msg);
+    sayWhat.sayWhat(msg);
 	}
 
 	/**

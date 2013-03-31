@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lang="http://www.springframework.org/schema/lang"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd">
 
   <import resource="classpath:game-application-context.xml" />
 
@@ -50,7 +50,11 @@
   <bean id="pokerGamePresenter" class="pokerapp.view.pokergame.PokerGamePresenter" autowire="constructor">
     <constructor-arg index="4" name="userMessage" value="Welcome to Poker App!!!! Press Start to Play a Game with the Computer..." />
   </bean>
-    
+
+  <bean id="sayWhatFactory" class="pokerapp.console.projectX.SayWhatFactory"/>
+  <bean id="sayWhat" factory-bean="sayWhatFactory" factory-method="create"/>
+
+
   <bean class="pokerapp.view.pokergame.PokerGameModel" autowire="constructor">
     <constructor-arg index="0" ref="dealer"/>
     <constructor-arg index="1" ref="interactivePlayer"/>

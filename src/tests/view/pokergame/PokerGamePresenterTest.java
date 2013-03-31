@@ -1,6 +1,5 @@
 package tests.view.pokergame;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.junit.Before;
@@ -11,9 +10,9 @@ import pokerapp.GameResult;
 import pokerapp.Hand;
 import pokerapp.HandFactory;
 import pokerapp.Player;
+import pokerapp.console.projectX.NullSayWhat;
 import pokerapp.scorer.PokerGameEvaluator;
 import pokerapp.scorer.scorers.HandScorer;
-import pokerapp.view.events.EventSource;
 import pokerapp.view.playerhand.ComputerHandView;
 import pokerapp.view.playerhand.PlayerHandPresenterBridge;
 import pokerapp.view.playerhand.PlayerHandView;
@@ -48,7 +47,7 @@ public class PokerGamePresenterTest {
     private int expectedMessage;
 
     public StubPokerGameView() {
-      super(null);
+      super(null, new NullSayWhat());
       this.expectedMessage = -2;
     }
 
