@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset1" name="XML Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/console-game-application-context.xml</file>
+          <file>file://$MODULE_DIR$/src/pokerapp/view/GUI-game-application-context.xml</file>
+          <file>file://$MODULE_DIR$/src/scorer-application-context.xml</file>
+          <file>file://$MODULE_DIR$/out/production/pokernovo/console-game-application-context.xml</file>
+          <file>file://$MODULE_DIR$/out/production/pokernovo/pokerapp/view/GUI-game-application-context.xml</file>
+          <file>file://$MODULE_DIR$/out/production/pokernovo/scorer-application-context.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Spring" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/Google Guava/guava-14.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="libs" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="com4j" level="project" />
+    <orderEntry type="library" name="commons-lang3-3.1" level="project" />
+    <orderEntry type="library" name="log4j-1.2.13" level="project" />
+    <orderEntry type="library" name="Mockito" level="project" />
+  </component>
+</module>
+
