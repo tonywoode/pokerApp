@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>
- * Detailed explanation of the class and its collaborators.
- * </p>
- * <p>
- * Describe whether the class uses/is part of a pattern.
- * </p>
- * <p>
- * Examples of use, if particularly complex
- * </p>
+ * This is the beginning of a state-based approach
+ * to implementing the console game.
+ *
+ * Eventually, I want to use the ideas here to
+ * introduce one game loop to rule them all, even
+ * the GUI!
  *
  * @author Steve
  * @version 1
