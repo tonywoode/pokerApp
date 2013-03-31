@@ -8,7 +8,6 @@ import pokerapp.*;
 import pokerapp.console.Console;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.scorer.PokerGameEvaluator;
-import sun.java2d.windows.GDIBlitLoops;
 
 import java.util.ArrayList;
 import java.util.List;
