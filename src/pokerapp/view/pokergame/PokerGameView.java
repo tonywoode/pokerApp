@@ -229,12 +229,15 @@ public class PokerGameView extends JFrame {
 		switch (winMessage) {
 		case 0:
 			displayStatusMessage(drawLabel);
+      sayWhat.sayWhat("OMG a draw!");
 			break;
 		case 1:
 			displayStatusMessage(winLabel);
+      sayWhat.sayWhat("Winner, winner, chicken dinner!");
 			break;
 		case -1:
-			displayStatusMessage(loseLabel);			
+			displayStatusMessage(loseLabel);
+      sayWhat.sayWhat("Oh noes, you lose!");
 			break;
 		default:				
 		}
