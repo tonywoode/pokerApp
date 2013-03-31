@@ -34,9 +34,9 @@ public class HardComputerPlayerStrategy extends ComputerPlayerStrategy implement
 
     @Override
     public void playTurn(Dealer dealer, ScoredHand handType) {
-    handType.visit(this);
-    this.dealer = dealer;
-  }
+      this.dealer = dealer;
+      handType.visit(this);
+    }
 
   @Override
   public ComputerPlayerStrategy createNew() {
