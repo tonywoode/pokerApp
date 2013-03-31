@@ -14,7 +14,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Represents one of (2,3,4) of a kind. TODO: This is not a RUN!!!!!!
+ * Represents one of (2,3,4) of a kind.
  *
  * @author Steve
  * @version 1.0
