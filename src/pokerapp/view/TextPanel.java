@@ -22,7 +22,6 @@ public class TextPanel extends JTextPane {
 		this.setOpaque(false);
 		this.setEditable(false);
 		this.setText(text);
-		//textPanel.setBounds(275, 224, 415, 129);
 	
 		//set the foregroundtext
 		textPanelFront = new JTextPane();

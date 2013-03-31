@@ -101,7 +101,6 @@ public class PokerGamePresenter {
 
 		 playerHandView.userButtonsEnable(false);
 		 
-
 		 computerHandView.showCards();
 
 		 pokerGameView.showGameResultMessage(getWinMessage(result));
@@ -110,15 +109,12 @@ public class PokerGamePresenter {
 		 
 		 scoreTally(result);
 		 
-		 
 		 new Thread(new Runnable() {
 			    public synchronized void run() {
 			    	pokerGameView.displayMessage("Press Start To Begin Another Game....");
 			    }
-			}).start();
-		 
+			}).start();	 
 }
-
 
 	 /**
 	  * Simple switch to announce winner

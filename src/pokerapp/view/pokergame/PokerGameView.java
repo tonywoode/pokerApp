@@ -190,7 +190,7 @@ public class PokerGameView extends JFrame {
 	 */
 	private void guiLabels() {
 		playerLabel = new JLabel(new ImageIcon("pics/Player.png"));
-		playerLabel.setBounds(650, 391, 127, 41);
+		playerLabel.setBounds(623, 391, 127, 41);
 		backPanel.add(playerLabel);
 
 		computerLabel = new JLabel(new ImageIcon("pics/Computer.png"));
@@ -231,7 +231,6 @@ public class PokerGameView extends JFrame {
 			threadingMessages();		
 			break;
 		case 1:
-			//verbalMsg = "Winner, winner, chicken dinner!";
 			visualMsg = winLabel;
 			if (random <= 1.0 ) { verbalMsg = "Winner, winner, chicken dinner!"; }
 			if (random < 0.8 ) { verbalMsg = "You won you did you won you did you won you did"; }
@@ -242,10 +241,9 @@ public class PokerGameView extends JFrame {
 			break;
 		case -1:
 			visualMsg = loseLabel;
-			//verbalMsg = "Oh noes, you lose!";
-			if (random <= 1.0 ) { verbalMsg = "No No No No No my dreams in ruins"; }
+			if (random <= 1.0 ) { verbalMsg = "Your dreams in ruins"; }
 			if (random < 0.8 ) { verbalMsg = "Shucks, lost, sucker"; }
-			if (random < 0.6 ) { verbalMsg = "You're the loser"; }
+			if (random < 0.6 ) { verbalMsg = "Looooser, Shmoooozer!"; }
 			if (random < 0.4 ) { verbalMsg = "hey everybody look at the looooser"; }
 			if (random < 0.2 ) { verbalMsg = "I'm sorry, Dave. I'm afraid I can't do that. "; }
 			threadingMessages();
@@ -260,7 +258,7 @@ public class PokerGameView extends JFrame {
 	 */
 	private void displayStatusMessage(JLabel label) {
 		MsgAnimation anim = new MsgAnimation(textPanel, label);
-		anim.begin(1500);	
+		anim.begin(1000);	
 	}	
 
 	/**
@@ -289,7 +287,6 @@ public class PokerGameView extends JFrame {
 		new Thread(new Runnable() {
 			public void run() {
 				displayStatusMessage(visualMsg);
-				
 			}
 		}).start();
 		new Thread(new Runnable() {

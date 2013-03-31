@@ -48,7 +48,7 @@
   <bean id="pokerGame" class="pokerapp.view.PokerGame" autowire="constructor"/>
 
   <bean id="pokerGamePresenter" class="pokerapp.view.pokergame.PokerGamePresenter" autowire="constructor">
-    <constructor-arg index="4" name="userMessage" value="Welcome to PokerApp. Press Start to Play a Game with the Computer..." />
+    <constructor-arg index="4" name="userMessage" value="Welcome to PokerApp. Press Start to Play a Game with Me..." />
   </bean>
 
   <bean id="sayWhatFactory" class="pokerapp.console.projectX.SayWhatFactory"/>
