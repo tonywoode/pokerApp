@@ -189,37 +189,31 @@ public class PokerGameView extends JFrame {
 	 * Draws the labels for the computer and the player by the right of their cards
 	 */
 	private void guiLabels() {
-		playerLabel = new JLabel();
-		playerLabel.setIcon(new ImageIcon("pics/Player.png"));
+		playerLabel = new JLabel(new ImageIcon("pics/Player.png"));
 		playerLabel.setBounds(650, 391, 127, 41);
 		backPanel.add(playerLabel);
 
-		computerLabel = new JLabel();
-		computerLabel.setIcon(new ImageIcon("pics/Computer.png"));
+		computerLabel = new JLabel(new ImageIcon("pics/Computer.png"));
 		computerLabel.setBounds(643, 170, 106, 30);
 		backPanel.add(computerLabel);
 
-		drawLabel = new JLabel();
+		drawLabel = new JLabel(new ImageIcon("pics/YouDraw.png"));
 		drawLabel.setVisible(false);
-		drawLabel.setIcon(new ImageIcon("pics/YouDraw.png"));
 		drawLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(drawLabel);
 
-		winLabel = new JLabel();
+		winLabel = new JLabel(new ImageIcon("pics/YouWin.png"));
 		winLabel.setVisible(false);
-		winLabel.setIcon(new ImageIcon("pics/YouWin.png"));
 		winLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(winLabel);
 
-		loseLabel = new JLabel();
+		loseLabel = new JLabel(new ImageIcon("pics/Youlose.png"));
 		loseLabel.setVisible(false);
-		loseLabel.setIcon(new ImageIcon("pics/Youlose.png"));
 		loseLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(loseLabel);
 
-		startLabel = new JLabel();
+		startLabel = new JLabel(new ImageIcon("pics/LetsPlayPoker.png"));
 		startLabel.setVisible(false);
-		startLabel.setIcon(new ImageIcon("pics/LetsPlayPoker.png"));
 		startLabel.setBounds(260, 211, 450, 154);
 		backPanel.add(startLabel);
 	}
@@ -228,7 +222,8 @@ public class PokerGameView extends JFrame {
 	 * Display the appropriate message depending on round result
 	 * @param winMessage win, lose or draw message
 	 */
-	public void showGameResultMessage(int winMessage) {
+	public synchronized void showGameResultMessage(int winMessage) {
+		double random = Math.random();
 		switch (winMessage) {
 		case 0:
 			verbalMsg = "OMG a draw!";
@@ -236,13 +231,23 @@ public class PokerGameView extends JFrame {
 			threadingMessages();		
 			break;
 		case 1:
-			verbalMsg = "Winner, winner, chicken dinner!";
+			//verbalMsg = "Winner, winner, chicken dinner!";
 			visualMsg = winLabel;
+			if (random <= 1.0 ) { verbalMsg = "Winner, winner, chicken dinner!"; }
+			if (random < 0.8 ) { verbalMsg = "You won you did you won you did you won you did"; }
+			if (random < 0.6 ) { verbalMsg = "You are the winner"; }
+			if (random < 0.4 ) { verbalMsg = "Woop Woop Woop Woop"; }
+			if (random < 0.2 ) { verbalMsg = "goodgame, good game"; }
 			threadingMessages();
 			break;
 		case -1:
 			visualMsg = loseLabel;
-			verbalMsg = "Oh noes, you lose!";
+			//verbalMsg = "Oh noes, you lose!";
+			if (random <= 1.0 ) { verbalMsg = "No No No No No my dreams in ruins"; }
+			if (random < 0.8 ) { verbalMsg = "Shucks, lost, sucker"; }
+			if (random < 0.6 ) { verbalMsg = "You're the loser"; }
+			if (random < 0.4 ) { verbalMsg = "hey everybody look at the looooser"; }
+			if (random < 0.2 ) { verbalMsg = "I'm sorry, Dave. I'm afraid I can't do that. "; }
 			threadingMessages();
 			break;
 		default:				
@@ -262,7 +267,7 @@ public class PokerGameView extends JFrame {
 	 * renders message to text panel
 	 * @param msg string to display
 	 */
-	public void displayMessage(String msg) {
+	public synchronized void displayMessage(String msg){
 		textPanel.setMessage(msg);
 		sayWhat.sayWhat(msg);
 	}
@@ -283,12 +288,14 @@ public class PokerGameView extends JFrame {
 	public void threadingMessages() {
 		new Thread(new Runnable() {
 			public void run() {
-				sayWhat.sayWhat(verbalMsg);
+				displayStatusMessage(visualMsg);
+				
 			}
 		}).start();
 		new Thread(new Runnable() {
 			public void run() {
-				displayStatusMessage(visualMsg);
+				//sayWhat.sayWhat(verbalMsg); 
+				displayMessage(verbalMsg);
 			}
 		}).start();
 	}

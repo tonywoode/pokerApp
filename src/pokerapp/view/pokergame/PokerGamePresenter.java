@@ -38,7 +38,7 @@ public class PokerGamePresenter {
 		this.playerHandView = playerHandView;
 	
 		pokerGameView.registerSubViews(playerHandPresenterBridge, computerHandView);
-		this.pokerGameView.displayMessage(userMessage);
+		this.pokerGameView.displayMessage(userMessage); //singleton
 
 	}
 
@@ -110,13 +110,15 @@ public class PokerGamePresenter {
 		 
 		 scoreTally(result);
 		 
+		 
 		 new Thread(new Runnable() {
-			    public void run() {
+			    public synchronized void run() {
 			    	pokerGameView.displayMessage("Press Start To Begin Another Game....");
 			    }
 			}).start();
 		 
-	 }
+}
+
 
 	 /**
 	  * Simple switch to announce winner
