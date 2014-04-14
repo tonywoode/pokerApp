@@ -10,7 +10,7 @@ Well, we did make a console app - a multi-user talking console app that understa
 
 ## Contributors
 
-* [Steve Faulman](https://bitbucket.org/sfaulmann)
+* [Steve Faulmann](https://bitbucket.org/sfaulmann)
 * [Sam Keayes](https://bitbucket.org/skeays)
 * [Ari Ghosh](https://bitbucket.org/ar1g)
 * [Tony Woode](https://bitbucket.org/tonywoode)
