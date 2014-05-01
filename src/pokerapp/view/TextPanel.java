@@ -11,7 +11,7 @@ import javax.swing.JTextPane;
  *
  */
 public class TextPanel extends JTextPane {
-	private static String text = "Here the text will go no matter how long it is - I hope the computer Wins!";
+	private static String text = "";
 	private Font font = new Font("Showcard Gothic", Font.ITALIC, 28);
 	private JTextPane textPanelFront;
 	
