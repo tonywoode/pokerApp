@@ -104,6 +104,10 @@
   <bean id="handScorer" factory-bean="handScorerFactory" factory-method="getScorer">
   </bean>
 
+   <!-- scoring is from flush down to nopair and not vice versa 
+   because lower scoring hands may be subsets of higher scoring ones 
+   e.g.: pair is a subset of full house -->
+  
   <bean id="handScorerFactory" class="pokerapp.scorer.HandScorerFactory">
     <constructor-arg>
       <list>
