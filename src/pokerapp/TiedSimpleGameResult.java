@@ -25,6 +25,11 @@ public class TiedSimpleGameResult extends GameResult {
   public Player getWinner() { return null; } // TODO: this is what I'm not happy with...
 
   @Override
+  public Player getLoser() {
+    return null;
+  }
+
+  @Override
   public boolean isWinner(Player player) {
     return false;
   }
@@ -47,5 +52,10 @@ public class TiedSimpleGameResult extends GameResult {
   @Override
   public Iterable<ScoredPlayer> getScoredPlayersInRankOrder() {
     return scoredPlayers;
+  }
+
+  @Override
+  public int getNumPlayers() {
+    return players.size();
   }
 }

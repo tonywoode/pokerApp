@@ -9,6 +9,9 @@
 
   <bean id="stringFormatter" class="pokerapp.utils.textformat.StringFormatter"/>
 
+  <!-- WinMessageRenderer -->
+  <bean id="winMessageRenderer" class="pokerapp.console.WinMessageRenderer" autowire="constructor" />
+
   <!-- event bus -->
 
   <bean id="eventSource" class="pokerapp.view.events.EventSource" autowire="constructor"/>

@@ -23,6 +23,11 @@ public class SimpleGameResult extends GameResult {
   public Player getWinner() { return winner.getPlayer(); }
 
   @Override
+  public Player getLoser() {
+    return loser.getPlayer();
+  }
+
+  @Override
   public boolean isWinner(Player player) {
     return player == winner.getPlayer();
   }
@@ -45,5 +50,10 @@ public class SimpleGameResult extends GameResult {
   @Override
   public Iterable<ScoredPlayer> getScoredPlayersInRankOrder() {
     return new IterableAdapter<ScoredPlayer>(new ArrayIterator(new ScoredPlayer[] { winner, loser }));
+  }
+
+  @Override
+  public int getNumPlayers() {
+    return 2;
   }
 }

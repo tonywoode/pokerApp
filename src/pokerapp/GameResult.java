@@ -15,6 +15,7 @@ import java.util.List;
 public abstract class GameResult {
   // TODO: not happy with this; how do we handle ties?
   public abstract Player getWinner();
+  public abstract Player getLoser();
 
   public abstract boolean isWinner(Player player);
 
@@ -27,4 +28,6 @@ public abstract class GameResult {
   public abstract Iterable<Player> getPlayersInRankOrder();
 
   public abstract Iterable<ScoredPlayer> getScoredPlayersInRankOrder();
+
+  public abstract int getNumPlayers();
 }

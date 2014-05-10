@@ -22,6 +22,11 @@ public class MultiplePlayerNoTieGameResult extends GameResult {
   public Player getWinner() { return playersInWinOrder.get(0); }
 
   @Override
+  public Player getLoser() {
+    return playersInWinOrder.get(playersInWinOrder.size() - 1);
+  }
+
+  @Override
   public boolean isWinner(Player player) {
     return playersInWinOrder.get(0) == player;
   }
@@ -39,6 +44,11 @@ public class MultiplePlayerNoTieGameResult extends GameResult {
   @Override
   public Iterable<ScoredPlayer> getScoredPlayersInRankOrder() {
     return scoredPlayers;
+  }
+
+  @Override
+  public int getNumPlayers() {
+    return scoredPlayers.size();
   }
 
 }
