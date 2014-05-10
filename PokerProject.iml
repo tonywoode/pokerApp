@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/bin/pokerapp/view/GUI-game-application-context.xml</file>
+          <file>file://$MODULE_DIR$/bin/game-application-context.xml</file>
+          <file>file://$MODULE_DIR$/bin/scorer-application-context.xml</file>
+          <file>file://$MODULE_DIR$/bin/skynet-application-context.xml</file>
+          <file>file://$MODULE_DIR$/bin/projectX-application-context.xml</file>
+          <file>file://$MODULE_DIR$/bin/console-game-application-context.xml</file>
+          <file>file://$MODULE_DIR$/src/pokerapp/view/GUI-game-application-context.xml</file>
+          <file>file://$MODULE_DIR$/src/game-application-context.xml</file>
+          <file>file://$MODULE_DIR$/src/scorer-application-context.xml</file>
+          <file>file://$MODULE_DIR$/src/skynet-application-context.xml</file>
+          <file>file://$MODULE_DIR$/src/projectX-application-context.xml</file>
+          <file>file://$MODULE_DIR$/src/console-game-application-context.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libs" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="libs" level="project" />
+    <orderEntry type="library" name="Spring" level="project" />
+    <orderEntry type="library" name="guava-14.0" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="mockito-all-1.9.5 (2)" level="project" />
+  </component>
+</module>
+

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/lombok.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/com4j.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Filters.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/opencsv-2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/log4j-1.2.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-lang3-3.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
