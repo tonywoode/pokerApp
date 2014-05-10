@@ -41,6 +41,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="mockito-all-1.9.5 (2)" level="project" />
+    <orderEntry type="library" name="jcommander-1.35" level="project" />
   </component>
 </module>
 
