@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.Card;
 import pokerapp.Hand;
+import pokerapp.Rank;
 import pokerapp.scorer.HandVisitor;
 import pokerapp.scorer.domain.OrderedCards;
 import pokerapp.scorer.typetag.Flush;
@@ -35,7 +36,12 @@ public class FlushScoredHand extends AbstractScoredHand<FlushScoredHand> {
     return "Flush";
   }
 
-    @Override
+  @Override
+  public Rank getHandRank() {
+    return null; // TODO: fix me
+  }
+
+  @Override
     public List<Card> getRelevantCards() {
         return hand.getSortedCards();
     }

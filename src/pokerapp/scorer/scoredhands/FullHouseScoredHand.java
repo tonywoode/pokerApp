@@ -3,6 +3,7 @@ package pokerapp.scorer.scoredhands;
 import lombok.Getter;
 import pokerapp.Card;
 import pokerapp.Hand;
+import pokerapp.Rank;
 import pokerapp.scorer.typetag.FullHouse;
 import pokerapp.utils.Comparator;
 
@@ -38,7 +39,12 @@ public class FullHouseScoredHand extends AbstractScoredHand<FullHouseScoredHand>
 
   }
 
-    @Override
+  @Override
+  public Rank getHandRank() {
+    return null;  // TODO: fix me
+  }
+
+  @Override
     public List<Card> getRelevantCards() {
         return hand.getSortedCards();
     }

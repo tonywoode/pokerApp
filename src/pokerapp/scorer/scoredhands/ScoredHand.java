@@ -3,6 +3,7 @@ package pokerapp.scorer.scoredhands;
 import lombok.Getter;
 import pokerapp.Card;
 import pokerapp.Hand;
+import pokerapp.Rank;
 import pokerapp.scorer.HandVisitor;
 import pokerapp.scorer.typetag.HandType;
 
@@ -49,6 +50,8 @@ public abstract class ScoredHand implements Comparable<ScoredHand> {
 	 * but some must calculate. Hence an abstract property.
 	 */
 	public abstract String getName();
+
+  public abstract Rank getHandRank();
 
 	/** Called when two hands are in the same category. We need
 	 * to determine which hand is better.

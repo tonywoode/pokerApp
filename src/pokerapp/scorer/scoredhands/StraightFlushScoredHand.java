@@ -42,6 +42,11 @@ public class StraightFlushScoredHand extends AbstractScoredHand<StraightFlushSco
   }
 
   @Override
+  public Rank getHandRank() {
+    return rank;
+  }
+
+  @Override
   public List<Card> getRelevantCards() {
     return hand.getSortedCards();
   }

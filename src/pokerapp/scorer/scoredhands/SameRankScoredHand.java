@@ -40,6 +40,11 @@ public class SameRankScoredHand extends AbstractScoredHand<SameRankScoredHand> {
   }
 
   @Override
+  public Rank getHandRank() {
+    return sameRankCards.getRank();  //To change body of implemented methods use File | Settings | File Templates.
+  }
+
+  @Override
   public List<Card> getRelevantCards() {
     List<Card> relevantArray = new ArrayList<Card>();
     Iterator<Card> iter = sameRankCards.iterator();

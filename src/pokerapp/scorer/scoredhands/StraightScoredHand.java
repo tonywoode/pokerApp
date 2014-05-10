@@ -41,6 +41,11 @@ public class StraightScoredHand extends AbstractScoredHand<StraightScoredHand> {
   }
 
   @Override
+  public Rank getHandRank() {
+    return null;  // TODO: fix me
+  }
+
+  @Override
   public List<Card> getRelevantCards() {
     return hand.getSortedCards();
   }

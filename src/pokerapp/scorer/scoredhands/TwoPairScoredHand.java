@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.Card;
 import pokerapp.Hand;
+import pokerapp.Rank;
 import pokerapp.scorer.domain.SameRankCards;
 import pokerapp.scorer.domain.Spares;
 import pokerapp.scorer.typetag.TwoPair;
@@ -49,6 +50,11 @@ public class TwoPairScoredHand extends AbstractScoredHand<TwoPairScoredHand> {
   @Override
   public String getName() {
     return "Two pair";
+  }
+
+  @Override
+  public Rank getHandRank() {
+    return null;
   }
 
   @Override

@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pokerapp.Card;
 import pokerapp.Hand;
+import pokerapp.Rank;
 import pokerapp.scorer.domain.Spares;
 import pokerapp.scorer.typetag.NoPair;
 import pokerapp.utils.Comparator;
@@ -50,7 +51,12 @@ public class NoPairScoredHand extends AbstractScoredHand<NoPairScoredHand> {
       return "No pair";
     }
 
-    @Override
+  @Override
+  public Rank getHandRank() {
+    return null; // TODO: fix me!
+  }
+
+  @Override
     public List<Card> getRelevantCards() {
         return new ArrayList<Card>();
     }
