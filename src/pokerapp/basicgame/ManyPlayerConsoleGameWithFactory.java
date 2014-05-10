@@ -1,6 +1,8 @@
 package pokerapp.basicgame;
 
+import com.beust.jcommander.JCommander;
 import pokerapp.*;
+import pokerapp.basicgame.jcommander.PokerAppCommandLineOptions;
 import pokerapp.console.Console;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.console.UserConfigurable;
@@ -14,6 +16,12 @@ import java.io.IOException;
  * @version 1.0
  */
 public class ManyPlayerConsoleGameWithFactory extends Application {
+
+  private static String[] CONSOLE_INPUTS;
+
+  private PokerAppCommandLineOptions pokerAppCommandLineOptions;
+  private JCommander jCommander;
+
   private final int MAX_NUMBER_PLAYERS = 4;
   private final int MIN_NUMBER_PLAYERS = 1;
 
@@ -44,17 +52,21 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
   private int timesToExchange = MIN_TIMES_EXCHANGE;
 
   public ManyPlayerConsoleGameWithFactory(Console console, Deck deck, Dealer dealer, Players players,
-                                          NamedComputerPlayerFactory computerPlayerFactory, ConsoleGameLoop consoleGameLoop) {
+                                          NamedComputerPlayerFactory computerPlayerFactory, ConsoleGameLoop consoleGameLoop,
+                                          PokerAppCommandLineOptions pokerAppCommandLineOptions, JCommander jCommander) {
     this.console = console;
     this.deck = deck;
     this.dealer = dealer;
     this.players = players;
     this.computerPlayerFactory = computerPlayerFactory;
     this.consoleGameLoop = consoleGameLoop;
+    this.pokerAppCommandLineOptions = pokerAppCommandLineOptions;
+    this.jCommander = jCommander;
   }
 
   public static void main(String[] args) {
     try {
+      CONSOLE_INPUTS = args;
       begin("manyPlayerConsoleGameWithFactory", "console-game-application-context.xml");
     } catch (IOException e) {
       System.out.println("Error in application. Exiting.");
@@ -63,6 +75,9 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
 
   @Override
   public void run() throws IOException {
+
+    parseCommands();
+
     registerInteractivePlayer();
 
     configureOpponents();
@@ -86,7 +101,12 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
     console.writeMessage("\nBye bye!");
   }
 
-  private boolean userWantsToLeaveUs() {
+    private void parseCommands() {
+        jCommander.addCommand(this.pokerAppCommandLineOptions);
+        jCommander.parse(CONSOLE_INPUTS);
+    }
+
+    private boolean userWantsToLeaveUs() {
     console.writeMessage("Play again? Press 'q' to quit");
 
     String result = console.readString();

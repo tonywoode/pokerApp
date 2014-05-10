@@ -54,4 +54,8 @@
     </constructor-arg>
     <constructor-arg ref="stringFormatter" />
   </bean>
+
+  <bean id="pokerAppCommandLineOptions" class="pokerapp.basicgame.jcommander.PokerAppCommandLineOptions" scope="singleton" autowire="constructor" />
+
+  <bean id="jCommander" class="com.beust.jcommander.JCommander" autowire="constructor" />
 </beans>

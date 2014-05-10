@@ -9,7 +9,7 @@ import org.apache.commons.lang3.Range;
  */
 public class DifficultyValidator implements IParameterValidator {
 
-    private static Range<Integer> DIFFICULTY_RANGE = Range.between(1,4);
+    private static final Range<Integer> DIFFICULTY_RANGE = Range.between(1,4);
 
     @Override
     public void validate(String name, String value) throws ParameterException {
