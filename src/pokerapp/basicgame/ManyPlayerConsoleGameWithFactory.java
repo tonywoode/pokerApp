@@ -3,9 +3,11 @@ package pokerapp.basicgame;
 import com.beust.jcommander.JCommander;
 import pokerapp.*;
 import pokerapp.basicgame.jcommander.PokerAppCommandLineOptions;
+import pokerapp.basicgame.jcommanderfactories.IConsoleOptionsFactoryCoR;
 import pokerapp.console.Console;
 import pokerapp.console.ExchangeSetting;
 import pokerapp.console.UserConfigurable;
+import pokerapp.console.jcommandergame.*;
 import pokerapp.console.turns.ConsoleGameLoop;
 import pokerapp.skynet.NamedComputerPlayerFactory;
 
@@ -21,6 +23,8 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
 
   private PokerAppCommandLineOptions pokerAppCommandLineOptions;
   private JCommander jCommander;
+  private PokerCommanderGame pokerCommanderGame;
+  private IConsoleOptionsFactoryCoR pokerGameCoRFactory;
 
   private final int MAX_NUMBER_PLAYERS = 4;
   private final int MIN_NUMBER_PLAYERS = 1;
@@ -51,7 +55,7 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
   private int cardsToExchange = DEFAULT_CARDS_EXCHANGE;
   private int timesToExchange = MIN_TIMES_EXCHANGE;
 
-  public ManyPlayerConsoleGameWithFactory(Console console, Deck deck, Dealer dealer, Players players,
+    public ManyPlayerConsoleGameWithFactory(Console console, Deck deck, Dealer dealer, Players players,
                                           NamedComputerPlayerFactory computerPlayerFactory, ConsoleGameLoop consoleGameLoop,
                                           PokerAppCommandLineOptions pokerAppCommandLineOptions, JCommander jCommander) {
     this.console = console;
@@ -78,11 +82,7 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
 
     parseCommands();
 
-    registerInteractivePlayer();
-
-    configureOpponents();
-
-    configureExchanges();
+    configureGame();
 
     while (true) {
 
@@ -100,6 +100,11 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
 
     console.writeMessage("\nBye bye!");
   }
+
+    private void configureGame() {
+       pokerGameCoRFactory.create(pokerCommanderGame, pokerAppCommandLineOptions);
+    }
+
 
     private void parseCommands() {
         jCommander.addCommand(this.pokerAppCommandLineOptions);
@@ -125,22 +130,8 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
     dealer.dealCards(Hand.HAND_SIZE, players);
   }
 
-  private void registerInteractivePlayer() {
-    InteractivePlayer interactivePlayer = new InteractivePlayer();
-
-    console.writeMessage("What's your name?");
-    interactivePlayer.setPlayerName(console.readLine());
-    console.writeMessage("Hello {0}! Welcome to Poker App.", interactivePlayer.getPlayerName());
-
-    players.register(interactivePlayer);
-  }
-
   private void playGame() throws IOException {
-    consoleGameLoop.setExchangeSetting(exchangeSetting);
-
-    consoleGameLoop.reset().register(players);
-
-    consoleGameLoop.play(dealer, console);
+    consoleGameLoop.play(pokerCommanderGame);
   }
 
   private void returnCardsToDealer() {
@@ -174,64 +165,5 @@ public class ManyPlayerConsoleGameWithFactory extends Application {
     console.writeMessage(NEW_LINE);
     console.writeMessage("******************************************************");
     console.writeMessage(NEW_LINE);
-  }
-
-  private void configureOpponents() {
-    UserConfigurable userConfigurableNumPlayers =
-        new UserConfigurable("How many computer players do you want to play against?" + NEW_LINE, MIN_NUMBER_PLAYERS, MAX_NUMBER_PLAYERS);
-    int numberOfPlayers;
-    int cardsToExchange;
-    int timesToExchange;
-    numberOfPlayers = userConfigurableNumPlayers.askUser(console, true);
-
-    console.writeMessage("Who do you want to play against?");
-
-    int index = 1;
-    for (ComputerPlayer cp : computerPlayerFactory.getPlayers()) {
-      console.writeMessage("{0}.\t{1} - ({2})", index++, cp.getPlayerName(), cp.getStrategyFancyName());
-    }
-
-    for (int i = MIN_NUMBER_PLAYERS; i <= numberOfPlayers; ++i) {
-      console.writeMessage("Enter your opponent's number: ");
-      int cpNumber = console.readInteger();
-
-      ComputerPlayer cp = computerPlayerFactory.create(cpNumber - 1);
-      players.register(cp);
-    }
-  }
-
-  private int configureExchanges() {
-    console.writeMessage("OK, let's set up exchanges." + NEW_LINE + NEW_LINE);
-    console.writeMessage("By default you're allowed to exchange up to three cards..." + NEW_LINE);
-    console.writeMessage("...but only for one hand." + NEW_LINE + NEW_LINE);
-
-    UserConfigurable userConfigurableCustomiseExchange = new UserConfigurable("Do you want to customise the way " +
-        "exchanges work? (Yes = 1, No = 2)" + NEW_LINE, 1, 2);
-    int customiseCardExchange = userConfigurableCustomiseExchange.askUser(console, false);
-
-    switch (customiseCardExchange) {
-
-      case 1:
-        UserConfigurable userConfigurableNumCards = new UserConfigurable("How many cards do you want to exchange " +
-              "per hand?", MIN_CARDS_EXCHANGE, MAX_CARDS_EXCHANGE);
-        cardsToExchange = userConfigurableNumCards.askUser(console, true);
-
-        UserConfigurable userConfigurableNumHands = new UserConfigurable("How many hands do you want to exchange?"
-            + NEW_LINE, MIN_TIMES_EXCHANGE, MAX_TIMES_EXCHANGE);
-        timesToExchange = userConfigurableNumHands.askUser(console, true);
-
-        exchangeSetting.setNumCards(cardsToExchange);
-        exchangeSetting.setNumTimes(timesToExchange);
-        console.writeMessage("Excellent, you've decided to exchange " + cardsToExchange + " cards " +
-              timesToExchange + " times.", 1);
-        break;
-
-      case 2:
-        console.writeMessage("No changes made.");     //default values already set
-        break;
-      default:
-
-    }
-    return numberOfPlayers;
   }
 }

@@ -7,6 +7,14 @@ import com.beust.jcommander.Parameter;
  */
 public class PokerAppCommandLineOptions {
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Parameter(names = "-name", description = "Player name", required=false)
     String name;
 
